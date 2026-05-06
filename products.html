@@ -13,6 +13,303 @@
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
   <link rel="stylesheet" href="styles/components.css" />
+
+  <style>
+    /* ---------- Product modal ---------- */
+    .product-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-5);
+      background: rgba(8, 6, 42, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .product-modal[aria-hidden="false"] { display: flex; }
+    .product-modal__dialog {
+      position: relative;
+      width: 100%;
+      max-width: 640px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--bone-100);
+      border-radius: var(--radius-lg, 16px);
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-7) var(--space-6) var(--space-6);
+    }
+    .product-modal__close {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      width: 36px; height: 36px;
+      border-radius: var(--radius-pill, 999px);
+      border: 1px solid var(--border-default);
+      background: var(--bone-100);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background var(--duration-fast, 200ms) var(--ease-standard);
+    }
+    .product-modal__close:hover { background: var(--bone-300); }
+    .product-modal__close:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+    }
+    .product-modal__eyebrow {
+      font-family: var(--font-mono, var(--font-body));
+      font-variant-numeric: tabular-nums;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--indigo-500);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+    .product-modal__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin: 0 0 var(--space-4);
+    }
+    .product-modal__grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: var(--space-3) var(--space-4);
+      margin: var(--space-4) 0;
+      padding: var(--space-4) 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.9375rem;
+    }
+    .product-modal__grid dt {
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .product-modal__grid dd {
+      margin: 0;
+      color: var(--text-primary);
+    }
+    .product-modal__indication {
+      color: var(--text-secondary);
+      font-size: var(--font-body-md);
+      line-height: 1.6;
+      margin: var(--space-4) 0;
+    }
+    .product-modal__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+    .product-modal__actions .btn { font-size: 0.9375rem; }
+    .product-modal__note {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: var(--space-4);
+      line-height: 1.5;
+    }
+    @media (max-width: 540px) {
+      .product-modal__grid { grid-template-columns: 1fr; gap: var(--space-1) 0; }
+      .product-modal__grid dt { margin-top: var(--space-3); }
+      .product-modal__grid dt:first-child { margin-top: 0; }
+    }
+
+    /* ---------- Chatbot launcher ---------- */
+    .chatbot-launcher {
+      position: fixed;
+      bottom: var(--space-5);
+      right: var(--space-5);
+      z-index: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 14px 22px 14px 18px;
+      border-radius: var(--radius-pill, 999px);
+      border: none;
+      background: var(--indigo-500);
+      color: var(--bone-100);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--duration-fast, 200ms) var(--ease-standard),
+                  background var(--duration-fast, 200ms) var(--ease-standard);
+    }
+    .chatbot-launcher:hover { background: var(--indigo-400); transform: translateY(-2px); }
+    .chatbot-launcher:focus-visible { outline: none; box-shadow: var(--shadow-focus), var(--shadow-lg); }
+    .chatbot-launcher__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--saffron-500);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25);
+    }
+    .chatbot-launcher[hidden] { display: none; }
+
+    /* ---------- Chatbot panel ---------- */
+    .chatbot {
+      position: fixed;
+      bottom: var(--space-5);
+      right: var(--space-5);
+      z-index: 950;
+      width: min(400px, calc(100vw - 2 * var(--space-5)));
+      height: min(600px, calc(100vh - 2 * var(--space-5)));
+      background: var(--bone-100);
+      border-radius: var(--radius-lg, 16px);
+      box-shadow: var(--shadow-xl, var(--shadow-lg));
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chatbot[aria-hidden="false"] { display: flex; }
+    .chatbot__header {
+      background: var(--indigo-900);
+      color: var(--bone-100);
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+    .chatbot__title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      letter-spacing: -0.01em;
+    }
+    .chatbot__subtitle {
+      margin: 2px 0 0;
+      font-size: 0.75rem;
+      color: var(--steel-300);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .chatbot__header-actions { display: flex; gap: var(--space-2); }
+    .chatbot__icon-btn {
+      width: 32px; height: 32px;
+      border-radius: var(--radius-pill, 999px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: var(--bone-100);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background var(--duration-fast, 200ms) var(--ease-standard);
+    }
+    .chatbot__icon-btn:hover { background: rgba(255, 255, 255, 0.1); }
+    .chatbot__icon-btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+    .chatbot__body {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-4) var(--space-5);
+      background: var(--bone-200);
+    }
+    .chatbot__msg {
+      max-width: 85%;
+      padding: var(--space-3) var(--space-4);
+      border-radius: 14px;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      margin-bottom: var(--space-3);
+      animation: chatbot-pop var(--duration-default, 300ms) var(--ease-decelerate);
+    }
+    .chatbot__msg--bot {
+      background: var(--bone-100);
+      color: var(--text-primary);
+      border-top-left-radius: 4px;
+      box-shadow: var(--shadow-xs);
+    }
+    .chatbot__msg--user {
+      background: var(--indigo-500);
+      color: var(--bone-100);
+      border-top-right-radius: 4px;
+      margin-left: auto;
+    }
+    .chatbot__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-2) 0 var(--space-4);
+    }
+    .chatbot__chip {
+      border: 1px solid var(--indigo-200);
+      background: var(--bone-100);
+      color: var(--indigo-500);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill, 999px);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--duration-fast, 200ms) var(--ease-standard),
+                  color var(--duration-fast, 200ms) var(--ease-standard);
+    }
+    .chatbot__chip:hover { background: var(--indigo-500); color: var(--bone-100); }
+    .chatbot__chip:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+    .chatbot__chip--ghost {
+      border-color: var(--border-default);
+      color: var(--text-secondary);
+    }
+    .chatbot__chip--ghost:hover { background: var(--charcoal-800); color: var(--bone-100); border-color: var(--charcoal-800); }
+    .chatbot__results {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin: var(--space-2) 0 var(--space-4);
+    }
+    .chatbot__result {
+      text-align: left;
+      background: var(--bone-100);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md, 10px);
+      padding: var(--space-3) var(--space-4);
+      cursor: pointer;
+      transition: border-color var(--duration-fast, 200ms) var(--ease-standard),
+                  box-shadow var(--duration-fast, 200ms) var(--ease-standard);
+    }
+    .chatbot__result:hover { border-color: var(--indigo-500); box-shadow: var(--shadow-sm); }
+    .chatbot__result:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+    .chatbot__result-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .chatbot__result-meta {
+      margin-top: 4px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .chatbot__footer {
+      padding: var(--space-3) var(--space-5);
+      background: var(--bone-100);
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    @keyframes chatbot-pop {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .chatbot__msg { animation: none; }
+    }
+    @media (max-width: 540px) {
+      .chatbot, .chatbot-launcher { right: var(--space-3); bottom: var(--space-3); }
+      .chatbot { width: calc(100vw - 2 * var(--space-3)); height: calc(100vh - 2 * var(--space-3)); }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -460,6 +757,43 @@
         </div>
       </div>
     </section>
+
+    <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="product-modal-title">
+      <div class="product-modal__dialog" role="document">
+        <button class="product-modal__close" type="button" aria-label="Close" data-modal-close>×</button>
+        <p class="product-modal__eyebrow" id="product-modal-eyebrow">Product</p>
+        <h2 class="product-modal__title" id="product-modal-title">—</h2>
+        <dl class="product-modal__grid" id="product-modal-grid"></dl>
+        <p class="product-modal__indication" id="product-modal-indication"></p>
+        <div class="product-modal__actions">
+          <a class="btn btn--primary" id="product-modal-link" href="#" target="_blank" rel="noopener">View on anipharmaceuticals.com →</a>
+          <button class="btn btn--ghost" type="button" data-modal-close>Close</button>
+        </div>
+        <p class="product-modal__note">Information shown is general therapeutic context. For full Prescribing Information, including indications, dosing, contraindications, warnings, and adverse reactions, see the product page on anipharmaceuticals.com.</p>
+      </div>
+    </div>
+
+    <button class="chatbot-launcher" id="chatbot-launcher" type="button" aria-controls="chatbot" aria-expanded="false">
+      <span class="chatbot-launcher__dot" aria-hidden="true"></span>
+      Find a medication
+    </button>
+
+    <aside class="chatbot" id="chatbot" role="dialog" aria-modal="false" aria-hidden="true" aria-labelledby="chatbot-title">
+      <header class="chatbot__header">
+        <div>
+          <h2 class="chatbot__title" id="chatbot-title">ANI Product Assistant</h2>
+          <p class="chatbot__subtitle">Guided · Demo</p>
+        </div>
+        <div class="chatbot__header-actions">
+          <button class="chatbot__icon-btn" type="button" id="chatbot-restart" aria-label="Start over" title="Start over">↻</button>
+          <button class="chatbot__icon-btn" type="button" id="chatbot-close" aria-label="Close" title="Close">×</button>
+        </div>
+      </header>
+      <div class="chatbot__body" id="chatbot-body" aria-live="polite"></div>
+      <div class="chatbot__footer">
+        Educational use only. Not medical advice — always consult a qualified healthcare professional.
+      </div>
+    </aside>
   </main>
 
   <footer class="footer">
@@ -485,12 +819,281 @@
     </div>
   </footer>
 
+  <script src="/assets/js/product-info.js"></script>
   <script>
     (function () {
       var search = document.getElementById('product-search');
       var checks = document.querySelectorAll('.products-filters input[type="checkbox"]');
       var letters = document.querySelectorAll('.products-letter');
       var empty = document.querySelector('.products-empty');
+
+      // ---------- Modal ----------
+      var modal = document.getElementById('product-modal');
+      var modalTitle = document.getElementById('product-modal-title');
+      var modalEyebrow = document.getElementById('product-modal-eyebrow');
+      var modalGrid = document.getElementById('product-modal-grid');
+      var modalIndication = document.getElementById('product-modal-indication');
+      var modalLink = document.getElementById('product-modal-link');
+      var lastFocus = null;
+
+      function formLabel(form) {
+        var map = {
+          liquid: 'Liquid', capsule: 'Capsule', tablet: 'Tablet',
+          injection: 'Injection', topical: 'Topical', powder: 'Powder', enema: 'Enema'
+        };
+        return map[form] || (form ? form.charAt(0).toUpperCase() + form.slice(1) : '—');
+      }
+
+      function rowHTML(label, value) {
+        if (!value) return '';
+        return '<dt>' + label + '</dt><dd>' + value + '</dd>';
+      }
+
+      function escapeHTML(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function openModal(name, form) {
+        var info = (window.ANI_PRODUCT_INFO && window.ANI_PRODUCT_INFO[name]) || {};
+        modalTitle.textContent = name;
+        modalEyebrow.textContent = info.brand ? 'Branded Product' : 'Product';
+
+        var rows = '';
+        rows += rowHTML('Generic name', info.generic ? escapeHTML(info.generic) : '—');
+        if (info.brand) rows += rowHTML('Brand', escapeHTML(info.brand));
+        rows += rowHTML('Dosage form', formLabel(form));
+        if (info.drugClass) rows += rowHTML('Drug class', escapeHTML(info.drugClass));
+        modalGrid.innerHTML = rows;
+
+        modalIndication.textContent = info.indication
+          ? info.indication
+          : 'For full indications, dosing, and safety information, see the product page on anipharmaceuticals.com.';
+
+        modalLink.href = window.ANI_PRODUCT_URL ? window.ANI_PRODUCT_URL(name) : '#';
+
+        lastFocus = document.activeElement;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var closeBtn = modal.querySelector('.product-modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      }
+
+      // Delegate clicks on product links
+      document.querySelectorAll('.products-letter a').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var li = a.closest('li');
+          var name = a.textContent.trim();
+          var form = li ? li.dataset.form : null;
+          openModal(name, form);
+        });
+      });
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal || e.target.hasAttribute('data-modal-close')) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+      });
+
+      // ---------- Chatbot ----------
+      var chatbot = document.getElementById('chatbot');
+      var chatbotBody = document.getElementById('chatbot-body');
+      var chatbotLauncher = document.getElementById('chatbot-launcher');
+      var chatbotClose = document.getElementById('chatbot-close');
+      var chatbotRestart = document.getElementById('chatbot-restart');
+      var topics = window.ANI_PRODUCT_TOPICS || {};
+
+      function chatScroll() {
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+      }
+
+      function chatBot(text) {
+        var el = document.createElement('div');
+        el.className = 'chatbot__msg chatbot__msg--bot';
+        el.textContent = text;
+        chatbotBody.appendChild(el);
+        chatScroll();
+      }
+
+      function chatUser(text) {
+        var el = document.createElement('div');
+        el.className = 'chatbot__msg chatbot__msg--user';
+        el.textContent = text;
+        chatbotBody.appendChild(el);
+        chatScroll();
+      }
+
+      function chatChips(options) {
+        var wrap = document.createElement('div');
+        wrap.className = 'chatbot__chips';
+        options.forEach(function (opt) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'chatbot__chip' + (opt.ghost ? ' chatbot__chip--ghost' : '');
+          btn.textContent = opt.label;
+          btn.addEventListener('click', function () {
+            // Lock the chip group so the same step can't fire twice
+            wrap.querySelectorAll('button').forEach(function (b) { b.disabled = true; });
+            wrap.style.opacity = '0.6';
+            chatUser(opt.label);
+            opt.onSelect();
+          });
+          wrap.appendChild(btn);
+        });
+        chatbotBody.appendChild(wrap);
+        chatScroll();
+      }
+
+      function chatResults(productNames, formFilter) {
+        var matches = productNames.slice();
+        if (formFilter && formFilter !== 'any') {
+          var formMap = {};
+          document.querySelectorAll('.products-letter li').forEach(function (li) {
+            var a = li.querySelector('a');
+            if (a) formMap[a.textContent.trim()] = li.dataset.form;
+          });
+          matches = matches.filter(function (n) { return formMap[n] === formFilter; });
+        }
+
+        if (!matches.length) {
+          chatBot('No products in our list match that combination. Try a different form, or start over to pick another condition.');
+          chatChips([
+            { label: 'Try a different form', ghost: true, onSelect: function () { askForm(productNames); } },
+            { label: 'Start over', ghost: true, onSelect: function () { startConversation(); } },
+          ]);
+          return;
+        }
+
+        var wrap = document.createElement('div');
+        wrap.className = 'chatbot__results';
+        matches.forEach(function (name) {
+          var info = (window.ANI_PRODUCT_INFO && window.ANI_PRODUCT_INFO[name]) || {};
+          var li = (function () {
+            var found = null;
+            document.querySelectorAll('.products-letter li').forEach(function (el) {
+              var a = el.querySelector('a');
+              if (a && a.textContent.trim() === name) found = el;
+            });
+            return found;
+          })();
+          var form = li ? li.dataset.form : null;
+
+          var card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'chatbot__result';
+          var nameEl = document.createElement('div');
+          nameEl.className = 'chatbot__result-name';
+          nameEl.textContent = name;
+          var metaEl = document.createElement('div');
+          metaEl.className = 'chatbot__result-meta';
+          var metaParts = [];
+          if (info.drugClass) metaParts.push(info.drugClass);
+          if (form) metaParts.push(formLabel(form));
+          metaEl.textContent = metaParts.join(' · ') || 'View details';
+          card.appendChild(nameEl);
+          card.appendChild(metaEl);
+          card.addEventListener('click', function () { openModal(name, form); });
+          wrap.appendChild(card);
+        });
+        chatbotBody.appendChild(wrap);
+        chatScroll();
+
+        chatBot('Tap any product for full details, or start a new search.');
+        chatChips([
+          { label: 'Start over', ghost: true, onSelect: function () { startConversation(); } },
+        ]);
+      }
+
+      function askForm(productNames) {
+        chatBot('Any preference on dosage form?');
+        var forms = ['any', 'liquid', 'tablet', 'capsule', 'topical', 'powder', 'injection', 'enema'];
+        // Only offer forms that actually appear in this product list
+        var available = new Set();
+        document.querySelectorAll('.products-letter li').forEach(function (li) {
+          var a = li.querySelector('a');
+          if (a && productNames.indexOf(a.textContent.trim()) !== -1) {
+            if (li.dataset.form) available.add(li.dataset.form);
+          }
+        });
+        var options = [{ label: 'No preference', onSelect: function () { chatResults(productNames, 'any'); } }];
+        forms.slice(1).forEach(function (f) {
+          if (available.has(f)) {
+            options.push({ label: formLabel(f), onSelect: function () { chatResults(productNames, f); } });
+          }
+        });
+        chatChips(options);
+      }
+
+      function askCondition(areaKey) {
+        var area = topics[areaKey];
+        chatBot('Within ' + area.label.toLowerCase() + ', what are you researching?');
+        var options = Object.keys(area.conditions).map(function (key) {
+          return {
+            label: area.conditions[key].label,
+            onSelect: function () {
+              var products = area.conditions[key].products;
+              if (products.length === 1) {
+                chatBot('Here\'s the product in our list for that:');
+                chatResults(products, 'any');
+              } else {
+                askForm(products);
+              }
+            },
+          };
+        });
+        options.push({
+          label: '← Back to areas', ghost: true,
+          onSelect: function () { askArea(); },
+        });
+        chatChips(options);
+      }
+
+      function askArea() {
+        chatBot('Which therapeutic area are you exploring?');
+        var options = Object.keys(topics).map(function (key) {
+          return {
+            label: topics[key].label,
+            onSelect: function () { askCondition(key); },
+          };
+        });
+        chatChips(options);
+      }
+
+      function startConversation() {
+        chatbotBody.innerHTML = '';
+        chatBot('Hi — I can help you find a medication in ANI\'s portfolio. I\'ll ask a couple of questions and surface matching products.');
+        askArea();
+      }
+
+      function openChatbot() {
+        chatbot.setAttribute('aria-hidden', 'false');
+        chatbotLauncher.setAttribute('aria-expanded', 'true');
+        chatbotLauncher.hidden = true;
+        if (!chatbotBody.children.length) startConversation();
+      }
+      function closeChatbot() {
+        chatbot.setAttribute('aria-hidden', 'true');
+        chatbotLauncher.setAttribute('aria-expanded', 'false');
+        chatbotLauncher.hidden = false;
+      }
+
+      chatbotLauncher.addEventListener('click', openChatbot);
+      chatbotClose.addEventListener('click', closeChatbot);
+      chatbotRestart.addEventListener('click', startConversation);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && chatbot.getAttribute('aria-hidden') === 'false' && modal.getAttribute('aria-hidden') !== 'false') {
+          closeChatbot();
+        }
+      });
 
       function activeForms() {
         var set = new Set();

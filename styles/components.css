@@ -1672,9 +1672,9 @@
 .isi-bar {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  background: var(--surface-elevated);
-  border-top: 1px solid rgba(49,46,129,0.08);
-  box-shadow: 0 -4px 24px rgba(49,46,129,0.08);
+  background: var(--indigo-700);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 -4px 24px rgba(8,6,42,0.22);
   z-index: var(--z-isi-bar);
 }
 .isi-bar__toggle {
@@ -1701,14 +1701,16 @@
 .isi-bar__toggle:focus-visible { outline: none; box-shadow: inset 0 0 0 3px rgba(49,46,129,0.20); }
 .isi-bar__summary {
   font-size: 0.875rem;
-  color: var(--steel-700);
+  color: rgba(255,255,255,0.72);
   flex: 1;
   line-height: 1.5;
   padding-left: var(--space-3);
 }
+.isi-bar__summary a { color: var(--saffron-300); }
+.isi-bar__summary a:hover { color: white; }
 .isi-bar__summary strong {
   display: block;
-  color: var(--indigo-700);
+  color: white;
   font-weight: 700;
   font-size: 0.9375rem;
   margin-bottom: 2px;
@@ -1719,8 +1721,8 @@
   justify-content: center;
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
-  background: var(--indigo-500);
-  color: white;
+  background: var(--saffron-500);
+  color: var(--charcoal-900);
   font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 700;
@@ -1736,18 +1738,20 @@
   max-height: 50vh;
   overflow-y: auto;
   padding: var(--space-5) var(--space-6);
-  border-top: 1px solid rgba(49,46,129,0.08);
+  border-top: 1px solid rgba(255,255,255,0.12);
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--steel-700);
+  color: rgba(255,255,255,0.72);
 }
+.isi-bar__content a { color: var(--saffron-300); }
+.isi-bar__content a:hover { color: white; }
 .isi-bar__content h3 {
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--indigo-700);
+  color: white;
   margin-top: var(--space-4);
   margin-bottom: var(--space-2);
 }
