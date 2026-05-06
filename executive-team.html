@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Meet the executive leadership team at ANI Pharmaceuticals." />
+  <title>Executive Team - ANI Pharmaceuticals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/globals.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+
+  <style>
+    .crumbs {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-500);
+      padding: var(--space-3) 0;
+      letter-spacing: 0.02em;
+    }
+    .crumbs a { color: var(--steel-500); }
+    .crumbs a:hover { color: var(--text-link); }
+    .crumbs__sep { margin: 0 var(--space-2); color: var(--steel-300); }
+
+    .leadership-hero {
+      background: var(--indigo-900);
+      color: var(--bone-100);
+      padding: var(--space-9) 0 var(--space-8);
+    }
+    .leadership-hero__eyebrow,
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron-500);
+      margin-bottom: var(--space-4);
+    }
+    .leadership-hero__heading {
+      color: var(--bone-100);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      max-width: 18ch;
+    }
+    .leadership-hero__lead {
+      margin-top: var(--space-5);
+      max-width: 66ch;
+      font-size: var(--font-body-lg);
+      line-height: 1.6;
+      color: rgba(247, 245, 241, 0.78);
+    }
+    .leadership-hero__meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-7);
+      max-width: 980px;
+    }
+    .hero-stat {
+      border-top: 1px solid rgba(247,245,241,0.18);
+      padding-top: var(--space-4);
+    }
+    .hero-stat__value {
+      color: var(--saffron-300);
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .hero-stat__label {
+      margin-top: var(--space-2);
+      color: rgba(247,245,241,0.68);
+      font-size: 0.875rem;
+      line-height: 1.45;
+    }
+
+    .spotlight-section {
+      padding: var(--space-8) 0 var(--space-9);
+      background: var(--bone-100);
+    }
+    .spotlight {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: var(--space-7);
+      align-items: start;
+      border-top: 1px solid var(--border-default);
+      padding-top: var(--space-7);
+    }
+    .spotlight + .spotlight { margin-top: var(--space-8); }
+    .spotlight-card {
+      background: var(--bone-100);
+      color: var(--bone-100);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-subtle);
+    }
+    .spotlight-card__photo {
+      background: white;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    .spotlight-card__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .spotlight-card__content {
+      background: var(--indigo-900);
+      padding: var(--space-5);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .spotlight-card__name {
+      color: var(--bone-100);
+      font-size: 1.75rem;
+      letter-spacing: -0.035em;
+    }
+    .spotlight-card__role {
+      margin-top: var(--space-2);
+      color: var(--saffron-300);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .spotlight-card__meta {
+      margin-top: var(--space-6);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: rgba(247,245,241,0.58);
+      letter-spacing: 0.02em;
+    }
+    .spotlight-copy h2,
+    .team-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .spotlight-copy p {
+      max-width: 82ch;
+      color: var(--text-secondary);
+      line-height: 1.72;
+    }
+    .spotlight-copy p + p { margin-top: var(--space-4); }
+    .fact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin: var(--space-5) 0;
+    }
+    .fact-chip {
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-pill);
+      padding: var(--space-2) var(--space-3);
+      color: var(--indigo-700);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: var(--bone-200);
+    }
+
+    .team-section {
+      padding: var(--space-8) 0 var(--space-9);
+    }
+    .team-section__lead {
+      margin-top: var(--space-4);
+      max-width: 70ch;
+      color: var(--text-secondary);
+      font-size: var(--font-body-lg);
+      line-height: 1.55;
+    }
+    .about-footer {
+      background: var(--charcoal-900);
+      color: rgba(247,245,241,0.78);
+      padding: var(--space-8) 0 var(--space-7);
+    }
+    .about-footer__brand {
+      font-family: var(--font-body);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bone-100);
+      font-size: 0.875rem;
+    }
+    .about-footer__tag {
+      margin-top: var(--space-2);
+      font-style: italic;
+      color: rgba(247,245,241,0.55);
+      font-size: 0.875rem;
+    }
+    .about-footer__grid {
+      display: grid;
+      grid-template-columns: 1.1fr repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    .about-footer__col h4 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(247,245,241,0.55);
+      margin-bottom: var(--space-4);
+    }
+    .about-footer__col ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .about-footer__col a { color: rgba(247,245,241,0.85); font-size: 0.9375rem; }
+    .about-footer__col a:hover { color: var(--bone-100); }
+    .about-footer__legal {
+      margin-top: var(--space-7);
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(247,245,241,0.1);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: rgba(247,245,241,0.5);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 1180px) {
+      .about-footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .leadership-hero__meta,
+      .spotlight {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .leadership-hero { padding: var(--space-7) 0; }
+      .about-footer__grid { grid-template-columns: 1fr; }
+      .about-footer__legal { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="nav">
+    <div class="nav__main">
+      <div class="container">
+        <a class="nav__logo" href="/" aria-label="ANI Pharmaceuticals home">
+          <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
+        </a>
+        <nav class="nav__links" aria-label="Main">
+          <a href="/who-we-are" aria-current="page">Who We Are</a>
+          <a href="/science">Our Science</a>
+          <a href="/medicines">Medicines</a>
+          <a href="/manufacturing">Manufacturing</a>
+          <a href="/news">News</a>
+          <a class="nav__ticker" href="/investors" style="display:inline-flex;gap:.5rem;align-items:center;font-family:var(--font-mono);font-size:.75rem;">
+            <span style="color:var(--saffron-700);font-weight:700;">NASDAQ: ANIP</span>
+            <span style="color:var(--text-primary);font-weight:600;">$80.39</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <p class="crumbs">
+        <a href="/">Home</a>
+        <span class="crumbs__sep">/</span>
+        <a href="/who-we-are">Who We Are</a>
+        <span class="crumbs__sep">/</span>
+        Executive Team
+      </p>
+    </div>
+
+    <section class="leadership-hero">
+      <div class="container">
+        <p class="leadership-hero__eyebrow">/ Executive Team</p>
+        <h1 class="leadership-hero__heading">Led by builders.</h1>
+        <p class="leadership-hero__lead">
+          ANI's leadership team brings together operators, dealmakers, scientists, financial stewards, legal counsel, and people leaders with deep pharmaceutical experience across rare disease, established brands, generics, manufacturing, and corporate development.
+        </p>
+        <div class="leadership-hero__meta" aria-label="Leadership overview">
+          <div class="hero-stat">
+            <div class="hero-stat__value">9</div>
+            <div class="hero-stat__label">Executive leaders across commercial, operations, finance, legal, R&amp;D, and people functions.</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat__value">30+ yrs</div>
+            <div class="hero-stat__label">Deep industry leadership represented across finance, operations, R&amp;D, and pharmaceutical commercialization.</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat__value">3</div>
+            <div class="hero-stat__label">FDA-inspected facilities supported by a leadership team that understands manufacturing at scale.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="spotlight-section" aria-labelledby="ceo-title">
+      <div class="container">
+        <p class="section-kicker">/ President and Chief Executive Officer</p>
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/nikhil-lalwani.jpg" alt="Nikhil Lalwani" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name" id="ceo-title">Nikhil Lalwani</h2>
+              <p class="spotlight-card__role">President and Chief Executive Officer<br />Board Member</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI in September 2020</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>Guiding ANI's rare-disease evolution.</h2>
+            <div class="fact-row" aria-label="Nikhil Lalwani background">
+              <span class="fact-chip">Cipla USA</span>
+              <span class="fact-chip">InvaGen</span>
+              <span class="fact-chip">McKinsey</span>
+              <span class="fact-chip">Medtronic</span>
+              <span class="fact-chip">Wharton MBA</span>
+            </div>
+            <p>
+              Mr. Lalwani is ANI's President and Chief Executive Officer and serves on ANI's Board. Before joining ANI, he spent more than eight years at Cipla Ltd., where he held roles including CEO of Cipla USA, CEO of InvaGen, Head of U.S. Strategy, M&amp;A and Integration, and Head of Cipla's Global Respiratory business.
+            </p>
+            <p>
+              Across those roles, he developed and executed multi-year growth plans for key products and helped lead acquisitions as Cipla entered specialty pharmaceuticals. Earlier in his career, Mr. Lalwani was an Associate Partner with McKinsey &amp; Company serving pharmaceutical and healthcare companies around the world, and an engineer with Medtronic. He holds a B.S. in Electrical Engineering from Georgia Institute of Technology and an M.B.A. from the Wharton School at the University of Pennsylvania.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/stephen-carey.jpg" alt="Stephen P. Carey" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Stephen P. Carey</h2>
+              <p class="spotlight-card__role">Senior Vice President, Finance<br />Chief Financial Officer</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI in May 2016</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>Financial leadership through scale and transformation.</h2>
+            <div class="fact-row" aria-label="Stephen Carey background">
+              <span class="fact-chip">Par Pharmaceutical</span>
+              <span class="fact-chip">Schering-Plough</span>
+              <span class="fact-chip">PwC</span>
+              <span class="fact-chip">30+ years</span>
+            </div>
+            <p>
+              Mr. Carey is ANI's Senior Vice President, Finance and Chief Financial Officer. He has more than 30 years of experience as a financial executive, including more than 25 years in the pharmaceutical industry.
+            </p>
+            <p>
+              Before joining ANI, Mr. Carey held executive financial positions at Par Pharmaceutical Companies, including Senior Vice President, Controller and Principal Accounting Officer. During his tenure, he supported Par through its 2012 leveraged buyout with TPG Capital and its 2015 sale to Endo International. Earlier, he held financial and accounting roles at Schering-Plough and began his career at PricewaterhouseCoopers. He holds a B.S. in Accounting from Montclair State University.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/meredith-cook.jpg" alt="Meredith W. Cook" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Meredith W. Cook</h2>
+              <p class="spotlight-card__role">Senior Vice President<br />General Counsel and Corporate Secretary</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI in July 2022</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>Legal counsel for governance, growth, and strategic transactions.</h2>
+            <div class="fact-row" aria-label="Meredith Cook background">
+              <span class="fact-chip">Amneal</span>
+              <span class="fact-chip">Dr. Reddy's</span>
+              <span class="fact-chip">Morgan Lewis</span>
+              <span class="fact-chip">Tulane J.D.</span>
+            </div>
+            <p>
+              Ms. Cook is ANI's Senior Vice President, General Counsel and Corporate Secretary. She brings more than 20 years of legal experience spanning corporate governance, strategic transactions, commercial contracts, employment matters, and intellectual property.
+            </p>
+            <p>
+              Prior to ANI, Ms. Cook served as Vice President and Associate General Counsel for Amneal Pharmaceuticals, where she supported corporate and strategic transactions across business units. She previously served as Global Legal Head, M&amp;A, Business Development and Strategic Transactions for Dr. Reddy's Laboratories and practiced at Morgan, Lewis &amp; Bockius and Vinson &amp; Elkins. She earned her bachelor's degree from Princeton University and her Juris Doctorate from Tulane Law School.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/krista-davis.jpg" alt="Krista Davis" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Krista Davis</h2>
+              <p class="spotlight-card__role">Senior Vice President<br />Chief Human Resources Officer</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI in September 2022</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>People leadership for a growing pharmaceutical organization.</h2>
+            <div class="fact-row" aria-label="Krista Davis background">
+              <span class="fact-chip">Novartis</span>
+              <span class="fact-chip">A.T. Kearney</span>
+              <span class="fact-chip">Reckitt Benckiser</span>
+              <span class="fact-chip">McGill</span>
+            </div>
+            <p>
+              Ms. Davis is ANI's Senior Vice President and Chief Human Resources Officer. She brings more than 20 years of executive leadership experience in human resources, talent management, and organizational development.
+            </p>
+            <p>
+              Before ANI, Ms. Davis served as Global Head of People &amp; Organization for the Novartis Technical Operations Division, where she led P&amp;O for Global Cell &amp; Gene platforms and served on divisional and business leadership teams. Earlier roles included Global Director, Leadership and Talent Management at A.T. Kearney and senior HR leadership roles at Reckitt Benckiser, Catalent Pharma Solutions, Biovail Pharmaceuticals, and Dun &amp; Bradstreet. She earned a B.A. from McGill University and an M.A. in Educational Technology from Concordia University.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/chad-gassert.jpg" alt="Chad Gassert" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Chad Gassert</h2>
+              <p class="spotlight-card__role">Senior Vice President<br />Corporate Development and Strategy</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI in November 2021</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>Corporate development shaped by company-building experience.</h2>
+            <div class="fact-row" aria-label="Chad Gassert background">
+              <span class="fact-chip">Novitium</span>
+              <span class="fact-chip">Par Pharmaceuticals</span>
+              <span class="fact-chip">Sandoz</span>
+              <span class="fact-chip">Wyeth</span>
+            </div>
+            <p>
+              Mr. Gassert joined ANI through the acquisition of Novitium Pharma, where he was Co-Founder and CEO. At Novitium, he led the buildout of a fully integrated generic pharmaceutical company focused on R&amp;D, manufacturing, and distribution of prescription products.
+            </p>
+            <p>
+              Prior to Novitium, Mr. Gassert held roles of increasing responsibility at Par Pharmaceuticals, including Senior Vice President of Business Development. In that role, he led corporate and business development activities across M&amp;A, partnerships and licensing, portfolio management, project management, and strategic sourcing. Earlier, he worked at Sandoz and Wyeth as a formulation and technical services scientist. He holds a B.S. in Nutritional Science from the University of Delaware.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/ori-gutwerg.jpg" alt="Ori Gutwerg" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Ori Gutwerg</h2>
+              <p class="spotlight-card__role">Senior Vice President<br />Generics</p>
+              </div>
+              <p class="spotlight-card__meta">Generics commercial leadership</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>Generics leadership across portfolio, growth, and business development.</h2>
+            <div class="fact-row" aria-label="Ori Gutwerg background">
+              <span class="fact-chip">Taro</span>
+              <span class="fact-chip">Xiromed US</span>
+              <span class="fact-chip">Perrigo</span>
+              <span class="fact-chip">Tel Aviv MBA</span>
+            </div>
+            <p>
+              Mr. Gutwerg brings more than 17 years of experience building and driving growth in pharmaceutical companies. Most recently, he served as Vice President, Head of U.S. Generics Rx at Taro Pharmaceuticals, overseeing a portfolio of nearly 300 generic and branded products.
+            </p>
+            <p>
+              In that role, he drove top- and bottom-line growth, improved working capital through cost savings and efficiencies, rationalized the R&amp;D pipeline, and negotiated business development deals. Earlier in his career, he held positions with Xiromed US, Perrigo Pharmaceuticals, and Agis Group. He holds a B.S. in Communications and Economics from The College of Management and an M.B.A. from Tel Aviv University.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/christopher-mutz.jpg" alt="Christopher Mutz" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Christopher Mutz</h2>
+              <p class="spotlight-card__role">Senior Vice President<br />Head of Rare Disease</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI in February 2021</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>Rare disease leadership across launch strategy and lifecycle management.</h2>
+            <div class="fact-row" aria-label="Christopher Mutz background">
+              <span class="fact-chip">Alexion</span>
+              <span class="fact-chip">Merck</span>
+              <span class="fact-chip">Rare Disease</span>
+              <span class="fact-chip">Cornell MBA</span>
+            </div>
+            <p>
+              Mr. Mutz joined ANI in February 2021 and serves as the Company's Head of Rare Disease. Prior to joining ANI, he provided consulting services to pharma and biotech companies on pre-launch commercial strategy and lifecycle management focused on rare diseases.
+            </p>
+            <p>
+              Mr. Mutz has more than 25 years of pharmaceutical industry experience, including eight years at Alexion Pharmaceuticals and 10 years at Merck. At Alexion, he held leadership roles in sales and marketing business units and served as Vice President, Metabolic Business Unit and later Vice President, Neurology Business Unit. While at Merck, he held roles in U.S. Sales, U.S. Marketing, Global Marketing, and Merck's China subsidiary. He holds a B.A. in Biology from the University of Virginia and an M.B.A. from Cornell University.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/samy-shanmugam.jpg" alt="Muthusamy Samy Shanmugam" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Muthusamy "Samy" Shanmugam</h2>
+              <p class="spotlight-card__role">Head of R&amp;D<br />COO of New Jersey Operations</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI Board in November 2021</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>R&amp;D and New Jersey operations led by formulation expertise.</h2>
+            <div class="fact-row" aria-label="Muthusamy Shanmugam background">
+              <span class="fact-chip">Novitium Founder</span>
+              <span class="fact-chip">Formulation</span>
+              <span class="fact-chip">Industrial Pharmacy</span>
+              <span class="fact-chip">NY Pharmacist</span>
+            </div>
+            <p>
+              Mr. Shanmugam is ANI's Head of Research &amp; Development and Chief Operating Officer of New Jersey Operations and a member of ANI's Board. He joined the Board in November 2021 in connection with ANI's acquisition of Novitium Pharma, where he was President and Founder.
+            </p>
+            <p>
+              Mr. Shanmugam has more than three decades of pharmaceutical industry experience. He began his career as a formulation scientist at Kali Laboratories and grew to become a leading formulation development scientist in the generic drug industry. Prior to co-founding Novitium, he held positions at Par Pharmaceutical and Novel Laboratories. He is also a director and founder of Nuray Chemicals Private Limited, Sthree Chemicals Private Limited, SS Pharma LLC, and Scitus Pharma Services Pvt Ltd. He obtained his M.S. in Industrial Pharmacy from the Tamil Nadu Dr. M.G.R. Medical University and is a registered pharmacist in New York.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <aside class="spotlight-card">
+            <figure class="spotlight-card__photo">
+              <img src="assets/leadership/thomas-rowland.jpg" alt="Thomas Rowland" />
+            </figure>
+            <div class="spotlight-card__content">
+              <div>
+              <h2 class="spotlight-card__name">Thomas Rowland</h2>
+              <p class="spotlight-card__role">Senior Vice President<br />Head of Established Brands</p>
+              </div>
+              <p class="spotlight-card__meta">Joined ANI in November 2021</p>
+            </div>
+          </aside>
+          <div class="spotlight-copy">
+            <h2>Established brands leadership with broad pharmaceutical operations depth.</h2>
+            <div class="fact-row" aria-label="Thomas Rowland background">
+              <span class="fact-chip">Arbor</span>
+              <span class="fact-chip">Ventrus</span>
+              <span class="fact-chip">30+ years</span>
+              <span class="fact-chip">Commercial Operations</span>
+            </div>
+            <p>
+              Thomas Rowland is ANI's Senior Vice President, Head of Established Brands. Prior to joining ANI in November 2021, he was President and Chief Operating Officer of Arbor Pharmaceuticals, a specialty pharmaceutical company with a portfolio across multiple therapeutic areas.
+            </p>
+            <p>
+              Earlier, Mr. Rowland was Chief Business Officer at Ventrus Biosciences, a development-stage company focused in gastroenterology. He has more than 30 years of experience in pharmaceutical operations, including leading commercial organizations as large as 650 people with revenue up to $500 million. He has also led development, regulatory, quality, and manufacturing functions. Mr. Rowland holds a B.S. in Finance from Metropolitan State University.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="about-footer">
+    <div class="container">
+      <div class="about-footer__grid">
+        <div>
+          <div class="about-footer__brand">
+            <img class="footer__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
+          </div>
+          <div class="about-footer__tag">Care, codified.</div>
+        </div>
+        <div class="about-footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/who-we-are">Who We Are</a></li>
+            <li><a href="/executive-team.html">Leadership</a></li>
+            <li><a href="/locations">Locations</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="about-footer__col">
+          <h4>Science &amp; Medicines</h4>
+          <ul>
+            <li><a href="/therapeutic-areas">Therapeutic Areas</a></li>
+            <li><a href="/pipeline">Pipeline</a></li>
+            <li><a href="/cortrophin">Cortrophin&reg; Gel</a></li>
+            <li><a href="/iluvien">ILUVIEN&reg;</a></li>
+            <li><a href="/generics">Generics</a></li>
+          </ul>
+        </div>
+        <div class="about-footer__col">
+          <h4>Audiences</h4>
+          <ul>
+            <li><a href="/patients">Patients</a></li>
+            <li><a href="/hcp">Healthcare Professionals</a></li>
+            <li><a href="/investors">Investors</a></li>
+            <li><a href="/media">Media</a></li>
+          </ul>
+        </div>
+        <div class="about-footer__col">
+          <h4>Compliance</h4>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+            <li><a href="/accessibility">Accessibility</a></li>
+            <li><a href="/cookies">Cookie Settings</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-footer__legal">
+        <span>&copy; 2026 ANI Pharmaceuticals All rights reserved.</span>
+        <span>NASDAQ: ANIP</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
