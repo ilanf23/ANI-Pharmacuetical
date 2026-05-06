@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ANI Pharmaceuticals (NASDAQ: ANIP) — a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions." />
+  <title>About ANI — A diversified biopharmaceutical company building toward a rare-disease future</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/globals.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+
+  <style>
+    /* ===========================================================
+       ABOUT PAGE — EDITORIAL / RESTRAINED
+       Type-led, asymmetric, generous whitespace.
+       =========================================================== */
+
+    /* ----- Breadcrumb ----- */
+    .breadcrumb {
+      background: var(--bone-200);
+      padding: var(--space-5) 0 0;
+      font-size: 0.8125rem;
+      font-family: var(--font-body);
+      color: var(--steel-500);
+      letter-spacing: 0.02em;
+    }
+    .breadcrumb ol {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2);
+    }
+    .breadcrumb li { display: inline-flex; align-items: center; gap: var(--space-2); }
+    .breadcrumb a { color: var(--steel-500); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text-link); }
+    .breadcrumb li[aria-current="page"] { color: var(--charcoal-800); font-weight: 500; }
+    .breadcrumb-sep { color: var(--steel-300); }
+
+    /* ----- About hero — typographic, asymmetric ----- */
+    .about-hero {
+      background: var(--bone-200);
+      padding: var(--space-9) 0 var(--space-10);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero__grid {
+      display: grid;
+      grid-template-columns: minmax(200px, 1fr) minmax(0, 7fr);
+      gap: var(--space-8);
+      align-items: end;
+    }
+    @media (max-width: 1024px) {
+      .about-hero__grid { grid-template-columns: 1fr; gap: var(--space-5); }
+    }
+    .about-hero__marginalia {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+      line-height: 1.6;
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border-default);
+    }
+    .about-hero__marginalia strong {
+      display: block;
+      color: var(--charcoal-800);
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      margin-bottom: var(--space-2);
+    }
+    .about-hero__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.5rem, 6.5vw, 6rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      color: var(--indigo-700);
+      margin: 0;
+      text-wrap: balance;
+      max-width: 22ch;
+    }
+    .about-hero__title em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text-accent);
+    }
+    .about-hero__deck {
+      margin-top: var(--space-7);
+      max-width: 60ch;
+      font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+      line-height: 1.5;
+      color: var(--steel-700);
+    }
+    .about-hero__rule {
+      width: 64px;
+      height: 2px;
+      background: var(--saffron-500);
+      margin-top: var(--space-7);
+    }
+
+    /* ----- Stakeholder routing — minimal four-column rule ----- */
+    .stakeholders {
+      background: var(--bone-200);
+      border-top: 1px solid var(--border-subtle);
+      padding: var(--space-8) 0;
+    }
+    .stakeholders__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    @media (max-width: 900px) {
+      .stakeholders__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .stakeholders__grid { grid-template-columns: 1fr; }
+    }
+    .stakeholder {
+      display: block;
+      padding: var(--space-6) var(--space-5) var(--space-6) var(--space-5);
+      border-right: 1px solid var(--border-subtle);
+      text-decoration: none;
+      color: var(--charcoal-800);
+      transition: background var(--duration-default) var(--ease-standard);
+      min-height: 200px;
+      position: relative;
+    }
+    .stakeholder:first-child { padding-left: 0; }
+    .stakeholder:last-child { border-right: none; }
+    .stakeholder:hover { background: var(--bone-100); color: var(--charcoal-800); }
+    .stakeholder:hover .stakeholder__arrow { transform: translateX(4px); color: var(--saffron-700); }
+    .stakeholder__num {
+      font-family: var(--font-mono);
+      font-feature-settings: 'tnum';
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      color: var(--steel-500);
+      display: block;
+      margin-bottom: var(--space-5);
+    }
+    .stakeholder__title {
+      font-family: var(--font-display);
+      font-size: 1.625rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-3);
+      line-height: 1.05;
+    }
+    .stakeholder__desc {
+      font-size: 0.9375rem;
+      color: var(--steel-700);
+      line-height: 1.55;
+      margin-bottom: var(--space-5);
+    }
+    .stakeholder__arrow {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-link);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      transition: transform var(--duration-default) var(--ease-standard), color var(--duration-default) var(--ease-standard);
+    }
+    @media (max-width: 900px) {
+      .stakeholder { border-right: none; border-bottom: 1px solid var(--border-subtle); padding-left: 0; }
+      .stakeholder:nth-child(2n) { border-left: 1px solid var(--border-subtle); padding-left: var(--space-5); }
+    }
+    @media (max-width: 540px) {
+      .stakeholder { border-bottom: 1px solid var(--border-subtle); padding-left: 0; }
+      .stakeholder:nth-child(2n) { border-left: none; padding-left: 0; }
+      .stakeholder:last-child { border-bottom: none; }
+    }
+
+    /* ----- Section: Our Story (chapters) ----- */
+    .story {
+      background: var(--surface-elevated);
+      padding: var(--space-10) 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .story__heading-row {
+      display: grid;
+      grid-template-columns: minmax(200px, 1fr) minmax(0, 7fr);
+      gap: var(--space-8);
+      margin-bottom: var(--space-9);
+      align-items: baseline;
+    }
+    .story__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+    }
+    .story__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+      max-width: 22ch;
+    }
+    .story__title em { font-style: italic; color: var(--text-accent); }
+
+    .chapter {
+      display: grid;
+      grid-template-columns: minmax(200px, 1fr) minmax(0, 7fr);
+      gap: var(--space-8);
+      padding: var(--space-8) 0;
+      border-top: 1px solid var(--border-default);
+    }
+    .chapter:last-child { border-bottom: 1px solid var(--border-default); }
+    @media (max-width: 1024px) {
+      .story__heading-row { grid-template-columns: 1fr; gap: var(--space-4); margin-bottom: var(--space-7); }
+      .chapter { grid-template-columns: 1fr; gap: var(--space-4); padding: var(--space-7) 0; }
+    }
+    .chapter__meta { font-family: var(--font-mono); }
+    .chapter__num {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--steel-500);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+    .chapter__years {
+      display: block;
+      font-family: var(--font-mono);
+      font-feature-settings: 'tnum';
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--charcoal-800);
+      letter-spacing: 0;
+    }
+    .chapter__body { max-width: 64ch; }
+    .chapter__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-4);
+      text-wrap: balance;
+    }
+    .chapter__text {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--steel-700);
+      margin-bottom: var(--space-5);
+    }
+    .chapter__quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+      line-height: 1.4;
+      color: var(--charcoal-800);
+      letter-spacing: -0.02em;
+      padding-left: var(--space-5);
+      border-left: 2px solid var(--saffron-500);
+      max-width: 56ch;
+    }
+    .chapter__quote-attr {
+      display: block;
+      margin-top: var(--space-3);
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+      font-weight: 500;
+    }
+
+    /* ----- KPI band — single dark indigo strip ----- */
+    .about-kpi {
+      background: var(--indigo-900);
+      color: var(--bone-100);
+      padding: var(--space-9) 0;
+    }
+    .about-kpi__intro {
+      max-width: 60ch;
+      margin-bottom: var(--space-8);
+    }
+    .about-kpi__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron-300);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .about-kpi__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: white;
+      margin-bottom: var(--space-3);
+    }
+    .about-kpi__title em { font-style: italic; color: var(--saffron-300); }
+    .about-kpi__lead {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+    }
+    .about-kpi__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-7) var(--space-8);
+    }
+    @media (max-width: 900px) {
+      .about-kpi__grid { grid-template-columns: 1fr 1fr; gap: var(--space-6) var(--space-5); }
+    }
+    @media (max-width: 540px) {
+      .about-kpi__grid { grid-template-columns: 1fr; }
+    }
+    .about-kpi__cell {
+      border-top: 1px solid rgba(255,255,255,0.18);
+      padding-top: var(--space-5);
+    }
+    .about-kpi__cell:nth-child(3n+1) { border-top-color: var(--indigo-200); }
+    .about-kpi__cell:nth-child(3n+2) { border-top-color: var(--saffron-500); }
+    .about-kpi__cell:nth-child(3n+3) { border-top-color: var(--teal-300); }
+    .about-kpi__num {
+      font-family: var(--font-display);
+      font-feature-settings: 'tnum';
+      font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: white;
+      margin-bottom: var(--space-3);
+    }
+    .about-kpi__lab {
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: var(--space-2);
+    }
+    .about-kpi__source {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ----- Competitive context: editorial split ----- */
+    .context {
+      background: var(--bone-200);
+      padding: var(--space-10) 0;
+    }
+    .context__row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--space-9);
+      align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .context__row { grid-template-columns: 1fr; gap: var(--space-7); }
+    }
+    .context__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-third);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .context__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-5);
+      max-width: 18ch;
+      text-wrap: balance;
+    }
+    .context__title em { font-style: italic; color: var(--text-accent); }
+    .context__body {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--steel-700);
+      max-width: 56ch;
+      margin-bottom: var(--space-4);
+    }
+    .context__source {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-500);
+      letter-spacing: 0.04em;
+    }
+    .context__stat {
+      background: var(--bone-100);
+      border-top: 3px solid var(--teal-500);
+      padding: var(--space-7) var(--space-6);
+      box-shadow: var(--shadow-md);
+    }
+    .context__stat-num {
+      font-family: var(--font-display);
+      font-feature-settings: 'tnum';
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-3);
+    }
+    .context__stat-label {
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: var(--steel-700);
+      margin-bottom: var(--space-3);
+      max-width: 30ch;
+    }
+    .context__stat-source {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      color: var(--steel-500);
+      text-transform: uppercase;
+    }
+
+    /* ----- Dual cards (HCP + Patient) ----- */
+    .dual {
+      background: var(--surface-elevated);
+      padding: var(--space-9) 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .dual__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+    @media (max-width: 900px) {
+      .dual__grid { grid-template-columns: 1fr; }
+    }
+    .dual__block {
+      background: var(--bone-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-7);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-subtle);
+    }
+    .dual__block--dark {
+      background: var(--indigo-700);
+      color: var(--bone-100);
+      border-color: transparent;
+    }
+    .dual__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-link);
+      margin-bottom: var(--space-4);
+    }
+    .dual__block--dark .dual__eyebrow { color: var(--saffron-300); }
+    .dual__title {
+      font-family: var(--font-display);
+      font-size: 1.625rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-4);
+    }
+    .dual__block--dark .dual__title { color: white; }
+    .dual__text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--steel-700);
+      margin-bottom: var(--space-5);
+      flex: 1;
+    }
+    .dual__block--dark .dual__text { color: rgba(255,255,255,0.78); }
+    .dual__phone {
+      font-family: var(--font-mono);
+      font-feature-settings: 'tnum';
+      font-size: 1.375rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--charcoal-800);
+      text-decoration: none;
+      display: inline-block;
+      padding: var(--space-3) 0;
+      border-top: 1px solid var(--border-default);
+      width: 100%;
+    }
+    .dual__phone-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+      margin-bottom: var(--space-2);
+    }
+    .dual__block--dark .dual__phone {
+      color: white;
+      border-top-color: rgba(255,255,255,0.18);
+    }
+    .dual__block--dark .dual__phone-label { color: rgba(255,255,255,0.6); }
+    .dual__phone:hover { color: var(--text-link); }
+    .dual__block--dark .dual__phone:hover { color: var(--saffron-300); }
+
+    /* ----- Pillars (4-up, type-led) ----- */
+    .pillars {
+      background: var(--bone-200);
+      padding: var(--space-10) 0;
+    }
+    .pillars__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-3);
+      max-width: 20ch;
+    }
+    .pillars__title em { font-style: italic; color: var(--text-accent); }
+    .pillars__lead {
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--steel-700);
+      max-width: 56ch;
+      margin-bottom: var(--space-9);
+    }
+    .pillars__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-7) var(--space-6);
+    }
+    @media (max-width: 900px) {
+      .pillars__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .pillars__grid { grid-template-columns: 1fr; }
+    }
+    .pillar {
+      border-top: 2px solid var(--charcoal-800);
+      padding-top: var(--space-4);
+    }
+    .pillar__letter {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron-700);
+      margin-bottom: var(--space-2);
+    }
+    .pillar__name {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2vw, 1.875rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-3);
+      line-height: 1.05;
+    }
+    .pillar__text {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--steel-700);
+    }
+
+    /* ----- Business segments ----- */
+    .segments {
+      background: var(--surface-elevated);
+      padding: var(--space-10) 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .segments__title-row {
+      display: grid;
+      grid-template-columns: minmax(200px, 1fr) minmax(0, 7fr);
+      gap: var(--space-8);
+      margin-bottom: var(--space-8);
+      align-items: baseline;
+    }
+    @media (max-width: 1024px) {
+      .segments__title-row { grid-template-columns: 1fr; gap: var(--space-3); }
+    }
+    .segments__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+    }
+    .segments__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+      max-width: 24ch;
+    }
+    .segment {
+      display: grid;
+      grid-template-columns: minmax(200px, 1fr) minmax(0, 4fr) minmax(0, 3fr);
+      gap: var(--space-7);
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--border-default);
+      align-items: start;
+    }
+    .segment:last-child { border-bottom: 1px solid var(--border-default); }
+    @media (max-width: 1024px) {
+      .segment { grid-template-columns: 1fr; gap: var(--space-4); }
+    }
+    .segment__index {
+      font-family: var(--font-mono);
+      font-feature-settings: 'tnum';
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+    }
+    .segment__name {
+      font-family: var(--font-display);
+      font-size: clamp(1.625rem, 2.4vw, 2.125rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--indigo-700);
+      line-height: 1.1;
+      margin-bottom: var(--space-3);
+    }
+    .segment__desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--steel-700);
+      max-width: 56ch;
+    }
+    .segment__stats {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .segment__stat {
+      border-left: 2px solid var(--saffron-500);
+      padding-left: var(--space-4);
+    }
+    .segment__stat:nth-child(2) { border-left-color: var(--teal-500); }
+    .segment__stat:nth-child(3) { border-left-color: var(--indigo-500); }
+    .segment__stat-num {
+      font-family: var(--font-display);
+      font-feature-settings: 'tnum';
+      font-size: 1.625rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--charcoal-800);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .segment__stat-lab {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: var(--steel-700);
+    }
+
+    /* ----- Facilities ----- */
+    .facilities {
+      background: var(--bone-200);
+      padding: var(--space-10) 0;
+    }
+    .facilities__head { max-width: 64ch; margin-bottom: var(--space-9); }
+    .facilities__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-third);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .facilities__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-4);
+    }
+    .facilities__title em { font-style: italic; color: var(--text-accent); }
+    .facilities__lead {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--steel-700);
+    }
+    .facilities__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    @media (max-width: 900px) {
+      .facilities__grid { grid-template-columns: 1fr; }
+    }
+    .facility {
+      border-top: 1px solid var(--border-emphasis);
+      padding-top: var(--space-5);
+    }
+    .facility__visual {
+      aspect-ratio: 4 / 3;
+      margin-bottom: var(--space-5);
+      background:
+        linear-gradient(135deg, var(--teal-100) 0%, var(--teal-300) 50%, var(--bone-300) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .facility:nth-child(2) .facility__visual {
+      background: linear-gradient(135deg, var(--indigo-100) 0%, var(--indigo-200) 60%, var(--bone-300) 100%);
+    }
+    .facility:nth-child(3) .facility__visual {
+      background: linear-gradient(135deg, var(--saffron-100) 0%, var(--saffron-300) 60%, var(--bone-300) 100%);
+    }
+    .facility__visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(26,26,31,0.04) 0 1px, transparent 1px 32px),
+        repeating-linear-gradient(90deg, rgba(26,26,31,0.04) 0 1px, transparent 1px 32px);
+    }
+    .facility__visual::after {
+      content: '';
+      position: absolute;
+      bottom: var(--space-4); left: var(--space-4);
+      width: 40px; height: 18px;
+      background:
+        linear-gradient(to right, var(--indigo-700) 0 28px, transparent 28px),
+        radial-gradient(circle at 90% 50%, var(--saffron-500) 0 6px, transparent 6px);
+      background-repeat: no-repeat;
+    }
+    .facility__city {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-1);
+    }
+    .facility__country {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .facility__text {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--steel-700);
+      margin-bottom: var(--space-4);
+    }
+    .facility__meta {
+      font-family: var(--font-mono);
+      font-feature-settings: 'tnum';
+      font-size: 0.8125rem;
+      color: var(--charcoal-800);
+      letter-spacing: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .facility__meta span { color: var(--steel-500); margin-right: var(--space-2); }
+
+    /* ----- Leadership ----- */
+    .leadership {
+      background: var(--surface-elevated);
+      padding: var(--space-10) 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .leadership__head { max-width: 64ch; margin-bottom: var(--space-8); }
+    .leadership__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .leadership__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+    }
+
+    .ceo {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: var(--space-8);
+      padding: var(--space-8) 0;
+      border-top: 1px solid var(--border-default);
+      border-bottom: 1px solid var(--border-default);
+      margin-bottom: var(--space-8);
+      align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .ceo { grid-template-columns: 1fr; gap: var(--space-5); }
+    }
+    .ceo__visual {
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(160deg, var(--indigo-700) 0%, var(--indigo-500) 60%, var(--saffron-500) 140%);
+      position: relative;
+      overflow: hidden;
+    }
+    .ceo__visual::before {
+      content: 'NL';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(8rem, 14vw, 14rem);
+      font-weight: 600;
+      letter-spacing: -0.06em;
+      color: rgba(255,255,255,0.92);
+      line-height: 1;
+    }
+    .ceo__visual::after {
+      content: '';
+      position: absolute;
+      bottom: var(--space-5); left: var(--space-5);
+      width: 60px; height: 24px;
+      background:
+        linear-gradient(to right, var(--bone-100) 0 42px, transparent 42px),
+        radial-gradient(circle at 90% 50%, var(--saffron-300) 0 8px, transparent 8px);
+      background-repeat: no-repeat;
+    }
+    .ceo__role {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron-700);
+      margin-bottom: var(--space-3);
+    }
+    .ceo__name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: var(--indigo-700);
+      line-height: 1.05;
+      margin-bottom: var(--space-3);
+    }
+    .ceo__title {
+      font-size: 1.0625rem;
+      color: var(--steel-700);
+      margin-bottom: var(--space-5);
+    }
+    .ceo__bio {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--charcoal-800);
+      max-width: 60ch;
+    }
+
+    .execs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+    }
+    @media (max-width: 900px) {
+      .execs { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .execs { grid-template-columns: 1fr; }
+    }
+    .exec {
+      border-top: 1px solid var(--border-default);
+      padding-top: var(--space-4);
+    }
+    .exec__avatar {
+      aspect-ratio: 4 / 5;
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      letter-spacing: -0.04em;
+      color: var(--bone-100);
+    }
+    .exec:nth-child(1) .exec__avatar { background: var(--teal-700); }
+    .exec:nth-child(2) .exec__avatar { background: var(--indigo-700); }
+    .exec:nth-child(3) .exec__avatar { background: var(--saffron-700); }
+    .exec:nth-child(4) .exec__avatar { background: var(--charcoal-800); }
+    .exec__name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--indigo-700);
+      line-height: 1.15;
+      margin-bottom: var(--space-1);
+    }
+    .exec__title {
+      font-size: 0.875rem;
+      color: var(--steel-700);
+      line-height: 1.4;
+    }
+
+    /* ----- Responsibility ----- */
+    .csr {
+      background: var(--bone-200);
+      padding: var(--space-10) 0;
+    }
+    .csr__head { max-width: 64ch; margin-bottom: var(--space-9); }
+    .csr__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-third);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .csr__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-4);
+    }
+    .csr__title em { font-style: italic; color: var(--text-accent); }
+    .csr__lead {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--steel-700);
+    }
+    .csr__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-7);
+    }
+    @media (max-width: 900px) {
+      .csr__grid { grid-template-columns: 1fr; }
+    }
+    .csr__block {
+      border-top: 2px solid var(--charcoal-800);
+      padding-top: var(--space-5);
+    }
+    .csr__block:nth-child(1) { border-top-color: var(--saffron-500); }
+    .csr__block:nth-child(2) { border-top-color: var(--teal-500); }
+    .csr__block:nth-child(3) { border-top-color: var(--indigo-500); }
+    .csr__block-num {
+      font-family: var(--font-mono);
+      font-feature-settings: 'tnum';
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      color: var(--steel-500);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .csr__block-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.375rem, 2vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-4);
+      max-width: 18ch;
+      text-wrap: balance;
+    }
+    .csr__block-text {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--steel-700);
+    }
+
+    /* ----- Timeline ----- */
+    .timeline {
+      background: var(--surface-elevated);
+      padding: var(--space-10) 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .timeline__head { max-width: 64ch; margin-bottom: var(--space-9); }
+    .timeline__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .timeline__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--indigo-700);
+    }
+    .timeline__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+    .timeline__list::before {
+      content: '';
+      position: absolute;
+      left: 110px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border-default);
+    }
+    @media (max-width: 768px) {
+      .timeline__list::before { left: 0; }
+    }
+    .timeline__item {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: var(--space-7);
+      padding: var(--space-5) 0;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .timeline__item {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+        padding-left: var(--space-5);
+      }
+    }
+    .timeline__year {
+      font-family: var(--font-mono);
+      font-feature-settings: 'tnum';
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal-800);
+      letter-spacing: 0;
+      padding-top: 2px;
+    }
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: 105px; top: 28px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--saffron-500);
+      border: 2px solid var(--surface-elevated);
+      z-index: 1;
+    }
+    .timeline__item:nth-child(odd)::before { background: var(--indigo-500); }
+    .timeline__item:nth-child(3n)::before { background: var(--teal-500); }
+    @media (max-width: 768px) {
+      .timeline__item::before { left: -5px; top: 28px; }
+    }
+    .timeline__entry-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--indigo-700);
+      line-height: 1.2;
+      margin-bottom: var(--space-2);
+    }
+    .timeline__entry-text {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--steel-700);
+      max-width: 64ch;
+    }
+
+    /* ----- Boilerplate ----- */
+    .boiler {
+      background: var(--bone-200);
+      padding: var(--space-10) 0;
+    }
+    .boiler__head { max-width: 64ch; margin-bottom: var(--space-8); }
+    .boiler__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-500);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+    .boiler__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--indigo-700);
+      margin-bottom: var(--space-3);
+    }
+    .boiler__sub {
+      font-size: 1rem;
+      color: var(--steel-700);
+      line-height: 1.6;
+    }
+    .boiler__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-7);
+      margin-bottom: var(--space-8);
+    }
+    .boiler__item {
+      display: grid;
+      grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+      gap: var(--space-7);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--border-default);
+    }
+    @media (max-width: 768px) {
+      .boiler__item { grid-template-columns: 1fr; gap: var(--space-3); }
+    }
+    .boiler__item-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--charcoal-800);
+      font-weight: 600;
+    }
+    .boiler__item-meta {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      color: var(--steel-500);
+      margin-top: var(--space-2);
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .boiler__copy {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--charcoal-800);
+      max-width: 70ch;
+    }
+    .boiler__copy--short { font-size: 1.125rem; }
+    .boiler__copy--one { font-family: var(--font-display); font-size: 1.375rem; font-style: italic; color: var(--indigo-700); letter-spacing: -0.02em; }
+    .boiler__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      padding-top: var(--space-7);
+      border-top: 1px solid var(--border-default);
+    }
+
+    /* ----- Careers band ----- */
+    .careers-band {
+      background: var(--indigo-900);
+      color: var(--bone-100);
+      padding: var(--space-10) 0;
+      text-align: center;
+    }
+    .careers-band__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: white;
+      margin-bottom: var(--space-5);
+      max-width: 18ch;
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: balance;
+    }
+    .careers-band__title em { font-style: italic; color: var(--saffron-300); }
+    .careers-band__sub {
+      font-size: 1.125rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.78);
+      max-width: 56ch;
+      margin: 0 auto var(--space-7);
+    }
+    .careers-band__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: center;
+    }
+    .careers-band .btn--primary {
+      background: var(--saffron-500);
+      color: var(--charcoal-800);
+    }
+    .careers-band .btn--primary:hover {
+      background: var(--saffron-300);
+      color: var(--charcoal-800);
+      box-shadow: var(--shadow-accent);
+    }
+    .careers-band .btn--outline {
+      color: white;
+      border-color: rgba(255,255,255,0.5);
+    }
+    .careers-band .btn--outline:hover {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border-color: white;
+    }
+
+    /* Reduced motion safety */
+    @media (prefers-reduced-motion: reduce) {
+      .stakeholder, .stakeholder__arrow { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav__utility">
+      <div class="container">
+        <nav class="audience-switcher" aria-label="Audience">
+          <a href="/patients" class="audience-switcher__link">Patients</a>
+          <a href="/hcp" class="audience-switcher__link">Healthcare Professionals</a>
+          <a href="/investors" class="audience-switcher__link">Investors</a>
+          <a href="/media" class="audience-switcher__link">Media</a>
+          <a href="/careers" class="audience-switcher__link">Careers</a>
+        </nav>
+        <a class="nav__ticker" href="/investors">
+          <span class="nav__ticker-label">NASDAQ: ANIP</span>
+          <span class="nav__ticker-price">$80.39</span>
+          <span class="nav__ticker-change">▲ 1.18%</span>
+        </a>
+      </div>
+    </div>
+    <div class="nav__main">
+      <div class="container">
+        <a class="nav__logo" href="/" aria-label="ANI Pharmaceuticals home">
+          <span class="nav__logo-mark" aria-hidden="true">
+            <svg width="32" height="14" viewBox="0 0 32 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="7" x2="22" y2="7" stroke="#312E81" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="25" cy="7" r="5" fill="#F59E0B"/>
+            </svg>
+          </span>
+          <span class="nav__logo-text">ANI Pharmaceuticals</span>
+        </a>
+        <nav class="nav__links" aria-label="Main">
+          <a href="/about" aria-current="page">About</a>
+          <a href="/products">Products</a>
+          <a href="/investors">Investors</a>
+          <a href="/careers">We're Hiring</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== BREADCRUMB ===== -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li class="breadcrumb-sep" aria-hidden="true">/</li>
+          <li><a href="/who-we-are">Who We Are</a></li>
+          <li class="breadcrumb-sep" aria-hidden="true">/</li>
+          <li aria-current="page">About ANI</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-hero__grid">
+          <aside class="about-hero__marginalia" aria-hidden="true">
+            <strong>About ANI</strong>
+            Filed: May 2026<br/>
+            NASDAQ: ANIP<br/>
+            Locked: v3.0 Meridian
+          </aside>
+          <div>
+            <h1 id="about-title" class="about-hero__title">
+              A diversified biopharmaceutical company building toward a <em>rare-disease</em> future.
+            </h1>
+            <p class="about-hero__deck">
+              ANI Pharmaceuticals develops, manufactures, and commercializes therapeutics for people living with rare and uncommon conditions. Three FDA-inspected facilities. A rare-disease franchise on track to deliver $1.055&ndash;$1.115B in 2026 net revenue. One purpose: serving patients, improving lives.
+            </p>
+            <div class="about-hero__rule" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STAKEHOLDER ROUTING ===== -->
+    <section class="stakeholders" aria-label="Choose your path">
+      <div class="container">
+        <div class="stakeholders__grid">
+          <a class="stakeholder" href="/hcp">
+            <span class="stakeholder__num">01 / Clinicians</span>
+            <h2 class="stakeholder__title">Healthcare Professionals</h2>
+            <p class="stakeholder__desc">Prescribing information, dosing detail, clinical evidence, and rep contact for ANI's specialty medicines.</p>
+            <span class="stakeholder__arrow">Enter HCP site →</span>
+          </a>
+          <a class="stakeholder" href="/patients">
+            <span class="stakeholder__num">02 / Patients</span>
+            <h2 class="stakeholder__title">Patients &amp; Families</h2>
+            <p class="stakeholder__desc">Brand sites, patient support programs, and step-by-step help getting started on your prescribed therapy.</p>
+            <span class="stakeholder__arrow">Find resources →</span>
+          </a>
+          <a class="stakeholder" href="/investors">
+            <span class="stakeholder__num">03 / Investors</span>
+            <h2 class="stakeholder__title">Investors</h2>
+            <p class="stakeholder__desc">2026 guidance, quarterly earnings, SEC filings, and the rare-disease growth thesis behind ANIP.</p>
+            <span class="stakeholder__arrow">Investor center →</span>
+          </a>
+          <a class="stakeholder" href="/careers">
+            <span class="stakeholder__num">04 / Builders</span>
+            <h2 class="stakeholder__title">Careers</h2>
+            <p class="stakeholder__desc">Open roles across commercial, manufacturing, R&amp;D, and corporate functions in MN, NJ, ON, and remote.</p>
+            <span class="stakeholder__arrow">See open roles →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OUR STORY ===== -->
+    <section class="story" aria-labelledby="story-title">
+      <div class="container">
+        <header class="story__heading-row">
+          <span class="story__label">§01 / Our Story</span>
+          <h2 id="story-title" class="story__title">Compounding quality, <em>chapter</em> by chapter.</h2>
+        </header>
+
+        <article class="chapter">
+          <div class="chapter__meta">
+            <span class="chapter__num">Chapter 01</span>
+            <span class="chapter__years">2001 — 2020</span>
+          </div>
+          <div class="chapter__body">
+            <h3 class="chapter__title">A generics manufacturer from the start.</h3>
+            <p class="chapter__text">
+              ANI was founded as a U.S.-based generics maker in Baudette, Minnesota — a small town with a big bet: that disciplined manufacturing on American soil could compete on quality, price, and supply reliability for two decades and counting.
+            </p>
+            <blockquote class="chapter__quote">
+              "We didn't set out to be the largest. We set out to make medicines we'd be willing to sign our names to."
+              <span class="chapter__quote-attr">Founding principle, Baudette MN</span>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="chapter">
+          <div class="chapter__meta">
+            <span class="chapter__num">Chapter 02</span>
+            <span class="chapter__years">2020 — 2022</span>
+          </div>
+          <div class="chapter__body">
+            <h3 class="chapter__title">Cortrophin Gel returns &mdash; the first new ACTH option in 70 years.</h3>
+            <p class="chapter__text">
+              In 2022, ANI relaunched Cortrophin&reg; Gel: the first new repository corticotropin therapy approved in the United States in seven decades. A rare-disease franchise was built around it &mdash; and the company's center of gravity began to shift.
+            </p>
+            <blockquote class="chapter__quote">
+              "One molecule. Eight indications. A market that had been served by a single supplier for 70 years."
+              <span class="chapter__quote-attr">Source: ANI 2022 launch announcement</span>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="chapter">
+          <div class="chapter__meta">
+            <span class="chapter__num">Chapter 03</span>
+            <span class="chapter__years">2024 — 2025</span>
+          </div>
+          <div class="chapter__body">
+            <h3 class="chapter__title">ILUVIEN, YUTIQ, and a portfolio that compounds.</h3>
+            <p class="chapter__text">
+              The 2024 acquisition of Alimera Sciences added ILUVIEN&reg; and YUTIQ&reg; to the rare-disease portfolio, deepening ANI's ophthalmology presence and bringing the rare-disease share of revenue toward 60%. By 2025, the rare-disease segment was no longer the future of the business &mdash; it was the present.
+            </p>
+            <blockquote class="chapter__quote">
+              "Three FDA-inspected facilities. Two ophthalmology implants. Eight Cortrophin indications. One company writing the next chapter, not the same one."
+              <span class="chapter__quote-attr">Source: ANI FY2025 annual report</span>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="chapter">
+          <div class="chapter__meta">
+            <span class="chapter__num">Chapter 04</span>
+            <span class="chapter__years">2026 →</span>
+          </div>
+          <div class="chapter__body">
+            <h3 class="chapter__title">Building the rare-disease company we were always becoming.</h3>
+            <p class="chapter__text">
+              In 2026, a 90-person commercial team deploys mid-year for acute gouty arthritis flares. Cortrophin growth continues at +76% year-over-year. Generics and established brands keep funding the rare-disease pipeline. The "diversified" stays. The center has moved.
+            </p>
+            <blockquote class="chapter__quote">
+              "When a condition is rare, our commitment can't be."
+              <span class="chapter__quote-attr">ANI brand promise &middot; Care, codified.</span>
+            </blockquote>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== KPI BAND ===== -->
+    <section class="about-kpi" aria-labelledby="kpi-title">
+      <div class="container">
+        <div class="about-kpi__intro">
+          <span class="about-kpi__label">§02 / By the Numbers</span>
+          <h2 id="kpi-title" class="about-kpi__title">2026, in <em>numbers</em>.</h2>
+          <p class="about-kpi__lead">Sourced from ANI's 2026 financial guidance and operations disclosures. Every figure cites its origin.</p>
+        </div>
+        <div class="about-kpi__grid">
+          <div class="about-kpi__cell">
+            <div class="about-kpi__num">$1B+</div>
+            <div class="about-kpi__lab">Projected 2026 net revenue ($1.055–$1.115B range)</div>
+            <div class="about-kpi__source">Source: 2026 guidance</div>
+          </div>
+          <div class="about-kpi__cell">
+            <div class="about-kpi__num">$275–290M</div>
+            <div class="about-kpi__lab">Adjusted EBITDA guidance for 2026</div>
+            <div class="about-kpi__source">Source: 2026 guidance</div>
+          </div>
+          <div class="about-kpi__cell">
+            <div class="about-kpi__num">~60%</div>
+            <div class="about-kpi__lab">Of revenue from rare disease in 2026</div>
+            <div class="about-kpi__source">Source: 2026 segment mix</div>
+          </div>
+          <div class="about-kpi__cell">
+            <div class="about-kpi__num">+76%</div>
+            <div class="about-kpi__lab">Cortrophin Gel year-over-year revenue growth</div>
+            <div class="about-kpi__source">Source: FY2025 results</div>
+          </div>
+          <div class="about-kpi__cell">
+            <div class="about-kpi__num">3</div>
+            <div class="about-kpi__lab">FDA-inspected manufacturing facilities (MN, NJ, ON)</div>
+            <div class="about-kpi__source">Source: ANI operations</div>
+          </div>
+          <div class="about-kpi__cell">
+            <div class="about-kpi__num">1,000+</div>
+            <div class="about-kpi__lab">Employees across commercial, manufacturing, R&amp;D, and corporate</div>
+            <div class="about-kpi__source">Source: HR roster, Q1 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPETITIVE CONTEXT ===== -->
+    <section class="context" aria-labelledby="context-title">
+      <div class="container">
+        <div class="context__row">
+          <div>
+            <span class="context__label">§03 / Where we stand</span>
+            <h2 id="context-title" class="context__title">The first new ACTH therapy in <em>70 years</em>.</h2>
+            <p class="context__body">
+              For seven decades, repository corticotropin had a single U.S. supplier. ANI's relaunch of Cortrophin&reg; Gel ended that. Today, ANI is the only U.S.-based biopharmaceutical company commercializing a repository corticotropin therapy — and the only one offering it at a competitive WAC against the long-standing alternative.
+            </p>
+            <p class="context__source">Source: FDA NDA approval &middot; ANI commercial filings, 2022–2026</p>
+          </div>
+          <aside class="context__stat" aria-label="Discount stat">
+            <div class="context__stat-num">23.2%</div>
+            <p class="context__stat-label">WAC discount vs. the long-standing repository corticotropin alternative.</p>
+            <span class="context__stat-source">Source: WAC analysis, 2026</span>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DUAL CARDS ===== -->
+    <section class="dual" aria-label="Audience entry points">
+      <div class="container">
+        <div class="dual__grid">
+          <article class="dual__block">
+            <span class="dual__eyebrow">For HCPs</span>
+            <h2 class="dual__title">Resources for the clinicians treating rare conditions.</h2>
+            <p class="dual__text">
+              Prescribing information, dosing detail, mechanism explainers, and a direct line to ANI Medical Information for clinical questions. U.S.-licensed healthcare professionals only.
+            </p>
+            <a class="dual__phone" href="tel:18003086755">
+              <span class="dual__phone-label">ANI Medical Information</span>
+              1-800-308-6755
+            </a>
+          </article>
+          <article class="dual__block dual__block--dark">
+            <span class="dual__eyebrow">Cortrophin In Your Corner</span>
+            <h2 class="dual__title">Patient support that stays with you between doses.</h2>
+            <p class="dual__text">
+              Help understanding your prescription, navigating insurance, and getting started on Cortrophin&reg; Gel — with a real person on the line, not a chatbot. Available to eligible U.S. patients.
+            </p>
+            <a class="dual__phone" href="tel:18883225188">
+              <span class="dual__phone-label">Cortrophin In Your Corner</span>
+              1-888-322-5188
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PILLARS ===== -->
+    <section class="pillars" aria-labelledby="pillars-title">
+      <div class="container">
+        <header>
+          <h2 id="pillars-title" class="pillars__title">Four pillars. <em>One</em> system.</h2>
+          <p class="pillars__lead">
+            How ANI shows up — internally for every team, externally for every audience. Not slogans. Operating principles.
+          </p>
+        </header>
+        <div class="pillars__grid">
+          <article class="pillar">
+            <div class="pillar__letter">E / 01</div>
+            <h3 class="pillar__name">Encoded</h3>
+            <p class="pillar__text">Every claim sourced. Every number cites its data. The integrity of the medicine starts with the integrity of the page.</p>
+          </article>
+          <article class="pillar">
+            <div class="pillar__letter">E / 02</div>
+            <h3 class="pillar__name">Embodied</h3>
+            <p class="pillar__text">We make our medicines with our hands, on American soil. Three FDA-inspected facilities. Direct quality control.</p>
+          </article>
+          <article class="pillar">
+            <div class="pillar__letter">E / 03</div>
+            <h3 class="pillar__name">Earned</h3>
+            <p class="pillar__text">We don't claim — we demonstrate. Numbers over adjectives. Evidence over enthusiasm. Outcomes over optics.</p>
+          </article>
+          <article class="pillar">
+            <div class="pillar__letter">E / 04</div>
+            <h3 class="pillar__name">Extended</h3>
+            <p class="pillar__text">A system, not a campaign. Designed to last. Built so the next ten years of the company are built on the same foundation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEGMENTS ===== -->
+    <section class="segments" aria-labelledby="segments-title">
+      <div class="container">
+        <header class="segments__title-row">
+          <span class="segments__label">§04 / Business segments</span>
+          <h2 id="segments-title" class="segments__title">Three businesses. One operating company.</h2>
+        </header>
+
+        <article class="segment">
+          <span class="segment__index">Segment 01</span>
+          <div>
+            <h3 class="segment__name">Rare Disease</h3>
+            <p class="segment__desc">
+              The growth engine. Cortrophin&reg; Gel across rheumatology, ophthalmology, nephrology, and neurology indications, plus ILUVIEN&reg; and YUTIQ&reg; in chronic posterior segment disease. The center of gravity for ANI's next decade.
+            </p>
+          </div>
+          <div class="segment__stats">
+            <div class="segment__stat">
+              <div class="segment__stat-num">~60%</div>
+              <div class="segment__stat-lab">Of total revenue, 2026</div>
+            </div>
+            <div class="segment__stat">
+              <div class="segment__stat-num">$540–575M</div>
+              <div class="segment__stat-lab">2026 Cortrophin franchise guidance</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="segment">
+          <span class="segment__index">Segment 02</span>
+          <div>
+            <h3 class="segment__name">Established Brands</h3>
+            <p class="segment__desc">
+              A portfolio of branded medicines acquired and operated with discipline. Generates the durable cash flow that funds rare-disease investment without dilution and without distraction.
+            </p>
+          </div>
+          <div class="segment__stats">
+            <div class="segment__stat">
+              <div class="segment__stat-num">~25%</div>
+              <div class="segment__stat-lab">Of total revenue, 2026</div>
+            </div>
+            <div class="segment__stat">
+              <div class="segment__stat-num">10+</div>
+              <div class="segment__stat-lab">Branded products in active distribution</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="segment">
+          <span class="segment__index">Segment 03</span>
+          <div>
+            <h3 class="segment__name">Generics</h3>
+            <p class="segment__desc">
+              The roots. U.S.-manufactured generic pharmaceuticals across multiple ANDAs, including competitive generic therapy designations. Two decades of compounding manufacturing know-how.
+            </p>
+          </div>
+          <div class="segment__stats">
+            <div class="segment__stat">
+              <div class="segment__stat-num">~15%</div>
+              <div class="segment__stat-lab">Of total revenue, 2026</div>
+            </div>
+            <div class="segment__stat">
+              <div class="segment__stat-num">Multiple</div>
+              <div class="segment__stat-lab">ANDAs &middot; CGT designations</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== FACILITIES ===== -->
+    <section class="facilities" aria-labelledby="facilities-title">
+      <div class="container">
+        <header class="facilities__head">
+          <span class="facilities__label">§05 / Manufacturing</span>
+          <h2 id="facilities-title" class="facilities__title">Made <em>here</em>. Owned here. Accountable here.</h2>
+          <p class="facilities__lead">
+            Three FDA-inspected facilities in Baudette, East Windsor, and Oakville. Direct control over quality, supply chain, and every dose that reaches a patient.
+          </p>
+        </header>
+        <div class="facilities__grid">
+          <article class="facility">
+            <div class="facility__visual" aria-hidden="true"></div>
+            <h3 class="facility__city">Baudette</h3>
+            <span class="facility__country">Minnesota / USA</span>
+            <p class="facility__text">The flagship. Cortrophin Gel commercial production, sterile fill, and the company's longest-tenured manufacturing operation.</p>
+            <div class="facility__meta">
+              <div><span>Established:</span>2001</div>
+              <div><span>Capabilities:</span>Sterile fill, quality lab</div>
+              <div><span>Inspection:</span>FDA-registered</div>
+            </div>
+          </article>
+          <article class="facility">
+            <div class="facility__visual" aria-hidden="true"></div>
+            <h3 class="facility__city">East Windsor</h3>
+            <span class="facility__country">New Jersey / USA</span>
+            <p class="facility__text">Solid-dose manufacturing for the established brands and generics portfolios. Scale operations supporting U.S. distribution at volume.</p>
+            <div class="facility__meta">
+              <div><span>Capabilities:</span>Solid-dose, packaging</div>
+              <div><span>Inspection:</span>FDA-registered</div>
+              <div><span>Distribution:</span>Nationwide U.S.</div>
+            </div>
+          </article>
+          <article class="facility">
+            <div class="facility__visual" aria-hidden="true"></div>
+            <h3 class="facility__city">Oakville</h3>
+            <span class="facility__country">Ontario / Canada</span>
+            <p class="facility__text">North American manufacturing depth and supply-chain redundancy. Health Canada and FDA-aligned operations.</p>
+            <div class="facility__meta">
+              <div><span>Capabilities:</span>Specialty manufacturing</div>
+              <div><span>Inspection:</span>FDA &amp; Health Canada</div>
+              <div><span>Strategic role:</span>Supply redundancy</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LEADERSHIP ===== -->
+    <section class="leadership" aria-labelledby="leadership-title">
+      <div class="container">
+        <header class="leadership__head">
+          <span class="leadership__label">§06 / Leadership</span>
+          <h2 id="leadership-title" class="leadership__title">The team running the company.</h2>
+        </header>
+
+        <article class="ceo">
+          <div class="ceo__visual" aria-hidden="true"></div>
+          <div>
+            <div class="ceo__role">President &amp; Chief Executive Officer</div>
+            <h3 class="ceo__name">Nikhil Lalwani</h3>
+            <p class="ceo__title">Joined 2021 &middot; Led the 2022 Cortrophin relaunch and the 2024 Alimera Sciences acquisition.</p>
+            <p class="ceo__bio">
+              Nikhil leads ANI's transition from generics manufacturer to diversified rare-disease company. Prior to ANI, he held senior commercial and corporate development roles in specialty pharmaceuticals. His tenure has been defined by disciplined capital allocation and a clear thesis: that a U.S.-based manufacturer with rare-disease assets can serve patients others overlook — profitably.
+            </p>
+          </div>
+        </article>
+
+        <div class="execs">
+          <article class="exec">
+            <div class="exec__avatar" aria-hidden="true">SC</div>
+            <h3 class="exec__name">Stephen Carey</h3>
+            <p class="exec__title">SVP &amp; Chief Financial Officer</p>
+          </article>
+          <article class="exec">
+            <div class="exec__avatar" aria-hidden="true">CM</div>
+            <h3 class="exec__name">Chris Mulligan</h3>
+            <p class="exec__title">SVP, Commercial &middot; Rare Disease</p>
+          </article>
+          <article class="exec">
+            <div class="exec__avatar" aria-hidden="true">KD</div>
+            <h3 class="exec__name">Krista Davis</h3>
+            <p class="exec__title">SVP, General Counsel &amp; Corporate Secretary</p>
+          </article>
+          <article class="exec">
+            <div class="exec__avatar" aria-hidden="true">RS</div>
+            <h3 class="exec__name">Robert Schrepfer</h3>
+            <p class="exec__title">SVP, Operations &amp; Manufacturing</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESPONSIBILITY ===== -->
+    <section class="csr" aria-labelledby="csr-title">
+      <div class="container">
+        <header class="csr__head">
+          <span class="csr__label">§07 / Responsibility</span>
+          <h2 id="csr-title" class="csr__title">The work, beyond <em>the work</em>.</h2>
+          <p class="csr__lead">
+            Three commitments. Each one operational, not aspirational — measurable, sourced, and reported in our annual responsibility report.
+          </p>
+        </header>
+        <div class="csr__grid">
+          <article class="csr__block">
+            <span class="csr__block-num">01 / Patient access</span>
+            <h3 class="csr__block-title">Affordability for the patients who need it.</h3>
+            <p class="csr__block-text">
+              Patient assistance, copay support, and a 23.2% WAC discount on Cortrophin&reg; Gel against the long-standing alternative. Access programs sized to demand, not to optics.
+            </p>
+          </article>
+          <article class="csr__block">
+            <span class="csr__block-num">02 / U.S. manufacturing</span>
+            <h3 class="csr__block-title">Made on American soil, with American hands.</h3>
+            <p class="csr__block-text">
+              Direct quality control across three FDA-inspected facilities. Supply-chain resilience for U.S. patients. Local employment in Baudette, East Windsor, and Oakville.
+            </p>
+          </article>
+          <article class="csr__block">
+            <span class="csr__block-num">03 / People</span>
+            <h3 class="csr__block-title">A workforce that reflects the patients we serve.</h3>
+            <p class="csr__block-text">
+              Diversity reporting, pay equity audits, and a board with the breadth of experience to hold the company accountable. Disclosed annually. Not seasonal, not aspirational.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TIMELINE ===== -->
+    <section class="timeline" aria-labelledby="timeline-title">
+      <div class="container">
+        <header class="timeline__head">
+          <span class="timeline__label">§08 / Milestones</span>
+          <h2 id="timeline-title" class="timeline__title">Twenty-five years, in nine moments.</h2>
+        </header>
+        <ol class="timeline__list">
+          <li class="timeline__item">
+            <div class="timeline__year">2001</div>
+            <div>
+              <h3 class="timeline__entry-title">ANI is founded in Baudette, Minnesota</h3>
+              <p class="timeline__entry-text">A U.S.-based generics manufacturer is established with a focus on disciplined operations and quality.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2008</div>
+            <div>
+              <h3 class="timeline__entry-title">Expansion of solid-dose manufacturing capacity</h3>
+              <p class="timeline__entry-text">Production capabilities scale to support a growing portfolio of FDA-approved generic products.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2014</div>
+            <div>
+              <h3 class="timeline__entry-title">Public listing on NASDAQ as ANIP</h3>
+              <p class="timeline__entry-text">ANI Pharmaceuticals begins trading publicly, opening capital access for portfolio expansion.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2018</div>
+            <div>
+              <h3 class="timeline__entry-title">East Windsor, NJ facility added</h3>
+              <p class="timeline__entry-text">A second U.S. manufacturing site brings additional solid-dose and packaging capacity.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2021</div>
+            <div>
+              <h3 class="timeline__entry-title">Nikhil Lalwani named President &amp; CEO</h3>
+              <p class="timeline__entry-text">A new chapter begins with the rare-disease pivot at the center of corporate strategy.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2022</div>
+            <div>
+              <h3 class="timeline__entry-title">Cortrophin&reg; Gel relaunches</h3>
+              <p class="timeline__entry-text">The first new repository corticotropin therapy in 70 years returns to U.S. patients with a competitive WAC.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2024</div>
+            <div>
+              <h3 class="timeline__entry-title">Alimera Sciences acquisition closes</h3>
+              <p class="timeline__entry-text">ILUVIEN&reg; and YUTIQ&reg; join the rare-disease portfolio, deepening ANI's ophthalmology presence.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2025</div>
+            <div>
+              <h3 class="timeline__entry-title">Rare disease crosses 50% of revenue mix</h3>
+              <p class="timeline__entry-text">The pivot is no longer the future — it's the present. Generics and established brands continue funding rare-disease investment.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__year">2026</div>
+            <div>
+              <h3 class="timeline__entry-title">90-person commercial team deploys for acute gouty arthritis flares</h3>
+              <p class="timeline__entry-text">Mid-year deployment expands Cortrophin's reach across rheumatology. 2026 guidance: $1.055&ndash;$1.115B in net revenue.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== BOILERPLATE ===== -->
+    <section class="boiler" aria-labelledby="boiler-title">
+      <div class="container">
+        <header class="boiler__head">
+          <span class="boiler__label">§09 / For the Press</span>
+          <h2 id="boiler-title" class="boiler__title">Brand boilerplate.</h2>
+          <p class="boiler__sub">Three lengths, ready to lift verbatim. Cite ANI Pharmaceuticals (NASDAQ: ANIP).</p>
+        </header>
+
+        <div class="boiler__list">
+          <article class="boiler__item">
+            <div>
+              <span class="boiler__item-label">Long</span>
+              <span class="boiler__item-meta">~75 words &middot; default</span>
+            </div>
+            <p class="boiler__copy">
+              ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions. Founded as a U.S.-based generics manufacturer, ANI today operates three FDA-inspected facilities and markets a rare disease franchise built around Cortrophin&reg; Gel and ILUVIEN&reg;. Our purpose is simple: serving patients, improving lives.
+            </p>
+          </article>
+
+          <article class="boiler__item">
+            <div>
+              <span class="boiler__item-label">Short</span>
+              <span class="boiler__item-meta">~30 words &middot; quote</span>
+            </div>
+            <p class="boiler__copy boiler__copy--short">
+              ANI Pharmaceuticals (NASDAQ: ANIP) is a U.S.-based biopharmaceutical company building a rare-disease franchise around Cortrophin&reg; Gel and ILUVIEN&reg;, supported by three FDA-inspected manufacturing facilities.
+            </p>
+          </article>
+
+          <article class="boiler__item">
+            <div>
+              <span class="boiler__item-label">One-liner</span>
+              <span class="boiler__item-meta">~12 words &middot; tagline</span>
+            </div>
+            <p class="boiler__copy boiler__copy--one">
+              "Care, codified. A diversified rare-disease company built on U.S. manufacturing."
+            </p>
+          </article>
+        </div>
+
+        <div class="boiler__actions">
+          <a class="btn btn--primary" href="/press-kit">Download press kit →</a>
+          <a class="btn btn--outline" href="/media">Media inquiries →</a>
+          <a class="btn btn--ghost" href="/investors/earnings">Latest earnings →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CAREERS BAND ===== -->
+    <section class="careers-band" aria-labelledby="careers-title">
+      <div class="container">
+        <h2 id="careers-title" class="careers-band__title">The work is rare. The impact is <em>real</em>.</h2>
+        <p class="careers-band__sub">
+          Roles across commercial, manufacturing, R&amp;D, and corporate — in Baudette MN, East Windsor NJ, Oakville ON, and remote.
+        </p>
+        <div class="careers-band__actions">
+          <a class="btn btn--primary" href="/careers">See open roles →</a>
+          <a class="btn btn--outline" href="/careers/life-at-ani">Life at ANI →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="/">ANI Pharmaceuticals</a>
+          <p>Care, codified. A NASDAQ-listed biopharmaceutical company focused on rare and uncommon conditions.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/who-we-are">Who We Are</a></li>
+            <li><a href="/leadership">Leadership</a></li>
+            <li><a href="/manufacturing">Manufacturing</a></li>
+            <li><a href="/responsibility">Responsibility</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Audiences</h4>
+          <ul>
+            <li><a href="/patients">Patients</a></li>
+            <li><a href="/hcp">Healthcare Professionals</a></li>
+            <li><a href="/investors">Investors</a></li>
+            <li><a href="/media">Media</a></li>
+            <li><a href="/careers">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/news">News &amp; Press</a></li>
+            <li><a href="/investors/earnings">Earnings</a></li>
+            <li><a href="/medicines">Medicines</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--ae">
+          <h4>Report an AE</h4>
+          <ul>
+            <li>
+              <span class="footer__ae-label">ANI Medical Info</span>
+              <a class="footer__ae-num" href="tel:18003086755">1-800-308-6755</a>
+            </li>
+            <li>
+              <span class="footer__ae-label">FDA MedWatch</span>
+              <a class="footer__ae-num" href="tel:18003321088">1-800-FDA-1088</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__legal">
+        <p>© 2026 ANI Pharmaceuticals, Inc. All rights reserved.</p>
+        <p class="footer__legal-links">
+          <a href="/privacy">Privacy</a> ·
+          <a href="/terms">Terms</a> ·
+          <a href="/accessibility">Accessibility</a> ·
+          <a href="/sitemap">Sitemap</a>
+        </p>
+        <p class="footer__compliance">This site is intended for U.S. audiences only. Cortrophin® Gel, ILUVIEN®, and YUTIQ® are registered trademarks of ANI Pharmaceuticals, Inc. or its affiliates.</p>
+        <p class="footer__compliance">Job code: US-CORP-ABT-2026-002 · Date of preparation: May 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== ISI BAR ===== -->
+  <aside class="isi-bar" role="complementary" aria-label="Important Safety Information">
+    <button
+      class="isi-bar__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="isi-content"
+    >
+      <div class="isi-bar__summary">
+        <strong>Important Safety Information &amp; Indications</strong>
+        Cortrophin® Gel and ILUVIEN® are FDA-approved prescription medicines. Click to expand for full ISI, or visit
+        <a href="/cortrophin/pi.pdf">Cortrophin PI</a> /
+        <a href="/iluvien/pi.pdf">ILUVIEN PI</a>.
+      </div>
+      <span class="isi-bar__chevron" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l4-4 4 4"/>
+        </svg>
+      </span>
+    </button>
+    <div class="isi-bar__content" id="isi-content">
+      <h3>Indications &amp; Usage</h3>
+      <p><strong>Cortrophin® Gel (repository corticotropin injection)</strong> is indicated as adjunctive therapy for short-term administration in conditions including acute exacerbations of multiple sclerosis, rheumatic disorders, collagen diseases, allergic states, ophthalmic diseases, respiratory diseases, edematous states (induction of diuresis or remission of proteinuria in nephrotic syndrome), and serum sickness.</p>
+      <p><strong>ILUVIEN® (fluocinolone acetonide intravitreal implant)</strong> 0.19 mg is indicated for the treatment of diabetic macular edema in patients who have been previously treated with a course of corticosteroids and did not have a clinically significant rise in intraocular pressure, and for the treatment of chronic non-infectious uveitis affecting the posterior segment of the eye.</p>
+
+      <h3>Important Safety Information</h3>
+      <p>Please see full Prescribing Information for each product, including indications, dosage and administration, contraindications, warnings and precautions, adverse reactions, and patient counseling information.</p>
+
+      <h3>To report adverse events</h3>
+      <p>Contact ANI Pharmaceuticals Medical Information at <a href="tel:18003086755">1-800-308-6755</a> or the FDA at <a href="tel:18003321088">1-800-FDA-1088</a> / <a href="https://www.fda.gov/medwatch">fda.gov/medwatch</a>.</p>
+    </div>
+  </aside>
+
+  <script>
+    const isiToggle = document.querySelector('.isi-bar__toggle');
+    if (isiToggle) {
+      isiToggle.addEventListener('click', () => {
+        const expanded = isiToggle.getAttribute('aria-expanded') === 'true';
+        isiToggle.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+  </script>
+</body>
+</html>
