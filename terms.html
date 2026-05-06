@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="ANI Pharmaceuticals Terms of Use." />
-  <title>Terms of Use — ANI Pharmaceuticals</title>
+  <title>Terms of Use - ANI Pharmaceuticals</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -24,7 +24,15 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
@@ -59,7 +67,7 @@
       <div class="container">
         <article style="max-width: 72ch; margin: 0 auto;">
           <p class="display-lead">
-            <em>This document is owned by Legal. The full text will replace this placeholder before launch — it is not redrafted by the brand team.</em>
+            <em>This document is owned by Legal. The full text will replace this placeholder before launch - it is not redrafted by the brand team.</em>
           </p>
 
           <h2>1. Acceptance of terms</h2>

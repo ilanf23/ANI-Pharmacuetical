@@ -1,6 +1,6 @@
 :root {
   /* ===== PRIMITIVE TOKENS ===== */
-  /* Indigo — Brand Authority */
+  /* Indigo - Brand Authority */
   --indigo-50:  #EEEEFB;
   --indigo-100: #D5D4F0;
   --indigo-200: #A8A6D9;
@@ -10,7 +10,7 @@
   --indigo-700: #15124A;
   --indigo-900: #08062A;
 
-  /* Saffron — Patient Warmth */
+  /* Saffron - Patient Warmth */
   --saffron-50:  #FEF6E5;
   --saffron-100: #FCE8B8;
   --saffron-300: #F9C76C;
@@ -18,7 +18,7 @@
   --saffron-600: #C57A02;
   --saffron-700: #8B5500;
 
-  /* Teal — Clinical Credibility */
+  /* Teal - Clinical Credibility */
   --teal-50:  #E5F5F4;
   --teal-100: #B6E3DF;
   --teal-300: #5DCBC2;
@@ -43,7 +43,7 @@
   --red-error:     #B83A2A;
   --blue-info:     #3568A8;
 
-  /* ===== SEMANTIC TOKENS — LIGHT ===== */
+  /* ===== SEMANTIC TOKENS - LIGHT ===== */
   --surface-page:           var(--bone-200);
   --surface-elevated:       var(--bone-100);
   --surface-sunken:         var(--bone-300);
@@ -80,7 +80,7 @@
   /* ===== TYPE ===== */
   --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono:    'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --font-mono:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --font-display-2xl: clamp(3.5rem, 8vw, 7rem);
   --font-display-xl:  clamp(2.75rem, 6vw, 5.5rem);

@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="cGMP is the floor, not the ceiling. ANI Pharmaceuticals' quality system across three FDA-inspected U.S. facilities." />
-  <title>Quality — ANI Pharmaceuticals</title>
+  <title>Quality - ANI Pharmaceuticals</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -24,7 +24,15 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
@@ -82,7 +90,7 @@
           <article class="card">
             <span class="tag tag--third">01</span>
             <h3 class="card__title">Improve. Continuously.</h3>
-            <p class="card__text">We invest in the quality system before we have to. New equipment, new training, new procedures — measured against the products we ship, not the slides we present.</p>
+            <p class="card__text">We invest in the quality system before we have to. New equipment, new training, new procedures - measured against the products we ship, not the slides we present.</p>
           </article>
           <article class="card">
             <span class="tag tag--third">02</span>
@@ -102,7 +110,7 @@
           <article class="card">
             <span class="tag tag--third">05</span>
             <h3 class="card__title">Train. Then verify.</h3>
-            <p class="card__text">Every role has a training matrix. Every cycle has a competency check. Skipping training is not a shortcut — it's a deviation.</p>
+            <p class="card__text">Every role has a training matrix. Every cycle has a competency check. Skipping training is not a shortcut - it's a deviation.</p>
           </article>
           <article class="card">
             <span class="tag tag--accent">06</span>
@@ -121,11 +129,11 @@
         </header>
         <div class="feature-card-grid">
           <article class="feature-card">
-            <h3 class="feature-card__title">Baudette, MN — solid &amp; liquid dose</h3>
+            <h3 class="feature-card__title">Baudette, MN - solid &amp; liquid dose</h3>
             <p class="feature-card__text">Tablets, capsules, suspensions, lotions, ointments. FDA-inspected.</p>
           </article>
           <article class="feature-card">
-            <h3 class="feature-card__title">Baudette, MN — containment</h3>
+            <h3 class="feature-card__title">Baudette, MN - containment</h3>
             <p class="feature-card__text">Potent compounds, encapsulation, blister packaging. FDA-inspected.</p>
           </article>
           <article class="feature-card">

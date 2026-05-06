@@ -16,7 +16,7 @@ Code-ready reference for color, type, spacing, motion, and form. For voice/copy 
 | Text | Charcoal `#1A1A1F` |
 | Display type | Inter Tight (600) |
 | Body type | Inter (400) |
-| Mono type | JetBrains Mono |
+| Mono / data type | Inter (eyebrows, tabular numerics use Inter with `tnum`) |
 | A11y floor | WCAG 2.2 AA |
 
 ---
@@ -145,10 +145,11 @@ Code-ready reference for color, type, spacing, motion, and form. For voice/copy 
 
 ## Typography
 
-**Families (self-host all three):**
+**Families (self-host both):**
 - Inter Tight — Display (variable, OFL)
-- Inter — Body & UI (variable, OFL)
-- JetBrains Mono — Data (Apache 2.0)
+- Inter — Body, UI, eyebrows, tabular data (variable, OFL)
+
+> **Note:** JetBrains Mono was removed from the system. The `--font-mono` token is retained for backwards compatibility but now resolves to Inter. Use Inter with the `tnum` OpenType feature (`font-variant-numeric: tabular-nums`) for tables, KPI strips, financial numbers, and tickers.
 
 ### Scale (fluid)
 | Token | Mobile | Desktop | Family | Weight | Use |
@@ -165,7 +166,7 @@ Code-ready reference for color, type, spacing, motion, and form. For voice/copy 
 | `--font-body-sm` | 14 | 15 | Inter | 400 | Captions |
 | `--font-micro` | 12 | 13 | Inter | 500 | Footnotes, ISI |
 | `--font-eyebrow` | 11 | 12 | Inter | 600 | Section labels (uppercase) |
-| `--font-mono-md` | 14 | 15 | JetBrains | 400 | Data, codes |
+| `--font-mono-md` | 14 | 15 | Inter (`tnum`) | 400 | Data, codes |
 
 ### Letter-spacing
 | Range | Value |
@@ -359,7 +360,7 @@ Code-ready reference for color, type, spacing, motion, and form. For voice/copy 
   /* Type */
   --font-display: 'Inter Tight', -apple-system, sans-serif;
   --font-body: 'Inter', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font-mono: 'Inter', -apple-system, sans-serif;
 
   --font-display-2xl: clamp(3.5rem, 8vw, 7rem);
   --font-display-xl:  clamp(2.75rem, 6vw, 5.5rem);

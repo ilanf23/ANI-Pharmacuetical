@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ANI Pharmaceuticals (NASDAQ: ANIP) — a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions." />
-  <title>About ANI — A diversified biopharmaceutical company building toward a rare-disease future</title>
+  <meta name="description" content="ANI Pharmaceuticals (NASDAQ: ANIP) - a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions." />
+  <title>About ANI - A diversified biopharmaceutical company building toward a rare-disease future</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -16,7 +16,7 @@
 
   <style>
     /* ===========================================================
-       ABOUT PAGE — EDITORIAL / RESTRAINED
+       ABOUT PAGE - EDITORIAL / RESTRAINED
        Type-led, asymmetric, generous whitespace.
        =========================================================== */
 
@@ -39,7 +39,7 @@
     .breadcrumb li[aria-current="page"] { color: var(--charcoal-800); font-weight: 500; }
     .breadcrumb-sep { color: var(--steel-300); }
 
-    /* ----- About hero — typographic, asymmetric ----- */
+    /* ----- About hero - typographic, asymmetric ----- */
     .about-hero {
       background: var(--bone-200);
       padding: var(--space-9) 0 var(--space-10);
@@ -102,7 +102,7 @@
       margin-top: var(--space-7);
     }
 
-    /* ----- Stakeholder routing — minimal four-column rule ----- */
+    /* ----- Stakeholder routing - minimal four-column rule ----- */
     .stakeholders {
       background: var(--bone-200);
       border-top: 1px solid var(--border-subtle);
@@ -281,7 +281,7 @@
       font-weight: 500;
     }
 
-    /* ----- KPI band — single dark indigo strip ----- */
+    /* ----- KPI band - single dark indigo strip ----- */
     .about-kpi {
       background: var(--indigo-900);
       color: var(--bone-100);
@@ -1240,7 +1240,15 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about" aria-current="page">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about" aria-current="page">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
@@ -1331,12 +1339,12 @@
         <article class="chapter">
           <div class="chapter__meta">
             <span class="chapter__num">Chapter 01</span>
-            <span class="chapter__years">2001 — 2020</span>
+            <span class="chapter__years">2001 - 2020</span>
           </div>
           <div class="chapter__body">
             <h3 class="chapter__title">A generics manufacturer from the start.</h3>
             <p class="chapter__text">
-              ANI was founded as a U.S.-based generics maker in Baudette, Minnesota — a small town with a big bet: that disciplined manufacturing on American soil could compete on quality, price, and supply reliability for two decades and counting.
+              ANI was founded as a U.S.-based generics maker in Baudette, Minnesota - a small town with a big bet: that disciplined manufacturing on American soil could compete on quality, price, and supply reliability for two decades and counting.
             </p>
             <blockquote class="chapter__quote">
               "We didn't set out to be the largest. We set out to make medicines we'd be willing to sign our names to."
@@ -1348,12 +1356,12 @@
         <article class="chapter">
           <div class="chapter__meta">
             <span class="chapter__num">Chapter 02</span>
-            <span class="chapter__years">2020 — 2022</span>
+            <span class="chapter__years">2020 - 2022</span>
           </div>
           <div class="chapter__body">
-            <h3 class="chapter__title">Cortrophin Gel returns &mdash; the first new ACTH option in 70 years.</h3>
+            <h3 class="chapter__title">Cortrophin Gel returns - the first new ACTH option in 70 years.</h3>
             <p class="chapter__text">
-              In 2022, ANI relaunched Cortrophin&reg; Gel: the first new repository corticotropin therapy approved in the United States in seven decades. A rare-disease franchise was built around it &mdash; and the company's center of gravity began to shift.
+              In 2022, ANI relaunched Cortrophin&reg; Gel: the first new repository corticotropin therapy approved in the United States in seven decades. A rare-disease franchise was built around it - and the company's center of gravity began to shift.
             </p>
             <blockquote class="chapter__quote">
               "One molecule. Eight indications. A market that had been served by a single supplier for 70 years."
@@ -1365,12 +1373,12 @@
         <article class="chapter">
           <div class="chapter__meta">
             <span class="chapter__num">Chapter 03</span>
-            <span class="chapter__years">2024 — 2025</span>
+            <span class="chapter__years">2024 - 2025</span>
           </div>
           <div class="chapter__body">
             <h3 class="chapter__title">ILUVIEN, YUTIQ, and a portfolio that compounds.</h3>
             <p class="chapter__text">
-              The 2024 acquisition of Alimera Sciences added ILUVIEN&reg; and YUTIQ&reg; to the rare-disease portfolio, deepening ANI's ophthalmology presence and bringing the rare-disease share of revenue toward 60%. By 2025, the rare-disease segment was no longer the future of the business &mdash; it was the present.
+              The 2024 acquisition of Alimera Sciences added ILUVIEN&reg; and YUTIQ&reg; to the rare-disease portfolio, deepening ANI's ophthalmology presence and bringing the rare-disease share of revenue toward 60%. By 2025, the rare-disease segment was no longer the future of the business - it was the present.
             </p>
             <blockquote class="chapter__quote">
               "Three FDA-inspected facilities. Two ophthalmology implants. Eight Cortrophin indications. One company writing the next chapter, not the same one."
@@ -1449,7 +1457,7 @@
             <span class="context__label">§03 / Where we stand</span>
             <h2 id="context-title" class="context__title">The first new ACTH therapy in <em>70 years</em>.</h2>
             <p class="context__body">
-              For seven decades, repository corticotropin had a single U.S. supplier. ANI's relaunch of Cortrophin&reg; Gel ended that. Today, ANI is the only U.S.-based biopharmaceutical company commercializing a repository corticotropin therapy — and the only one offering it at a competitive WAC against the long-standing alternative.
+              For seven decades, repository corticotropin had a single U.S. supplier. ANI's relaunch of Cortrophin&reg; Gel ended that. Today, ANI is the only U.S.-based biopharmaceutical company commercializing a repository corticotropin therapy - and the only one offering it at a competitive WAC against the long-standing alternative.
             </p>
             <p class="context__source">Source: FDA NDA approval &middot; ANI commercial filings, 2022–2026</p>
           </div>
@@ -1481,7 +1489,7 @@
             <span class="dual__eyebrow">Cortrophin In Your Corner</span>
             <h2 class="dual__title">Patient support that stays with you between doses.</h2>
             <p class="dual__text">
-              Help understanding your prescription, navigating insurance, and getting started on Cortrophin&reg; Gel — with a real person on the line, not a chatbot. Available to eligible U.S. patients.
+              Help understanding your prescription, navigating insurance, and getting started on Cortrophin&reg; Gel - with a real person on the line, not a chatbot. Available to eligible U.S. patients.
             </p>
             <a class="dual__phone" href="tel:18883225188">
               <span class="dual__phone-label">Cortrophin In Your Corner</span>
@@ -1498,7 +1506,7 @@
         <header>
           <h2 id="pillars-title" class="pillars__title">Four pillars. <em>One</em> system.</h2>
           <p class="pillars__lead">
-            How ANI shows up — internally for every team, externally for every audience. Not slogans. Operating principles.
+            How ANI shows up - internally for every team, externally for every audience. Not slogans. Operating principles.
           </p>
         </header>
         <div class="pillars__grid">
@@ -1515,7 +1523,7 @@
           <article class="pillar">
             <div class="pillar__letter">E / 03</div>
             <h3 class="pillar__name">Earned</h3>
-            <p class="pillar__text">We don't claim — we demonstrate. Numbers over adjectives. Evidence over enthusiasm. Outcomes over optics.</p>
+            <p class="pillar__text">We don't claim - we demonstrate. Numbers over adjectives. Evidence over enthusiasm. Outcomes over optics.</p>
           </article>
           <article class="pillar">
             <div class="pillar__letter">E / 04</div>
@@ -1659,7 +1667,7 @@
             <h3 class="ceo__name">Nikhil Lalwani</h3>
             <p class="ceo__title">Joined 2021 &middot; Led the 2022 Cortrophin relaunch and the 2024 Alimera Sciences acquisition.</p>
             <p class="ceo__bio">
-              Nikhil leads ANI's transition from generics manufacturer to diversified rare-disease company. Prior to ANI, he held senior commercial and corporate development roles in specialty pharmaceuticals. His tenure has been defined by disciplined capital allocation and a clear thesis: that a U.S.-based manufacturer with rare-disease assets can serve patients others overlook — profitably.
+              Nikhil leads ANI's transition from generics manufacturer to diversified rare-disease company. Prior to ANI, he held senior commercial and corporate development roles in specialty pharmaceuticals. His tenure has been defined by disciplined capital allocation and a clear thesis: that a U.S.-based manufacturer with rare-disease assets can serve patients others overlook - profitably.
             </p>
           </div>
         </article>
@@ -1696,7 +1704,7 @@
           <span class="csr__label">§07 / Responsibility</span>
           <h2 id="csr-title" class="csr__title">The work, beyond <em>the work</em>.</h2>
           <p class="csr__lead">
-            Three commitments. Each one operational, not aspirational — measurable, sourced, and reported in our annual responsibility report.
+            Three commitments. Each one operational, not aspirational - measurable, sourced, and reported in our annual responsibility report.
           </p>
         </header>
         <div class="csr__grid">
@@ -1786,7 +1794,7 @@
             <div class="timeline__year">2025</div>
             <div>
               <h3 class="timeline__entry-title">Rare disease crosses 50% of revenue mix</h3>
-              <p class="timeline__entry-text">The pivot is no longer the future — it's the present. Generics and established brands continue funding rare-disease investment.</p>
+              <p class="timeline__entry-text">The pivot is no longer the future - it's the present. Generics and established brands continue funding rare-disease investment.</p>
             </div>
           </li>
           <li class="timeline__item">
@@ -1854,7 +1862,7 @@
       <div class="container">
         <h2 id="careers-title" class="careers-band__title">The work is rare. The impact is <em>real</em>.</h2>
         <p class="careers-band__sub">
-          Roles across commercial, manufacturing, R&amp;D, and corporate — in Baudette MN, East Windsor NJ, Oakville ON, and remote.
+          Roles across commercial, manufacturing, R&amp;D, and corporate - in Baudette MN, East Windsor NJ, Oakville ON, and remote.
         </p>
         <div class="careers-band__actions">
           <a class="btn btn--primary" href="/careers">See open roles →</a>

@@ -4,15 +4,584 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The work is rare. The impact is real. ANI Pharmaceuticals careers across manufacturing, commercial, and R&D." />
-  <title>Careers — ANI Pharmaceuticals</title>
+  <title>Careers - ANI Pharmaceuticals</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
   <link rel="stylesheet" href="styles/components.css" />
+  <style>
+    .careers-hero {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      padding: clamp(4rem, 8vw, 7rem) 0 var(--space-8);
+      color: white;
+      background: var(--indigo-900);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .careers-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(90deg, rgba(8, 6, 42, 0.92) 0%, rgba(8, 6, 42, 0.74) 43%, rgba(8, 6, 42, 0.22) 100%),
+        url("/assets/photo/hero-family-3.jpg") center / cover no-repeat;
+      transform: scale(1.04);
+      animation: heroDrift 18s var(--ease-standard) infinite alternate;
+    }
+    .careers-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      z-index: -2;
+      background: linear-gradient(0deg, var(--bone-200), rgba(247, 245, 241, 0));
+    }
+    .careers-hero__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 0.72fr);
+      gap: var(--space-8);
+      align-items: center;
+    }
+    .careers-hero__crumb {
+      display: inline-flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+      font-size: var(--font-eyebrow);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--saffron-300);
+    }
+    .careers-hero__crumb a { color: rgba(255,255,255,0.72); }
+    .careers-hero__title {
+      max-width: 11ch;
+      margin: 0;
+      color: white;
+      font-size: clamp(4rem, 10vw, 8.6rem);
+      line-height: 0.88;
+      letter-spacing: 0;
+    }
+    .careers-hero__title em {
+      color: var(--saffron-300);
+      font-style: italic;
+    }
+    .careers-hero__sub {
+      max-width: 54ch;
+      margin: var(--space-5) 0 0;
+      color: rgba(255,255,255,0.82);
+      font-size: var(--font-body-lg);
+      line-height: 1.55;
+    }
+    .careers-hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    .careers-hero__metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(720px, 100%);
+      margin-top: var(--space-8);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.16);
+    }
+    .careers-hero__metric {
+      padding: var(--space-5);
+      background: rgba(8, 6, 42, 0.62);
+      backdrop-filter: blur(14px);
+    }
+    .careers-hero__metric strong {
+      display: block;
+      color: white;
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 3vw, 2.6rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .careers-hero__metric span {
+      display: block;
+      margin-top: var(--space-2);
+      color: rgba(255,255,255,0.74);
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+    .careers-hero__photo-stack {
+      position: relative;
+      min-height: 620px;
+    }
+    .careers-hero__photo {
+      position: absolute;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: var(--radius-md);
+      box-shadow: 0 26px 70px rgba(0,0,0,0.34);
+      animation: floatCard 7s var(--ease-standard) infinite alternate;
+    }
+    .careers-hero__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.04) contrast(1.03);
+    }
+    .careers-hero__photo--one {
+      top: 0;
+      right: 6%;
+      width: min(430px, 78%);
+      aspect-ratio: 4 / 5;
+    }
+    .careers-hero__photo--two {
+      left: 0;
+      bottom: 15%;
+      width: min(330px, 56%);
+      aspect-ratio: 4 / 3;
+      animation-delay: -2s;
+    }
+    .careers-hero__photo--three {
+      right: 0;
+      bottom: 0;
+      width: min(285px, 50%);
+      aspect-ratio: 1 / 1;
+      animation-delay: -4s;
+    }
+    .careers-hero__pulse {
+      position: absolute;
+      left: 8%;
+      top: 10%;
+      width: 114px;
+      height: 114px;
+      border: 1px solid rgba(249,199,108,0.58);
+      border-radius: 50%;
+      animation: pulseRing 2.8s var(--ease-standard) infinite;
+    }
+
+    .careers-ticker {
+      background: var(--charcoal-900);
+      color: white;
+      overflow: hidden;
+      padding: var(--space-4) 0;
+    }
+    .careers-ticker__track {
+      display: flex;
+      width: max-content;
+      animation: ticker 34s linear infinite;
+    }
+    .careers-ticker__list {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      list-style: none;
+      padding: 0 var(--space-6) 0 0;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.7vw, 2.45rem);
+      font-weight: 600;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .careers-ticker__list li::after {
+      content: "/";
+      margin-left: var(--space-6);
+      color: var(--saffron-300);
+    }
+
+    .careers-section {
+      position: relative;
+      padding: var(--space-10) 0;
+      overflow: hidden;
+    }
+    .careers-section--white { background: var(--bone-100); }
+    .careers-section--teal { background: linear-gradient(180deg, var(--teal-50), var(--bone-200)); }
+    .careers-section--dark { background: var(--indigo-700); color: white; }
+    .careers-section--dark .display-heading,
+    .careers-section--dark h2,
+    .careers-section--dark h3 { color: white; }
+    .careers-section--dark .display-lead,
+    .careers-section--dark p { color: rgba(255,255,255,0.78); }
+    .careers-split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: var(--space-8);
+      align-items: center;
+    }
+    .careers-panel {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      background: rgba(255,254,251,0.86);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .careers-panel__image {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .careers-panel__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 900ms var(--ease-standard);
+    }
+    .careers-panel:hover .careers-panel__image img { transform: scale(1.045); }
+    .careers-panel__body { padding: var(--space-6); }
+    .careers-panel__body h3 {
+      margin: 0 0 var(--space-3);
+      color: var(--indigo-700);
+      font-size: var(--font-heading-lg);
+    }
+    .careers-panel__body p { margin: 0; color: var(--steel-700); }
+
+    .career-orbit {
+      position: relative;
+      min-height: 560px;
+    }
+    .career-orbit__center {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 190px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      color: white;
+      background: var(--indigo-700);
+      box-shadow: var(--shadow-lg);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-align: center;
+      z-index: 2;
+    }
+    .career-orbit__ring {
+      position: absolute;
+      inset: 8%;
+      border: 1px dashed rgba(49,46,129,0.24);
+      border-radius: 50%;
+      animation: spin 36s linear infinite;
+    }
+    .career-orbit__item {
+      position: absolute;
+      width: min(240px, 42%);
+      min-height: 138px;
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+      background: var(--bone-100);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--duration-default) var(--ease-standard), box-shadow var(--duration-default) var(--ease-standard);
+    }
+    .career-orbit__item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .career-orbit__item:nth-of-type(2) { left: 2%; top: 5%; }
+    .career-orbit__item:nth-of-type(3) { right: 0; top: 13%; }
+    .career-orbit__item:nth-of-type(4) { left: 0; bottom: 9%; }
+    .career-orbit__item:nth-of-type(5) { right: 6%; bottom: 0; }
+    .career-orbit__item strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--indigo-700);
+      font-family: var(--font-display);
+      font-size: 1.22rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+    .career-orbit__item span {
+      color: var(--steel-700);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .careers-chart-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: var(--space-5);
+      margin-top: var(--space-7);
+    }
+    .chart-card {
+      position: relative;
+      padding: var(--space-6);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.075);
+      overflow: hidden;
+    }
+    .chart-card h3 {
+      margin: 0 0 var(--space-2);
+      font-size: var(--font-heading-md);
+    }
+    .chart-card p {
+      max-width: 54ch;
+      margin: 0 0 var(--space-6);
+      font-size: 0.92rem;
+    }
+    .bar-chart {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .bar-chart__row {
+      display: grid;
+      grid-template-columns: 132px 1fr 48px;
+      gap: var(--space-3);
+      align-items: center;
+      color: white;
+      font-size: 0.88rem;
+    }
+    .bar-chart__track {
+      height: 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.12);
+      overflow: hidden;
+    }
+    .bar-chart__fill {
+      display: block;
+      width: var(--value);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal-300), var(--saffron-300));
+      transition: width 1200ms var(--ease-standard);
+    }
+    .is-visible .bar-chart__fill { width: var(--value); }
+    .donut {
+      width: min(290px, 100%);
+      margin: 0 auto;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: conic-gradient(var(--saffron-300) 0 38%, var(--teal-300) 38% 66%, var(--indigo-200) 66% 85%, rgba(255,255,255,0.2) 85% 100%);
+      display: grid;
+      place-items: center;
+      animation: softTurn 10s linear infinite;
+    }
+    .donut::after {
+      content: "Many paths";
+      display: grid;
+      place-items: center;
+      width: 58%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--indigo-700);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      animation: softTurn 10s linear infinite reverse;
+      text-align: center;
+    }
+    .donut-legend {
+      display: grid;
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+    }
+    .donut-legend span {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: rgba(255,255,255,0.82);
+      font-size: 0.9rem;
+    }
+    .donut-legend i {
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+    }
+
+    .life-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-7);
+    }
+    .life-tile {
+      position: relative;
+      min-height: 320px;
+      grid-column: span 4;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: var(--charcoal-900);
+      box-shadow: var(--shadow-sm);
+    }
+    .life-tile--wide { grid-column: span 8; }
+    .life-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.82;
+      transition: transform 900ms var(--ease-standard), opacity 900ms var(--ease-standard);
+    }
+    .life-tile:hover img {
+      transform: scale(1.05);
+      opacity: 0.7;
+    }
+    .life-tile__copy {
+      position: absolute;
+      inset: auto var(--space-5) var(--space-5);
+      color: white;
+    }
+    .life-tile__copy h3 {
+      max-width: 15ch;
+      margin-bottom: var(--space-2);
+      color: white;
+      font-size: var(--font-heading-lg);
+    }
+    .life-tile__copy p {
+      max-width: 42ch;
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.92rem;
+    }
+
+    .fraud-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: var(--space-7);
+      border: 1px solid var(--border-default);
+      background: var(--border-default);
+    }
+    .fraud-strip__item {
+      padding: var(--space-5);
+      background: var(--bone-100);
+    }
+    .fraud-strip__item strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--indigo-700);
+    }
+    .fraud-strip__item span {
+      color: var(--steel-700);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .careers-final {
+      position: relative;
+      padding: var(--space-10) 0;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(8,6,42,0.94), rgba(8,6,42,0.56)),
+        url("/assets/photo/hero-family-3.jpg") center / cover no-repeat;
+      overflow: hidden;
+    }
+    .careers-final__inner {
+      max-width: 790px;
+    }
+    .careers-final h2 {
+      color: white;
+      font-size: clamp(3rem, 7vw, 6.6rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+      margin-bottom: var(--space-5);
+    }
+    .careers-final p {
+      max-width: 52ch;
+      color: rgba(255,255,255,0.82);
+      font-size: var(--font-body-lg);
+      margin-bottom: var(--space-6);
+    }
+
+    [data-reveal] {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 700ms var(--ease-standard), transform 700ms var(--ease-standard);
+    }
+    .careers-motion [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.04) translate3d(0,0,0); }
+      to { transform: scale(1.09) translate3d(-1.5%, -1%, 0); }
+    }
+    @keyframes floatCard {
+      from { transform: translate3d(0, 0, 0) rotate(-0.4deg); }
+      to { transform: translate3d(0, -18px, 0) rotate(0.6deg); }
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(0.7); opacity: 0; }
+      35% { opacity: 0.85; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    @keyframes ticker {
+      to { transform: translateX(-50%); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes softTurn {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1024px) {
+      .careers-hero__grid,
+      .careers-split,
+      .careers-chart-grid {
+        grid-template-columns: 1fr;
+      }
+      .careers-hero__photo-stack { min-height: 520px; }
+      .career-orbit { min-height: auto; display: grid; gap: var(--space-4); }
+      .career-orbit__center,
+      .career-orbit__ring,
+      .career-orbit__item {
+        position: static;
+        transform: none;
+        width: auto;
+      }
+      .career-orbit__center {
+        width: 100%;
+        aspect-ratio: auto;
+        min-height: 100px;
+        border-radius: var(--radius-md);
+      }
+      .career-orbit__ring { display: none; }
+      .life-tile,
+      .life-tile--wide { grid-column: span 6; }
+      .fraud-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .careers-hero { min-height: auto; }
+      .careers-hero__metrics,
+      .fraud-strip { grid-template-columns: 1fr; }
+      .careers-hero__photo-stack { min-height: 420px; }
+      .careers-hero__photo--one { width: 82%; right: 0; }
+      .careers-hero__photo--two { width: 58%; bottom: 11%; }
+      .careers-hero__photo--three { width: 50%; }
+      .bar-chart__row { grid-template-columns: 1fr; gap: var(--space-2); }
+      .life-tile,
+      .life-tile--wide { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .careers-hero::before,
+      .careers-hero__photo,
+      .careers-hero__pulse,
+      .careers-ticker__track,
+      .career-orbit__ring,
+      .donut,
+      .donut::after {
+        animation: none !important;
+      }
+      .careers-motion [data-reveal],
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+      .bar-chart__fill { width: var(--value); }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -24,10 +593,18 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
-          <a href="/careers">We're Hiring</a>
+          <a href="/careers" aria-current="page">We're Hiring</a>
           <a href="/contact">Contact</a>
         </nav>
       </div>
@@ -36,92 +613,183 @@
 
   <main id="main">
 
-    <section class="page-header">
+    <section class="careers-hero" aria-labelledby="careers-title">
       <div class="container">
-        <div class="page-header__inner">
-          <p class="page-header__breadcrumb">
+        <div class="careers-hero__grid">
+          <div>
+            <p class="careers-hero__crumb">
             <a href="/">ANI</a>
-            <span class="page-header__breadcrumb-sep">/</span>
-            <span class="page-header__breadcrumb-current">Careers</span>
-          </p>
-          <h1 class="page-header__heading">
-            The work is rare. <em>The impact is real.</em>
-          </h1>
-          <hr class="page-header__rule" />
-          <p class="page-header__sub">
-            We make medicines for people who don't have many other options. If that pulls at you, keep reading.
-          </p>
-          <div class="page-header__cta">
-            <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles</a>
-            <a class="btn btn--ghost" href="/benefits">Career benefits →</a>
+              <span>/</span>
+              <span>Careers</span>
+            </p>
+            <h1 id="careers-title" class="careers-hero__title">The work is rare. <em>The impact is real.</em></h1>
+            <p class="careers-hero__sub">
+              Build medicines, launch therapies, and run the systems that get treatment to people who cannot wait for ordinary.
+            </p>
+            <div class="careers-hero__cta">
+              <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles</a>
+              <a class="btn btn--ghost" href="/benefits" style="color:white;">Career benefits →</a>
+            </div>
+            <div class="careers-hero__metrics" aria-label="ANI career snapshot">
+              <div class="careers-hero__metric">
+                <strong>200+</strong>
+                <span>generics plus rare-disease medicines</span>
+              </div>
+              <div class="careers-hero__metric">
+                <strong>4</strong>
+                <span>major U.S. operating hubs</span>
+              </div>
+              <div class="careers-hero__metric">
+                <strong>1989</strong>
+                <span>Baudette roots and manufacturing pride</span>
+              </div>
+            </div>
+          </div>
+          <div class="careers-hero__photo-stack" aria-hidden="true">
+            <span class="careers-hero__pulse"></span>
+            <figure class="careers-hero__photo careers-hero__photo--one">
+              <img src="/assets/photo/hero-family-2.jpg" alt="" />
+            </figure>
+            <figure class="careers-hero__photo careers-hero__photo--two">
+              <img src="/assets/photo/hero-family-4.jpg" alt="" />
+            </figure>
+            <figure class="careers-hero__photo careers-hero__photo--three">
+              <img src="/assets/photo/hero-family-5.jpg" alt="" />
+            </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="careers-ticker" aria-label="Teams hiring at ANI">
+      <div class="careers-ticker__track">
+        <ul class="careers-ticker__list">
+          <li>Manufacturing</li>
+          <li>Quality</li>
+          <li>Engineering</li>
+          <li>Rare Disease Commercial</li>
+          <li>R&amp;D</li>
+          <li>Regulatory</li>
+          <li>Supply Chain</li>
+          <li>Corporate</li>
+        </ul>
+        <ul class="careers-ticker__list" aria-hidden="true">
+          <li>Manufacturing</li>
+          <li>Quality</li>
+          <li>Engineering</li>
+          <li>Rare Disease Commercial</li>
+          <li>R&amp;D</li>
+          <li>Regulatory</li>
+          <li>Supply Chain</li>
+          <li>Corporate</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="careers-section careers-section--white">
       <div class="container">
-        <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--brand">What you'd be joining</span>
-          <h2 class="display-heading display-heading--center">Three businesses. One operating company.</h2>
+        <div class="careers-split">
+          <div data-reveal>
+            <span class="kicker kicker--brand">What you'd be joining</span>
+            <h2 class="display-heading">Three engines. <em>One operating company.</em></h2>
+            <p class="display-lead">
+              ANI is not one lane. It is manufacturing discipline, commercial urgency, R&amp;D problem-solving, and the corporate systems that keep an FDA-regulated public company moving.
+            </p>
+            <a class="link-arrow" href="https://jobs.anipharmaceuticals.com">Search current openings →</a>
+          </div>
+          <div class="career-orbit" data-reveal>
+            <div class="career-orbit__ring" aria-hidden="true"></div>
+            <div class="career-orbit__center">ANI<br />careers</div>
+            <div class="career-orbit__item">
+              <strong>Make</strong>
+              <span>Baudette manufacturing teams run the lines where medicine becomes real.</span>
+            </div>
+            <div class="career-orbit__item">
+              <strong>Commercialize</strong>
+              <span>Rare Disease and Generics teams connect therapies with patients and providers.</span>
+            </div>
+            <div class="career-orbit__item">
+              <strong>Improve</strong>
+              <span>Quality, engineering, and regulatory teams tighten the work every day.</span>
+            </div>
+            <div class="career-orbit__item">
+              <strong>Operate</strong>
+              <span>Finance, legal, HR, IT, and BD keep a complex company on the rails.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="careers-section careers-section--dark">
+      <div class="container">
+        <header class="section__title-row" data-reveal>
+          <span class="kicker kicker--accent">The shape of the work</span>
+          <h2 class="display-heading">More than a job list. <em>A working system.</em></h2>
+          <p class="display-lead">
+            A careers page should show momentum. These charts are a directional view of how the work comes together across the company.
+          </p>
         </header>
-        <div class="feature-card-grid">
-          <article class="feature-card">
-            <h3 class="feature-card__title">Make.</h3>
-            <p class="feature-card__text">Two manufacturing campuses in Baudette, MN run our solid- and liquid-dose lines. East Windsor, NJ runs R&amp;D and specialty work. Operators, engineers, QA, supply chain — this is where the medicine actually gets made.</p>
+        <div class="careers-chart-grid">
+          <article class="chart-card" data-reveal>
+            <h3>Where your impact shows up</h3>
+            <p>From molecule to shipment to access, the work is distributed across teams that have to move together.</p>
+            <div class="bar-chart" aria-label="Directional impact chart">
+              <div class="bar-chart__row">
+                <span>Manufacturing</span>
+                <span class="bar-chart__track"><span class="bar-chart__fill" style="--value: 92%;"></span></span>
+                <strong>92</strong>
+              </div>
+              <div class="bar-chart__row">
+                <span>Quality systems</span>
+                <span class="bar-chart__track"><span class="bar-chart__fill" style="--value: 84%;"></span></span>
+                <strong>84</strong>
+              </div>
+              <div class="bar-chart__row">
+                <span>Commercial reach</span>
+                <span class="bar-chart__track"><span class="bar-chart__fill" style="--value: 76%;"></span></span>
+                <strong>76</strong>
+              </div>
+              <div class="bar-chart__row">
+                <span>R&amp;D problem solving</span>
+                <span class="bar-chart__track"><span class="bar-chart__fill" style="--value: 68%;"></span></span>
+                <strong>68</strong>
+              </div>
+              <div class="bar-chart__row">
+                <span>Corporate backbone</span>
+                <span class="bar-chart__track"><span class="bar-chart__fill" style="--value: 61%;"></span></span>
+                <strong>61</strong>
+              </div>
+            </div>
           </article>
-          <article class="feature-card">
-            <h3 class="feature-card__title">Commercialize.</h3>
-            <p class="feature-card__text">Princeton, NJ runs the Rare Disease and Generics commercial teams — sales, market access, medical affairs, marketing. The patient-facing work happens here.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="feature-card__title">Operate.</h3>
-            <p class="feature-card__text">Finance, legal, HR, IT, BD — the work that keeps an FDA-regulated public company on the rails.</p>
+          <article class="chart-card" data-reveal>
+            <h3>Career pathways</h3>
+            <p>Roles span hands-on operations, science, commercial work, and business infrastructure.</p>
+            <div class="donut" role="img" aria-label="Circular chart showing multiple career pathways"></div>
+            <div class="donut-legend">
+              <span><i style="background: var(--saffron-300);"></i> Operations and manufacturing</span>
+              <span><i style="background: var(--teal-300);"></i> Science, quality, regulatory</span>
+              <span><i style="background: var(--indigo-200);"></i> Commercial and market access</span>
+              <span><i style="background: rgba(255,255,255,0.42);"></i> Corporate functions</span>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section therapeutic-section">
+    <section class="careers-section careers-section--teal">
       <div class="container">
-        <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--brand">Why people join. Why they stay.</span>
-          <h2 class="display-heading display-heading--center">Five reasons. <em>No platitudes.</em></h2>
-        </header>
-        <div class="card-grid card-grid--two">
-          <article class="card">
-            <span class="tag tag--third">01</span>
-            <h3 class="card__title">Real medicine. Real patients.</h3>
-            <p class="card__text">Cortrophin, ILUVIEN, 200+ generics. The list is on the website.</p>
-          </article>
-          <article class="card">
-            <span class="tag tag--third">02</span>
-            <h3 class="card__title">U.S.-based, U.S.-owned.</h3>
-            <p class="card__text">Our facilities are here. Our jobs are here. Our supply chain is here.</p>
-          </article>
-          <article class="card">
-            <span class="tag tag--third">03</span>
-            <h3 class="card__title">Small enough to see your work ship.</h3>
-            <p class="card__text">Big enough to ship at scale.</p>
-          </article>
-          <article class="card">
-            <span class="tag tag--third">04</span>
-            <h3 class="card__title">Manufacturing pride is not a metaphor.</h3>
-            <p class="card__text">We are proud of what comes off the line.</p>
-          </article>
-          <article class="card">
-            <span class="tag tag--accent">05</span>
-            <h3 class="card__title">Benefits that take energy seriously.</h3>
-            <p class="card__text">See <a href="/benefits">our full benefits package</a>.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="feature-row">
-          <div class="feature-row__content">
+        <div class="careers-split">
+          <div class="careers-panel" data-reveal>
+            <div class="careers-panel__image">
+              <img src="/assets/photo/hero-family-1.jpg" alt="Family gathered around a table" />
+            </div>
+            <div class="careers-panel__body">
+              <h3>Baudette, Minnesota</h3>
+              <p>Manufacturing roots, lakeside energy, and work that comes off the line with your name on it.</p>
+            </div>
+          </div>
+          <div data-reveal>
             <span class="kicker kicker--brand">Living in Baudette</span>
             <h2 class="display-heading">A real outdoors. <em>A real reason to be there.</em></h2>
             <p class="display-lead">
@@ -133,28 +801,70 @@
       </div>
     </section>
 
-    <section class="section therapeutic-section">
+    <section class="careers-section careers-section--white">
       <div class="container">
-        <header class="section__title-row section__title-row--center">
+        <header class="section__title-row section__title-row--center" data-reveal>
+          <span class="kicker kicker--brand">Why people join. Why they stay.</span>
+          <h2 class="display-heading display-heading--center">Real medicine. <em>Real lives.</em></h2>
+          <p class="display-lead display-lead--center">The work reaches patients, families, facilities, and communities. The page should feel like that.</p>
+        </header>
+        <div class="life-grid">
+          <article class="life-tile life-tile--wide" data-reveal>
+            <img src="/assets/photo/hero-family-1.jpg" alt="Family spending time outdoors" />
+            <div class="life-tile__copy">
+              <h3>Patients are not an abstraction.</h3>
+              <p>Cortrophin, ILUVIEN, YUTIQ, and 200+ generics connect daily execution to outcomes that matter.</p>
+            </div>
+          </article>
+          <article class="life-tile" data-reveal>
+            <img src="/assets/photo/hero-family-4.jpg" alt="Parent and child outdoors" />
+            <div class="life-tile__copy">
+              <h3>Small enough to see it ship.</h3>
+              <p>Big enough to manufacture and commercialize at scale.</p>
+            </div>
+          </article>
+          <article class="life-tile" data-reveal>
+            <img src="/assets/photo/hero-family-5.jpg" alt="People walking together outside" />
+            <div class="life-tile__copy">
+              <h3>Benefits with energy behind them.</h3>
+              <p><a class="link-arrow link-arrow--accent" href="/benefits">See the full benefits package →</a></p>
+            </div>
+          </article>
+          <article class="life-tile life-tile--wide" data-reveal>
+            <img src="/assets/photo/hero-family-3.jpg" alt="Family by the water" />
+            <div class="life-tile__copy">
+              <h3>U.S.-based. U.S.-owned.</h3>
+              <p>Facilities, jobs, supply chain, and accountability are close to home.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="careers-section careers-section--teal">
+      <div class="container">
+        <header class="section__title-row section__title-row--center" data-reveal>
           <span class="kicker kicker--brand">Heads up</span>
           <h2 class="display-heading display-heading--center">Two minutes on hiring fraud.</h2>
-          <p class="display-lead display-lead--center">
-            We've seen scams that impersonate ANI. To protect yourself:
-          </p>
+          <p class="display-lead display-lead--center">We've seen scams that impersonate ANI. Protect yourself before you reply.</p>
         </header>
-        <div class="feature-card-grid">
-          <article class="feature-card">
-            <p class="feature-card__text">Real ANI recruiters write from <strong>@anipharmaceuticals.com</strong> only.</p>
-          </article>
-          <article class="feature-card">
-            <p class="feature-card__text">Real ANI recruiters have verified LinkedIn profiles.</p>
-          </article>
-          <article class="feature-card">
-            <p class="feature-card__text">We never ask for payment, banking info, or sensitive financial data during hiring.</p>
-          </article>
-          <article class="feature-card">
-            <p class="feature-card__text">All real openings live at <strong>jobs.anipharmaceuticals.com</strong>. If your offer didn't follow this path, it isn't from us.</p>
-          </article>
+        <div class="fraud-strip" data-reveal>
+          <div class="fraud-strip__item">
+            <strong>Email domain</strong>
+            <span>Real ANI recruiters write from @anipharmaceuticals.com only.</span>
+          </div>
+          <div class="fraud-strip__item">
+            <strong>Verified profile</strong>
+            <span>Real ANI recruiters have verified LinkedIn profiles.</span>
+          </div>
+          <div class="fraud-strip__item">
+            <strong>No payment requests</strong>
+            <span>We never ask for payment, banking info, or sensitive financial data during hiring.</span>
+          </div>
+          <div class="fraud-strip__item">
+            <strong>Official openings</strong>
+            <span>All real openings live at jobs.anipharmaceuticals.com.</span>
+          </div>
         </div>
         <div class="cortrophin-actions" style="justify-content: center; margin-top: var(--space-6);">
           <a class="link-arrow" href="mailto:careers@anipharmaceuticals.com">Report a suspicious job offer →</a>
@@ -162,13 +872,12 @@
       </div>
     </section>
 
-    <section class="section section--dark medicines-section">
+    <section class="careers-final">
       <div class="container">
-        <div class="cta-light" style="background: transparent;">
-          <h2 class="display-heading display-heading--center" style="color: white;">Ready?</h2>
-          <div class="cta-light__actions">
-            <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles →</a>
-          </div>
+        <div class="careers-final__inner" data-reveal>
+          <h2>Ready to make the work real?</h2>
+          <p>Bring your expertise to a company where manufacturing, science, commercial work, and patient access all meet.</p>
+          <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles →</a>
         </div>
       </div>
     </section>
@@ -228,5 +937,27 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function initCareersMotion() {
+      const revealItems = document.querySelectorAll('[data-reveal]');
+      if (!revealItems.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+
+      revealItems.forEach((item) => observer.observe(item));
+    })();
+  </script>
 </body>
 </html>

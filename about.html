@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions." />
-  <title>About ANI Pharmaceuticals — Care, codified.</title>
+  <title>About ANI Pharmaceuticals - Care, codified.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -16,7 +16,7 @@
 
   <style>
     /* ===========================================================
-       PAGE: /about — page-specific composition
+       PAGE: /about - page-specific composition
        Reuses tokens + .container, .btn, .eyebrow, .footer, .nav
        =========================================================== */
 
@@ -32,11 +32,37 @@
     .crumbs a:hover { color: var(--text-link); }
     .crumbs__sep { margin: 0 var(--space-2); color: var(--steel-300); }
 
-    /* ---------- ABOUT HERO (dark) ---------- */
+    /* ---------- ABOUT HERO (dark, single team photo) ---------- */
     .about-hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
       background: var(--indigo-900);
       color: var(--bone-100);
       padding: var(--space-9) 0 var(--space-10);
+      min-height: 620px;
+    }
+    .about-hero > .container {
+      position: relative;
+      z-index: 2;
+    }
+    .about-hero__photo {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .about-hero__photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      /* Heavier scrim on left where text sits, lighter on right */
+      background:
+        linear-gradient(90deg, rgba(8,6,42,0.88) 0%, rgba(8,6,42,0.72) 38%, rgba(8,6,42,0.42) 70%, rgba(8,6,42,0.55) 100%),
+        linear-gradient(180deg, rgba(8,6,42,0.20) 0%, rgba(8,6,42,0.05) 50%, rgba(8,6,42,0.45) 100%);
     }
     .about-hero__eyebrow {
       display: inline-block;
@@ -121,6 +147,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: var(--space-4);
+    }
+    .audience-grid--secondary {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 720px;
+      margin-top: var(--space-6);
     }
     .audience-card {
       background: var(--bone-100);
@@ -305,6 +336,468 @@
       font-size: 0.75rem;
       color: rgba(247,245,241,0.45);
       letter-spacing: 0.02em;
+    }
+
+    /* ---------- HORIZONTAL-SCROLL TIMELINE (sticky pinned) ---------- */
+    .hscroll {
+      position: relative;
+      /* tall outer wrapper drives scroll progress */
+      height: 380vh;
+    }
+    .hscroll__sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bone-100);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      --hscroll-progress: 0;
+    }
+    .hscroll__rail {
+      display: flex;
+      gap: var(--space-6);
+      padding: 0 8vw 0 8vw;
+      will-change: transform;
+      transform: translate3d(calc(var(--hscroll-progress) * -75%), 0, 0);
+      transition: transform 0s;
+    }
+
+    .era-card {
+      flex: 0 0 min(640px, 80vw);
+      background: var(--bone-200);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--saffron-500);
+      border-radius: var(--radius-md);
+      padding: var(--space-7) var(--space-7) var(--space-7);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      box-shadow: var(--shadow-sm);
+      max-height: calc(100vh - 200px);
+      overflow: auto;
+    }
+    .era-card--01 { border-left-color: var(--indigo-500); }
+    .era-card--02 { border-left-color: var(--saffron-500); }
+    .era-card--03 { border-left-color: var(--teal-500); }
+    .era-card--04 { border-left-color: var(--charcoal-800); }
+
+    .era-card__head {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+    }
+    .era-card__num {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 2.75rem;
+      letter-spacing: -0.04em;
+      color: var(--indigo-700);
+      line-height: 1;
+      font-feature-settings: 'tnum';
+    }
+    .era-card__years {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      color: var(--steel-500);
+      text-transform: uppercase;
+    }
+    .era-card__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--indigo-700);
+      max-width: 22ch;
+    }
+    .era-card__lede {
+      font-size: var(--font-body-lg);
+      color: var(--text-primary);
+      font-weight: 500;
+      line-height: 1.45;
+      max-width: 50ch;
+    }
+    .era-card__copy {
+      font-size: var(--font-body-md);
+      color: var(--steel-700);
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    /* progress strip across the top of the sticky stage */
+    .hscroll__progress {
+      position: absolute;
+      top: var(--space-7);
+      left: 8vw;
+      right: 8vw;
+      height: 2px;
+      background: var(--border-default);
+      z-index: 2;
+    }
+    .hscroll__progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: calc(var(--hscroll-progress) * 100%);
+      background: var(--saffron-500);
+      transform-origin: left;
+    }
+    .hscroll__tick {
+      position: absolute;
+      top: -32px;
+      transform: translateX(-50%);
+      left: calc(var(--at) * 100%);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-500);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+    .hscroll__hint {
+      position: absolute;
+      bottom: var(--space-6);
+      right: 8vw;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-500);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: calc(1 - var(--hscroll-progress) * 1.2);
+      transition: opacity var(--duration-default) var(--ease-standard);
+      pointer-events: none;
+    }
+    .hscroll__fallback-note { display: none; }
+
+    /* On narrow / touch / no-pin devices, fall back to simple horizontal swipe rail. */
+    @media (max-width: 768px) {
+      .hscroll { height: auto; }
+      .hscroll__sticky {
+        position: static;
+        height: auto;
+        padding: var(--space-7) 0;
+      }
+      .hscroll__rail {
+        transform: none !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        padding: var(--space-4) var(--space-4) var(--space-7);
+      }
+      .era-card {
+        scroll-snap-align: start;
+        flex: 0 0 88vw;
+        max-height: none;
+      }
+      .hscroll__progress { display: none; }
+      .hscroll__hint { display: none; }
+      .hscroll__fallback-note {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--steel-500);
+        margin-bottom: var(--space-3);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hscroll { height: auto; }
+      .hscroll__sticky { position: static; height: auto; padding: var(--space-7) 0; }
+      .hscroll__rail {
+        transform: none !important;
+        flex-direction: column;
+        gap: var(--space-5);
+        padding: 0 var(--space-5);
+      }
+      .era-card { flex: 1 1 auto; max-height: none; }
+      .hscroll__progress, .hscroll__hint { display: none; }
+    }
+
+    /* ---------- FORKING PROMPT (full-bleed dark) ---------- */
+    .forking-prompt {
+      position: relative;
+      isolation: isolate;
+      background: var(--charcoal-900);
+      color: var(--bone-100);
+      padding: var(--space-9) 0 var(--space-10);
+      overflow: hidden;
+    }
+    .forking-prompt__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(80% 60% at 12% 0%, rgba(49,46,129,0.55), transparent 60%),
+        radial-gradient(60% 50% at 90% 100%, rgba(245,158,11,0.18), transparent 60%),
+        radial-gradient(45% 35% at 70% 30%, rgba(13,148,136,0.18), transparent 60%);
+    }
+    .forking-prompt > .container { position: relative; z-index: 1; }
+    .forking-prompt__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--saffron-300);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+    .forking-prompt__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.25rem, 4.5vw, 4rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      max-width: 16ch;
+    }
+    .forking-prompt__title em {
+      font-style: italic;
+      font-weight: inherit;
+      color: var(--saffron-300);
+    }
+    .forking-prompt__lead {
+      margin-top: var(--space-4);
+      max-width: 56ch;
+      font-size: var(--font-body-lg);
+      color: rgba(247,245,241,0.78);
+      line-height: 1.55;
+    }
+
+    .forking-grid {
+      margin-top: var(--space-7);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+    @media (max-width: 1100px) { .forking-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px)  { .forking-grid { grid-template-columns: 1fr; } }
+
+    .forking-tile {
+      position: relative;
+      background: rgba(247,245,241,0.04);
+      border: 1px solid rgba(247,245,241,0.12);
+      border-radius: var(--radius-md);
+      padding: var(--space-6) var(--space-5) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      min-height: 360px;
+      overflow: hidden;
+      transition: background var(--duration-default) var(--ease-standard),
+                  border-color var(--duration-default) var(--ease-standard),
+                  transform var(--duration-default) var(--ease-standard),
+                  box-shadow var(--duration-default) var(--ease-standard);
+      cursor: pointer;
+    }
+    .forking-tile:hover,
+    .forking-tile:focus-within {
+      background: rgba(247,245,241,0.07);
+      border-color: var(--saffron-500);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    }
+    .forking-tile::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--indigo-400);
+      transition: background var(--duration-default) var(--ease-standard);
+    }
+    .forking-tile--hcp::before      { background: var(--indigo-400); }
+    .forking-tile--patient::before  { background: var(--saffron-500); }
+    .forking-tile--investor::before { background: var(--teal-300); }
+    .forking-tile--talent::before   { background: var(--bone-100); }
+
+    .forking-tile__num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      color: rgba(247,245,241,0.4);
+    }
+    .forking-tile:hover .forking-tile__num,
+    .forking-tile:focus-within .forking-tile__num { color: var(--saffron-300); }
+
+    .forking-tile__role {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bone-100);
+    }
+    .forking-tile__pitch {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+      color: var(--bone-100);
+      margin: var(--space-2) 0 0;
+    }
+    .forking-tile__links {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-4) 0 0;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height var(--duration-slow) var(--ease-standard),
+                  opacity var(--duration-default) var(--ease-standard),
+                  margin var(--duration-default) var(--ease-standard);
+    }
+    .forking-tile:hover .forking-tile__links,
+    .forking-tile:focus-within .forking-tile__links {
+      max-height: 240px;
+      opacity: 1;
+    }
+    .forking-tile__links li {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: rgba(247,245,241,0.78);
+      padding: 4px 0 4px 16px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .forking-tile__links li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 1px;
+      background: var(--saffron-300);
+    }
+
+    .forking-tile__cta {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--saffron-300);
+      margin-top: auto;
+      padding-top: var(--space-4);
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+    .forking-tile__cta:hover { color: var(--saffron-500); }
+    .forking-tile__phone {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: rgba(247,245,241,0.6);
+      margin-top: var(--space-2);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .forking-tile__phone:hover { color: var(--bone-100); }
+    .forking-tile__chevron {
+      position: absolute;
+      top: var(--space-5);
+      right: var(--space-5);
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: rgba(247,245,241,0.3);
+      transform: translateX(0);
+      transition: transform var(--duration-default) var(--ease-standard),
+                  color var(--duration-default) var(--ease-standard);
+    }
+    .forking-tile:hover .forking-tile__chevron,
+    .forking-tile:focus-within .forking-tile__chevron {
+      transform: translateX(4px);
+      color: var(--saffron-300);
+    }
+
+    /* On touch / no hover, expand by default so links are reachable */
+    @media (hover: none) {
+      .forking-tile__links { max-height: 240px; opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .forking-tile,
+      .forking-tile__links,
+      .forking-tile__chevron { transition: none; }
+      .forking-tile__links { max-height: 240px; opacity: 1; }
+    }
+
+    /* ---------- COUNTERS BAND ---------- */
+    .counters-band {
+      background: var(--bone-100);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: var(--space-9) 0;
+    }
+    .counters-band__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--saffron-700);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-7);
+    }
+    .counters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-7);
+    }
+    @media (max-width: 1024px) { .counters-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); } }
+    @media (max-width: 540px)  { .counters-grid { grid-template-columns: 1fr; } }
+
+    .counter { display: flex; flex-direction: column; gap: var(--space-3); }
+    .counter__num {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--indigo-700);
+      font-feature-settings: 'tnum';
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.6s var(--ease-decelerate, cubic-bezier(0,0,0,1)),
+                  transform 0.6s var(--ease-decelerate, cubic-bezier(0,0,0,1));
+    }
+    .counter.is-revealed .counter__num { opacity: 1; transform: translateY(0); }
+    .counter__rule {
+      width: 0;
+      height: 3px;
+      background: var(--saffron-500);
+      border-radius: 2px;
+      transition: width 1.1s var(--ease-decelerate, cubic-bezier(0,0,0,1));
+    }
+    .counter.is-revealed .counter__rule { width: 56px; }
+    .counter__label {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      color: var(--steel-700);
+      max-width: 28ch;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .counter__rule { width: 56px !important; transition: none; }
+      .counter__num  { opacity: 1 !important; transform: none !important; transition: none; }
+    }
+
+    /* ---------- ITALIC EMPHASIS ON DISPLAY HEADINGS ---------- */
+    .about-hero__heading em,
+    .story-section__title em,
+    .pillars-section__title em,
+    .biz-section__title em,
+    .exec-section__title em,
+    .hubs-section__title em {
+      font-style: italic;
+      font-weight: inherit;
+      color: var(--saffron-700);
+    }
+    .facilities-section__title em,
+    .final-cta__title em {
+      font-style: italic;
+      font-weight: inherit;
+      color: var(--saffron-300);
     }
 
     /* ---------- ACTH CALLOUT ---------- */
@@ -564,6 +1057,13 @@
       font-size: 0.75rem;
       color: var(--steel-500);
       margin-top: var(--space-2);
+      letter-spacing: 0.02em;
+    }
+    .biz-card__source {
+      margin-top: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--steel-500);
       letter-spacing: 0.02em;
     }
 
@@ -933,15 +1433,19 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/who-we-are" aria-current="page">Who We Are</a>
-          <a href="/science">Our Science</a>
-          <a href="/medicines">Medicines</a>
-          <a href="/manufacturing">Manufacturing</a>
-          <a href="/news">News</a>
-          <a class="nav__ticker" href="/investors" style="display:inline-flex;gap:.5rem;align-items:center;font-family:var(--font-mono);font-size:.75rem;">
-            <span style="color:var(--saffron-700);font-weight:700;">NASDAQ: ANIP</span>
-            <span style="color:var(--text-primary);font-weight:600;">$80.39</span>
-          </a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about" aria-current="page">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
+          <a href="/products">Products</a>
+          <a href="/investors">Investors</a>
+          <a href="/careers">We're Hiring</a>
+          <a href="/contact">Contact</a>
         </nav>
       </div>
     </div>
@@ -962,13 +1466,15 @@
 
     <!-- ===== HERO ===== -->
     <section class="about-hero">
+      <!-- Swap src to a corporate team photo when one's available. -->
+      <div class="about-hero__photo" aria-hidden="true" style="background-image: url('/assets/photo/manufacturing-baudette.png');"></div>
       <div class="container">
         <span class="about-hero__eyebrow">About ANI Pharmaceuticals</span>
         <h1 class="about-hero__heading">
-          A diversified biopharmaceutical company building toward a rare-disease future.
+          A diversified biopharmaceutical company building toward a <em>rare-disease future</em>.
         </h1>
         <p class="about-hero__sub">
-          ANI Pharmaceuticals (NASDAQ: ANIP) develops, manufactures, and commercializes therapeutics for people living with rare and uncommon conditions — and the healthcare professionals who treat them. Founded in 2001 and headquartered in Baudette, Minnesota since 2010, we operate three FDA-inspected facilities and market a rare-disease franchise built around Cortrophin&reg; Gel and ILUVIEN&reg;.
+          ANI Pharmaceuticals (NASDAQ: ANIP) develops, manufactures, and commercializes therapeutics for people living with rare and uncommon conditions - and the healthcare professionals who treat them. Founded in 2001 and headquartered in Baudette, Minnesota since 2010, we operate three FDA-inspected facilities and market a rare-disease franchise built around Cortrophin&reg; Gel and ILUVIEN&reg;.
         </p>
         <div class="about-hero__cta">
           <a class="btn btn--primary" href="#our-story">Read Our Story →</a>
@@ -982,35 +1488,31 @@
       </div>
     </section>
 
-    <!-- ===== AUDIENCE CARDS ===== -->
-    <section class="audience-section">
+    <!-- ===== COUNTERS BAND (animated on viewport-enter) ===== -->
+    <section class="counters-band" aria-label="ANI by the numbers">
       <div class="container">
-        <p class="audience-section__eyebrow">/ Who are you visiting as?</p>
-        <div class="audience-grid">
-          <a class="audience-card" href="/hcp">
-            <span class="audience-card__tag">For HCPs</span>
-            <h3 class="audience-card__title">Healthcare Professionals</h3>
-            <p class="audience-card__text">Clinical resources, prescribing information, and peer-reviewed data.</p>
-            <span class="audience-card__link">Access HCP Resources →</span>
-          </a>
-          <a class="audience-card audience-card--patients" href="/patients">
-            <span class="audience-card__tag">For Patients</span>
-            <h3 class="audience-card__title">Patients &amp; Caregivers</h3>
-            <p class="audience-card__text">Support programs, treatment info, and resources for rare conditions.</p>
-            <span class="audience-card__link">Find Patient Resources →</span>
-          </a>
-          <a class="audience-card audience-card--investors" href="/investors">
-            <span class="audience-card__tag">For Investors</span>
-            <h3 class="audience-card__title">Investor Relations</h3>
-            <p class="audience-card__text">SEC filings, earnings, guidance, and shareholder info for ANIP.</p>
-            <span class="audience-card__link">View IR Portal →</span>
-          </a>
-          <a class="audience-card audience-card--talent" href="/careers">
-            <span class="audience-card__tag">For Talent</span>
-            <h3 class="audience-card__title">Careers</h3>
-            <p class="audience-card__text">Open roles, culture, and rare-disease work.</p>
-            <span class="audience-card__link">Explore Careers →</span>
-          </a>
+        <p class="counters-band__eyebrow">/ The shape of the company</p>
+        <div class="counters-grid">
+          <div class="counter">
+            <div class="counter__num" data-count-to="1" data-count-prefix="" data-count-suffix=" of 1">1 of 1</div>
+            <div class="counter__rule" aria-hidden="true"></div>
+            <div class="counter__label">U.S.-manufactured ACTH therapy on the market</div>
+          </div>
+          <div class="counter">
+            <div class="counter__num" data-count-to="70" data-count-prefix="" data-count-suffix="+">70+</div>
+            <div class="counter__rule" aria-hidden="true"></div>
+            <div class="counter__label">Years between FDA-approved ACTH therapies - until Cortrophin&reg; Gel</div>
+          </div>
+          <div class="counter">
+            <div class="counter__num" data-count-to="3" data-count-prefix="" data-count-suffix="">3</div>
+            <div class="counter__rule" aria-hidden="true"></div>
+            <div class="counter__label">FDA-inspected manufacturing sites - every dose, made by us</div>
+          </div>
+          <div class="counter">
+            <div class="counter__num" data-count-to="1000" data-count-prefix="" data-count-suffix="+">1,000+</div>
+            <div class="counter__rule" aria-hidden="true"></div>
+            <div class="counter__label">Employees across Baudette, East Windsor, and Oakville</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1018,149 +1520,139 @@
     <!-- ===== OUR STORY / TIMELINE ===== -->
     <section class="story-section" id="our-story">
       <div class="container">
-        <p class="story-section__eyebrow">Our Story <span>/ 2001 — present</span></p>
-        <h2 class="story-section__title">From manufacturer to medicine maker.</h2>
-        <p class="story-section__lead">Two decades of compounding quality — from generic medicines to a rare-disease franchise serving patients others forget.</p>
+        <p class="story-section__eyebrow"><span>/ 2001 - present</span></p>
+        <h2 class="story-section__title">From manufacturer to <em>medicine maker</em>.</h2>
+        <p class="story-section__lead">Two decades of compounding quality - from generic medicines to a rare-disease franchise serving patients others forget.</p>
 
-        <div class="timeline">
-          <article class="timeline__item">
-            <div class="timeline__num-block">
-              <div class="timeline__num">01</div>
-              <div class="timeline__years">2001–2020</div>
-            </div>
-            <div class="timeline__body">
-              <h3 class="timeline__title">Built on quality.</h3>
-              <p class="timeline__lede">Before rare disease was our headline, made in the USA was our promise.</p>
-              <p class="timeline__copy">Founded in 2001, ANI began as a U.S.-based manufacturer of generic medicines — building a reputation for quality that would become the foundation of everything to come.</p>
-              <p class="timeline__copy">In 2010, ANI relocated its headquarters to Baudette, Minnesota, consolidating operations around its FDA-inspected manufacturing facility. Over the next decade, the company grew its portfolio to 100+ ANDAs across three plants, establishing the manufacturing backbone that would later support a branded franchise.</p>
-            </div>
-          </article>
+      </div>
 
-          <article class="timeline__item">
-            <div class="timeline__num-block">
-              <div class="timeline__num">02</div>
-              <div class="timeline__years">2020–2022</div>
-            </div>
-            <div class="timeline__body">
-              <h3 class="timeline__title">A branded inflection.</h3>
-              <p class="timeline__lede">When we set out to bring Purified Cortrophin&reg; Gel back to the U.S. market, we entered a category that had been a single-supplier monopoly for nearly 70 years.</p>
-              <p class="timeline__copy">In September 2020, Nikhil Lalwani joined as CEO with a mandate to transform ANI from a diversified generics company into a rare-disease leader. The first move: bringing Purified Cortrophin&reg; Gel back to market after the FDA approved ANI's BLA in October 2021.</p>
-              <p class="timeline__copy">Cortrophin relaunched in January 2022, entering a category that had been a single-supplier monopoly for nearly 70 years. By 2025, the franchise reached $348M in revenue — a 76% year-over-year increase — validating the pivot.</p>
-            </div>
-          </article>
+      <!-- Horizontal-scroll pinned timeline -->
+      <div class="hscroll" data-hscroll>
+        <div class="hscroll__sticky">
+          <div class="hscroll__progress" aria-hidden="true">
+            <span class="hscroll__tick" style="--at: 0">2001</span>
+            <span class="hscroll__tick" style="--at: 0.33">2020</span>
+            <span class="hscroll__tick" style="--at: 0.66">2024</span>
+            <span class="hscroll__tick" style="--at: 1">2026</span>
+            <span class="hscroll__progress-bar" data-hscroll-bar></span>
+          </div>
 
-          <article class="timeline__item">
-            <div class="timeline__num-block">
-              <div class="timeline__num">03</div>
-              <div class="timeline__years">2024–2025</div>
-            </div>
-            <div class="timeline__body">
-              <h3 class="timeline__title">Becoming a rare-disease company.</h3>
-              <p class="timeline__lede">The acquisition of Alimera Sciences brought ILUVIEN&reg; into our portfolio and made us a two-franchise rare-disease company.</p>
-              <p class="timeline__copy">In September 2024, ANI completed the $381M acquisition of Alimera Sciences, bringing ILUVIEN&reg; (fluocinolone acetonide intravitreal implant) into the portfolio for the treatment of diabetic macular edema.</p>
-              <p class="timeline__copy">By 2025, ANI unified the YUTIQ&reg; brand into ILUVIEN, simplifying the ophthalmology franchise and establishing itself as a two-franchise rare-disease company with differentiated long-acting therapies.</p>
-            </div>
-          </article>
+          <div class="hscroll__rail" data-hscroll-rail>
+            <article class="era-card era-card--01">
+              <div class="era-card__head">
+                <span class="era-card__num">01</span>
+                <span class="era-card__years">2001 — 2020</span>
+              </div>
+              <h3 class="era-card__title">Built on quality.</h3>
+              <p class="era-card__lede">Before rare disease was our headline, made in the USA was our promise.</p>
+              <p class="era-card__copy">Founded in 2001 as a U.S.-based manufacturer of generic medicines. In 2010, headquarters relocated to Baudette, Minnesota, consolidating operations around its FDA-inspected facility. Over the next decade: 100+ ANDAs across three plants — the manufacturing backbone for everything that came after.</p>
+            </article>
 
-          <article class="timeline__item">
-            <div class="timeline__num-block">
-              <div class="timeline__num">04</div>
-              <div class="timeline__years">2026 →</div>
-            </div>
-            <div class="timeline__body">
-              <h3 class="timeline__title">What's next.</h3>
-              <p class="timeline__copy">2026 guidance projects $1.055–$1.115B in net revenue and $275–290M adjusted EBITDA. Cortrophin is expected to deliver $540–575M. ILUVIEN targets $78–83M. A 90-person commercial team for acute gouty arthritis flares deploys mid-2026, expanding Cortrophin's addressable market.</p>
-            </div>
-          </article>
+            <article class="era-card era-card--02">
+              <div class="era-card__head">
+                <span class="era-card__num">02</span>
+                <span class="era-card__years">2020 — 2022</span>
+              </div>
+              <h3 class="era-card__title">A branded inflection.</h3>
+              <p class="era-card__lede">Bringing Purified Cortrophin&reg; Gel back into a category held by a single supplier for nearly 70 years.</p>
+              <p class="era-card__copy">September 2020: Nikhil Lalwani joins as CEO with a mandate to pivot from generics to rare-disease leadership. October 2021: FDA approves ANI's BLA. January 2022: Cortrophin relaunches. By 2025, the franchise reaches $348M (+76% YoY) — validating the bet.</p>
+            </article>
+
+            <article class="era-card era-card--03">
+              <div class="era-card__head">
+                <span class="era-card__num">03</span>
+                <span class="era-card__years">2024 — 2025</span>
+              </div>
+              <h3 class="era-card__title">A two-franchise rare-disease company.</h3>
+              <p class="era-card__lede">The Alimera Sciences acquisition brought ILUVIEN&reg; into the portfolio.</p>
+              <p class="era-card__copy">September 2024: $381M Alimera acquisition closes, bringing ILUVIEN&reg; (fluocinolone acetonide intravitreal implant) for diabetic macular edema. 2025: YUTIQ&reg; unified into ILUVIEN, simplifying the ophthalmology franchise. Two long-acting rare-disease platforms, under one roof.</p>
+            </article>
+
+            <article class="era-card era-card--04">
+              <div class="era-card__head">
+                <span class="era-card__num">04</span>
+                <span class="era-card__years">2026 →</span>
+              </div>
+              <h3 class="era-card__title">What's next.</h3>
+              <p class="era-card__lede">$1B+ in projected revenue. A 90-person sales team deploys mid-2026.</p>
+              <p class="era-card__copy">2026 guidance: $1.055–1.115B net revenue, $275–290M adjusted EBITDA. Cortrophin: $540–575M. ILUVIEN: $78–83M. The acute gouty arthritis flare launch expands Cortrophin's addressable market across 8.3M U.S. adults.</p>
+            </article>
+          </div>
+
+          <div class="hscroll__hint" aria-hidden="true">Scroll →</div>
         </div>
+      </div>
+
+      <div class="container hscroll__fallback-note" aria-hidden="true">
+        <p>Continue scrolling to read each era →</p>
       </div>
     </section>
 
-    <!-- ===== STATS BAND (DARK) ===== -->
-    <section class="stats-band--about">
+    <!-- ===== FORKING PROMPT — "Why are you here?" ===== -->
+    <section class="forking-prompt" aria-label="Audience routing">
+      <div class="forking-prompt__bg" aria-hidden="true"></div>
       <div class="container">
-        <span class="about-hero__eyebrow">/ FY 2025 + 2026 Guidance</span>
-        <h2>Sourced. Citable. Earned.</h2>
-        <p class="lede">A snapshot of where the company stands today — every number sourced, every figure citable.</p>
+        <p class="forking-prompt__eyebrow">/ Why are you here?</p>
+        <h2 class="forking-prompt__title">Tell us <em>who you are</em>.</h2>
+        <p class="forking-prompt__lead">Four entrances. Pick the one that fits — the page reshapes around it.</p>
 
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-item__num">$1B+</div>
-            <div class="stat-item__label">Projected 2026 net revenue</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-item__num">$275–290M</div>
-            <div class="stat-item__label">2026 adjusted non-GAAP EBITDA</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-item__num">60%</div>
-            <div class="stat-item__label">Of 2026 revenue from rare disease</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-item__num">+76%</div>
-            <div class="stat-item__label">Cortrophin Gel YoY growth 2025</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-item__num">3</div>
-            <div class="stat-item__label">FDA-inspected U.S. manufacturing facilities</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-item__num">1,000+</div>
-            <div class="stat-item__label">Employees serving patients every day</div>
-          </div>
-        </div>
-        <p class="stats-band__source">Sources: ANI Pharmaceuticals 2025 10-K, Q4 2025 earnings call, 2026 guidance. All figures represent company projections unless otherwise noted.</p>
-      </div>
-    </section>
-
-    <!-- ===== ACTH CALLOUT ===== -->
-    <section class="acth-section">
-      <div class="container">
-        <p class="acth-section__eyebrow">Why ANI · The Commercial Argument</p>
-        <h2 class="acth-section__title">The first new ACTH therapy in seven decades.</h2>
-        <p class="acth-section__copy">Cortrophin&reg; Gel re-entered the U.S. market in January 2022 as the first new repository corticotropin injection approved by the FDA in over 70 years. It offers a competitive wholesale acquisition cost, eight FDA-approved indications, and a commercial infrastructure built from the ground up — 90 sales representatives deployed across rheumatology and nephrology.</p>
-
-        <div class="acth-callout">
-          <div class="acth-callout__num">23.2%</div>
-          <p class="acth-callout__copy">Cortrophin&reg; Gel WAC discount vs. the legacy single-source ACTH therapy (5-mL vial)</p>
-          <p class="acth-callout__source">Source: ANI Pharmaceuticals 2025 10-K; WAC as of March 2025.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== HCP + PATIENT HUBS ===== -->
-    <section class="hubs-section">
-      <div class="container">
-        <p class="hubs-section__eyebrow">/ HCP + Patient Hubs</p>
-        <h2 class="hubs-section__title">Two audiences.<br/>Two distinct experiences.</h2>
-
-        <div class="hubs-grid">
-          <article class="hub-card">
-            <h3 class="hub-card__title">For Healthcare Professionals</h3>
-            <p class="hub-card__pitch">Built for the physicians treating difficult-to-manage cases.</p>
-            <ul class="hub-card__list">
+        <div class="forking-grid">
+          <article class="forking-tile forking-tile--hcp" data-audience="hcp">
+            <span class="forking-tile__num">01</span>
+            <span class="forking-tile__role">Healthcare Professional</span>
+            <h3 class="forking-tile__pitch">Treating a difficult-to-manage case.</h3>
+            <ul class="forking-tile__links">
               <li>Clinical evidence &amp; trial data</li>
               <li>Reimbursement support tools</li>
               <li>Patient support program enrollment</li>
-              <li>Supply reliability &amp; distribution</li>
               <li>Direct rep contact</li>
             </ul>
-            <a class="hub-card__link" href="/hcp">Visit HCP Resources →</a>
-            <a class="hub-card__phone" href="tel:18003086755">1-800-308-6755</a>
+            <a class="forking-tile__cta" href="/hcp">Visit HCP Resources →</a>
+            <a class="forking-tile__phone" href="tel:18003086755">1-800-308-6755</a>
+            <span class="forking-tile__chevron" aria-hidden="true">→</span>
           </article>
 
-          <article class="hub-card hub-card--patients">
-            <h3 class="hub-card__title">For Patients &amp; Caregivers</h3>
-            <p class="hub-card__pitch">Cortrophin In Your Corner™</p>
-            <ul class="hub-card__list">
-              <li>$0 copay program</li>
+          <article class="forking-tile forking-tile--patient" data-audience="patient">
+            <span class="forking-tile__num">02</span>
+            <span class="forking-tile__role">Patient or Caregiver</span>
+            <h3 class="forking-tile__pitch">Living with a rare or uncommon condition.</h3>
+            <ul class="forking-tile__links">
+              <li>$0 copay for eligible patients</li>
               <li>Dedicated Nurse Access Specialists</li>
               <li>In-home injection training</li>
               <li>Specialty pharmacy coordination</li>
-              <li>Patient Assistance Program</li>
             </ul>
-            <a class="hub-card__link" href="/patients">Find Patient Support →</a>
-            <a class="hub-card__phone" href="tel:18008055258">1-800-805-5258</a>
+            <a class="forking-tile__cta" href="/patients">Find Patient Support →</a>
+            <a class="forking-tile__phone" href="tel:18008055258">1-800-805-5258</a>
+            <span class="forking-tile__chevron" aria-hidden="true">→</span>
+          </article>
+
+          <article class="forking-tile forking-tile--investor" data-audience="investor">
+            <span class="forking-tile__num">03</span>
+            <span class="forking-tile__role">Investor or Analyst</span>
+            <h3 class="forking-tile__pitch">Looking at NASDAQ: ANIP.</h3>
+            <ul class="forking-tile__links">
+              <li>SEC filings &amp; earnings</li>
+              <li>Guidance &amp; investor presentations</li>
+              <li>Press releases &amp; transcripts</li>
+              <li>Stock information</li>
+            </ul>
+            <a class="forking-tile__cta" href="/investors">View IR Portal →</a>
+            <span class="forking-tile__chevron" aria-hidden="true">→</span>
+          </article>
+
+          <article class="forking-tile forking-tile--talent" data-audience="talent">
+            <span class="forking-tile__num">04</span>
+            <span class="forking-tile__role">Job Seeker</span>
+            <h3 class="forking-tile__pitch">Want work that matters.</h3>
+            <ul class="forking-tile__links">
+              <li>Open roles across three sites</li>
+              <li>Manufacturing, R&amp;D, commercial, corporate</li>
+              <li>Benefits &amp; culture</li>
+              <li>Internships &amp; early careers</li>
+            </ul>
+            <a class="forking-tile__cta" href="/careers">Explore Careers →</a>
+            <span class="forking-tile__chevron" aria-hidden="true">→</span>
           </article>
         </div>
       </div>
@@ -1170,14 +1662,14 @@
     <section class="pillars-section">
       <div class="container">
         <p class="pillars-section__eyebrow">/ Four Pillars</p>
-        <h2 class="pillars-section__title">Serving patients.<br/>Improving lives.</h2>
+        <h2 class="pillars-section__title"><em>Serving patients.</em><br/>Improving lives.</h2>
 
         <div class="pillars-grid">
           <div class="pillar">
             <div class="pillar__num">01</div>
             <div>
               <h3 class="pillar__title">Encoded</h3>
-              <p class="pillar__copy">Every claim sourced. Every number cites its data. Precision is not a virtue — it's the standard.</p>
+              <p class="pillar__copy">Every claim sourced. Every number cites its data. Precision is not a virtue - it's the standard.</p>
             </div>
           </div>
           <div class="pillar">
@@ -1191,7 +1683,7 @@
             <div class="pillar__num">03</div>
             <div>
               <h3 class="pillar__title">Earned</h3>
-              <p class="pillar__copy">We don't claim — we demonstrate. Numbers over adjectives, evidence over enthusiasm.</p>
+              <p class="pillar__copy">We don't claim - we demonstrate. Numbers over adjectives, evidence over enthusiasm.</p>
             </div>
           </div>
           <div class="pillar">
@@ -1208,23 +1700,24 @@
     <!-- ===== THREE BUSINESSES ===== -->
     <section class="biz-section">
       <div class="container">
-        <h2 class="biz-section__title">Three businesses.<br/>One mission.</h2>
+        <h2 class="biz-section__title">Three businesses.<br/><em>One mission</em>.</h2>
 
         <div class="biz-stack">
           <article class="biz-card biz-card--rare">
             <h3 class="biz-card__head">Rare Disease</h3>
             <p class="biz-card__pitch">Two medicines. Eight indications.</p>
-            <p class="biz-card__copy">Cortrophin&reg; Gel and ILUVIEN&reg; across five therapeutic areas — rheumatology, nephrology, ophthalmology, dermatology, and pulmonology. A 90-person commercial team deploying mid-2026 for acute gouty arthritis flares.</p>
+            <p class="biz-card__copy">Cortrophin&reg; Gel - the first new ACTH therapy approved by the FDA in seven decades - and ILUVIEN&reg;, deployed across rheumatology, nephrology, ophthalmology, dermatology, and pulmonology. A 90-person commercial team deploys mid-2026 for acute gouty arthritis flares.</p>
             <div class="biz-card__stats">
               <div>
                 <div class="biz-stat__num">$540M+</div>
                 <div class="biz-stat__label">2026 Cortrophin guide</div>
               </div>
               <div>
-                <div class="biz-stat__num">~60%</div>
-                <div class="biz-stat__label">2026 revenue mix</div>
+                <div class="biz-stat__num">23.2%</div>
+                <div class="biz-stat__label">WAC discount vs. legacy ACTH</div>
               </div>
             </div>
+            <p class="biz-card__source">Source: ANI Pharmaceuticals 2025 10-K; WAC as of March 2025.</p>
           </article>
 
           <article class="biz-card biz-card--brands">
@@ -1246,7 +1739,7 @@
           <article class="biz-card biz-card--gen">
             <h3 class="biz-card__head">Generics</h3>
             <p class="biz-card__pitch">100 ANDAs. 10–15 launches per year.</p>
-            <p class="biz-card__copy">The cash engine that funds rare disease investment. Diversified across dosage forms — oral solids, liquids, topicals, and injectables — with a disciplined launch cadence and vertically integrated manufacturing.</p>
+            <p class="biz-card__copy">The cash engine that funds rare disease investment. Diversified across dosage forms - oral solids, liquids, topicals, and injectables - with a disciplined launch cadence and vertically integrated manufacturing.</p>
             <div class="biz-card__stats">
               <div>
                 <div class="biz-stat__num">$384M</div>
@@ -1265,13 +1758,13 @@
     <!-- ===== THREE FACILITIES (DARK) ===== -->
     <section class="facilities-section">
       <div class="container">
-        <h2 class="facilities-section__title">Three U.S. facilities.<br/>One mission.</h2>
+        <h2 class="facilities-section__title">Three U.S. facilities.<br/><em>One standard</em>.</h2>
 
         <div class="facilities-grid">
           <article class="facility-card">
             <h3 class="facility-card__city">Baudette, MN</h3>
             <div class="facility-card__role">Headquarters · Primary Manufacturing</div>
-            <p class="facility-card__desc">Solid oral dosage forms, liquids, and topicals. The operational heart of ANI — where heritage meets scale.</p>
+            <p class="facility-card__desc">Solid oral dosage forms, liquids, and topicals. The operational heart of ANI - where heritage meets scale.</p>
           </article>
 
           <article class="facility-card">
@@ -1293,8 +1786,8 @@
     <section class="exec-section" id="executive-team">
       <div class="container">
         <p class="exec-section__eyebrow">/ Executive Team</p>
-        <h2 class="exec-section__title">Led by builders.</h2>
-        <p class="exec-section__lead">Former leaders of Cipla, Alimera Sciences, McKinsey, Medtronic, Pfizer — drawn to a company that makes what it sells, on American soil.</p>
+        <h2 class="exec-section__title">Led by <em>builders</em>.</h2>
+        <p class="exec-section__lead">Former leaders of Cipla, Alimera Sciences, McKinsey, Medtronic, Pfizer - drawn to a company that makes what it sells, on American soil.</p>
 
         <div class="exec-grid">
           <article class="exec-card">
@@ -1350,7 +1843,7 @@
           <div class="esg-pillar">
             <div class="esg-pillar__dot"></div>
             <h3 class="esg-pillar__title">Patient access<br/>&amp; affordability</h3>
-            <p class="esg-pillar__copy">$25,000/yr copay assistance cap. $0 copay for eligible patients. Patient Assistance Program for uninsured individuals. Committed to keeping rare disease therapies within reach.</p>
+            <p class="esg-pillar__copy">$25,000/yr copay assistance cap. $0 copay for eligible patients. Patient Assistance Program for uninsured individuals. Keeping rare disease therapies within reach.</p>
           </div>
 
           <div class="esg-pillar">
@@ -1370,39 +1863,16 @@
       </div>
     </section>
 
-    <!-- ===== HISTORY ===== -->
-    <section class="history-section">
-      <div class="container">
-        <h2 class="history-section__title">A short history.</h2>
-        <p class="history-section__lead">Twenty-five years, condensed.</p>
-
-        <ul class="history-list">
-          <li><span></span><span class="history-year">2001</span><span class="history-event">ANI Pharmaceuticals incorporated.</span></li>
-          <li><span></span><span class="history-year">2010</span><span class="history-event">HQ relocated to Baudette, Minnesota.</span></li>
-          <li><span></span><span class="history-year">Sept 2020</span><span class="history-event">Nikhil Lalwani named President &amp; CEO.</span></li>
-          <li><span></span><span class="history-year">2021</span><span class="history-event">FDA approves Purified Cortrophin&reg; Gel.</span></li>
-          <li><span></span><span class="history-year">Jan 2022</span><span class="history-event">Cortrophin Gel commercial relaunch — first new ACTH therapy in 70 years.</span></li>
-          <li><span></span><span class="history-year">Oct 2023</span><span class="history-event">FDA approves 1-mL vial for acute gouty arthritis flares.</span></li>
-          <li><span></span><span class="history-year">Sept 2024</span><span class="history-event">Alimera Sciences acquisition completed — $381 million.</span></li>
-          <li><span></span><span class="history-year">2025</span><span class="history-event">YUTIQ unified into ILUVIEN. Cortrophin reaches $348M (+76% YoY).</span></li>
-          <li><span></span><span class="history-year">2026</span><span class="history-event">$1B+ revenue projected. 90-person gout sales force deploying.</span></li>
-        </ul>
-      </div>
-    </section>
-
     <!-- ===== BOILERPLATE ===== -->
     <section class="boilerplate-section">
       <div class="container">
-        <p class="boilerplate-section__eyebrow">/ Updated May 2026</p>
-        <h2 class="boilerplate-section__title">Brand boilerplate.</h2>
-        <p class="boilerplate-section__sub">For media, investors, and partners.</p>
+        <p class="boilerplate-section__eyebrow">Press &amp; Boilerplate <span>/ Updated May 2026</span></p>
+        <p class="boilerplate-tag">Care, codified. NASDAQ: ANIP</p>
 
         <div class="boilerplate-body">
           <p>ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions. Founded as a U.S.-based generics manufacturer, ANI today operates three FDA-inspected facilities and markets a rare disease franchise built around Cortrophin&reg; Gel and ILUVIEN&reg;. Our purpose is simple: serving patients, improving lives.</p>
           <p>ANI Pharmaceuticals develops, manufactures, and commercializes rare disease therapies and generic medicines from three U.S. facilities. NASDAQ: ANIP.</p>
         </div>
-
-        <p class="boilerplate-tag">Care, codified. NASDAQ: ANIP</p>
 
         <div class="boilerplate-links">
           <a href="/investors">Visit Investor Relations →</a>
@@ -1479,5 +1949,116 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ===== Counter reveal + count-up on viewport enter =====
+      const counters = document.querySelectorAll('.counter');
+      if (counters.length) {
+        const formatNum = (n) => Math.round(n).toLocaleString('en-US');
+        const easeOutExpo = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+        const runCountUp = (counter) => {
+          const numEl = counter.querySelector('.counter__num');
+          if (!numEl) return;
+          const target = parseFloat(numEl.getAttribute('data-count-to'));
+          if (!Number.isFinite(target)) return;
+          const prefix = numEl.getAttribute('data-count-prefix') || '';
+          const suffix = numEl.getAttribute('data-count-suffix') || '';
+          const duration = 1400;
+          const start = performance.now();
+          const tick = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            const v = target * easeOutExpo(t);
+            numEl.textContent = prefix + formatNum(v) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+            else numEl.textContent = prefix + formatNum(target) + suffix;
+          };
+          requestAnimationFrame(tick);
+        };
+
+        if (reduceMotion) {
+          counters.forEach(c => c.classList.add('is-revealed'));
+        } else {
+          // Seed each counter with its starting value so it doesn't flash the final number.
+          counters.forEach((c) => {
+            const numEl = c.querySelector('.counter__num');
+            if (!numEl) return;
+            const target = parseFloat(numEl.getAttribute('data-count-to'));
+            if (!Number.isFinite(target)) return;
+            const prefix = numEl.getAttribute('data-count-prefix') || '';
+            const suffix = numEl.getAttribute('data-count-suffix') || '';
+            numEl.textContent = prefix + '0' + suffix;
+          });
+
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const idx = Array.from(counters).indexOf(entry.target);
+                const delay = idx * 120;
+                setTimeout(() => {
+                  entry.target.classList.add('is-revealed');
+                  runCountUp(entry.target);
+                }, delay);
+                io.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.4 });
+          counters.forEach(c => io.observe(c));
+        }
+      }
+
+      // ===== Horizontal-scroll timeline =====
+      // Drives a CSS variable --hscroll-progress on the sticky stage based on
+      // the outer wrapper's scroll progress through the viewport.
+      const hscrollOuter = document.querySelector('[data-hscroll]');
+      const hscrollSticky = hscrollOuter && hscrollOuter.querySelector('.hscroll__sticky');
+      const hscrollRail = hscrollOuter && hscrollOuter.querySelector('[data-hscroll-rail]');
+      if (hscrollOuter && hscrollSticky && hscrollRail && !reduceMotion && window.innerWidth > 768) {
+        const updateHscroll = () => {
+          const rect = hscrollOuter.getBoundingClientRect();
+          const total = rect.height - window.innerHeight;
+          const passed = Math.min(Math.max(-rect.top, 0), total);
+          const progress = total > 0 ? passed / total : 0;
+
+          // The rail width minus visible width determines how far we translate.
+          const railWidth = hscrollRail.scrollWidth;
+          const visibleWidth = hscrollSticky.clientWidth;
+          const translateAmount = Math.max(0, railWidth - visibleWidth);
+          hscrollRail.style.transform =
+            'translate3d(' + (-progress * translateAmount) + 'px, 0, 0)';
+          hscrollSticky.style.setProperty('--hscroll-progress', progress.toFixed(4));
+        };
+        let rafId = null;
+        const onScroll = () => {
+          if (rafId) return;
+          rafId = requestAnimationFrame(() => { rafId = null; updateHscroll(); });
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        updateHscroll();
+      }
+
+      // ===== Forking-tile keyboard support =====
+      // Pressing Enter/Space on a focused tile follows its primary CTA.
+      document.querySelectorAll('.forking-tile').forEach(tile => {
+        tile.setAttribute('tabindex', '0');
+        tile.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            const cta = tile.querySelector('.forking-tile__cta');
+            if (cta) { e.preventDefault(); cta.click(); }
+          }
+        });
+        // Click on tile (not on inner links) follows the CTA.
+        tile.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return; // let real links work
+          const cta = tile.querySelector('.forking-tile__cta');
+          if (cta) cta.click();
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

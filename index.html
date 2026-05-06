@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ANI Pharmaceuticals develops, manufactures, and commercializes therapeutics for people living with rare and uncommon conditions — and the healthcare professionals who treat them." />
-  <title>ANI Pharmaceuticals — Care, codified.</title>
+  <meta name="description" content="ANI Pharmaceuticals develops, manufactures, and commercializes therapeutics for people living with rare and uncommon conditions - and the healthcare professionals who treat them." />
+  <title>ANI Pharmaceuticals - Care, codified.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -25,7 +25,15 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
@@ -46,6 +54,13 @@
         <div class="hero__slide"></div>
         <div class="hero__slide"></div>
       </div>
+      <div class="hero__dots" role="tablist" aria-label="Hero slideshow position">
+        <span class="hero__dot" aria-hidden="true"></span>
+        <span class="hero__dot" aria-hidden="true"></span>
+        <span class="hero__dot" aria-hidden="true"></span>
+        <span class="hero__dot" aria-hidden="true"></span>
+        <span class="hero__dot" aria-hidden="true"></span>
+      </div>
       <div class="container">
         <div class="hero__grid">
           <div class="hero__content">
@@ -54,7 +69,7 @@
               When a condition is <em>rare</em>, our commitment can't be.
             </h1>
             <p class="hero__sub">
-              At ANI Pharmaceuticals, we make medicines for the people behind the diagnosis — developing treatments that reach those who need them most, even when the path is complex and the population is small.
+              At ANI Pharmaceuticals, we make medicines for the people behind the diagnosis - developing treatments that reach those who need them most, even when the path is complex and the population is small.
             </p>
             <div class="hero__cta">
               <a class="btn btn--accent" href="/medicines">Explore Our Medicines</a>
@@ -96,12 +111,12 @@
           <div class="purpose-mission">
             <span class="kicker kicker--accent">Mission &amp; values</span>
             <h2 id="purpose-title" class="purpose-mission__heading">
-              We make medicines for the <em>people</em> behind the diagnosis &mdash; then we stay.
+              We make medicines for the <em>people</em> behind the diagnosis - then we stay.
             </h2>
             <p class="purpose-mission__lead">
               Through development, manufacturing, and every refill that follows, our work is measured by one thing: whether the right therapy reached the right person, when they needed it.
             </p>
-            <p class="purpose-mission__signature">&mdash; Care, codified.</p>
+            <p class="purpose-mission__signature">- Care, codified.</p>
           </div>
 
           <ol class="purpose-values" aria-label="Our core values">
@@ -109,7 +124,7 @@
               <span class="purpose-value__index" aria-hidden="true">01</span>
               <div class="purpose-value__body">
                 <h3 class="purpose-value__title">Patients before populations.</h3>
-                <p class="purpose-value__text">Every decision traces back to a person, not a forecast. Small populations are not a barrier &mdash; they are the <em>point</em>.</p>
+                <p class="purpose-value__text">Every decision traces back to a person, not a forecast. Small populations are not a barrier - they are the <em>point</em>.</p>
               </div>
               <span class="purpose-value__edge" aria-hidden="true"></span>
             </li>
@@ -142,7 +157,7 @@
       </div>
     </section>
 
-    <!-- ===== CORTROPHIN GEL — INTRO HEADER ===== -->
+    <!-- ===== CORTROPHIN GEL - INTRO HEADER ===== -->
     <header class="cortrophin-hero" aria-labelledby="cortrophin-hero-title">
       <div class="container">
         <span class="kicker kicker--brand cortrophin-hero__kicker">Patient experience</span>
@@ -153,7 +168,7 @@
         </h2>
         <div class="cortrophin-hero__detail">
           <p class="cortrophin-hero__lead">
-            <em>Inside one dose.</em> One molecule, eight indications &mdash; a repository corticotropin injection with a 60+ year treatment history, now U.S. manufactured with a modern supply chain.
+            <em>Inside one dose.</em> One molecule, eight indications - a repository corticotropin injection with a 60+ year treatment history, now U.S. manufactured with a modern supply chain.
           </p>
           <dl class="cortrophin-hero__facts">
             <div class="cortrophin-hero__fact">
@@ -190,7 +205,7 @@
                 <li class="scroll-clip__stage is-active" data-stage="1">
                   <span class="scroll-clip__stage-num">01</span>
                   <h3 class="scroll-clip__stage-title">Product parts</h3>
-                  <p class="scroll-clip__stage-desc">Everything in one kit — prefilled syringe, vial, alcohol prep pad, gauze, and sharps container.</p>
+                  <p class="scroll-clip__stage-desc">Everything in one kit - prefilled syringe, vial, alcohol prep pad, gauze, and sharps container.</p>
                 </li>
                 <li class="scroll-clip__stage" data-stage="2">
                   <span class="scroll-clip__stage-num">02</span>
@@ -230,31 +245,13 @@
     <section class="portfolio-marquee" aria-label="Our portfolio">
       <div class="portfolio-marquee__viewport">
         <div class="portfolio-marquee__track" aria-hidden="true">
-          <ul class="portfolio-marquee__list">
-            <li>Cortrophin<sup>&reg;</sup> Gel</li>
-            <li>ILUVIEN<sup>&reg;</sup></li>
-            <li>YUTIQ<sup>&reg;</sup></li>
-            <li>200+ FDA-approved generics</li>
-            <li>Established brand portfolio</li>
-            <li>Specialty injectables</li>
-            <li>Oral solids &amp; liquids</li>
-            <li>Topicals &amp; ophthalmics</li>
-          </ul>
-          <ul class="portfolio-marquee__list" aria-hidden="true">
-            <li>Cortrophin<sup>&reg;</sup> Gel</li>
-            <li>ILUVIEN<sup>&reg;</sup></li>
-            <li>YUTIQ<sup>&reg;</sup></li>
-            <li>200+ FDA-approved generics</li>
-            <li>Established brand portfolio</li>
-            <li>Specialty injectables</li>
-            <li>Oral solids &amp; liquids</li>
-            <li>Topicals &amp; ophthalmics</li>
-          </ul>
+          <ul class="portfolio-marquee__list" data-marquee-list></ul>
+          <ul class="portfolio-marquee__list" data-marquee-list aria-hidden="true"></ul>
         </div>
       </div>
     </section>
 
-    <!-- ===== CORTROPHIN — ACCESS ===== -->
+    <!-- ===== CORTROPHIN - ACCESS ===== -->
     <section class="section cortrophin-section cortrophin-section--access">
       <div class="container">
         <h2 class="display-heading">The only U.S. ACTH with<br/>a competitive WAC.</h2>
@@ -309,16 +306,22 @@
       </div>
     </section>
 
-    <!-- ===== THERAPEUTIC AREAS ===== -->
-    <section class="section therapeutic-section">
+    <!-- ===== SCIENCE & ACCESS - combined ===== -->
+    <section class="section therapeutic-section science-access-section">
       <div class="container">
         <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--brand">Therapeutic Focus</span>
-          <h2 class="display-heading display-heading--center">Where our science meets unmet need.</h2>
+          <span class="kicker kicker--brand">Science &amp; Access</span>
+          <h2 class="display-heading display-heading--center">Where the <em>rare</em> meets the <em>reachable</em>.</h2>
           <p class="display-lead display-lead--center">
-            We focus our science where patients are too often overlooked — rare and complex conditions with limited treatment options and significant unmet need.
+            We focus our science on conditions most companies overlook - and we build the access to make sure that science actually reaches the patients who need it.
           </p>
         </header>
+
+        <!-- Tier 1: Therapeutic focus -->
+        <div class="tier-heading">
+          <span class="kicker kicker--third">Therapeutic Focus</span>
+          <h3 class="tier-heading__title">Rare and complex conditions, with limited options.</h3>
+        </div>
 
         <div class="card-grid card-grid--two">
           <article class="card">
@@ -349,69 +352,59 @@
             <a class="card__link" href="/medicines/generics">Explore →</a>
           </article>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== MEDICINES (DARK) ===== -->
-    <section class="section section--dark medicines-section">
-      <div class="container">
-        <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--accent">Our medicines</span>
-          <h2 class="display-heading display-heading--center">Three franchises. One commitment.</h2>
-        </header>
+        <!-- Tier 2: Access in practice -->
+        <div class="tier-heading tier-heading--access">
+          <span class="kicker kicker--accent">Access in Practice</span>
+          <h3 class="tier-heading__title">The only U.S. ACTH with a competitive WAC.</h3>
+          <p class="tier-heading__lead">Cortrophin<sup>&reg;</sup> Gel anchors that commitment. Every eligible patient deserves it - and we built the supply chain, support, and pricing to make sure they can have it.</p>
+        </div>
 
-        <div class="medicine-grid">
-          <article class="medicine-card">
-            <h3 class="medicine-card__name">Cortrophin Gel</h3>
-            <span class="medicine-card__tag">Rare Disease</span>
-            <p class="medicine-card__indication">
-              Repository corticotropin injection indicated across a broad range of autoimmune and inflammatory conditions.
-            </p>
-            <div class="medicine-card__meta">
-              <span class="chip">8 Indications</span>
-              <span class="chip">ACTH Mechanism</span>
+        <div class="dark-card-grid">
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21V8l9-5 9 5v13"/>
+                <path d="M9 21v-9h6v9"/>
+              </svg>
             </div>
-            <a class="medicine-card__link" href="/cortrophin/pi.pdf">View prescribing info →</a>
+            <h3 class="dark-card__title">U.S. manufactured</h3>
+            <p class="dark-card__text">Domestically produced with full supply chain visibility.</p>
           </article>
-
-          <article class="medicine-card">
-            <h3 class="medicine-card__name">ILUVIEN</h3>
-            <span class="medicine-card__tag">Ophthalmology</span>
-            <p class="medicine-card__indication">
-              Sustained-release intravitreal implant delivering fluocinolone acetonide for chronic diabetic macular edema.
-            </p>
-            <div class="medicine-card__meta">
-              <span class="chip">2 Indications</span>
-              <span class="chip">36 mo. Duration</span>
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
             </div>
-            <a class="medicine-card__link" href="/iluvien/pi.pdf">View prescribing info →</a>
+            <h3 class="dark-card__title">Patient support program</h3>
+            <p class="dark-card__text">Dedicated resources to help patients access therapy.</p>
           </article>
-
-          <article class="medicine-card">
-            <h3 class="medicine-card__name">YUTIQ</h3>
-            <span class="medicine-card__tag">Ophthalmology</span>
-            <p class="medicine-card__indication">
-              Intravitreal implant for the treatment of chronic non-infectious uveitis affecting the posterior segment of the eye.
-            </p>
-            <div class="medicine-card__meta">
-              <span class="chip">1 Indication</span>
-              <span class="chip">NIU-PS Focus</span>
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
             </div>
-            <a class="medicine-card__link" href="/yutiq/pi.pdf">View prescribing info →</a>
+            <h3 class="dark-card__title">Specialty pharmacy network</h3>
+            <p class="dark-card__text">Broad distribution through specialty channels nationwide.</p>
           </article>
-
-          <article class="medicine-card">
-            <h3 class="medicine-card__name">Generics Portfolio</h3>
-            <span class="medicine-card__tag">Generics</span>
-            <p class="medicine-card__indication">
-              A comprehensive portfolio of FDA-approved generic pharmaceuticals manufactured in the United States.
-            </p>
-            <div class="medicine-card__meta">
-              <span class="chip">Multiple ANDAs</span>
-              <span class="chip">U.S. Manufactured</span>
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
             </div>
-            <a class="medicine-card__link" href="/medicines/generics">Browse portfolio →</a>
+            <h3 class="dark-card__title">Competitive pricing</h3>
+            <p class="dark-card__text">WAC positioned to improve access vs. alternatives.</p>
           </article>
+        </div>
+
+        <div class="cortrophin-actions">
+          <a class="link-arrow" href="/cortrophin">Visit Cortrophin.com →</a>
+          <a class="link-arrow link-arrow--muted" href="/cortrophin/pi.pdf">Prescribing Information →</a>
         </div>
       </div>
     </section>
@@ -420,45 +413,185 @@
     <section class="section">
       <div class="container">
         <div class="feature-row">
-          <figure class="feature-row__media feature-row__media--photo">
-            <img
-              class="feature-row__media-img"
-              src="assets/photo/manufacturing-baudette.jpg"
-              alt="ANI Pharmaceuticals manufacturing facility in Baudette, Minnesota."
-              width="800"
-              height="600"
-              loading="lazy"
-              onerror="this.style.display='none'; this.parentElement.dataset.fallback='true';"
-            />
-            <span class="feature-row__media-tag">Baudette, MN</span>
+          <figure class="feature-row__media feature-row__media--video">
+            <button class="feature-row__media-play" type="button" aria-label="Play: Inside ANI manufacturing - a 2-minute facility tour">
+              <img
+                class="feature-row__media-img"
+                src="assets/photo/manufacturing-baudette.png"
+                alt="Inside an ANI Pharmaceuticals manufacturing facility - operators in cleanroom gowning beside production equipment."
+                width="1672"
+                height="941"
+                loading="lazy"
+                onerror="this.style.display='none'; this.closest('.feature-row__media').dataset.fallback='true';"
+              />
+              <span class="feature-row__media-play-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" focusable="false">
+                  <path d="M8 5.2v13.6L19 12 8 5.2z" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="feature-row__media-duration" aria-hidden="true">2:14</span>
+            </button>
           </figure>
           <div class="feature-row__content">
-            <h2 class="display-heading">Made here. Owned here.<br/>Accountable here.</h2>
+            <h2 class="display-heading">Step inside the rooms<br/>where every dose is made.</h2>
             <p class="display-lead">
-              Three FDA-registered manufacturing sites in Baudette, East Windsor, and Oakville give us direct control over quality, supply chain, and every dose that reaches a patient.
+              Three FDA-registered sites. Cleanroom suites, validated equipment, and operators we employ directly - not contractors. Watch a short tour of how a finished dose moves from raw material to the patient who needs it.
             </p>
-            <a class="link-arrow" href="/manufacturing">Tour our facilities →</a>
+            <a class="link-arrow" href="/manufacturing">Watch the facility tour →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== INVESTOR (DARK CENTERED) ===== -->
+    <!-- ===== INVESTOR (DARK SPLIT) ===== -->
     <section class="section section--dark investor-section">
       <div class="container">
-        <div class="investor-content">
-          <h2 class="display-heading display-heading--center">2026 guidance: $1.055&ndash;1.115B<br/>in net revenue.</h2>
-          <p class="display-lead display-lead--center">
-            Rare disease now represents 60% of our revenue mix, powered by sustained Cortrophin Gel growth across neurology, nephrology, and rheumatology indications.
-          </p>
-          <div class="investor-actions">
-            <a class="link-arrow link-arrow--accent" href="/investors">View investor center →</a>
-            <a class="link-arrow link-arrow--accent" href="/investors/earnings">Latest earnings →</a>
+        <div class="investor-split">
+          <div class="investor-copy">
+            <h2 class="display-heading">2026 guidance: $1.055&ndash;1.115B in net revenue.</h2>
+            <p class="display-lead">
+              Rare disease now represents 60% of our revenue mix, powered by sustained Cortrophin Gel growth across neurology, nephrology, and rheumatology indications.
+            </p>
+            <div class="investor-actions">
+              <a class="link-arrow link-arrow--accent" href="/investors">View investor center →</a>
+              <a class="link-arrow link-arrow--accent" href="/investors/earnings">Latest earnings →</a>
+            </div>
           </div>
-          <a class="ticker-pill" href="/investors">
-            <span class="ticker-pill__label">NASDAQ: ANIP</span>
-            <strong class="ticker-pill__price">$80.39</strong>
-          </a>
+
+          <div class="investor-quote" aria-label="ANIP stock price and 12-month history">
+            <div class="quote-card">
+              <div class="quote-card__head">
+                <a class="ticker-pill" href="/investors">
+                  <span class="ticker-pill__label">NASDAQ: ANIP</span>
+                  <strong class="ticker-pill__price">$80.39</strong>
+                </a>
+                <div class="quote-card__delta">
+                  <span class="quote-card__change quote-card__change--up">+$1.24 &nbsp;+1.57%</span>
+                  <span class="quote-card__meta">Today · May 6, 2026 · 4:00 PM ET</span>
+                </div>
+              </div>
+
+              <div class="quote-card__chart">
+                <svg class="stock-chart" viewBox="0 0 760 320" preserveAspectRatio="none" role="img" aria-labelledby="chart-title chart-desc">
+                  <title id="chart-title">ANIP stock price, May 2025 to May 2026</title>
+                  <desc id="chart-desc">Twelve-month line chart of ANI Pharmaceuticals closing price, ranging from $58.10 to $80.39, showing a 28.8 percent annual gain.</desc>
+
+                  <defs>
+                    <linearGradient id="stockArea" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.32"/>
+                      <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="stockLine" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="#F9C76C"/>
+                      <stop offset="100%" stop-color="#F59E0B"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Plot area: x 56→740, y 24→272 -->
+                  <!-- Horizontal gridlines -->
+                  <g class="chart-grid">
+                    <line x1="56" y1="24"  x2="740" y2="24"  />
+                    <line x1="56" y1="86"  x2="740" y2="86"  />
+                    <line x1="56" y1="148" x2="740" y2="148" />
+                    <line x1="56" y1="210" x2="740" y2="210" />
+                    <line x1="56" y1="272" x2="740" y2="272" />
+                  </g>
+
+                  <!-- Y-axis price labels (range $55–$85, top→bottom) -->
+                  <g class="chart-axis-y">
+                    <text x="48" y="28">$85</text>
+                    <text x="48" y="90">$77.50</text>
+                    <text x="48" y="152">$70</text>
+                    <text x="48" y="214">$62.50</text>
+                    <text x="48" y="276">$55</text>
+                  </g>
+
+                  <!-- X-axis month labels (12 months, evenly spaced 56→740) -->
+                  <g class="chart-axis-x">
+                    <text x="56"  y="298">May ’25</text>
+                    <text x="170" y="298">Jul</text>
+                    <text x="284" y="298">Sep</text>
+                    <text x="398" y="298">Nov</text>
+                    <text x="512" y="298">Jan ’26</text>
+                    <text x="626" y="298">Mar</text>
+                    <text x="740" y="298" text-anchor="end">May</text>
+                  </g>
+
+                  <!-- 13 monthly closes, May ’25 → May ’26.
+                       x = 56 + month * 57   (12 intervals across 684 px)
+                       y = 24 + ((85 - price) / 30) * 248 -->
+                  <path class="chart-area" d="
+                    M 56,272
+                    L 56,211
+                    L 113,246
+                    L 170,191
+                    L 227,171
+                    L 284,141
+                    L 341,162
+                    L 398,127
+                    L 455,106
+                    L 512,122
+                    L 569,78
+                    L 626,92
+                    L 683,72
+                    L 740,62
+                    L 740,272 Z
+                  " fill="url(#stockArea)"/>
+
+                  <!-- Price line -->
+                  <path class="chart-line" d="
+                    M 56,211
+                    L 113,246
+                    L 170,191
+                    L 227,171
+                    L 284,141
+                    L 341,162
+                    L 398,127
+                    L 455,106
+                    L 512,122
+                    L 569,78
+                    L 626,92
+                    L 683,72
+                    L 740,62
+                  " fill="none" stroke="url(#stockLine)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+
+                  <!-- 52-week low marker (Jun ’25, $58.10) -->
+                  <g class="chart-marker chart-marker--low">
+                    <circle cx="113" cy="246" r="3.5"/>
+                    <line x1="113" y1="246" x2="113" y2="272" stroke-dasharray="2 3"/>
+                    <text x="120" y="262">52-wk low $58.10</text>
+                  </g>
+
+                  <!-- Mid waypoint (Feb ’26 high before current) -->
+                  <g class="chart-marker chart-marker--mid">
+                    <circle cx="569" cy="78" r="3"/>
+                  </g>
+
+                  <!-- Current price marker (May ’26) -->
+                  <g class="chart-marker chart-marker--current">
+                    <circle cx="740" cy="62" r="9" class="pulse-outer"/>
+                    <circle cx="740" cy="62" r="5" class="pulse-mid"/>
+                    <circle cx="740" cy="62" r="3.25" class="pulse-inner"/>
+                    <text x="734" y="48" text-anchor="end">$80.39</text>
+                  </g>
+
+                  <!-- Vertical guide on hover (decorative static placement) -->
+                </svg>
+              </div>
+
+              <dl class="quote-card__stats">
+                <div><dt>Open</dt><dd>$79.15</dd></div>
+                <div><dt>Day range</dt><dd>$78.92 – $80.74</dd></div>
+                <div><dt>52-wk range</dt><dd>$58.10 – $80.74</dd></div>
+                <div><dt>Volume</dt><dd>412,308</dd></div>
+                <div><dt>Market cap</dt><dd>$1.74B</dd></div>
+                <div><dt>1-yr return</dt><dd class="quote-card__change--up">+28.8%</dd></div>
+              </dl>
+
+              <p class="quote-card__disclaimer">Price delayed at least 15 min. For illustrative purposes only - see <a href="/investors">investor center</a> for official figures.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -469,7 +602,7 @@
         <div class="cta-light">
           <h2 class="display-heading display-heading--center">The work is rare.<br/>The impact is real.</h2>
           <p class="display-lead display-lead--center">
-            Join a team where your expertise directly improves outcomes for patients with rare and under-served conditions — conditions most companies overlook.
+            Join a team where your expertise directly improves outcomes for patients with rare and under-served conditions - conditions most companies overlook.
           </p>
           <div class="cta-light__actions">
             <a class="btn btn--primary" href="/careers">See open roles →</a>
@@ -590,7 +723,186 @@
       });
     }
 
-    // ===== PURPOSE VALUES — STAGGERED SCROLL REVEAL =====
+    // ===== PORTFOLIO MARQUEE - RANDOMIZED PRODUCT LIST =====
+    (function initPortfolioMarquee() {
+      const lists = document.querySelectorAll('[data-marquee-list]');
+      if (!lists.length) return;
+
+      const products = [
+        'Acebutolol Hydrochloride Capsules USP',
+        'Acetazolamide Tablets, USP',
+        'Acyclovir Oral Suspension, USP',
+        'Alendronate Sodium Oral Solution, 70 mg/75 mL',
+        'Anagrelide Capsules, USP',
+        'Arimidex® (anastrozole) tablets',
+        'Atacand HCT® (candesartan cilexetil – hydrochlorothiazide) Tablets',
+        'Atacand® (candesartan cilexetil) Tablets',
+        'Atenolol and Chlorthalidone Tablets, USP',
+        'Baclofen Oral Suspension',
+        'Benazepril Hydrochloride and Hydrochlorothiazide Tablets USP',
+        'Bexarotene Capsules',
+        'Bicalutamide Tablets USP',
+        'Bisoprolol Fumarate and Hydrochlorthiazide Tablets, USP',
+        'Bisoprolol Fumarate Tablets, USP',
+        'Bromocriptine Mesylate Capsules, USP',
+        'Bromocriptine Mesylate Tablets, USP',
+        'Candesartan Cilexetil and Hydrochlorothiazide Tablets USP',
+        'Carbamazepine Extended-Release Capsules',
+        'Carbamazepine Oral Suspension, USP',
+        'Casodex® (Bicalutamide) Tablets',
+        'Chlorzoxazone Tablets, USP',
+        'Clomiphene Citrate Tablets, USP',
+        'Clorazepate Dipotassium Tablets, USP',
+        'Clotrimazole Topical Solution, USP',
+        'Colestipol Hydrochloride Tablets USP',
+        'Cortenema® Hydrocortisone Retention Enema',
+        'Dapsone Tablets, USP',
+        'Dexamethasone Elixir, USP',
+        'Dexamethasone Tablets USP',
+        'Dextroamphetamine Saccharate, Amphetamine Aspartate Monohydrate, Dextroamphetamine Sulfate and Amphetamine Sulfate Extended-Release Capsules',
+        'Dicyclomine Hydrochloride Oral Solution, USP',
+        'Digoxin Tablets, USP',
+        'Diphenoxylate Hydrochloride and Atropine Sulfate Tablets USP',
+        'Erythromycin Ethylsuccinate for Oral Suspension USP',
+        'Estazolam Tablets, USP',
+        'Esterified Estrogens and Methyltestosterone Tablets',
+        'Estradiol Gel',
+        'Estradiol Gel, Metered',
+        'Estradiol Tablets, USP',
+        'Etodolac Capsules USP',
+        'Famotidine For Oral Suspension, USP',
+        'Felbamate Oral Suspension, USP',
+        'Felbamate Tablets USP',
+        'Fenofibrate Capsules USP',
+        'Flecainide Acetate Tablets USP',
+        'Fluconazole Tablets USP',
+        'Fludrocortisone Acetate Tablets, USP',
+        'Fluocinolone Acetonide Cream USP',
+        'Fluocinolone Acetonide Ointment USP',
+        'Fluoxetine Oral Solution, USP',
+        'Fluphenazine Hydrochloride Tablets, USP',
+        'Fluvoxamine Maleate Tablets USP',
+        'Glipizide Tablets USP',
+        'Hydrocortisone Cream USP',
+        'Hydrocortisone Rectal Suspension, USP (Retention)',
+        'Hydrocortisone Tablets, USP',
+        'Hydroxyzine Hydrochloride Oral Solution, USP',
+        'Hyoscyamine Sulfate Extended-Release Tablets',
+        'Hyoscyamine Sulfate Orally Disintegrating Tablets',
+        'Hyoscyamine Sulfate Sublingual Tablets',
+        'Hyoscyamine Sulfate Tablets USP',
+        'Indapamide Tablets USP',
+        'Inderal® LA (propranolol hydrochloride) Long-Acting Capsules',
+        'Inderal® XL (propranolol hydrochloride) Extended Release Capsules',
+        'Indomethacin Oral Suspension, USP',
+        'InnoPran XL® (propranolol hydrochloride) Extended Release Capsules',
+        'INZIRQO™ (hydrochlorothiazide) For Oral Suspension, USP',
+        'Isosorbide Mononitrate Tablets USP',
+        'Ketoconazole Shampoo',
+        'Kionex® (Sodium Polystyrene Sulfonate Suspension USP)',
+        'L-glutamine Oral Powder',
+        'L-Methylfolate Calcium Tablets',
+        'Lacosamide Oral Solution, USP',
+        'Levocarnitine Oral Solution, USP',
+        'Levocarnitine Oral Solution, USP (Sugar Free)',
+        'Levocarnitine Tablets, USP',
+        'Levofloxacin Oral Solution, USP',
+        'Lidocaine Hydrochloride Topical Solution, USP',
+        'Lipofen® (fenofibrate capsules, USP)',
+        'LITHOBID® (Lithium Carbonate USP) Extended-Release Tablets',
+        'Lofexidine Tablets',
+        'Lorazepam Tablets USP',
+        'Megestrol Acetate Oral Suspension, USP',
+        'Meloxicam Capsules',
+        'Memantine and Donepezil Hydrochlorides Extended-Release Capsules',
+        'Mesalamine Rectal Suspension Enema',
+        'Methazolamide Tablets USP',
+        'Methsuximide Capsules, USP',
+        'Methyltestosterone Capsules, USP',
+        'Metoclopramide Oral Solution USP',
+        'Metoclopramide Tablets USP',
+        'Mexiletine Hydrochloride Capsules USP',
+        'Miglustat Capsules',
+        'Misoprostol Tablets',
+        'Nabumetone Tablets, USP',
+        'Naproxen Delayed-Release Tablets, USP',
+        'Naproxen Oral Suspension, USP',
+        'Nebivolol Tablets',
+        'Nicardipine Hydrochloride Capsules',
+        'Nilutamide Tablets',
+        'Nitazoxanide Tablets',
+        'Nitrofurantoin Oral Suspension, USP',
+        'Omeprazole and Sodium Bicarbonate for Oral Suspension',
+        'Opium Tincture USP (Deodorized)',
+        'Oxcarbazepine Tablets USP',
+        'Oxistat® (oxiconazole nitrate) Lotion',
+        'Oxybutynin Chloride Tablets, USP',
+        'Oxycodone Hydrochloride Capsules',
+        'Oxycodone Hydrochloride Oral Solution USP',
+        'Paliperidone Extended-Release Tablets',
+        'Paroxetine Oral Suspension',
+        'Pentoxifylline Extended-Release Tablets USP',
+        'Phenoxybenzamine Hydrochloride Capsules, USP',
+        'Pindolol Tablets USP',
+        'Pirfenidone Tablets',
+        'Polyethylene Glycol 3350 OTC',
+        'Potassium Citrate Extended-Release Tablets USP',
+        'Prazosin Hydrochloride Capsules, USP',
+        'Prednisone Tablets USP',
+        'Prochlorperazine Maleate Tablets, USP',
+        'Promethazine Hydrochloride and Dextromethorphan Hydrobromide Oral Solution',
+        'Propafenone Hydrochloride Tablets USP',
+        'Propranolol Hydrochloride Extended-Release Capsules USP',
+        'Prucalopride Tablets',
+        'Purified Cortrophin® Gel (repository corticotropin injection USP)',
+        'Pyrazinamide Tablets, USP',
+        'Pyridostigmine Bromide Oral Solution, USP',
+        'Pyridostigmine Bromide Tablets USP',
+        'Reglan® (metoclopramide) Tablets USP',
+        'Rifabutin Capsules, USP',
+        'Risperidone Oral Solution USP',
+        'Sacubitril and Valsartan Tablets',
+        'Selegiline Hydrochloride Capsules, USP',
+        'Sertraline Hydrochloride Capsules',
+        'Sildenafil For Oral Suspension',
+        'SOVUNA® (hydroxychloroquine sulfate) Tablets',
+        'Sulfamethoxazole and Trimethoprim Oral Suspension, USP',
+        'Terbutaline Sulfate Tablets USP',
+        'TEZRULY™ (terazosin) Oral Solution',
+        'Thiothixene Capsules, USP',
+        'Thyroid Tablets USP',
+        'Tolterodine Tartrate Extended-release Capsules',
+        'Tranexamic Acid Tablets USP',
+        'Tranylcypromine Tablets, USP',
+        'Trihexyphenidyl Hydrochloride Tablets, USP',
+        'Trimethoprim Tablets, USP',
+        'Valproic Acid Oral Solution USP',
+        'Valsartan Oral Solution',
+        'VANCOCIN® (vancomycin hydrochloride capsules USP)',
+        'Vancomycin Hydrochloride Capsules USP',
+        'Vancomycin Hydrochloride for Oral Solution USP',
+        'Veregen® (sinecatechins) Ointment',
+        'ILUVIEN®',
+        'YUTIQ®'
+      ];
+
+      // Fisher–Yates shuffle
+      const shuffled = products.slice();
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      const formatItem = (text) =>
+        text
+          .replace(/®/g, '<sup>&reg;</sup>')
+          .replace(/™/g, '<sup>&trade;</sup>');
+
+      const itemsHtml = shuffled.map(p => `<li>${formatItem(p)}</li>`).join('');
+      lists.forEach(ul => { ul.innerHTML = itemsHtml; });
+    })();
+
+    // ===== PURPOSE VALUES - STAGGERED SCROLL REVEAL =====
     (function initPurposeReveal() {
       const items = document.querySelectorAll('.purpose-value');
       if (!items.length) return;

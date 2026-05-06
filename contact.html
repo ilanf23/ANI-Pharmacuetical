@@ -3,16 +3,201 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Contact ANI Pharmaceuticals — patient hubs, HCP medical info, adverse-event reporting, business development, and investor relations." />
-  <title>Contact — ANI Pharmaceuticals</title>
+  <meta name="description" content="Contact ANI Pharmaceuticals - patient hubs, HCP medical info, adverse-event reporting, business development, and investor relations." />
+  <title>Contact - ANI Pharmaceuticals</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
   <link rel="stylesheet" href="styles/components.css" />
+
+  <style>
+    /* ===== Contact form ===== */
+    .contact-form-section { background: var(--surface-page); }
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+    .contact-form-aside .kicker { margin-bottom: var(--space-3); }
+    .contact-form-aside h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      max-width: 14ch;
+    }
+    .contact-form-aside p {
+      margin-top: var(--space-4);
+      color: var(--text-secondary);
+      font-size: var(--font-body-lg);
+      line-height: 1.6;
+      max-width: 38ch;
+    }
+    .contact-form-aside ul {
+      list-style: none;
+      padding: 0;
+      margin-top: var(--space-5);
+      display: grid;
+      gap: var(--space-3);
+    }
+    .contact-form-aside li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: var(--space-3);
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+    .contact-form-aside li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 0.55rem;
+      border-radius: 50%;
+      background: var(--saffron-500);
+      justify-self: center;
+    }
+
+    .contact-form {
+      background: var(--bone-100);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-form__section {
+      padding-bottom: var(--space-5);
+      margin-bottom: var(--space-5);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .contact-form__section:last-of-type {
+      padding-bottom: 0;
+      margin-bottom: var(--space-5);
+      border-bottom: 0;
+    }
+    .contact-form__section-title {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-display);
+      font-size: var(--font-heading-md);
+      font-weight: 650;
+      letter-spacing: 0;
+      color: var(--text-primary);
+    }
+    .contact-form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    .contact-form__field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .contact-form__field--full { grid-column: 1 / -1; }
+    .contact-form__label {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--steel-700);
+    }
+    .contact-form__label .req { color: var(--red-error); margin-left: 2px; }
+    .contact-form__optional {
+      text-transform: none;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0;
+    }
+    .contact-form__input,
+    .contact-form__select,
+    .contact-form__textarea {
+      width: 100%;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--text-primary);
+      background: var(--bone-100);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xs);
+      padding: 0.75rem 0.875rem;
+      transition:
+        border-color var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-fast) var(--ease-standard);
+    }
+    .contact-form__textarea {
+      min-height: 140px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+    .contact-form__select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%231A1A1F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M1 1.5l5 5 5-5'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.875rem center;
+      padding-right: 2.25rem;
+    }
+    .contact-form__input:focus,
+    .contact-form__select:focus,
+    .contact-form__textarea:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-focus);
+    }
+    .contact-form__hint {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .contact-form__checks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .contact-form__check {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: var(--space-3);
+      align-items: start;
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .contact-form__check input {
+      margin-top: 3px;
+      accent-color: var(--indigo-500);
+    }
+    .contact-form__check--spaced { margin-top: var(--space-3); }
+    .contact-form__actions {
+      margin-top: var(--space-5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .contact-form__legal {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      max-width: 38ch;
+    }
+
+    @media (max-width: 900px) {
+      .contact-form-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+      .contact-form { padding: var(--space-5); }
+      .contact-form__row { grid-template-columns: 1fr; }
+      .contact-form__checks { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -24,11 +209,19 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
-          <a href="/contact">Contact</a>
+          <a href="/contact" aria-current="page">Contact</a>
         </nav>
       </div>
     </div>
@@ -88,8 +281,8 @@
             <h3 class="card__title">Adverse event or quality issue</h3>
             <p class="card__text">We take both seriously and respond fast.</p>
             <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
-              <li><strong>ANI products — adverse events:</strong> <a href="mailto:drugsafety@anipharmaceuticals.com">drugsafety@anipharmaceuticals.com</a></li>
-              <li><strong>ANI products — quality complaints:</strong> <a href="mailto:complaints@anipharmaceuticals.com">complaints@anipharmaceuticals.com</a></li>
+              <li><strong>ANI products - adverse events:</strong> <a href="mailto:drugsafety@anipharmaceuticals.com">drugsafety@anipharmaceuticals.com</a></li>
+              <li><strong>ANI products - quality complaints:</strong> <a href="mailto:complaints@anipharmaceuticals.com">complaints@anipharmaceuticals.com</a></li>
               <li><strong>ILUVIEN / YUTIQ:</strong> <a href="mailto:pvalimerasciences@alimerasciences.com">pvalimerasciences@alimerasciences.com</a></li>
             </ul>
             <p class="card__text" style="font-size: var(--font-body-sm); color: var(--text-muted);">You can also report directly to FDA MedWatch at <a href="https://www.fda.gov/medwatch">fda.gov/medwatch</a> or <a href="tel:18003321088">1-800-FDA-1088</a>.</p>
@@ -134,6 +327,235 @@
       </div>
     </section>
 
+    <section class="section contact-form-section" aria-labelledby="contact-form-title">
+      <div class="container">
+        <div class="contact-form-grid">
+          <aside class="contact-form-aside">
+            <span class="kicker kicker--brand">Send a message</span>
+            <h2 id="contact-form-title">Detailed inquiry questionnaire</h2>
+            <p>If your question needs more context than a phone call or email, use this form to give ANI the details needed to route and answer it.</p>
+            <ul>
+              <li>Provide product, organization, and timing details when they are relevant.</li>
+              <li>For adverse events or product complaints, use the Safety card above for the fastest reporting path.</li>
+              <li>Do not include patient names, dates of birth, medical record numbers, or other personal health information.</li>
+            </ul>
+          </aside>
+
+          <form class="contact-form" action="mailto:info@anipharmaceuticals.com" method="post" enctype="text/plain">
+            <section class="contact-form__section" aria-labelledby="cf-section-contact">
+              <h3 class="contact-form__section-title" id="cf-section-contact">Your contact information</h3>
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-first">First name<span class="req" aria-hidden="true">*</span></label>
+                  <input class="contact-form__input" id="cf-first" name="first_name" type="text" autocomplete="given-name" required />
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-last">Last name<span class="req" aria-hidden="true">*</span></label>
+                  <input class="contact-form__input" id="cf-last" name="last_name" type="text" autocomplete="family-name" required />
+                </div>
+              </div>
+
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-email">Email<span class="req" aria-hidden="true">*</span></label>
+                  <input class="contact-form__input" id="cf-email" name="email" type="email" autocomplete="email" required />
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-phone">Phone <span class="contact-form__optional">(optional)</span></label>
+                  <input class="contact-form__input" id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-role">I am a<span class="req" aria-hidden="true">*</span></label>
+                  <select class="contact-form__select" id="cf-role" name="requester_type" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="patient_caregiver">Patient or caregiver</option>
+                    <option value="healthcare_professional">Healthcare professional</option>
+                    <option value="pharmacy_wholesaler_hospital">Pharmacy, wholesaler, hospital, or trade customer</option>
+                    <option value="business_partner">Business partner or potential partner</option>
+                    <option value="investor_media">Investor, analyst, or media contact</option>
+                    <option value="job_candidate">Job candidate</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-org">Organization <span class="contact-form__optional">(if applicable)</span></label>
+                  <input class="contact-form__input" id="cf-org" name="organization" type="text" autocomplete="organization" />
+                </div>
+              </div>
+
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-title">Title or department <span class="contact-form__optional">(optional)</span></label>
+                  <input class="contact-form__input" id="cf-title" name="title_department" type="text" autocomplete="organization-title" />
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-location">City, state, country<span class="req" aria-hidden="true">*</span></label>
+                  <input class="contact-form__input" id="cf-location" name="location" type="text" autocomplete="address-level2" required />
+                </div>
+              </div>
+            </section>
+
+            <section class="contact-form__section" aria-labelledby="cf-section-routing">
+              <h3 class="contact-form__section-title" id="cf-section-routing">Inquiry routing</h3>
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-topic">Primary topic<span class="req" aria-hidden="true">*</span></label>
+                  <select class="contact-form__select" id="cf-topic" name="primary_topic" required>
+                    <option value="" disabled selected>Select a topic</option>
+                    <option value="patient_support">Patient support, savings, or access</option>
+                    <option value="medical_information">Medical information or clinical question</option>
+                    <option value="adverse_event_quality">Adverse event or product quality complaint</option>
+                    <option value="orders_supply">Orders, supply, availability, or account support</option>
+                    <option value="manufacturing_packaging">Manufacturing, packaging, or site capabilities</option>
+                    <option value="business_development">Business development, licensing, or M&amp;A</option>
+                    <option value="investor_relations">Investor relations</option>
+                    <option value="media">Media inquiry</option>
+                    <option value="careers">Careers or recruiting</option>
+                    <option value="website_privacy">Website, privacy, or accessibility</option>
+                    <option value="other">Something else</option>
+                  </select>
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-urgency">Urgency<span class="req" aria-hidden="true">*</span></label>
+                  <select class="contact-form__select" id="cf-urgency" name="urgency" required>
+                    <option value="" disabled selected>Select urgency</option>
+                    <option value="routine">Routine question</option>
+                    <option value="time_sensitive">Time-sensitive within two business days</option>
+                    <option value="urgent">Urgent business or supply matter</option>
+                    <option value="safety">Potential safety or quality issue</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="contact-form__field contact-form__field--full">
+                <label class="contact-form__label" for="cf-subject">Short subject<span class="req" aria-hidden="true">*</span></label>
+                <input class="contact-form__input" id="cf-subject" name="subject" type="text" placeholder="Example: Product availability question for hospital pharmacy" required />
+              </div>
+
+              <div class="contact-form__field contact-form__field--full">
+                <label class="contact-form__label">Areas that apply <span class="contact-form__optional">(optional)</span></label>
+                <div class="contact-form__checks">
+                  <label class="contact-form__check">
+                    <input type="checkbox" name="area_patient_support" value="yes" />
+                    <span>Patient support or access</span>
+                  </label>
+                  <label class="contact-form__check">
+                    <input type="checkbox" name="area_medical_information" value="yes" />
+                    <span>Medical information</span>
+                  </label>
+                  <label class="contact-form__check">
+                    <input type="checkbox" name="area_supply_orders" value="yes" />
+                    <span>Supply, order, or account support</span>
+                  </label>
+                  <label class="contact-form__check">
+                    <input type="checkbox" name="area_partnership" value="yes" />
+                    <span>Partnership or capabilities</span>
+                  </label>
+                  <label class="contact-form__check">
+                    <input type="checkbox" name="area_investor_media" value="yes" />
+                    <span>Investor or media request</span>
+                  </label>
+                  <label class="contact-form__check">
+                    <input type="checkbox" name="area_other" value="yes" />
+                    <span>Other ANI team</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <section class="contact-form__section" aria-labelledby="cf-section-product">
+              <h3 class="contact-form__section-title" id="cf-section-product">Product or business context</h3>
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-product">Product name <span class="contact-form__optional">(if applicable)</span></label>
+                  <input class="contact-form__input" id="cf-product" name="product_name" type="text" />
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-ndc-lot">NDC, lot, or order number <span class="contact-form__optional">(if known)</span></label>
+                  <input class="contact-form__input" id="cf-ndc-lot" name="ndc_lot_order_number" type="text" />
+                </div>
+              </div>
+
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-business-type">Business need <span class="contact-form__optional">(if applicable)</span></label>
+                  <select class="contact-form__select" id="cf-business-type" name="business_need">
+                    <option value="" selected>Select if relevant</option>
+                    <option value="contract_manufacturing">Contract manufacturing</option>
+                    <option value="packaging_serialization">Packaging or serialization</option>
+                    <option value="in_licensing">In-licensing or acquisition</option>
+                    <option value="commercial_supply">Commercial supply</option>
+                    <option value="distribution">Distribution or channel support</option>
+                    <option value="site_visit_audit">Site visit or audit request</option>
+                    <option value="other">Other business need</option>
+                  </select>
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-timeline">Desired timing <span class="contact-form__optional">(optional)</span></label>
+                  <select class="contact-form__select" id="cf-timeline" name="desired_timing">
+                    <option value="" selected>Select timing</option>
+                    <option value="asap">As soon as possible</option>
+                    <option value="this_week">This week</option>
+                    <option value="this_month">This month</option>
+                    <option value="this_quarter">This quarter</option>
+                    <option value="exploratory">Exploratory / no specific deadline</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="contact-form__field contact-form__field--full">
+                <label class="contact-form__label" for="cf-background">Background and details<span class="req" aria-hidden="true">*</span></label>
+                <textarea class="contact-form__textarea" id="cf-background" name="background_details" rows="7" placeholder="Include the question, relevant dates, product or business context, who should respond, and any constraints the ANI team should know." required></textarea>
+                <span class="contact-form__hint">Please avoid personal health information. For side effects or product complaints, use the Safety contacts above.</span>
+              </div>
+            </section>
+
+            <section class="contact-form__section" aria-labelledby="cf-section-response">
+              <h3 class="contact-form__section-title" id="cf-section-response">Response preferences</h3>
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-contact-method">Preferred response method<span class="req" aria-hidden="true">*</span></label>
+                  <select class="contact-form__select" id="cf-contact-method" name="preferred_response_method" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="either">Either email or phone</option>
+                  </select>
+                </div>
+                <div class="contact-form__field">
+                  <label class="contact-form__label" for="cf-best-time">Best time to reach you <span class="contact-form__optional">(optional)</span></label>
+                  <input class="contact-form__input" id="cf-best-time" name="best_time_to_contact" type="text" placeholder="Example: Weekdays 9 AM-1 PM ET" />
+                </div>
+              </div>
+
+              <div class="contact-form__field contact-form__field--full">
+                <label class="contact-form__label" for="cf-attachment-note">Documents or links to reference <span class="contact-form__optional">(optional)</span></label>
+                <textarea class="contact-form__textarea" id="cf-attachment-note" name="documents_or_links" rows="4" placeholder="List file names, public links, purchase order references, RFP references, or materials you plan to share with ANI after initial contact."></textarea>
+              </div>
+            </section>
+
+            <label class="contact-form__check">
+              <input type="checkbox" name="privacy_consent" required />
+              <span>I agree to ANI Pharmaceuticals' <a href="/privacy">Privacy Policy</a> and consent to be contacted about this inquiry.<span class="req" aria-hidden="true">*</span></span>
+            </label>
+
+            <label class="contact-form__check contact-form__check--spaced">
+              <input type="checkbox" name="no_patient_identifiers" required />
+              <span>I confirm that I have not included patient names, dates of birth, medical record numbers, or other personal health information.<span class="req" aria-hidden="true">*</span></span>
+            </label>
+
+            <div class="contact-form__actions">
+              <button class="btn btn--primary" type="submit">Submit inquiry</button>
+              <p class="contact-form__legal">This form opens your email client. For urgent safety reporting, use the dedicated Safety contacts above.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section class="section therapeutic-section">
       <div class="container">
         <header class="section__title-row section__title-row--center">
@@ -143,7 +565,7 @@
 
         <div class="card-grid card-grid--two">
           <article class="card">
-            <h3 class="card__title">Corporate HQ — Baudette, MN</h3>
+            <h3 class="card__title">Corporate HQ - Baudette, MN</h3>
             <p class="card__text">
               <strong>210 Main Street West</strong><br/>
               Baudette, MN 56623<br/>
@@ -151,7 +573,7 @@
             </p>
           </article>
           <article class="card">
-            <h3 class="card__title">Commercial HQ — Princeton, NJ</h3>
+            <h3 class="card__title">Commercial HQ - Princeton, NJ</h3>
             <p class="card__text">
               <strong>104 Carnegie Center Drive, Suite 300</strong><br/>
               Princeton, NJ 08540<br/>

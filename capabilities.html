@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ANI's manufacturing capabilities — solid dose, liquid dose, containment, and contract packaging across three FDA-inspected U.S. facilities." />
-  <title>Capabilities — ANI Pharmaceuticals</title>
+  <meta name="description" content="ANI's manufacturing capabilities - solid dose, liquid dose, containment, and contract packaging across three FDA-inspected U.S. facilities." />
+  <title>Capabilities - ANI Pharmaceuticals</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -24,7 +24,15 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
@@ -51,7 +59,7 @@
           </h1>
           <hr class="page-header__rule" />
           <p class="page-header__sub">
-            Two manufacturing campuses in Baudette, MN. An R&amp;D and specialty formulation site in East Windsor, NJ. Solid dose, liquid dose, contained processing, and contract packaging — all FDA-inspected.
+            Two manufacturing campuses in Baudette, MN. An R&amp;D and specialty formulation site in East Windsor, NJ. Solid dose, liquid dose, contained processing, and contract packaging - all FDA-inspected.
           </p>
           <div class="page-header__cta">
             <a class="btn btn--accent" href="/contact">Talk to business development</a>
@@ -88,7 +96,7 @@
         <header class="section__title-row section__title-row--center">
           <span class="kicker kicker--brand">Solid dose</span>
           <h2 class="display-heading display-heading--center">Tablets and capsules at scale.</h2>
-          <p class="display-lead display-lead--center">Where: Baudette, MN — two separate sites.</p>
+          <p class="display-lead display-lead--center">Where: Baudette, MN - two separate sites.</p>
         </header>
 
         <div class="card-grid card-grid--two">
@@ -106,7 +114,7 @@
           </article>
           <article class="card">
             <h3 class="card__title">Capsules</h3>
-            <p class="card__text">Hot melt fill — Bosch 1400 (×2) · Immediate release — MG Suprema.</p>
+            <p class="card__text">Hot melt fill - Bosch 1400 (×2) · Immediate release - MG Suprema.</p>
           </article>
           <article class="card">
             <h3 class="card__title">Coating</h3>
@@ -114,7 +122,7 @@
           </article>
           <article class="card">
             <h3 class="card__title">Packaging</h3>
-            <p class="card__text">Tablets — round, capsule, elliptical · 12-count to 1,000-count bottles · Capsules size 00 to 3.</p>
+            <p class="card__text">Tablets - round, capsule, elliptical · 12-count to 1,000-count bottles · Capsules size 00 to 3.</p>
           </article>
         </div>
       </div>
@@ -142,7 +150,7 @@
             <p class="card__text">Nitrogen purge available where formulation requires.</p>
           </article>
           <article class="card">
-            <h3 class="card__title">Containment — 47,000 sq ft</h3>
+            <h3 class="card__title">Containment - 47,000 sq ft</h3>
             <p class="card__text">Multiple processing suites · Humidity control · Encapsulation for potent compounds · Serialization-compliant packaging.</p>
           </article>
         </div>
@@ -155,7 +163,7 @@
           <span class="kicker kicker--brand">Contract packaging</span>
           <h2 class="display-heading display-heading--center">Bring us your bulk solid dose.</h2>
           <p class="display-lead display-lead--center">
-            We'll handle technical transfer, material testing, packaging to your specification, and stability — both accelerated and long-term.
+            We'll handle technical transfer, material testing, packaging to your specification, and stability - both accelerated and long-term.
           </p>
         </header>
         <div class="cortrophin-actions">

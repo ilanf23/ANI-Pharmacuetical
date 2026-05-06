@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ANI Pharmaceuticals' 200+ product portfolio across rare disease, generics, and established brands." />
-  <title>Products — ANI Pharmaceuticals</title>
+  <meta name="description" content="ANI Pharmaceuticals products - all medicines available in the US. Search by name or filter by dosage form." />
+  <title>Products - ANI Pharmaceuticals</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -21,11 +21,19 @@
     <div class="nav__main">
       <div class="container">
         <a class="nav__logo" href="/" aria-label="ANI Pharmaceuticals home">
-          <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
+          <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals, Inc." />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about">About</a>
-          <a href="/products">Products</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
+          <a href="/products" aria-current="page">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
           <a href="/contact">Contact</a>
@@ -35,215 +43,491 @@
   </header>
 
   <main id="main">
-
-    <section class="page-header">
+    <section class="products-page">
       <div class="container">
-        <div class="page-header__inner">
-          <p class="page-header__breadcrumb">
-            <a href="/">ANI</a>
-            <span class="page-header__breadcrumb-sep">/</span>
-            <span class="page-header__breadcrumb-current">Products</span>
-          </p>
-          <h1 class="page-header__heading">
-            200+ products. <em>Three businesses.</em> One supply chain.
-          </h1>
-          <hr class="page-header__rule" />
-          <p class="page-header__sub">
-            Our rare-disease franchise sits at the front. Our generics portfolio runs the long tail. Use the finder below to look up by name, NDC, or dosage form.
-          </p>
-          <div class="page-header__meta">
-            <span class="page-header__meta-item">Rare Disease</span>
-            <span class="page-header__meta-item">Generics</span>
-            <span class="page-header__meta-item">Established Brands</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--brand">Find a product</span>
-          <h2 class="display-heading display-heading--center">Search the full portfolio.</h2>
+        <header class="products-page__header">
+          <span class="kicker kicker--brand">Products</span>
+          <h1 class="products-page__title">All Products Available in the US</h1>
+          <p class="products-page__lead">To find out more information about one of our quality pharmaceutical products, search by name or look up your product in the alphabetized list below.</p>
         </header>
 
-        <form role="search" aria-label="Product finder" style="max-width: 880px; margin: 0 auto; display: grid; gap: var(--space-4);">
-          <input type="search" name="q" placeholder="Search by name, NDC, or generic ingredient" aria-label="Search products" style="padding: var(--space-4); font-size: var(--font-body-md); border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bone-100);" />
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
-            <select aria-label="Filter by business" style="padding: var(--space-3); border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bone-100);">
-              <option>All businesses</option>
-              <option>Rare Disease</option>
-              <option>Generics</option>
-              <option>Established Brands</option>
-            </select>
-            <select aria-label="Filter by dosage form" style="padding: var(--space-3); border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bone-100);">
-              <option>All dosage forms</option>
-              <option>Liquid</option><option>Tablet</option><option>Capsule</option>
-              <option>Injection</option><option>Topical</option><option>Powder</option><option>Enema</option>
-            </select>
-            <select aria-label="Filter by therapeutic area" style="padding: var(--space-3); border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bone-100);">
-              <option>All therapeutic areas</option>
-              <option>Ophthalmology</option><option>Rheumatology</option><option>Nephrology</option>
-              <option>Neurology</option><option>Pulmonology</option><option>CNS</option>
-              <option>Cardiovascular</option><option>Other</option>
-            </select>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <section class="section therapeutic-section">
-      <div class="container">
-        <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--brand">Featured — Rare Disease</span>
-          <h2 class="display-heading display-heading--center">The franchise we lead with.</h2>
-        </header>
-
-        <div class="card-grid card-grid--two">
-          <article class="card">
-            <span class="tag tag--third">Rare Disease</span>
-            <h3 class="card__title">Cortrophin® Gel</h3>
-            <p class="card__text">Repository corticotropin injection — indicated for multiple sclerosis flares, rheumatic disorders, nephrotic syndrome, and other indicated conditions.</p>
-            <div class="cortrophin-actions" style="justify-content: flex-start;">
-              <a class="link-arrow" href="https://cortrophin.com">Cortrophin.com →</a>
-              <a class="link-arrow link-arrow--muted" href="/cortrophin/pi.pdf">Prescribing Information →</a>
+        <div class="products-layout">
+          <aside class="products-filters" aria-label="Product filters">
+            <div class="products-filters__group">
+              <h2 class="products-filters__title">Dosage Form</h2>
+              <ul class="products-filters__list">
+                <li><label>
+                  <input type="checkbox" data-form="liquid" checked />
+                  <span class="products-filters__icon" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <path d="M16 8h8v3h-8z"/>
+                      <path d="M17 11h6v4h-6z"/>
+                      <path d="M13 15h14v18a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2z"/>
+                      <rect x="15" y="22" width="10" height="6" rx="0.5"/>
+                      <path d="M30 27h10l-1 8a1.5 1.5 0 0 1-1.5 1.3h-5A1.5 1.5 0 0 1 31 35z"/>
+                    </svg>
+                  </span>
+                  <span class="products-filters__label">Liquid</span>
+                </label></li>
+                <li><label>
+                  <input type="checkbox" data-form="capsule" checked />
+                  <span class="products-filters__icon" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <g transform="rotate(-30 24 16)">
+                        <rect x="14" y="11" width="20" height="10" rx="5"/>
+                        <line x1="24" y1="11" x2="24" y2="21"/>
+                      </g>
+                      <g transform="rotate(35 24 32)">
+                        <rect x="13" y="27" width="22" height="10" rx="5"/>
+                        <line x1="24" y1="27" x2="24" y2="37"/>
+                      </g>
+                    </svg>
+                  </span>
+                  <span class="products-filters__label">Capsule</span>
+                </label></li>
+                <li><label>
+                  <input type="checkbox" data-form="tablet" checked />
+                  <span class="products-filters__icon" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <ellipse cx="20" cy="22" rx="11" ry="4"/>
+                      <path d="M9 22v3a11 4 0 0 0 22 0v-3"/>
+                      <ellipse cx="28" cy="30" rx="11" ry="4"/>
+                      <path d="M17 30v3a11 4 0 0 0 22 0v-3"/>
+                    </svg>
+                  </span>
+                  <span class="products-filters__label">Tablet</span>
+                </label></li>
+                <li><label>
+                  <input type="checkbox" data-form="injection" checked />
+                  <span class="products-filters__icon" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <g transform="rotate(-45 24 24)">
+                        <rect x="14" y="20" width="20" height="8"/>
+                        <line x1="18" y1="20" x2="18" y2="28"/>
+                        <line x1="22" y1="20" x2="22" y2="28"/>
+                        <line x1="26" y1="20" x2="26" y2="28"/>
+                        <line x1="30" y1="20" x2="30" y2="28"/>
+                        <path d="M11 20h3v8h-3z"/>
+                        <line x1="11" y1="24" x2="6" y2="24"/>
+                        <line x1="6" y1="22" x2="6" y2="26"/>
+                        <line x1="34" y1="24" x2="38" y2="24"/>
+                        <line x1="38" y1="22" x2="38" y2="26"/>
+                        <line x1="38" y1="24" x2="44" y2="24"/>
+                      </g>
+                    </svg>
+                  </span>
+                  <span class="products-filters__label">Injection</span>
+                </label></li>
+                <li><label>
+                  <input type="checkbox" data-form="topical" checked />
+                  <span class="products-filters__icon" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <path d="M22 8h12v4H22z"/>
+                      <path d="M23 12h10l-1 18a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z"/>
+                      <path d="M20 8l-2 2"/>
+                      <path d="M14 36c2-2 6-2 8 0s6 2 10-1c2-1.5 4-2 6-1"/>
+                    </svg>
+                  </span>
+                  <span class="products-filters__label">Topical</span>
+                </label></li>
+                <li><label>
+                  <input type="checkbox" data-form="powder" checked />
+                  <span class="products-filters__icon" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <path d="M24 8 L36 32 L12 32 Z"/>
+                      <path d="M14 32c2 1 4 1 6 0s4-1 6 0 4 1 6 0"/>
+                      <circle cx="14" cy="38" r="0.5" fill="currentColor"/>
+                      <circle cx="18" cy="40" r="0.5" fill="currentColor"/>
+                      <circle cx="22" cy="38" r="0.5" fill="currentColor"/>
+                      <circle cx="26" cy="40" r="0.5" fill="currentColor"/>
+                      <circle cx="30" cy="38" r="0.5" fill="currentColor"/>
+                      <circle cx="34" cy="40" r="0.5" fill="currentColor"/>
+                      <circle cx="20" cy="36" r="0.5" fill="currentColor"/>
+                      <circle cx="28" cy="36" r="0.5" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  <span class="products-filters__label">Powder</span>
+                </label></li>
+                <li><label>
+                  <input type="checkbox" data-form="enema" checked />
+                  <span class="products-filters__icon" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                      <path d="M28 8h4v6h-4z"/>
+                      <path d="M27 14h6"/>
+                      <path d="M30 14v8"/>
+                      <path d="M30 22c-7 0-12 5-12 11s5 9 12 9 12-3 12-9-5-11-12-11z"/>
+                      <line x1="30" y1="26" x2="30" y2="40"/>
+                    </svg>
+                  </span>
+                  <span class="products-filters__label">Enema</span>
+                </label></li>
+              </ul>
             </div>
-            <p class="card__text" style="font-size: var(--font-micro); color: var(--text-muted);">Reference: US-CG-2100027 10/2021</p>
-          </article>
-
-          <article class="card">
-            <span class="tag tag--third">Rare Disease</span>
-            <h3 class="card__title">ILUVIEN®</h3>
-            <p class="card__text">Fluocinolone acetonide intravitreal implant — for the treatment of <em>diabetic macular edema</em> in patients previously treated with corticosteroids without a clinically significant rise in IOP.</p>
-            <div class="cortrophin-actions" style="justify-content: flex-start;">
-              <a class="link-arrow" href="https://iluvien.com">ILUVIEN.com →</a>
-              <a class="link-arrow link-arrow--muted" href="/iluvien/pi.pdf">Prescribing Information →</a>
+            <div class="products-filters__group">
+              <a class="products-filters__policy" href="/return-goods-policy">Return Goods Policy →</a>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
+          </aside>
 
-    <section class="section">
-      <div class="container">
-        <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--brand">Generics</span>
-          <h2 class="display-heading display-heading--center">200+ products. <em>Seven dosage forms.</em></h2>
-          <p class="display-lead display-lead--center">
-            We make 200+ generic products across seven dosage forms — out of FDA-inspected U.S. facilities.
-          </p>
-        </header>
+          <div class="products-main">
+            <div class="products-search">
+              <label class="products-search__label" for="product-search">Enter Product Name</label>
+              <div class="products-search__row">
+                <input id="product-search" class="products-search__input" type="search" placeholder="Search products" autocomplete="off" />
+                <button class="btn btn--primary products-search__btn" type="button">Search</button>
+              </div>
+            </div>
 
-        <div class="feature-card-grid">
-          <article class="feature-card"><h3 class="feature-card__title">Liquid</h3></article>
-          <article class="feature-card"><h3 class="feature-card__title">Tablet</h3></article>
-          <article class="feature-card"><h3 class="feature-card__title">Capsule</h3></article>
-          <article class="feature-card"><h3 class="feature-card__title">Injection</h3></article>
-          <article class="feature-card"><h3 class="feature-card__title">Topical</h3></article>
-          <article class="feature-card"><h3 class="feature-card__title">Powder</h3></article>
-          <article class="feature-card"><h3 class="feature-card__title">Enema</h3></article>
-        </div>
+            <nav class="products-az" aria-label="Jump to letter">
+              <a href="#letter-A">A</a><a href="#letter-B">B</a><a href="#letter-C">C</a><a href="#letter-D">D</a><a href="#letter-E">E</a><a href="#letter-F">F</a><a href="#letter-G">G</a><a href="#letter-H">H</a><a href="#letter-I">I</a><a class="is-disabled" aria-disabled="true">J</a><a href="#letter-K">K</a><a href="#letter-L">L</a><a href="#letter-M">M</a><a href="#letter-N">N</a><a href="#letter-O">O</a><a href="#letter-P">P</a><a class="is-disabled" aria-disabled="true">Q</a><a href="#letter-R">R</a><a href="#letter-S">S</a><a href="#letter-T">T</a><a class="is-disabled" aria-disabled="true">U</a><a href="#letter-V">V</a><a class="is-disabled" aria-disabled="true">W</a><a class="is-disabled" aria-disabled="true">X</a><a class="is-disabled" aria-disabled="true">Y</a><a class="is-disabled" aria-disabled="true">Z</a>
+            </nav>
 
-        <div class="cortrophin-actions" style="justify-content: center; margin-top: var(--space-6);">
-          <a class="link-arrow" href="/return-goods">Return goods policy →</a>
-        </div>
-      </div>
-    </section>
+            <div class="products-list" id="products-list">
 
-    <section class="section section--dark medicines-section">
-      <div class="container">
-        <div class="investor-content">
-          <h2 class="display-heading display-heading--center">Need to talk to a person?</h2>
-          <div class="investor-actions">
-            <a class="link-arrow link-arrow--accent" href="https://medinfo.anipharmaceuticals.com">Medical Information Portal →</a>
-            <a class="link-arrow link-arrow--accent" href="mailto:drugsafety@anipharmaceuticals.com">Adverse event reporting →</a>
-            <a class="link-arrow link-arrow--accent" href="mailto:complaints@anipharmaceuticals.com">Quality complaints →</a>
+              <section class="products-letter" id="letter-A">
+                <h2 class="products-letter__heading">A</h2>
+                <ul>
+                  <li data-form="capsule"><a href="#">Acebutolol Hydrochloride Capsules USP</a></li>
+                  <li data-form="tablet"><a href="#">Acetazolamide Tablets, USP</a></li>
+                  <li data-form="liquid"><a href="#">Acyclovir Oral Suspension, USP</a></li>
+                  <li data-form="liquid"><a href="#">Alendronate Sodium Oral Solution, 70 mg/75 mL</a></li>
+                  <li data-form="capsule"><a href="#">Anagrelide Capsules, USP</a></li>
+                  <li data-form="tablet"><a href="#">Arimidex® (anastrozole) tablets</a></li>
+                  <li data-form="tablet"><a href="#">Atacand HCT® (candesartan cilexetil - hydrochlorothiazide) Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Atacand® (candesartan cilexetil) Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Atenolol and Chlorthalidone Tablets, USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-B">
+                <h2 class="products-letter__heading">B</h2>
+                <ul>
+                  <li data-form="liquid"><a href="#">Baclofen Oral Suspension</a></li>
+                  <li data-form="tablet"><a href="#">Benazepril Hydrochloride and Hydrochlorothiazide Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Bexarotene Capsules</a></li>
+                  <li data-form="tablet"><a href="#">Bicalutamide Tablets USP</a></li>
+                  <li data-form="tablet"><a href="#">Bisoprolol Fumarate and Hydrochlorthiazide Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Bisoprolol Fumarate Tablets, USP</a></li>
+                  <li data-form="capsule"><a href="#">Bromocriptine Mesylate Capsules, USP</a></li>
+                  <li data-form="tablet"><a href="#">Bromocriptine Mesylate Tablets, USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-C">
+                <h2 class="products-letter__heading">C</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Candesartan Cilexetil and Hydrochlorothiazide Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Carbamazepine Extended-Release Capsules</a></li>
+                  <li data-form="liquid"><a href="#">Carbamazepine Oral Suspension, USP</a></li>
+                  <li data-form="tablet"><a href="#">Casodex® (Bicalutamide) Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Chlorzoxazone Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Clomiphene Citrate Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Clorazepate Dipotassium Tablets, USP</a></li>
+                  <li data-form="topical"><a href="#">Clotrimazole Topical Solution, USP</a></li>
+                  <li data-form="tablet"><a href="#">Colestipol Hydrochloride Tablets USP</a></li>
+                  <li data-form="enema"><a href="#">Cortenema® Hydrocortisone Retention Enema</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-D">
+                <h2 class="products-letter__heading">D</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Dapsone Tablets, USP</a></li>
+                  <li data-form="liquid"><a href="#">Dexamethasone Elixir, USP</a></li>
+                  <li data-form="tablet"><a href="#">Dexamethasone Tablets USP</a></li>
+                  <li data-form="tablet"><a href="#">Dexamethasone Tablets, USP</a></li>
+                  <li data-form="capsule"><a href="#">Dextroamphetamine Saccharate, Amphetamine Aspartate Monohydrate, Dextroamphetamine Sulfate and Amphetamine Sulfate Extended-Release Capsules</a></li>
+                  <li data-form="liquid"><a href="#">Dicyclomine Hydrochloride Oral Solution, USP</a></li>
+                  <li data-form="tablet"><a href="#">Digoxin Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Diphenoxylate Hydrochloride and Atropine Sulfate Tablets USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-E">
+                <h2 class="products-letter__heading">E</h2>
+                <ul>
+                  <li data-form="liquid"><a href="#">Erythromycin Ethylsuccinate for Oral Suspension USP</a></li>
+                  <li data-form="liquid"><a href="#">Erythromycin Ethylsuccinate for Oral Suspension, USP</a></li>
+                  <li data-form="tablet"><a href="#">Estazolam Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Esterified Estrogens and Methyltestosterone Tablets</a></li>
+                  <li data-form="topical"><a href="#">Estradiol Gel</a></li>
+                  <li data-form="topical"><a href="#">Estradiol Gel, Metered</a></li>
+                  <li data-form="tablet"><a href="#">Estradiol Tablets, USP</a></li>
+                  <li data-form="capsule"><a href="#">Etodolac Capsules USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-F">
+                <h2 class="products-letter__heading">F</h2>
+                <ul>
+                  <li data-form="liquid"><a href="#">Famotidine For Oral Suspension, USP</a></li>
+                  <li data-form="liquid"><a href="#">Felbamate Oral Suspension, USP</a></li>
+                  <li data-form="tablet"><a href="#">Felbamate Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Fenofibrate Capsules USP</a></li>
+                  <li data-form="capsule"><a href="#">Fenofibrate Capsules, USP</a></li>
+                  <li data-form="tablet"><a href="#">Flecainide Acetate Tablets USP</a></li>
+                  <li data-form="tablet"><a href="#">Fluconazole Tablets USP</a></li>
+                  <li data-form="tablet"><a href="#">Fludrocortisone Acetate Tablets, USP</a></li>
+                  <li data-form="topical"><a href="#">Fluocinolone Acetonide Cream USP</a></li>
+                  <li data-form="topical"><a href="#">Fluocinolone Acetonide Ointment USP</a></li>
+                  <li data-form="liquid"><a href="#">Fluoxetine Oral Solution, USP</a></li>
+                  <li data-form="tablet"><a href="#">Fluphenazine Hydrochloride Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Fluvoxamine Maleate Tablets USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-G">
+                <h2 class="products-letter__heading">G</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Glipizide Tablets USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-H">
+                <h2 class="products-letter__heading">H</h2>
+                <ul>
+                  <li data-form="topical"><a href="#">Hydrocortisone Cream USP</a></li>
+                  <li data-form="enema"><a href="#">Hydrocortisone Rectal Suspension, USP (Retention)</a></li>
+                  <li data-form="tablet"><a href="#">Hydrocortisone Tablets, USP</a></li>
+                  <li data-form="liquid"><a href="#">Hydroxyzine Hydrochloride Oral Solution, USP</a></li>
+                  <li data-form="tablet"><a href="#">Hyoscyamine Sulfate Extended-Release Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Hyoscyamine Sulfate Orally Disintegrating Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Hyoscyamine Sulfate Sublingual Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Hyoscyamine Sulfate Tablets USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-I">
+                <h2 class="products-letter__heading">I</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Indapamide Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Inderal® LA (propranolol hydrochloride) Long-Acting Capsules</a></li>
+                  <li data-form="capsule"><a href="#">Inderal® XL (propranolol hydrochloride) Extended Release Capsules</a></li>
+                  <li data-form="liquid"><a href="#">Indomethacin Oral Suspension, USP</a></li>
+                  <li data-form="capsule"><a href="#">InnoPran XL® (propranolol hydrochloride) Extended Release Capsules</a></li>
+                  <li data-form="liquid"><a href="#">INZIRQO™ (hydrochlorothiazide) For Oral Suspension, USP</a></li>
+                  <li data-form="tablet"><a href="#">Isosorbide Mononitrate Tablets USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-K">
+                <h2 class="products-letter__heading">K</h2>
+                <ul>
+                  <li data-form="topical"><a href="#">Ketoconazole Shampoo</a></li>
+                  <li data-form="liquid"><a href="#">Kionex® (Sodium Polystyrene Sulfonate Suspension USP)</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-L">
+                <h2 class="products-letter__heading">L</h2>
+                <ul>
+                  <li data-form="powder"><a href="#">L-glutamine Oral Powder</a></li>
+                  <li data-form="tablet"><a href="#">L-Methylfolate Calcium Tablets</a></li>
+                  <li data-form="liquid"><a href="#">Lacosamide Oral Solution, USP</a></li>
+                  <li data-form="liquid"><a href="#">Levocarnitine Oral Solution, USP</a></li>
+                  <li data-form="liquid"><a href="#">Levocarnitine Oral Solution, USP (Sugar Free)</a></li>
+                  <li data-form="tablet"><a href="#">Levocarnitine Tablets, USP</a></li>
+                  <li data-form="liquid"><a href="#">Levofloxacin Oral Solution, USP</a></li>
+                  <li data-form="topical"><a href="#">Lidocaine Hydrochloride Topical Solution, USP</a></li>
+                  <li data-form="capsule"><a href="#">Lipofen® (fenofibrate capsules, USP)</a></li>
+                  <li data-form="tablet"><a href="#">LITHOBID® (Lithium Carbonate USP) Extended-Release Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Lofexidine Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Lorazepam Tablets USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-M">
+                <h2 class="products-letter__heading">M</h2>
+                <ul>
+                  <li data-form="liquid"><a href="#">Megestrol Acetate Oral Suspension, USP</a></li>
+                  <li data-form="capsule"><a href="#">Meloxicam Capsules</a></li>
+                  <li data-form="capsule"><a href="#">Memantine and Donepezil Hydrochlorides Extended-Release Capsules</a></li>
+                  <li data-form="enema"><a href="#">Mesalamine Rectal Suspension Enema</a></li>
+                  <li data-form="tablet"><a href="#">Methazolamide Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Methsuximide Capsules, USP</a></li>
+                  <li data-form="capsule"><a href="#">Methyltestosterone Capsules, USP</a></li>
+                  <li data-form="liquid"><a href="#">Metoclopramide Oral Solution USP</a></li>
+                  <li data-form="tablet"><a href="#">Metoclopramide Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Mexiletine Hydrochloride Capsules USP</a></li>
+                  <li data-form="capsule"><a href="#">Miglustat Capsules</a></li>
+                  <li data-form="tablet"><a href="#">Misoprostol Tablets</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-N">
+                <h2 class="products-letter__heading">N</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Nabumetone Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Naproxen Delayed-Release Tablets, USP</a></li>
+                  <li data-form="liquid"><a href="#">Naproxen Oral Suspension, USP</a></li>
+                  <li data-form="tablet"><a href="#">Nebivolol Tablets</a></li>
+                  <li data-form="capsule"><a href="#">Nicardipine Hydrochloride Capsules</a></li>
+                  <li data-form="tablet"><a href="#">Nilutamide Tablets</a></li>
+                  <li data-form="tablet"><a href="#">Nitazoxanide Tablets</a></li>
+                  <li data-form="liquid"><a href="#">Nitrofurantoin Oral Suspension, USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-O">
+                <h2 class="products-letter__heading">O</h2>
+                <ul>
+                  <li data-form="liquid"><a href="#">Omeprazole and Sodium Bicarbonate for Oral Suspension</a></li>
+                  <li data-form="liquid"><a href="#">Opium Tincture USP (Deodorized)</a></li>
+                  <li data-form="tablet"><a href="#">Oxcarbazepine Tablets USP</a></li>
+                  <li data-form="topical"><a href="#">Oxistat® (oxiconazole nitrate) Lotion</a></li>
+                  <li data-form="tablet"><a href="#">Oxybutynin Chloride Tablets, USP</a></li>
+                  <li data-form="capsule"><a href="#">Oxycodone Hydrochloride Capsules</a></li>
+                  <li data-form="liquid"><a href="#">Oxycodone Hydrochloride Oral Solution USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-P">
+                <h2 class="products-letter__heading">P</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Paliperidone Extended-Release Tablets</a></li>
+                  <li data-form="liquid"><a href="#">Paroxetine Oral Suspension</a></li>
+                  <li data-form="tablet"><a href="#">Pentoxifylline Extended-Release Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Phenoxybenzamine Hydrochloride Capsules, USP</a></li>
+                  <li data-form="tablet"><a href="#">Pindolol Tablets USP</a></li>
+                  <li data-form="tablet"><a href="#">Pirfenidone Tablets</a></li>
+                  <li data-form="powder"><a href="#">Polyethylene Glycol 3350 OTC</a></li>
+                  <li data-form="tablet"><a href="#">Potassium Citrate Extended-Release Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Prazosin Hydrochloride Capsules, USP</a></li>
+                  <li data-form="tablet"><a href="#">Prednisone Tablets USP</a></li>
+                  <li data-form="tablet"><a href="#">Prednisone Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Prochlorperazine Maleate Tablets, USP</a></li>
+                  <li data-form="liquid"><a href="#">Promethazine Hydrochloride and Dextromethorphan Hydrobromide Oral Solution</a></li>
+                  <li data-form="tablet"><a href="#">Propafenone Hydrochloride Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Propranolol Hydrochloride Extended-Release Capsules USP</a></li>
+                  <li data-form="tablet"><a href="#">Prucalopride Tablets</a></li>
+                  <li data-form="injection"><a href="#">Purified Cortrophin® Gel (repository corticotropin injection USP)</a></li>
+                  <li data-form="tablet"><a href="#">Pyrazinamide Tablets, USP</a></li>
+                  <li data-form="liquid"><a href="#">Pyridostigmine Bromide Oral Solution, USP</a></li>
+                  <li data-form="tablet"><a href="#">Pyridostigmine Bromide Tablets USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-R">
+                <h2 class="products-letter__heading">R</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Reglan® (metoclopramide) Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Rifabutin Capsules, USP</a></li>
+                  <li data-form="liquid"><a href="#">Risperidone Oral Solution USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-S">
+                <h2 class="products-letter__heading">S</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Sacubitril and Valsartan Tablets</a></li>
+                  <li data-form="capsule"><a href="#">Selegiline Hydrochloride Capsules, USP</a></li>
+                  <li data-form="capsule"><a href="#">Sertraline Hydrochloride Capsules</a></li>
+                  <li data-form="liquid"><a href="#">Sildenafil For Oral Suspension</a></li>
+                  <li data-form="tablet"><a href="#">SOVUNA® (hydroxychloroquine sulfate) Tablets</a></li>
+                  <li data-form="liquid"><a href="#">Sulfamethoxazole and Trimethoprim Oral Suspension, USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-T">
+                <h2 class="products-letter__heading">T</h2>
+                <ul>
+                  <li data-form="tablet"><a href="#">Terbutaline Sulfate Tablets USP</a></li>
+                  <li data-form="liquid"><a href="#">TEZRULY™ (terazosin) Oral Solution</a></li>
+                  <li data-form="capsule"><a href="#">Thiothixene Capsules, USP</a></li>
+                  <li data-form="tablet"><a href="#">Thyroid Tablets USP</a></li>
+                  <li data-form="capsule"><a href="#">Tolterodine Tartrate Extended-release Capsules</a></li>
+                  <li data-form="tablet"><a href="#">Tranexamic Acid Tablets USP</a></li>
+                  <li data-form="tablet"><a href="#">Tranylcypromine Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Trihexyphenidyl Hydrochloride Tablets, USP</a></li>
+                  <li data-form="tablet"><a href="#">Trimethoprim Tablets, USP</a></li>
+                </ul>
+              </section>
+
+              <section class="products-letter" id="letter-V">
+                <h2 class="products-letter__heading">V</h2>
+                <ul>
+                  <li data-form="liquid"><a href="#">Valproic Acid Oral Solution USP</a></li>
+                  <li data-form="liquid"><a href="#">Valsartan Oral Solution</a></li>
+                  <li data-form="capsule"><a href="#">VANCOCIN® (vancomycin hydrochloride capsules USP)</a></li>
+                  <li data-form="capsule"><a href="#">Vancomycin Hydrochloride Capsules USP</a></li>
+                  <li data-form="liquid"><a href="#">Vancomycin Hydrochloride for Oral Solution USP</a></li>
+                  <li data-form="topical"><a href="#">Veregen® (sinecatechins) Ointment</a></li>
+                </ul>
+              </section>
+
+              <p class="products-empty" hidden>No products match the current filters.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer__logo" href="/" aria-label="ANI Pharmaceuticals home">
-            <img class="footer__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
-          </a>
-          <p>Care, codified.</p>
-        </div>
-        <div class="footer__col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/quality">Quality</a></li>
-            <li><a href="/capabilities">Capabilities</a></li>
-            <li><a href="/locations">Locations</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Audiences</h4>
-          <ul>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/investors">Investors</a></li>
-            <li><a href="/careers">Careers</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer__col footer__col--ae">
-          <h4>Report an AE</h4>
-          <ul>
-            <li>
-              <span class="footer__ae-label">ANI Medical Info</span>
-              <a class="footer__ae-num" href="tel:18003086755">1-800-308-6755</a>
-            </li>
-            <li>
-              <span class="footer__ae-label">FDA MedWatch</span>
-              <a class="footer__ae-num" href="tel:18003321088">1-800-FDA-1088</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__legal">
-        <p>© 2026 ANI Pharmaceuticals All rights reserved.</p>
+      <div class="footer__legal footer__legal--center">
+        <p><strong>ANI Pharmaceuticals, Inc.</strong></p>
         <p class="footer__legal-links">
-          <a href="/privacy">Privacy</a> ·
-          <a href="/terms">Terms</a> ·
+          <a href="/products">Products</a> |
+          <a href="/investors">Investors</a> |
+          <a href="/careers">Careers</a> |
+          <a href="/contact">Contact Us</a> |
+          <a href="/privacy">Privacy Policy</a> |
+          <a href="/cookie-settings">Managed Cookie Settings</a> |
+          <a href="/terms">Terms of Use</a> |
           <a href="/accessibility">Accessibility</a>
+        </p>
+        <p>© Copyright 2025 ANI Pharmaceuticals, Inc.</p>
+        <p class="products-footer__social">
+          <a href="https://www.linkedin.com/company/ani-pharmaceuticals" aria-label="LinkedIn">LinkedIn</a>
+          <a href="https://www.youtube.com/@anipharmaceuticals" aria-label="YouTube">YouTube</a>
         </p>
       </div>
     </div>
   </footer>
 
-  <aside class="isi-bar" role="complementary" aria-label="Important Safety Information">
-    <button class="isi-bar__toggle" type="button" aria-expanded="false" aria-controls="isi-content">
-      <div class="isi-bar__summary">
-        <strong>Important Safety Information &amp; Indications</strong>
-        Cortrophin® Gel and ILUVIEN® are FDA-approved prescription medicines. Click to expand for full ISI.
-      </div>
-      <span class="isi-bar__chevron" aria-hidden="true">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l4-4 4 4"/></svg>
-      </span>
-    </button>
-    <div class="isi-bar__content" id="isi-content">
-      <h3>Indications &amp; Usage</h3>
-      <p><strong>Cortrophin® Gel (repository corticotropin injection)</strong> is indicated as adjunctive therapy for short-term administration in conditions including acute exacerbations of multiple sclerosis, rheumatic disorders, collagen diseases, allergic states, ophthalmic diseases, respiratory diseases, edematous states, and serum sickness.</p>
-      <p><strong>ILUVIEN® (fluocinolone acetonide intravitreal implant)</strong> 0.19 mg is indicated for the treatment of diabetic macular edema in patients previously treated with a course of corticosteroids without a clinically significant rise in IOP, and for the treatment of chronic non-infectious uveitis affecting the posterior segment of the eye.</p>
-      <h3>To report adverse events</h3>
-      <p>Contact ANI Pharmaceuticals Medical Information at <a href="tel:18003086755">1-800-308-6755</a> or the FDA at <a href="tel:18003321088">1-800-FDA-1088</a> / <a href="https://www.fda.gov/medwatch">fda.gov/medwatch</a>.</p>
-    </div>
-  </aside>
-
   <script>
-    const isiToggle = document.querySelector('.isi-bar__toggle');
-    if (isiToggle) {
-      isiToggle.addEventListener('click', () => {
-        const expanded = isiToggle.getAttribute('aria-expanded') === 'true';
-        isiToggle.setAttribute('aria-expanded', String(!expanded));
+    (function () {
+      var search = document.getElementById('product-search');
+      var checks = document.querySelectorAll('.products-filters input[type="checkbox"]');
+      var letters = document.querySelectorAll('.products-letter');
+      var empty = document.querySelector('.products-empty');
+
+      function activeForms() {
+        var set = new Set();
+        checks.forEach(function (c) { if (c.checked) set.add(c.dataset.form); });
+        return set;
+      }
+
+      function apply() {
+        var q = (search.value || '').trim().toLowerCase();
+        var forms = activeForms();
+        var anyVisible = false;
+
+        letters.forEach(function (section) {
+          var items = section.querySelectorAll('li');
+          var sectionVisible = false;
+          items.forEach(function (li) {
+            var name = li.textContent.toLowerCase();
+            var formMatch = forms.has(li.dataset.form);
+            var textMatch = !q || name.indexOf(q) !== -1;
+            var show = formMatch && textMatch;
+            li.hidden = !show;
+            if (show) sectionVisible = true;
+          });
+          section.hidden = !sectionVisible;
+          if (sectionVisible) anyVisible = true;
+        });
+
+        empty.hidden = anyVisible;
+      }
+
+      checks.forEach(function (c) { c.addEventListener('change', apply); });
+      search.addEventListener('input', apply);
+      document.querySelector('.products-search__btn').addEventListener('click', apply);
+      search.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); apply(); }
       });
-    }
+    })();
   </script>
 </body>
 </html>

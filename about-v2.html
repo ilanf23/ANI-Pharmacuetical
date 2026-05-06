@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company building toward a rare-disease future — three FDA-inspected facilities, a Cortrophin Gel franchise, and a 1,000-person team." />
-  <title>About ANI Pharmaceuticals — Care, codified.</title>
+  <meta name="description" content="ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company building toward a rare-disease future - three FDA-inspected facilities, a Cortrophin Gel franchise, and a 1,000-person team." />
+  <title>About ANI Pharmaceuticals - Care, codified.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" />
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/globals.css" />
@@ -16,7 +16,7 @@
 
   <style>
     /* ============================================================
-       ABOUT V2 — BOLD / ASYMMETRIC / GRAPHIC
+       ABOUT V2 - BOLD / ASYMMETRIC / GRAPHIC
        ============================================================ */
 
     /* Mono slash divider used throughout as structural device */
@@ -78,7 +78,7 @@
     .breadcrumb__current { color: var(--charcoal-800); font-weight: 600; }
 
     /* ============================================================
-       HERO V2 — asymmetric 7/5 with Direction-mark frame
+       HERO V2 - asymmetric 7/5 with Direction-mark frame
        ============================================================ */
     .v2-hero {
       background: var(--bone-200);
@@ -169,7 +169,7 @@
     }
 
     /* ============================================================
-       STAKEHOLDER ROUTING — 4 cards
+       STAKEHOLDER ROUTING - 4 cards
        ============================================================ */
     .stakeholders {
       background: var(--bone-100);
@@ -267,7 +267,7 @@
     .stake-card[data-accent="charcoal"]::before { background: var(--charcoal-800); }
 
     /* ============================================================
-       OUR STORY — 4 chapters
+       OUR STORY - 4 chapters
        ============================================================ */
     .story {
       background: var(--bone-200);
@@ -356,7 +356,7 @@
     }
 
     /* ============================================================
-       MARQUEE KPI BAND — DARK INDIGO, MASSIVE TYPE
+       MARQUEE KPI BAND - DARK INDIGO, MASSIVE TYPE
        ============================================================ */
     .marquee-kpi {
       background: var(--indigo-900);
@@ -450,7 +450,7 @@
     }
 
     /* ============================================================
-       COMPETITIVE — split block with massive stat
+       COMPETITIVE - split block with massive stat
        ============================================================ */
     .competitive {
       background: var(--bone-200);
@@ -542,7 +542,7 @@
     }
 
     /* ============================================================
-       DUAL CARDS — HCP + Patient
+       DUAL CARDS - HCP + Patient
        ============================================================ */
     .dual {
       background: var(--bone-100);
@@ -635,7 +635,7 @@
     .dual__card--patient .dual__card-cta { color: var(--charcoal-900); border-bottom: 1.5px solid var(--charcoal-800); padding-bottom: 2px; align-self: flex-start; }
 
     /* ============================================================
-       PILLARS — 4
+       PILLARS - 4
        ============================================================ */
     .pillars {
       background: var(--bone-200);
@@ -706,7 +706,7 @@
     }
 
     /* ============================================================
-       SEGMENTS — 3 business segments
+       SEGMENTS - 3 business segments
        ============================================================ */
     .segments {
       background: var(--charcoal-900);
@@ -831,7 +831,7 @@
     }
 
     /* ============================================================
-       FACILITIES — 3 with bold gradient blocks
+       FACILITIES - 3 with bold gradient blocks
        ============================================================ */
     .facilities {
       background: var(--bone-200);
@@ -1158,7 +1158,7 @@
     }
 
     /* ============================================================
-       TIMELINE — vertical w/ strong color rhythm
+       TIMELINE - vertical w/ strong color rhythm
        ============================================================ */
     .timeline {
       background: var(--indigo-700);
@@ -1346,7 +1346,7 @@
     }
 
     /* ============================================================
-       CAREERS BAND — BIG, SAFFRON, FULL BLEED
+       CAREERS BAND - BIG, SAFFRON, FULL BLEED
        ============================================================ */
     .careers-band {
       background: var(--saffron-500);
@@ -1448,7 +1448,15 @@
           <img class="nav__logo-image" src="/assets/brand/ani-logo.png" alt="ANI Pharmaceuticals" />
         </a>
         <nav class="nav__links" aria-label="Main">
-          <a href="/about" aria-current="page">About</a>
+          <div class="nav__item nav__item--has-menu">
+            <a href="/about" aria-current="page">About <span class="nav__caret" aria-hidden="true">▾</span></a>
+            <div class="nav__dropdown" role="menu">
+              <a href="/about" role="menuitem">About</a>
+              <a href="/executive-team" role="menuitem">Executive Team</a>
+              <a href="/purpose-values" role="menuitem">Purpose &amp; Values</a>
+              <a href="/news" role="menuitem">News</a>
+            </div>
+          </div>
           <a href="/products">Products</a>
           <a href="/investors">Investors</a>
           <a href="/careers">We're Hiring</a>
@@ -1497,7 +1505,7 @@
 
           <div class="v2-hero__sidecol reveal">
             <p>
-              We develop, manufacture, and commercialize medicines for people living with rare and uncommon conditions — and the clinicians who treat them. Three FDA-inspected facilities. One Cortrophin Gel franchise. A team of more than 1,000.
+              We develop, manufacture, and commercialize medicines for people living with rare and uncommon conditions - and the clinicians who treat them. Three FDA-inspected facilities. One Cortrophin Gel franchise. A team of more than 1,000.
             </p>
             <div class="v2-hero__factstrip">
               <div class="v2-hero__fact">
@@ -1556,19 +1564,19 @@
         <div class="story__head">
           <h2 class="story__title reveal">Our <em>story</em>, in chapters.</h2>
           <p class="story__intro reveal">
-            ANI didn't arrive at rare disease in a single move. We compounded it — chapter by chapter — from a small-town generics maker into a diversified biopharma centered on patients others overlook.
+            ANI didn't arrive at rare disease in a single move. We compounded it - chapter by chapter - from a small-town generics maker into a diversified biopharma centered on patients others overlook.
           </p>
         </div>
 
         <div class="story__chapter reveal">
           <div class="story__chapter-num">
             <span class="num">01</span>
-            <span class="years">2001 — 2020</span>
+            <span class="years">2001 - 2020</span>
           </div>
           <h3 class="story__chapter-title">Generics, made in Baudette.</h3>
           <div class="story__chapter-body">
             <p>
-              Founded in 2001, ANI built its reputation on hands-on generics manufacturing in Baudette, Minnesota — a 200,000+ sq ft FDA-inspected facility. Two decades of compounding quality, ANDA-by-ANDA, in a market that rewards consistency over noise.
+              Founded in 2001, ANI built its reputation on hands-on generics manufacturing in Baudette, Minnesota - a 200,000+ sq ft FDA-inspected facility. Two decades of compounding quality, ANDA-by-ANDA, in a market that rewards consistency over noise.
             </p>
             <blockquote>"Quality wasn't a slogan. It was the floor."</blockquote>
           </div>
@@ -1577,12 +1585,12 @@
         <div class="story__chapter reveal">
           <div class="story__chapter-num">
             <span class="num">02</span>
-            <span class="years">2020 — 2022</span>
+            <span class="years">2020 - 2022</span>
           </div>
           <h3 class="story__chapter-title">Cortrophin returns to the U.S. market.</h3>
           <div class="story__chapter-body">
             <p>
-              In October 2022, ANI launched Cortrophin Gel — the first new ACTH therapy in 70 years and the only U.S.-manufactured repository corticotropin with a competitive WAC. A four-year regulatory and manufacturing build culminated in a launch that reframed ANI as a rare-disease commercial company.
+              In October 2022, ANI launched Cortrophin Gel - the first new ACTH therapy in 70 years and the only U.S.-manufactured repository corticotropin with a competitive WAC. A four-year regulatory and manufacturing build culminated in a launch that reframed ANI as a rare-disease commercial company.
             </p>
             <blockquote>"A 70-year gap, closed in four."</blockquote>
           </div>
@@ -1591,12 +1599,12 @@
         <div class="story__chapter reveal">
           <div class="story__chapter-num">
             <span class="num">03</span>
-            <span class="years">2024 — 2025</span>
+            <span class="years">2024 - 2025</span>
           </div>
           <h3 class="story__chapter-title">Rare-disease portfolio, expanded.</h3>
           <div class="story__chapter-body">
             <p>
-              The 2024 acquisition of Alimera Sciences added ILUVIEN and YUTIQ — sustained-release ophthalmic implants — broadening the rare-disease franchise into chronic posterior segment disease. Cortrophin Gel grew 76% year over year in 2025, reaching $400M+ in net revenue.
+              The 2024 acquisition of Alimera Sciences added ILUVIEN and YUTIQ - sustained-release ophthalmic implants - broadening the rare-disease franchise into chronic posterior segment disease. Cortrophin Gel grew 76% year over year in 2025, reaching $400M+ in net revenue.
             </p>
             <blockquote>"From one rare medicine to a portfolio."</blockquote>
           </div>
@@ -1610,9 +1618,9 @@
           <h3 class="story__chapter-title">A 90-person specialty deployment.</h3>
           <div class="story__chapter-body">
             <p>
-              Mid-2026, ANI deploys a 90-person commercial team for acute gouty arthritis flares — the next branded indication for Cortrophin. 2026 guidance midpoint: $1.085B in net revenue, with rare disease at ~60% of mix and adjusted EBITDA of $275 — $290M.
+              Mid-2026, ANI deploys a 90-person commercial team for acute gouty arthritis flares - the next branded indication for Cortrophin. 2026 guidance midpoint: $1.085B in net revenue, with rare disease at ~60% of mix and adjusted EBITDA of $275 - $290M.
             </p>
-            <blockquote>"Care, codified — and continuing."</blockquote>
+            <blockquote>"Care, codified - and continuing."</blockquote>
           </div>
         </div>
       </div>
@@ -1654,7 +1662,7 @@
           <div class="marquee-kpi__cell reveal">
             <span class="marquee-kpi__index">05 / Operations</span>
             <div class="marquee-kpi__num">3</div>
-            <p class="marquee-kpi__label">FDA-inspected facilities — Baudette MN, East Windsor NJ, Oakville ON.</p>
+            <p class="marquee-kpi__label">FDA-inspected facilities - Baudette MN, East Windsor NJ, Oakville ON.</p>
             <span class="marquee-kpi__source">Source: Form 10-K</span>
           </div>
           <div class="marquee-kpi__cell reveal">
@@ -1679,7 +1687,7 @@
               The <em>first new ACTH therapy</em><br>in 70 years.
             </h2>
             <p class="competitive__sub reveal">
-              Repository corticotropin had been a single-source therapy in the United States for seven decades. Cortrophin Gel returned a second option to clinicians and patients in October 2022 — U.S.-manufactured, with eight FDA-approved indications across rheumatology, ophthalmology, nephrology, and neurology.
+              Repository corticotropin had been a single-source therapy in the United States for seven decades. Cortrophin Gel returned a second option to clinicians and patients in October 2022 - U.S.-manufactured, with eight FDA-approved indications across rheumatology, ophthalmology, nephrology, and neurology.
             </p>
             <p class="competitive__source reveal">Source: ANI Pharmaceuticals press release · Oct 2022</p>
           </div>
@@ -1687,14 +1695,14 @@
           <div class="competitive__stat reveal">
             <span class="mono-label" style="color: var(--saffron-300);">WAC differential</span>
             <div class="competitive__stat-num" style="margin-top: var(--space-3);">23.2%</div>
-            <p class="competitive__stat-label">Lower wholesale acquisition cost vs. the legacy alternative — designed to widen access.</p>
+            <p class="competitive__stat-label">Lower wholesale acquisition cost vs. the legacy alternative - designed to widen access.</p>
             <span class="competitive__stat-source">Source: Cortrophin commercial team · 2025</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== DUAL CARDS — HCP + Patient ===== -->
+    <!-- ===== DUAL CARDS - HCP + Patient ===== -->
     <section class="dual">
       <div class="container">
         <div class="dual__grid">
@@ -1712,7 +1720,7 @@
             <span class="dual__card-tag">Cortrophin In Your Corner</span>
             <h3 class="dual__card-title">Patient support that walks you through every step.</h3>
             <p class="dual__card-text">
-              Co-pay support, insurance navigation, and dedicated patient navigators. You don't have to figure this out alone — call our In Your Corner team and we'll walk you through it.
+              Co-pay support, insurance navigation, and dedicated patient navigators. You don't have to figure this out alone - call our In Your Corner team and we'll walk you through it.
             </p>
             <a class="dual__card-phone" href="tel:18883084770">1-888-308-4770</a>
             <a class="dual__card-cta" href="/patients/in-your-corner">Visit In Your Corner →</a>
@@ -1744,7 +1752,7 @@
           <div class="pillar reveal">
             <span class="pillar__index">/ 03</span>
             <h3 class="pillar__name">Earned</h3>
-            <p class="pillar__text">We don't claim — we demonstrate. Numbers over adjectives. Evidence over enthusiasm.</p>
+            <p class="pillar__text">We don't claim - we demonstrate. Numbers over adjectives. Evidence over enthusiasm.</p>
           </div>
           <div class="pillar reveal">
             <span class="pillar__index">/ 04</span>
@@ -1766,20 +1774,20 @@
 
         <div class="segments__grid">
           <article class="segment reveal" data-color="saffron">
-            <span class="segment__num">/ 01 — Rare Disease</span>
+            <span class="segment__num">/ 01 - Rare Disease</span>
             <h3 class="segment__name">Rare Disease</h3>
             <div class="segment__big">~60%</div>
             <p class="segment__big-label">Of 2026 net revenue. Cortrophin Gel, ILUVIEN, YUTIQ.</p>
             <ul class="segment__list">
-              <li>Cortrophin Gel — 8 FDA indications</li>
-              <li>ILUVIEN — DME &amp; chronic NIU-PS</li>
-              <li>YUTIQ — chronic NIU-PS</li>
-              <li>2026 Cortrophin guide: $540 — $575M</li>
+              <li>Cortrophin Gel - 8 FDA indications</li>
+              <li>ILUVIEN - DME &amp; chronic NIU-PS</li>
+              <li>YUTIQ - chronic NIU-PS</li>
+              <li>2026 Cortrophin guide: $540 - $575M</li>
             </ul>
           </article>
 
           <article class="segment reveal" data-color="indigo">
-            <span class="segment__num">/ 02 — Established Brands</span>
+            <span class="segment__num">/ 02 - Established Brands</span>
             <h3 class="segment__name">Established Brands</h3>
             <div class="segment__big">~25%</div>
             <p class="segment__big-label">Of 2026 net revenue. Reliable cash flow funding rare-disease growth.</p>
@@ -1792,10 +1800,10 @@
           </article>
 
           <article class="segment reveal" data-color="teal">
-            <span class="segment__num">/ 03 — Generics</span>
+            <span class="segment__num">/ 03 - Generics</span>
             <h3 class="segment__name">Generics</h3>
             <div class="segment__big">~15%</div>
-            <p class="segment__big-label">Of 2026 net revenue. The original ANI business — now a strategic enabler.</p>
+            <p class="segment__big-label">Of 2026 net revenue. The original ANI business - now a strategic enabler.</p>
             <ul class="segment__list">
               <li>Multiple ANDA approvals</li>
               <li>U.S. manufactured at Baudette</li>
@@ -1818,7 +1826,7 @@
         <div class="facilities__grid">
           <article class="facility reveal" data-color="indigo">
             <div class="facility__visual">
-              <span class="facility__loc">/ MN — USA</span>
+              <span class="facility__loc">/ MN - USA</span>
               <h3 class="facility__name">Baudette</h3>
             </div>
             <div class="facility__body">
@@ -1829,7 +1837,7 @@
 
           <article class="facility reveal" data-color="teal">
             <div class="facility__visual">
-              <span class="facility__loc">/ NJ — USA</span>
+              <span class="facility__loc">/ NJ - USA</span>
               <h3 class="facility__name">East Windsor</h3>
             </div>
             <div class="facility__body">
@@ -1840,7 +1848,7 @@
 
           <article class="facility reveal" data-color="saffron">
             <div class="facility__visual">
-              <span class="facility__loc">/ ON — Canada</span>
+              <span class="facility__loc">/ ON - Canada</span>
               <h3 class="facility__name">Oakville</h3>
             </div>
             <div class="facility__body">
@@ -1867,7 +1875,7 @@
             <h3 class="name">Nikhil Lalwani</h3>
             <p class="title">President &amp; Chief Executive Officer · ANI Pharmaceuticals · Joined 2021</p>
             <blockquote>
-              "Our purpose is simple: serving patients, improving lives. Everything we build — every facility, every product, every team — answers to that."
+              "Our purpose is simple: serving patients, improving lives. Everything we build - every facility, every product, every team - answers to that."
             </blockquote>
           </div>
         </article>
@@ -1916,9 +1924,9 @@
 
         <div class="responsibility__grid">
           <article class="resp-block reveal">
-            <span class="resp-block__num">/ 01 — Patients</span>
+            <span class="resp-block__num">/ 01 - Patients</span>
             <h3 class="resp-block__title">Access programs that show up.</h3>
-            <p class="resp-block__text">Cortrophin In Your Corner pairs every prescription with a patient navigator, co-pay support, and insurance navigation — at no cost to the patient.</p>
+            <p class="resp-block__text">Cortrophin In Your Corner pairs every prescription with a patient navigator, co-pay support, and insurance navigation - at no cost to the patient.</p>
             <div>
               <div class="resp-block__stat">$0</div>
               <span class="resp-block__stat-label">Co-pay for eligible commercially insured patients</span>
@@ -1926,9 +1934,9 @@
           </article>
 
           <article class="resp-block reveal">
-            <span class="resp-block__num">/ 02 — Communities</span>
+            <span class="resp-block__num">/ 02 - Communities</span>
             <h3 class="resp-block__title">Manufacturing as community investment.</h3>
-            <p class="resp-block__text">Baudette, East Windsor, and Oakville are anchor employers in their regions. Local hiring, apprenticeships, and STEM partnerships are the default — not the press release.</p>
+            <p class="resp-block__text">Baudette, East Windsor, and Oakville are anchor employers in their regions. Local hiring, apprenticeships, and STEM partnerships are the default - not the press release.</p>
             <div>
               <div class="resp-block__stat">3 sites</div>
               <span class="resp-block__stat-label">U.S. and Canadian manufacturing footprint</span>
@@ -1936,12 +1944,12 @@
           </article>
 
           <article class="resp-block reveal">
-            <span class="resp-block__num">/ 03 — Environment</span>
+            <span class="resp-block__num">/ 03 - Environment</span>
             <h3 class="resp-block__title">A footprint we can defend.</h3>
             <p class="resp-block__text">Energy efficiency targets, waste-reduction protocols, and supplier diligence apply across all three facilities. Annual ESG report linked from this page.</p>
             <div>
               <div class="resp-block__stat">2026</div>
-              <span class="resp-block__stat-label">ESG report — published Q3 2026</span>
+              <span class="resp-block__stat-label">ESG report - published Q3 2026</span>
             </div>
           </article>
         </div>
@@ -1952,7 +1960,7 @@
     <section class="timeline">
       <div class="container">
         <div class="timeline__head reveal">
-          <span class="mono-label" style="color: var(--saffron-300);">Milestones &nbsp;<span class="slash">/</span>&nbsp; 2001 — 2026</span>
+          <span class="mono-label" style="color: var(--saffron-300);">Milestones &nbsp;<span class="slash">/</span>&nbsp; 2001 - 2026</span>
           <h2 class="timeline__title" style="margin-top: var(--space-3);">Compounding, <em>year by year.</em></h2>
           <p class="timeline__sub">Nine moments that shaped what ANI is now and where the next chapter heads.</p>
         </div>
@@ -1976,7 +1984,7 @@
             <div class="timeline__year">2018</div>
             <div class="timeline__body">
               <h3>Acquired the Cortrophin Gel asset.</h3>
-              <p>ANI acquires the rights to Cortrophin Gel — beginning a four-year regulatory and manufacturing rebuild for U.S. relaunch.</p>
+              <p>ANI acquires the rights to Cortrophin Gel - beginning a four-year regulatory and manufacturing rebuild for U.S. relaunch.</p>
             </div>
           </li>
           <li class="timeline__item reveal">
@@ -1989,7 +1997,7 @@
           <li class="timeline__item reveal">
             <div class="timeline__year">2022</div>
             <div class="timeline__body">
-              <h3>Cortrophin Gel U.S. launch — first new ACTH in 70 years.</h3>
+              <h3>Cortrophin Gel U.S. launch - first new ACTH in 70 years.</h3>
               <p>October 2022: Cortrophin returns to U.S. clinicians and patients with a competitive WAC and U.S. manufacturing.</p>
             </div>
           </li>
@@ -2011,7 +2019,7 @@
             <div class="timeline__year">2026</div>
             <div class="timeline__body">
               <h3>90-person specialty team deploys for acute gout flares.</h3>
-              <p>A new commercial team launches mid-2026 for acute gouty arthritis flares — Cortrophin's next branded indication push.</p>
+              <p>A new commercial team launches mid-2026 for acute gouty arthritis flares - Cortrophin's next branded indication push.</p>
             </div>
           </li>
           <li class="timeline__item reveal">
@@ -2031,7 +2039,7 @@
         <div class="boilerplate__head reveal">
           <span class="mono-label">Press kit &nbsp;<span class="slash">/</span>&nbsp; brand boilerplate</span>
           <h2 class="boilerplate__title" style="margin-top: var(--space-3);">For media, IR, and partners.</h2>
-          <p class="boilerplate__sub">Three approved versions of our boilerplate — copy them verbatim or adapt to your word count.</p>
+          <p class="boilerplate__sub">Three approved versions of our boilerplate - copy them verbatim or adapt to your word count.</p>
         </div>
 
         <div class="boilerplate__grid">
@@ -2057,9 +2065,9 @@
             <span class="bp-card__label">/ Extended</span>
             <span class="bp-card__count">~150 words</span>
             <p class="bp-card__text">
-              ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions. Founded in 2001 as a U.S.-based generics manufacturer, ANI today operates three FDA-inspected facilities in Baudette, MN; East Windsor, NJ; and Oakville, ON. The company markets Cortrophin Gel — the first new ACTH therapy in 70 years — alongside ILUVIEN and YUTIQ for chronic posterior segment ophthalmic disease. 2026 net revenue guidance: $1.055&ndash;$1.115B, with rare disease representing approximately 60% of revenue mix. ANI employs more than 1,000 people across commercial, manufacturing, and research functions.
+              ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions. Founded in 2001 as a U.S.-based generics manufacturer, ANI today operates three FDA-inspected facilities in Baudette, MN; East Windsor, NJ; and Oakville, ON. The company markets Cortrophin Gel - the first new ACTH therapy in 70 years - alongside ILUVIEN and YUTIQ for chronic posterior segment ophthalmic disease. 2026 net revenue guidance: $1.055&ndash;$1.115B, with rare disease representing approximately 60% of revenue mix. ANI employs more than 1,000 people across commercial, manufacturing, and research functions.
             </p>
-            <button class="bp-card__copy" type="button" data-copy="ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions. Founded in 2001 as a U.S.-based generics manufacturer, ANI today operates three FDA-inspected facilities in Baudette, MN; East Windsor, NJ; and Oakville, ON. The company markets Cortrophin Gel — the first new ACTH therapy in 70 years — alongside ILUVIEN and YUTIQ for chronic posterior segment ophthalmic disease. 2026 net revenue guidance: $1.055–$1.115B, with rare disease representing approximately 60% of revenue mix. ANI employs more than 1,000 people across commercial, manufacturing, and research functions.">Copy →</button>
+            <button class="bp-card__copy" type="button" data-copy="ANI Pharmaceuticals (NASDAQ: ANIP) is a diversified biopharmaceutical company developing, manufacturing, and commercializing therapeutics for people living with rare and uncommon conditions. Founded in 2001 as a U.S.-based generics manufacturer, ANI today operates three FDA-inspected facilities in Baudette, MN; East Windsor, NJ; and Oakville, ON. The company markets Cortrophin Gel - the first new ACTH therapy in 70 years - alongside ILUVIEN and YUTIQ for chronic posterior segment ophthalmic disease. 2026 net revenue guidance: $1.055–$1.115B, with rare disease representing approximately 60% of revenue mix. ANI employs more than 1,000 people across commercial, manufacturing, and research functions.">Copy →</button>
           </article>
         </div>
 
@@ -2071,7 +2079,7 @@
       </div>
     </section>
 
-    <!-- ===== CAREERS BAND — FULL BLEED, BIG ===== -->
+    <!-- ===== CAREERS BAND - FULL BLEED, BIG ===== -->
     <section class="careers-band">
       <div class="container">
         <span class="careers-band__eyebrow">/ Careers at ANI</span>
