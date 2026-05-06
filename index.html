@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ANI Pharmaceuticals develops, manufactures, and commercializes therapeutics for people living with rare and uncommon conditions — and the healthcare professionals who treat them." />
+  <title>ANI Pharmaceuticals — Care, codified.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=Inter:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;600&display=swap" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/globals.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav__utility">
+      <div class="container">
+        <nav class="audience-switcher" aria-label="Audience">
+          <a href="/patients" class="audience-switcher__link" aria-current="page">Patients</a>
+          <a href="/hcp" class="audience-switcher__link">Healthcare Professionals</a>
+          <a href="/investors" class="audience-switcher__link">Investors</a>
+          <a href="/media" class="audience-switcher__link">Media</a>
+          <a href="/careers" class="audience-switcher__link">Careers</a>
+        </nav>
+        <a class="nav__ticker" href="/investors">
+          <span class="nav__ticker-label">NASDAQ: ANIP</span>
+          <span class="nav__ticker-price">$80.39</span>
+          <span class="nav__ticker-change">▲ 1.18%</span>
+        </a>
+      </div>
+    </div>
+    <div class="nav__main">
+      <div class="container">
+        <a class="nav__logo" href="/" aria-label="ANI Pharmaceuticals home">
+          <span class="nav__logo-mark" aria-hidden="true">
+            <svg width="32" height="14" viewBox="0 0 32 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="7" x2="22" y2="7" stroke="#312E81" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="25" cy="7" r="5" fill="#F59E0B"/>
+            </svg>
+          </span>
+          <span class="nav__logo-text">ANI Pharmaceuticals</span>
+        </a>
+        <nav class="nav__links" aria-label="Main">
+          <a href="/about">About</a>
+          <a href="/products">Products</a>
+          <a href="/investors">Investors</a>
+          <a href="/careers">We're Hiring</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <span class="hero__eyebrow">For the families living with rare conditions</span>
+            <h1 class="hero__heading">
+              When a condition is <em>rare</em>, our commitment can't be.
+            </h1>
+            <p class="hero__sub">
+              At ANI Pharmaceuticals, we make medicines for the people behind the diagnosis — developing treatments that reach those who need them most, even when the path is complex and the population is small.
+            </p>
+            <div class="hero__cta">
+              <a class="btn btn--accent" href="/medicines">Explore Our Medicines</a>
+              <a class="btn btn--ghost" href="/patients">Patient &amp; family resources →</a>
+            </div>
+          </div>
+          <figure class="hero__visual">
+            <img
+              class="hero__visual-img"
+              src="assets/photo/hero-family.jpg"
+              alt="A mother and her young daughter share a warm hug on a sofa at home."
+              width="800"
+              height="1000"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.dataset.fallback='true';"
+            />
+            <figcaption class="hero__visual-caption">
+              <strong>Maya &amp; family</strong>
+              Living with a rare condition · shared with consent
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS (DARK BAND) ===== -->
+    <section class="stats-band">
+      <div class="container">
+        <div class="stats-band__grid">
+          <div class="stat-card">
+            <div class="stat-card__num">$1B+</div>
+            <div class="stat-card__label">Projected 2026 net revenue</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__num">~60%</div>
+            <div class="stat-card__label">Of revenue from rare disease</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__num">3</div>
+            <div class="stat-card__label">U.S. &amp; Canada manufacturing sites</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__num">8</div>
+            <div class="stat-card__label">FDA-approved Cortrophin indications</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SCROLL CLIP (3D sequence, scrubbed by scroll) ===== -->
+    <section class="scroll-clip" aria-labelledby="scroll-clip-title">
+      <div class="scroll-clip__track">
+        <div class="scroll-clip__sticky">
+          <div class="scroll-clip__layout">
+            <div class="scroll-clip__story">
+              <span class="kicker kicker--brand">Patient experience</span>
+              <h2 id="scroll-clip-title" class="scroll-clip__heading">Inside <em>one dose</em>.</h2>
+              <ol class="scroll-clip__stages" aria-label="What's in a Cortrophin Gel dose, in four stages">
+                <li class="scroll-clip__stage is-active" data-stage="1">
+                  <span class="scroll-clip__stage-num">01</span>
+                  <h3 class="scroll-clip__stage-title">Product parts</h3>
+                  <p class="scroll-clip__stage-desc">Everything in one kit — prefilled syringe, vial, alcohol prep pad, gauze, and sharps container.</p>
+                </li>
+                <li class="scroll-clip__stage" data-stage="2">
+                  <span class="scroll-clip__stage-num">02</span>
+                  <h3 class="scroll-clip__stage-title">Prepare</h3>
+                  <p class="scroll-clip__stage-desc">Refrigerated storage at 2&ndash;8&deg;C. Hands washed. Vial stopper wiped with the alcohol pad.</p>
+                </li>
+                <li class="scroll-clip__stage" data-stage="3">
+                  <span class="scroll-clip__stage-num">03</span>
+                  <h3 class="scroll-clip__stage-title">Use</h3>
+                  <p class="scroll-clip__stage-desc">Subcutaneous injection at a 90&deg; angle, followed by safe disposal in the included sharps container.</p>
+                </li>
+                <li class="scroll-clip__stage" data-stage="4">
+                  <span class="scroll-clip__stage-num">04</span>
+                  <h3 class="scroll-clip__stage-title">Live</h3>
+                  <p class="scroll-clip__stage-desc">Get back to your day. Patient support stays with you between doses, on every prescription.</p>
+                </li>
+              </ol>
+            </div>
+            <figure class="scroll-clip__media">
+              <video
+                class="scroll-clip__video"
+                src="assets/video/3d-clip/3d-clip.mp4"
+                playsinline
+                muted
+                preload="auto"
+                disablepictureinpicture
+                aria-hidden="true"
+                tabindex="-1"
+              ></video>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CORTROPHIN — INTRO ===== -->
+    <section class="section cortrophin-section">
+      <div class="container">
+        <div class="cortrophin-intro">
+          <span class="brand-pill">Cortrophin<sup>®</sup> Gel</span>
+          <span class="meta-eyebrow">Repository corticotropin · ACTH</span>
+          <h2 class="display-heading">One molecule.<br/>Eight indications.</h2>
+          <p class="display-lead">
+            Cortrophin Gel is a repository corticotropin injection with a 60+ year treatment history — now U.S. manufactured with a modern supply chain. A single molecule addressing unmet needs across multiple specialties.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Rheumatology</span>
+            <span class="pill">Ophthalmology</span>
+            <span class="pill">Nephrology</span>
+            <span class="pill">Neurology</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CORTROPHIN — MECHANISM ===== -->
+    <section class="section cortrophin-section cortrophin-section--mechanism">
+      <div class="container">
+        <h2 class="display-heading">A different mechanism.</h2>
+        <p class="display-lead">
+          Unlike traditional corticosteroids, ACTH stimulates the adrenal cortex to produce a broad spectrum of steroidogenic compounds — engaging multiple downstream pathways for a differentiated pharmacological response.
+        </p>
+        <div class="feature-card-grid">
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Adrenal stimulation</h3>
+            <p class="feature-card__text">Stimulates endogenous cortisol production via the HPA axis.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="12" cy="12" r="1" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Direct MC receptor binding</h3>
+            <p class="feature-card__text">Engages melanocortin receptors for anti-inflammatory effects.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h4l3-9 4 18 3-9h4"/>
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Multi-pathway action</h3>
+            <p class="feature-card__text">Broad steroidogenic response beyond single-pathway steroids.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C7 6 4 10 4 14a8 8 0 0016 0c0-4-3-8-8-12z"/>
+                <path d="M12 8v8"/>
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Naturally sourced</h3>
+            <p class="feature-card__text">Porcine derived ACTH with established clinical heritage.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CORTROPHIN — ACCESS ===== -->
+    <section class="section cortrophin-section cortrophin-section--access">
+      <div class="container">
+        <h2 class="display-heading">The only U.S. ACTH with<br/>a competitive WAC.</h2>
+        <p class="display-lead">
+          We believe every eligible patient deserves access. ANI's commitment to competitive pricing and comprehensive support programs helps remove barriers between patients and the therapy they need.
+        </p>
+        <div class="dark-card-grid">
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21V8l9-5 9 5v13"/>
+                <path d="M9 21v-9h6v9"/>
+              </svg>
+            </div>
+            <h3 class="dark-card__title">U.S. manufactured</h3>
+            <p class="dark-card__text">Domestically produced with full supply chain visibility.</p>
+          </article>
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="dark-card__title">Patient support program</h3>
+            <p class="dark-card__text">Dedicated resources to help patients access therapy.</p>
+          </article>
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <h3 class="dark-card__title">Specialty pharmacy network</h3>
+            <p class="dark-card__text">Broad distribution through specialty channels nationwide.</p>
+          </article>
+          <article class="dark-card">
+            <div class="dark-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
+            </div>
+            <h3 class="dark-card__title">Competitive pricing</h3>
+            <p class="dark-card__text">WAC positioned to improve access vs. alternatives.</p>
+          </article>
+        </div>
+        <div class="cortrophin-actions">
+          <a class="link-arrow" href="/cortrophin">Visit Cortrophin.com →</a>
+          <a class="link-arrow link-arrow--muted" href="/cortrophin/pi.pdf">Prescribing Information →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THERAPEUTIC AREAS ===== -->
+    <section class="section therapeutic-section">
+      <div class="container">
+        <header class="section__title-row section__title-row--center">
+          <span class="kicker kicker--brand">Therapeutic Focus</span>
+          <h2 class="display-heading display-heading--center">Where our science meets unmet need.</h2>
+          <p class="display-lead display-lead--center">
+            We focus our science where patients are too often overlooked — rare and complex conditions with limited treatment options and significant unmet need.
+          </p>
+        </header>
+
+        <div class="card-grid card-grid--two">
+          <article class="card">
+            <span class="tag tag--third">Rare Disease</span>
+            <h3 class="card__title">Rheumatology</h3>
+            <p class="card__text">Targeted therapies for complex autoimmune and inflammatory conditions affecting joints, muscles, and connective tissue.</p>
+            <a class="card__link" href="/science/rheumatology">Explore →</a>
+          </article>
+
+          <article class="card">
+            <span class="tag tag--third">Rare Disease</span>
+            <h3 class="card__title">Ophthalmology</h3>
+            <p class="card__text">Sustained-release intravitreal therapies designed for long-term treatment of chronic posterior segment diseases.</p>
+            <a class="card__link" href="/science/ophthalmology">Explore →</a>
+          </article>
+
+          <article class="card">
+            <span class="tag tag--third">Rare Disease</span>
+            <h3 class="card__title">Nephrology</h3>
+            <p class="card__text">Repository corticotropin injection for the treatment of nephrotic syndrome in adults and pediatric patients.</p>
+            <a class="card__link" href="/science/nephrology">Explore →</a>
+          </article>
+
+          <article class="card">
+            <span class="tag tag--accent">Generics</span>
+            <h3 class="card__title">Established Brands &amp; Generics</h3>
+            <p class="card__text">A diversified portfolio of established brands and generic products with competitive generic therapy designations.</p>
+            <a class="card__link" href="/medicines/generics">Explore →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEDICINES (DARK) ===== -->
+    <section class="section section--dark medicines-section">
+      <div class="container">
+        <header class="section__title-row section__title-row--center">
+          <span class="kicker kicker--accent">Our medicines</span>
+          <h2 class="display-heading display-heading--center">Three franchises. One commitment.</h2>
+        </header>
+
+        <div class="medicine-grid">
+          <article class="medicine-card">
+            <h3 class="medicine-card__name">Cortrophin Gel</h3>
+            <span class="medicine-card__tag">Rare Disease</span>
+            <p class="medicine-card__indication">
+              Repository corticotropin injection indicated across a broad range of autoimmune and inflammatory conditions.
+            </p>
+            <div class="medicine-card__meta">
+              <span class="chip">8 Indications</span>
+              <span class="chip">ACTH Mechanism</span>
+            </div>
+            <a class="medicine-card__link" href="/cortrophin/pi.pdf">View prescribing info →</a>
+          </article>
+
+          <article class="medicine-card">
+            <h3 class="medicine-card__name">ILUVIEN</h3>
+            <span class="medicine-card__tag">Ophthalmology</span>
+            <p class="medicine-card__indication">
+              Sustained-release intravitreal implant delivering fluocinolone acetonide for chronic diabetic macular edema.
+            </p>
+            <div class="medicine-card__meta">
+              <span class="chip">2 Indications</span>
+              <span class="chip">36 mo. Duration</span>
+            </div>
+            <a class="medicine-card__link" href="/iluvien/pi.pdf">View prescribing info →</a>
+          </article>
+
+          <article class="medicine-card">
+            <h3 class="medicine-card__name">YUTIQ</h3>
+            <span class="medicine-card__tag">Ophthalmology</span>
+            <p class="medicine-card__indication">
+              Intravitreal implant for the treatment of chronic non-infectious uveitis affecting the posterior segment of the eye.
+            </p>
+            <div class="medicine-card__meta">
+              <span class="chip">1 Indication</span>
+              <span class="chip">NIU-PS Focus</span>
+            </div>
+            <a class="medicine-card__link" href="/yutiq/pi.pdf">View prescribing info →</a>
+          </article>
+
+          <article class="medicine-card">
+            <h3 class="medicine-card__name">Generics Portfolio</h3>
+            <span class="medicine-card__tag">Generics</span>
+            <p class="medicine-card__indication">
+              A comprehensive portfolio of FDA-approved generic pharmaceuticals manufactured in the United States.
+            </p>
+            <div class="medicine-card__meta">
+              <span class="chip">Multiple ANDAs</span>
+              <span class="chip">U.S. Manufactured</span>
+            </div>
+            <a class="medicine-card__link" href="/medicines/generics">Browse portfolio →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MANUFACTURING ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="feature-row">
+          <figure class="feature-row__media feature-row__media--photo">
+            <img
+              class="feature-row__media-img"
+              src="assets/photo/manufacturing-baudette.jpg"
+              alt="ANI Pharmaceuticals manufacturing facility in Baudette, Minnesota."
+              width="800"
+              height="600"
+              loading="lazy"
+              onerror="this.style.display='none'; this.parentElement.dataset.fallback='true';"
+            />
+            <span class="feature-row__media-tag">Baudette, MN</span>
+          </figure>
+          <div class="feature-row__content">
+            <h2 class="display-heading">Made here. Owned here.<br/>Accountable here.</h2>
+            <p class="display-lead">
+              Three FDA-registered manufacturing sites in Baudette, East Windsor, and Oakville give us direct control over quality, supply chain, and every dose that reaches a patient.
+            </p>
+            <a class="link-arrow" href="/manufacturing">Tour our facilities →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INVESTOR (DARK CENTERED) ===== -->
+    <section class="section section--dark investor-section">
+      <div class="container">
+        <div class="investor-content">
+          <h2 class="display-heading display-heading--center">2026 guidance: $1.055&ndash;1.115B<br/>in net revenue.</h2>
+          <p class="display-lead display-lead--center">
+            Rare disease now represents 60% of our revenue mix, powered by sustained Cortrophin Gel growth across neurology, nephrology, and rheumatology indications.
+          </p>
+          <div class="investor-actions">
+            <a class="link-arrow link-arrow--accent" href="/investors">View investor center →</a>
+            <a class="link-arrow link-arrow--accent" href="/investors/earnings">Latest earnings →</a>
+          </div>
+          <a class="ticker-pill" href="/investors">
+            <span class="ticker-pill__label">NASDAQ: ANIP</span>
+            <strong class="ticker-pill__price">$80.39</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA BAND (LIGHT, CENTERED) ===== -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-light">
+          <h2 class="display-heading display-heading--center">The work is rare.<br/>The impact is real.</h2>
+          <p class="display-lead display-lead--center">
+            Join a team where your expertise directly improves outcomes for patients with rare and under-served conditions — conditions most companies overlook.
+          </p>
+          <div class="cta-light__actions">
+            <a class="btn btn--primary" href="/careers">See open roles →</a>
+            <a class="btn btn--outline" href="/who-we-are">Read our story →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="/">ANI Pharmaceuticals</a>
+          <p>Care, codified. A NASDAQ-listed biopharmaceutical company focused on rare and uncommon conditions.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/who-we-are">Who We Are</a></li>
+            <li><a href="/leadership">Leadership</a></li>
+            <li><a href="/manufacturing">Manufacturing</a></li>
+            <li><a href="/responsibility">Responsibility</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Audiences</h4>
+          <ul>
+            <li><a href="/patients">Patients</a></li>
+            <li><a href="/hcp">Healthcare Professionals</a></li>
+            <li><a href="/investors">Investors</a></li>
+            <li><a href="/media">Media</a></li>
+            <li><a href="/careers">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/news">News &amp; Press</a></li>
+            <li><a href="/investors/earnings">Earnings</a></li>
+            <li><a href="/medicines">Medicines</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--ae">
+          <h4>Report an AE</h4>
+          <ul>
+            <li>
+              <span class="footer__ae-label">ANI Medical Info</span>
+              <a class="footer__ae-num" href="tel:18003086755">1-800-308-6755</a>
+            </li>
+            <li>
+              <span class="footer__ae-label">FDA MedWatch</span>
+              <a class="footer__ae-num" href="tel:18003321088">1-800-FDA-1088</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__legal">
+        <p>© 2026 ANI Pharmaceuticals, Inc. All rights reserved.</p>
+        <p class="footer__legal-links">
+          <a href="/privacy">Privacy</a> ·
+          <a href="/terms">Terms</a> ·
+          <a href="/accessibility">Accessibility</a> ·
+          <a href="/sitemap">Sitemap</a>
+        </p>
+        <p class="footer__compliance">This site is intended for U.S. audiences only. Cortrophin® Gel, ILUVIEN®, and YUTIQ® are registered trademarks of ANI Pharmaceuticals, Inc. or its affiliates.</p>
+        <p class="footer__compliance">Job code: US-CORP-2026-001 · Date of preparation: May 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== ISI BAR ===== -->
+  <aside class="isi-bar" role="complementary" aria-label="Important Safety Information">
+    <button
+      class="isi-bar__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="isi-content"
+    >
+      <div class="isi-bar__summary">
+        <strong>Important Safety Information &amp; Indications</strong>
+        Cortrophin® Gel and ILUVIEN® are FDA-approved prescription medicines. Click to expand for full ISI, or visit
+        <a href="/cortrophin/pi.pdf">Cortrophin PI</a> /
+        <a href="/iluvien/pi.pdf">ILUVIEN PI</a>.
+      </div>
+      <span class="isi-bar__chevron" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l4-4 4 4"/>
+        </svg>
+      </span>
+    </button>
+    <div class="isi-bar__content" id="isi-content">
+      <h3>Indications &amp; Usage</h3>
+      <p><strong>Cortrophin® Gel (repository corticotropin injection)</strong> is indicated as adjunctive therapy for short-term administration in conditions including acute exacerbations of multiple sclerosis, rheumatic disorders, collagen diseases, allergic states, ophthalmic diseases, respiratory diseases, edematous states (induction of diuresis or remission of proteinuria in nephrotic syndrome), and serum sickness.</p>
+      <p><strong>ILUVIEN® (fluocinolone acetonide intravitreal implant)</strong> 0.19 mg is indicated for the treatment of diabetic macular edema in patients who have been previously treated with a course of corticosteroids and did not have a clinically significant rise in intraocular pressure, and for the treatment of chronic non-infectious uveitis affecting the posterior segment of the eye.</p>
+
+      <h3>Important Safety Information</h3>
+      <p>Please see full Prescribing Information for each product, including indications, dosage and administration, contraindications, warnings and precautions, adverse reactions, and patient counseling information.</p>
+
+      <h3>To report adverse events</h3>
+      <p>Contact ANI Pharmaceuticals Medical Information at <a href="tel:18003086755">1-800-308-6755</a> or the FDA at <a href="tel:18003321088">1-800-FDA-1088</a> / <a href="https://www.fda.gov/medwatch">fda.gov/medwatch</a>.</p>
+    </div>
+  </aside>
+
+  <script>
+    const isiToggle = document.querySelector('.isi-bar__toggle');
+    if (isiToggle) {
+      isiToggle.addEventListener('click', () => {
+        const expanded = isiToggle.getAttribute('aria-expanded') === 'true';
+        isiToggle.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+
+    // ===== SCROLL-SCRUBBED 3D CLIP w/ STAGE NARRATION =====
+    (function initScrollClip() {
+      const section = document.querySelector('.scroll-clip');
+      const track = document.querySelector('.scroll-clip__track');
+      const video = document.querySelector('.scroll-clip__video');
+      const stages = Array.from(document.querySelectorAll('.scroll-clip__stage'));
+      if (!section || !track || !video) return;
+
+      const stageCount = stages.length || 4;
+      let activeStage = -1;
+      function setStage(i) {
+        if (i === activeStage) return;
+        activeStage = i;
+        stages.forEach((el, idx) => el.classList.toggle('is-active', idx === i));
+      }
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reduce.matches) {
+        video.addEventListener('loadedmetadata', () => {
+          video.currentTime = (video.duration || 24) / 2;
+        }, { once: true });
+        stages.forEach(el => el.classList.add('is-active'));
+        return;
+      }
+
+      let raf = 0;
+      let current = 0;
+      let dirty = true;
+
+      function tick() {
+        const rect = track.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const max = Math.max(1, rect.height - vh);
+        const scrolled = Math.max(0, Math.min(max, -rect.top));
+        const progress = scrolled / max;
+        const duration = video.duration || 24;
+        const target = progress * duration;
+        current += (target - current) * 0.18;
+        if (Number.isFinite(current) && Math.abs(current - video.currentTime) > 0.01) {
+          try { video.currentTime = current; } catch (e) { /* seek race */ }
+        }
+        // Map scroll progress → active stage (1/N each)
+        const idx = Math.min(stageCount - 1, Math.floor(progress * stageCount));
+        setStage(idx);
+
+        if (dirty || Math.abs(target - current) > 0.005) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          raf = 0;
+        }
+      }
+
+      function start() {
+        dirty = true;
+        if (!raf) raf = requestAnimationFrame(tick);
+      }
+      function stop() { dirty = false; }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => e.isIntersecting ? start() : stop());
+      }, { rootMargin: '50% 0px' });
+      io.observe(section);
+
+      window.addEventListener('scroll', start, { passive: true });
+      window.addEventListener('resize', start);
+
+      if (video.readyState >= 1) {
+        start();
+      } else {
+        video.addEventListener('loadedmetadata', start, { once: true });
+      }
+    })();
+  </script>
+</body>
+</html>

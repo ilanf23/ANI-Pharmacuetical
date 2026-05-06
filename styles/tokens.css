@@ -1,0 +1,204 @@
+:root {
+  /* ===== PRIMITIVE TOKENS ===== */
+  /* Indigo — Brand Authority */
+  --indigo-50:  #EEEEFB;
+  --indigo-100: #D5D4F0;
+  --indigo-200: #A8A6D9;
+  --indigo-400: #4D4AAA;
+  --indigo-500: #312E81;
+  --indigo-600: #232067;
+  --indigo-700: #15124A;
+  --indigo-900: #08062A;
+
+  /* Saffron — Patient Warmth */
+  --saffron-50:  #FEF6E5;
+  --saffron-100: #FCE8B8;
+  --saffron-300: #F9C76C;
+  --saffron-500: #F59E0B;
+  --saffron-600: #C57A02;
+  --saffron-700: #8B5500;
+
+  /* Teal — Clinical Credibility */
+  --teal-50:  #E5F5F4;
+  --teal-100: #B6E3DF;
+  --teal-300: #5DCBC2;
+  --teal-500: #0D9488;
+  --teal-600: #0A776D;
+  --teal-700: #075952;
+  --teal-900: #042521;
+
+  /* Warm Neutrals */
+  --bone-100:     #FFFEFB;
+  --bone-200:     #F7F5F1;
+  --bone-300:     #EAE7E1;
+  --steel-300:    #A8AAB0;
+  --steel-500:    #6B6E73;
+  --steel-700:    #3F4145;
+  --charcoal-800: #1A1A1F;
+  --charcoal-900: #0E0E12;
+
+  /* Semantic States */
+  --green-success: #3D8B5C;
+  --amber-warning: #C5851F;
+  --red-error:     #B83A2A;
+  --blue-info:     #3568A8;
+
+  /* ===== SEMANTIC TOKENS — LIGHT ===== */
+  --surface-page:           var(--bone-200);
+  --surface-elevated:       var(--bone-100);
+  --surface-sunken:         var(--bone-300);
+  --surface-brand:          var(--indigo-500);
+  --surface-brand-strong:   var(--indigo-700);
+  --surface-brand-subtle:   var(--indigo-50);
+  --surface-accent:         var(--saffron-500);
+  --surface-accent-subtle:  var(--saffron-50);
+  --surface-third:          var(--teal-500);
+  --surface-third-subtle:   var(--teal-50);
+  --surface-disabled:       var(--bone-300);
+  --surface-success-subtle: #E8F4ED;
+  --surface-error-subtle:   #FCEBE7;
+
+  --text-primary:    var(--charcoal-800);
+  --text-secondary:  var(--steel-700);
+  --text-muted:      var(--steel-500);
+  --text-on-brand:   var(--bone-100);
+  --text-on-accent:  var(--charcoal-800);
+  --text-on-third:   var(--bone-100);
+  --text-link:       var(--indigo-500);
+  --text-link-hover: var(--saffron-700);
+  --text-accent:     var(--saffron-700);
+  --text-third:      var(--teal-700);
+  --text-success:    var(--green-success);
+  --text-error:      var(--red-error);
+
+  --border-subtle:   rgba(26,26,31,0.08);
+  --border-default:  rgba(26,26,31,0.14);
+  --border-emphasis: var(--charcoal-800);
+  --border-focus:    var(--indigo-500);
+  --border-error:    var(--red-error);
+
+  /* ===== TYPE ===== */
+  --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --font-display-2xl: clamp(3.5rem, 8vw, 7rem);
+  --font-display-xl:  clamp(2.75rem, 6vw, 5.5rem);
+  --font-display-lg:  clamp(2.25rem, 4.5vw, 4rem);
+  --font-display-md:  clamp(1.75rem, 3vw, 2.75rem);
+  --font-heading-lg:  clamp(1.375rem, 2vw, 1.75rem);
+  --font-heading-md:  clamp(1.125rem, 1.5vw, 1.375rem);
+  --font-heading-sm:  clamp(1rem, 1.25vw, 1.125rem);
+  --font-body-lg:     clamp(1.0625rem, 1.25vw, 1.1875rem);
+  --font-body-md:     clamp(1rem, 1vw, 1.0625rem);
+  --font-body-sm:     clamp(0.875rem, 0.95vw, 0.9375rem);
+  --font-micro:       clamp(0.75rem, 0.85vw, 0.8125rem);
+  --font-eyebrow:     clamp(0.6875rem, 0.75vw, 0.75rem);
+  --font-mono-md:     clamp(0.875rem, 0.95vw, 0.9375rem);
+
+  /* ===== SPACING ===== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --space-11: 12rem;
+  --space-12: 16rem;
+
+  --space-component-xs: var(--space-1);
+  --space-component-sm: var(--space-2);
+  --space-component-md: var(--space-4);
+  --space-component-lg: var(--space-5);
+  --space-layout-xs: var(--space-5);
+  --space-layout-sm: var(--space-7);
+  --space-layout-md: var(--space-8);
+  --space-layout-lg: var(--space-9);
+  --space-layout-xl: var(--space-10);
+
+  /* ===== RADII ===== */
+  --radius-xs:   2px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 999px;
+  --radius-full: 50%;
+
+  /* ===== SHADOWS (indigo-tinted) ===== */
+  --shadow-xs:     0 1px 1px rgba(49,46,129,0.04);
+  --shadow-sm:     0 1px 2px rgba(49,46,129,0.06), 0 4px 8px rgba(49,46,129,0.04);
+  --shadow-md:     0 4px 12px rgba(49,46,129,0.06), 0 12px 28px rgba(49,46,129,0.08);
+  --shadow-lg:     0 12px 32px rgba(49,46,129,0.10), 0 32px 64px rgba(49,46,129,0.12);
+  --shadow-xl:     0 24px 56px rgba(49,46,129,0.16), 0 48px 96px rgba(49,46,129,0.18);
+  --shadow-focus:  0 0 0 3px rgba(49,46,129,0.20);
+  --shadow-accent: 0 12px 32px rgba(245,158,11,0.30);
+
+  /* ===== MOTION ===== */
+  --ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  --duration-instant:    100ms;
+  --duration-fast:       200ms;
+  --duration-default:    300ms;
+  --duration-slow:       500ms;
+  --duration-deliberate: 800ms;
+
+  /* ===== Z-INDEX ===== */
+  --z-base:     0;
+  --z-elevated: 10;
+  --z-sticky:   50;
+  --z-isi-bar:  99;
+  --z-modal:    100;
+  --z-toast:    1000;
+
+  /* ===== LAYOUT ===== */
+  --container-max: 1360px;
+  --container-padding-desktop: 32px;
+  --container-padding-mobile: 20px;
+}
+
+[data-theme="dark"] {
+  --surface-page:           var(--charcoal-900);
+  --surface-elevated:       var(--indigo-900);
+  --surface-sunken:         var(--charcoal-800);
+  --surface-brand:          var(--indigo-400);
+  --surface-brand-strong:   var(--indigo-700);
+  --surface-brand-subtle:   var(--indigo-700);
+  --surface-accent:         var(--saffron-300);
+  --surface-accent-subtle:  var(--saffron-700);
+  --surface-third:          var(--teal-300);
+  --surface-third-subtle:   var(--teal-700);
+  --surface-disabled:       var(--charcoal-800);
+
+  --text-primary:    var(--bone-100);
+  --text-secondary:  var(--steel-300);
+  --text-muted:      var(--steel-300);
+  --text-on-brand:   var(--bone-100);
+  --text-on-accent:  var(--charcoal-900);
+  --text-on-third:   var(--charcoal-900);
+  --text-link:       var(--indigo-200);
+  --text-link-hover: var(--saffron-300);
+  --text-accent:     var(--saffron-300);
+  --text-third:      var(--teal-300);
+
+  --border-subtle:   rgba(244,239,230,0.08);
+  --border-default:  rgba(244,239,230,0.14);
+  --border-emphasis: var(--bone-100);
+  --border-focus:    var(--indigo-200);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
