@@ -17,13 +17,16 @@
   <style>
     .tnum { font-variant-numeric: tabular-nums; }
 
+    html { scroll-behavior: smooth; }
+
     /* =========================================================
-       1. HERO - split editorial: heading left, dark quote right
+       1. HERO - focused editorial with real image
        ========================================================= */
     .ir-hero {
-      background: var(--bone-100);
-      padding: var(--space-8) 0 var(--space-7);
+      background: var(--bone-200);
+      padding: var(--space-8) 0;
       border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
     }
     .ir-hero__crumb {
       font-size: var(--font-eyebrow);
@@ -37,9 +40,9 @@
 
     .ir-hero__grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: var(--space-8);
-      align-items: start;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: var(--space-7);
+      align-items: center;
       margin-top: var(--space-5);
     }
     @media (max-width: 900px) {
@@ -61,7 +64,7 @@
     }
     .ir-hero__lead {
       margin-top: var(--space-5);
-      max-width: 56ch;
+      max-width: 48ch;
       color: var(--text-secondary);
       font-size: var(--font-body-lg);
       line-height: 1.6;
@@ -71,6 +74,65 @@
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
+    }
+
+    .ir-hero__visual {
+      position: relative;
+      min-height: clamp(420px, 48vw, 620px);
+      margin: 0;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      background: var(--charcoal-900);
+    }
+    .ir-hero__visual img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      transform: scale(1.04);
+      animation: irImageDrift 16s var(--ease-standard) infinite alternate;
+    }
+    .ir-hero__visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,6,42,0.02) 20%, rgba(8,6,42,0.72) 100%);
+      pointer-events: none;
+    }
+    .ir-hero__caption {
+      position: absolute;
+      left: var(--space-5);
+      right: var(--space-5);
+      bottom: var(--space-5);
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      color: var(--bone-100);
+    }
+    .ir-hero__caption-item {
+      padding-top: var(--space-3);
+      border-top: 1px solid rgba(247,245,241,0.26);
+    }
+    .ir-hero__caption-value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 650;
+      line-height: 1;
+      color: var(--saffron-300);
+    }
+    .ir-hero__caption-label {
+      display: block;
+      margin-top: var(--space-2);
+      color: rgba(247,245,241,0.76);
+      font-size: var(--font-body-sm);
+      line-height: 1.35;
+    }
+    @media (max-width: 640px) {
+      .ir-hero__caption { grid-template-columns: 1fr; }
+      .ir-hero__visual { min-height: 520px; }
     }
 
     .ir-quote {
@@ -141,6 +203,22 @@
       color: rgba(247,245,241,0.45);
     }
 
+    .ir-quote--compact {
+      margin-top: var(--space-6);
+      max-width: 520px;
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    .ir-quote--compact .ir-quote__price {
+      font-size: clamp(2.25rem, 4vw, 3rem);
+    }
+    .ir-quote--compact .ir-quote__detail {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
     /* =========================================================
        2. SUB-NAV - sticky hairline bar
        ========================================================= */
@@ -154,7 +232,7 @@
     }
     .ir-subnav__list {
       display: flex;
-      gap: var(--space-5);
+      gap: var(--space-6);
       list-style: none;
       padding: 0;
       margin: 0;
@@ -181,12 +259,12 @@
        ========================================================= */
     .ir-overview {
       background: var(--bone-200);
-      padding: var(--space-9) 0;
+      padding: var(--space-8) 0;
     }
     .ir-overview__grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: var(--space-9);
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-7);
       align-items: start;
       margin-top: var(--space-6);
     }
@@ -196,9 +274,9 @@
 
     .ir-overview__pull {
       position: relative;
-      padding: var(--space-7) var(--space-6);
+      padding: var(--space-6);
       background: var(--bone-100);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
     }
     .ir-overview__pull-eyebrow {
@@ -212,7 +290,7 @@
       display: block;
       margin-top: var(--space-4);
       font-family: var(--font-display);
-      font-size: clamp(5rem, 12vw, 11rem);
+      font-size: clamp(4rem, 8vw, 7rem);
       font-weight: 600;
       line-height: 0.92;
       letter-spacing: -0.06em;
@@ -233,9 +311,9 @@
     .ir-overview__list { margin: 0; padding: 0; list-style: none; }
     .ir-overview__row {
       display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: var(--space-5);
-      padding: var(--space-5) 0;
+      grid-template-columns: 48px 1fr;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
       border-top: 1px solid var(--border-default);
     }
     .ir-overview__row:last-child { border-bottom: 1px solid var(--border-default); }
@@ -318,12 +396,12 @@
        ========================================================= */
     .ir-news {
       background: var(--bone-100);
-      padding: var(--space-9) 0;
+      padding: var(--space-8) 0;
     }
     .ir-news__layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: var(--space-7);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: var(--space-6);
       align-items: stretch;
       margin-top: var(--space-6);
     }
@@ -331,7 +409,9 @@
       .ir-news__layout { grid-template-columns: 1fr; }
     }
     .ir-news__feature {
-      background: var(--indigo-900);
+      background:
+        linear-gradient(180deg, rgba(8,6,42,0.18), rgba(8,6,42,0.86)),
+        url('/assets/photo/about-team.jpg') center / cover;
       color: var(--bone-100);
       padding: var(--space-7);
       border-radius: var(--radius-lg);
@@ -343,13 +423,7 @@
       overflow: hidden;
     }
     .ir-news__feature::after {
-      content: "";
-      position: absolute;
-      bottom: -40px; right: -40px;
-      width: 200px; height: 200px;
-      background: var(--saffron-500);
-      border-radius: 50%;
-      opacity: 0.18;
+      content: none;
     }
     .ir-news__feature-tag {
       display: inline-flex;
@@ -404,7 +478,7 @@
 
     .ir-news__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
     .ir-news__item {
-      padding: var(--space-5) 0;
+      padding: var(--space-4) 0;
       border-bottom: 1px solid var(--border-subtle);
     }
     .ir-news__item:first-child { padding-top: 0; }
@@ -419,7 +493,7 @@
     .ir-news__item-title {
       margin-top: var(--space-2);
       font-family: var(--font-display);
-      font-size: var(--font-heading-md);
+      font-size: var(--font-heading-sm);
       font-weight: 600;
       line-height: 1.25;
       color: var(--text-primary);
@@ -448,7 +522,7 @@
     .ir-agenda {
       background: var(--charcoal-900);
       color: var(--bone-100);
-      padding: var(--space-9) 0;
+      padding: var(--space-8) 0;
     }
     .ir-agenda__intro {
       max-width: 70ch;
@@ -459,10 +533,10 @@
     .ir-agenda__list { margin: var(--space-7) 0 0; padding: 0; list-style: none; }
     .ir-agenda__row {
       display: grid;
-      grid-template-columns: 200px 1fr auto;
-      gap: var(--space-6);
+      grid-template-columns: 160px 1fr auto;
+      gap: var(--space-5);
       align-items: center;
-      padding: var(--space-6) 0;
+      padding: var(--space-5) 0;
       border-top: 1px solid rgba(247,245,241,0.14);
     }
     .ir-agenda__row:last-child { border-bottom: 1px solid rgba(247,245,241,0.14); }
@@ -988,6 +1062,60 @@
       gap: var(--space-4);
       flex-wrap: wrap;
     }
+
+    @keyframes irImageDrift {
+      from { transform: scale(1.04) translate3d(0, 0, 0); }
+      to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+    }
+
+    .ir-reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 700ms var(--ease-standard),
+        transform 700ms var(--ease-standard);
+    }
+    .ir-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .ir-news__item,
+    .ir-agenda__row,
+    .ir-quarter {
+      transition:
+        transform var(--duration-default) var(--ease-standard),
+        background-color var(--duration-default) var(--ease-standard);
+    }
+    .ir-news__item:hover,
+    .ir-agenda__row:hover,
+    .ir-quarter:hover {
+      transform: translateX(6px);
+    }
+    .ir-news__item:hover,
+    .ir-quarter:hover {
+      background: rgba(245,158,11,0.045);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ir-hero__visual img { animation: none; transform: none; }
+      .ir-reveal,
+      .ir-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .ir-news__item,
+      .ir-agenda__row,
+      .ir-quarter {
+        transition: none;
+      }
+      .ir-news__item:hover,
+      .ir-agenda__row:hover,
+      .ir-quarter:hover {
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1021,7 +1149,7 @@
   <main id="main">
 
     <!-- ===== 1. HERO ===== -->
-    <section class="ir-hero" aria-labelledby="ir-hero-h">
+    <section class="ir-hero ir-reveal" aria-labelledby="ir-hero-h">
       <div class="container">
         <p class="ir-hero__crumb">
           <a href="/">ANI</a>
@@ -1035,29 +1163,45 @@
               The numbers behind <em>the mission</em>.
             </h1>
             <p class="ir-hero__lead">
-              Quarterly results, SEC filings, governance, and the live ANIP quote - for the analysts, shareholders, and journalists tracking what this company makes and where it's going.
+              Quarterly results, SEC filings, webcasts, and the live ANIP quote - organized for analysts, shareholders, and journalists tracking the company.
             </p>
             <div class="ir-hero__cta">
               <a class="btn btn--primary" href="#events">Q1 2026 earnings call &rarr;</a>
               <a class="btn btn--ghost" href="https://investor.anipharmaceuticals.com">Investor portal &#8599;</a>
             </div>
+
+            <aside class="ir-quote ir-quote--compact" aria-label="Live ANIP stock quote">
+              <span class="ir-quote__ticker">NASDAQ &middot; ANIP</span>
+              <div class="ir-quote__price tnum">$84.06</div>
+              <span class="ir-quote__change tnum" role="status">
+                <span aria-hidden="true">&#9660;</span>
+                &minus;0.57 (&minus;0.67%)
+              </span>
+              <dl class="ir-quote__detail tnum">
+                <div class="ir-quote__row"><dt>Volume</dt><dd>312,488</dd></div>
+                <div class="ir-quote__row"><dt>Market cap</dt><dd>$1.78B</dd></div>
+              </dl>
+              <p class="ir-quote__source">Refinitiv &middot; &ge;15 min delayed</p>
+            </aside>
           </div>
 
-          <aside class="ir-quote" aria-label="Live ANIP stock quote">
-            <span class="ir-quote__ticker">NASDAQ &middot; ANIP</span>
-            <div class="ir-quote__price tnum">$84.06</div>
-            <span class="ir-quote__change tnum" role="status">
-              <span aria-hidden="true">&#9660;</span>
-              &minus;0.57 (&minus;0.67%)
-            </span>
-            <dl class="ir-quote__detail tnum">
-              <div class="ir-quote__row"><dt>Day's range</dt><dd>83.42 &ndash; 84.91</dd></div>
-              <div class="ir-quote__row"><dt>52-week range</dt><dd>56.20 &ndash; 92.18</dd></div>
-              <div class="ir-quote__row"><dt>Volume</dt><dd>312,488</dd></div>
-              <div class="ir-quote__row"><dt>Market cap</dt><dd>$1.78B</dd></div>
-            </dl>
-            <p class="ir-quote__source">Refinitiv &middot; &ge;15 min delayed</p>
-          </aside>
+          <figure class="ir-hero__visual" aria-label="ANI Pharmaceuticals manufacturing facility">
+            <img src="/assets/photo/manufacturing-baudette.png" alt="ANI Pharmaceuticals manufacturing facility in Baudette, Minnesota" />
+            <figcaption class="ir-hero__caption">
+              <span class="ir-hero__caption-item">
+                <span class="ir-hero__caption-value tnum">$1B+</span>
+                <span class="ir-hero__caption-label">2026 revenue guidance range</span>
+              </span>
+              <span class="ir-hero__caption-item">
+                <span class="ir-hero__caption-value tnum">~60%</span>
+                <span class="ir-hero__caption-label">Rare-disease revenue mix</span>
+              </span>
+              <span class="ir-hero__caption-item">
+                <span class="ir-hero__caption-value tnum">3</span>
+                <span class="ir-hero__caption-label">FDA-inspected facilities</span>
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -1069,16 +1213,14 @@
           <li><a href="#overview">Overview</a></li>
           <li><a href="#news">News</a></li>
           <li><a href="#events">Events</a></li>
-          <li><a href="#stock">Stock</a></li>
           <li><a href="#financials">Financials</a></li>
-          <li><a href="#governance">Governance</a></li>
           <li><a href="#resources">Resources</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- ===== 3. OVERVIEW (asymmetric editorial) ===== -->
-    <section class="ir-overview" id="overview">
+    <section class="ir-overview ir-reveal" id="overview">
       <div class="container">
         <header class="section__title-row">
           <span class="kicker kicker--brand">Corporate overview</span>
@@ -1128,7 +1270,7 @@
     </section>
 
     <!-- ===== 4. STATS BAND ===== -->
-    <section class="ir-stats" aria-label="Key 2026 metrics">
+    <section class="ir-stats ir-reveal" aria-label="Key 2026 metrics">
       <div class="container">
         <div class="ir-stats__grid">
           <div class="ir-stats__cell">
@@ -1152,7 +1294,7 @@
     </section>
 
     <!-- ===== 5. NEWS (magazine layout) ===== -->
-    <section class="ir-news" id="news">
+    <section class="ir-news ir-reveal" id="news">
       <div class="container">
         <header class="section__title-row">
           <span class="kicker kicker--brand">Latest news</span>
@@ -1188,21 +1330,6 @@
               <h4 class="ir-news__item-title">Investor files: Q1 earnings packet, model resources, and governance downloads</h4>
               <a class="ir-news__item-link" href="/investors-files">View files &rarr;</a>
             </li>
-            <li class="ir-news__item">
-              <span class="ir-news__item-date tnum">Apr 20, 2026</span>
-              <h4 class="ir-news__item-title">FDA approval and launch of Pimozide Tablets with 180-day CGT exclusivity</h4>
-              <a class="ir-news__item-link" href="#">Read release &rarr;</a>
-            </li>
-            <li class="ir-news__item">
-              <span class="ir-news__item-date tnum">Apr 13, 2026</span>
-              <h4 class="ir-news__item-title">Launch of Carbamazepine Extended-Release Capsules &mdash; manufactured at Baudette</h4>
-              <a class="ir-news__item-link" href="#">Read release &rarr;</a>
-            </li>
-            <li class="ir-news__item">
-              <span class="ir-news__item-date tnum">Mar 28, 2026</span>
-              <h4 class="ir-news__item-title">ANI presents at the Barclays Global Healthcare Conference</h4>
-              <a class="ir-news__item-link" href="#">Watch replay &rarr;</a>
-            </li>
             <li class="ir-news__archive">
               <span>Press release archive</span>
               <a href="https://investor.anipharmaceuticals.com/news">View all &rarr;</a>
@@ -1213,7 +1340,7 @@
     </section>
 
     <!-- ===== 6. EVENTS (charcoal agenda strip) ===== -->
-    <section class="ir-agenda" id="events">
+    <section class="ir-agenda ir-reveal" id="events">
       <div class="container">
         <header class="section__title-row">
           <span class="kicker kicker--accent">Events &amp; presentations</span>
@@ -1254,42 +1381,12 @@
             </div>
             <a class="ir-agenda__action" href="#">Watch webcast &rarr;</a>
           </li>
-          <li class="ir-agenda__row">
-            <div class="ir-agenda__date">
-              <span class="ir-agenda__day tnum">03</span>
-              <div>
-                <span class="ir-agenda__month">Mar</span>
-                <span class="ir-agenda__year tnum">2026</span>
-              </div>
-            </div>
-            <div>
-              <span class="ir-agenda__detail-tag">Presentation</span>
-              <h3 class="ir-agenda__title">Corporate presentation &mdash; March 2026</h3>
-              <p class="ir-agenda__sub">Latest investor deck: strategy, rare-disease focus, manufacturing footprint, 2026 guidance.</p>
-            </div>
-            <a class="ir-agenda__action" href="#">Download PDF &rarr;</a>
-          </li>
-          <li class="ir-agenda__row">
-            <div class="ir-agenda__date">
-              <span class="ir-agenda__day tnum">12</span>
-              <div>
-                <span class="ir-agenda__month">Feb</span>
-                <span class="ir-agenda__year tnum">2026</span>
-              </div>
-            </div>
-            <div>
-              <span class="ir-agenda__detail-tag">Earnings call</span>
-              <h3 class="ir-agenda__title">Q4 2025 earnings call</h3>
-              <p class="ir-agenda__sub">Replay, transcript, and earnings deck available.</p>
-            </div>
-            <a class="ir-agenda__action" href="#">Watch replay &rarr;</a>
-          </li>
         </ol>
       </div>
     </section>
 
     <!-- ===== 7. STOCK (light, big typographic board + side cards) ===== -->
-    <section class="ir-stock" id="stock">
+    <section class="ir-stock" id="stock" hidden>
       <div class="container">
         <header class="section__title-row">
           <span class="kicker kicker--brand">Stock information</span>
@@ -1340,7 +1437,7 @@
     </section>
 
     <!-- ===== 8. FINANCIALS (table-style row list) ===== -->
-    <section class="ir-financials" id="financials">
+    <section class="ir-financials ir-reveal" id="financials">
       <div class="container">
         <header class="section__title-row">
           <span class="kicker kicker--brand">Financials</span>
@@ -1380,30 +1477,6 @@
               <a href="#">10-Q &rarr;</a>
             </span>
           </div>
-          <div class="ir-quarter" role="row">
-            <span class="ir-quarter__period tnum" role="cell">Q2 2025</span>
-            <span class="ir-quarter__title" role="cell">
-              Second-quarter 2025 results
-              <span class="ir-quarter__title-meta">Reported August 7, 2025</span>
-            </span>
-            <span class="ir-quarter__links" role="cell">
-              <a href="#">Press release &rarr;</a>
-              <a href="#">Earnings deck &rarr;</a>
-              <a href="#">10-Q &rarr;</a>
-            </span>
-          </div>
-          <div class="ir-quarter" role="row">
-            <span class="ir-quarter__period tnum" role="cell">Q1 2025</span>
-            <span class="ir-quarter__title" role="cell">
-              First-quarter 2025 results
-              <span class="ir-quarter__title-meta">Reported May 9, 2025</span>
-            </span>
-            <span class="ir-quarter__links" role="cell">
-              <a href="#">Press release &rarr;</a>
-              <a href="#">Earnings deck &rarr;</a>
-              <a href="#">10-Q &rarr;</a>
-            </span>
-          </div>
         </div>
 
         <div class="ir-financials__strip">
@@ -1419,7 +1492,7 @@
     </section>
 
     <!-- ===== 9. GOVERNANCE (numbered editorial) ===== -->
-    <section class="ir-governance" id="governance">
+    <section class="ir-governance" id="governance" hidden>
       <div class="container">
         <div class="ir-governance__heading">
           <header class="section__title-row" style="margin: 0;">
@@ -1461,7 +1534,7 @@
     </section>
 
     <!-- ===== 10. RESOURCES & ALERTS (warm split) ===== -->
-    <section class="ir-resources" id="resources">
+    <section class="ir-resources ir-reveal" id="resources">
       <div class="container">
         <header class="section__title-row">
           <span class="kicker kicker--brand">Resources</span>
@@ -1562,5 +1635,26 @@
       </div>
     </div>
   </footer>
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('.ir-reveal');
+
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.16 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    })();
+  </script>
 </body>
 </html>
