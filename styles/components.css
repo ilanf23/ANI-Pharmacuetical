@@ -116,7 +116,7 @@
 .nav__logo-image {
   display: block;
   width: clamp(188px, 22.5vw, 275px);
-  height: 73px;
+  height: 74px;
   object-fit: cover;
   object-position: center;
 }
