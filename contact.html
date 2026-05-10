@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png" />
   <meta name="description" content="Contact ANI Pharmaceuticals - patient hubs, HCP medical info, adverse-event reporting, business development, and investor relations." />
   <title>Contact - ANI Pharmaceuticals</title>
 
@@ -197,6 +199,255 @@
       .contact-form__row { grid-template-columns: 1fr; }
       .contact-form__checks { grid-template-columns: 1fr; }
     }
+
+    /* ===== Page header — quick-route pill rail ===== */
+    .quick-route {
+      margin-top: var(--space-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .quick-route__pill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.5rem 0.875rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--bone-100);
+      color: var(--text-primary);
+      border: 1px solid var(--border-default);
+      overflow: hidden;
+      transition:
+        transform var(--duration-fast) var(--ease-standard),
+        border-color var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-fast) var(--ease-standard);
+    }
+    .quick-route__pill::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--steel-500);
+      transition:
+        background var(--duration-fast) var(--ease-standard),
+        transform var(--duration-default) var(--ease-standard);
+    }
+    .quick-route__pill:hover {
+      transform: translateY(-1px);
+      border-color: var(--charcoal-800);
+      box-shadow: var(--shadow-sm);
+    }
+    .quick-route__pill:hover::before {
+      background: var(--indigo-500);
+      transform: scale(1.4);
+    }
+    /* Safety pill — gentle pulse to draw the eye, only this one keeps a color cue */
+    .quick-route__pill--safety::before {
+      background: var(--red-error);
+      animation: pulse-dot 2.4s var(--ease-standard) infinite;
+    }
+    .quick-route__pill--safety:hover::before {
+      background: var(--red-error);
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(184,58,42,0.35); }
+      50%      { box-shadow: 0 0 0 6px rgba(184,58,42,0); }
+    }
+
+    /* ===== Audience cards — neutral indigo accent + motion ===== */
+    .contact-card {
+      position: relative;
+      padding-top: calc(var(--space-7) + 2px);
+      transition:
+        transform var(--duration-default) var(--ease-standard),
+        box-shadow var(--duration-default) var(--ease-standard),
+        border-color var(--duration-fast) var(--ease-standard);
+    }
+    .contact-card::before {
+      height: 2px;
+      background: var(--charcoal-800);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--duration-slow) var(--ease-standard);
+    }
+    .contact-card:hover { border-color: var(--border-default); }
+    .contact-card:hover::before { transform: scaleX(1); }
+    .contact-card--safety::before { background: var(--red-error); transform: scaleX(1); }
+
+    .contact-card__head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .contact-card__icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-sunken);
+      color: var(--indigo-500);
+      transition:
+        background var(--duration-default) var(--ease-standard),
+        color var(--duration-default) var(--ease-standard),
+        transform var(--duration-default) var(--ease-standard);
+    }
+    .contact-card:hover .contact-card__icon {
+      background: var(--indigo-500);
+      color: var(--bone-100);
+      transform: rotate(-4deg) scale(1.04);
+    }
+    .contact-card--safety .contact-card__icon { color: var(--red-error); }
+    .contact-card--safety:hover .contact-card__icon {
+      background: var(--red-error);
+      color: var(--bone-100);
+    }
+    .contact-card__icon svg { width: 22px; height: 22px; }
+    .contact-card .tag { margin-bottom: 0; }
+
+    .contact-card__list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-4);
+      display: grid;
+      gap: var(--space-2);
+    }
+    .contact-card__list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-3);
+      align-items: baseline;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--border-subtle);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+    .contact-card__list li:last-child { border-bottom: 0; }
+    .contact-card__list li strong {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .contact-card__list a {
+      font-weight: 600;
+      position: relative;
+    }
+    .contact-card__list a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      opacity: 0.4;
+      transition: transform var(--duration-default) var(--ease-standard);
+    }
+    .contact-card__list a:hover::after { transform: scaleX(1); }
+    .contact-card__note {
+      font-size: var(--font-body-sm);
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: auto;
+    }
+
+    /* ===== Reveal-on-scroll (cards stagger in) ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity var(--duration-slow) var(--ease-decelerate),
+        transform var(--duration-slow) var(--ease-decelerate);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+    .reveal.is-in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ===== Form aside — quiet panel, animated edge marker ===== */
+    .contact-form-aside {
+      position: relative;
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      background: var(--bone-100);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-xs);
+      overflow: hidden;
+    }
+    .contact-form-aside::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--indigo-500);
+      animation: edge-grow 900ms var(--ease-decelerate) 200ms forwards;
+    }
+    @keyframes edge-grow {
+      to { height: 64px; }
+    }
+
+    /* ===== HQ cards — neutral pin, subtle hover lift ===== */
+    .hq-card {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .hq-card__pin {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-sunken);
+      color: var(--indigo-500);
+      transition:
+        background var(--duration-default) var(--ease-standard),
+        color var(--duration-default) var(--ease-standard),
+        transform var(--duration-default) var(--ease-standard);
+    }
+    .hq-card:hover .hq-card__pin {
+      background: var(--indigo-500);
+      color: var(--bone-100);
+      transform: translateY(-2px);
+    }
+    .hq-card__pin svg { width: 26px; height: 26px; }
+    .hq-card__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--font-eyebrow);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 var(--space-2);
+    }
+
+    @media (max-width: 540px) {
+      .hq-card { grid-template-columns: 1fr; }
+    }
+
+    /* Respect users who prefer reduced motion (tokens.md mandate) */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .quick-route__pill--safety::before { animation: none; }
+      .contact-form-aside::before { animation: none; height: 64px; }
+    }
   </style>
 </head>
 <body>
@@ -244,6 +495,14 @@
           <p class="page-header__sub">
             Different audiences need different lines. Pick the one that fits.
           </p>
+          <nav class="quick-route" aria-label="Jump to contact path">
+            <a class="quick-route__pill quick-route__pill--patient"  href="#card-patient">Patient or caregiver</a>
+            <a class="quick-route__pill quick-route__pill--hcp"      href="#card-hcp">Healthcare professional</a>
+            <a class="quick-route__pill quick-route__pill--safety"   href="#card-safety">Adverse event</a>
+            <a class="quick-route__pill quick-route__pill--trade"    href="#card-trade">Trade &amp; supply</a>
+            <a class="quick-route__pill quick-route__pill--partner"  href="#card-partner">Partnership</a>
+            <a class="quick-route__pill quick-route__pill--investor" href="#card-investor">Investor or media</a>
+          </nav>
         </div>
       </div>
     </section>
@@ -251,7 +510,7 @@
     <section class="section contact-form-section" aria-labelledby="contact-form-title">
       <div class="container">
         <div class="contact-form-grid">
-          <aside class="contact-form-aside">
+          <aside class="contact-form-aside reveal" style="--reveal-delay: 0ms;">
             <span class="kicker kicker--brand">Send a message</span>
             <h2 id="contact-form-title">Detailed inquiry questionnaire</h2>
             <p>If your question needs more context than a phone call or email, use this form to give ANI the details needed to route and answer it.</p>
@@ -262,7 +521,7 @@
             </ul>
           </aside>
 
-          <form class="contact-form" action="mailto:info@anipharmaceuticals.com" method="post" enctype="text/plain">
+          <form class="contact-form reveal" style="--reveal-delay: 140ms;" action="mailto:info@anipharmaceuticals.com" method="post" enctype="text/plain">
             <section class="contact-form__section" aria-labelledby="cf-section-contact">
               <h3 class="contact-form__section-title" id="cf-section-contact">Your contact information</h3>
               <div class="contact-form__row">
@@ -479,75 +738,129 @@
 
     <section class="section">
       <div class="container">
+        <header class="section__title-row section__title-row--center reveal" style="margin-bottom: var(--space-6);">
+          <span class="kicker kicker--brand">Direct lines</span>
+          <h2 class="display-heading display-heading--center">Skip the form. <em>Call the right team.</em></h2>
+        </header>
+
         <div class="card-grid card-grid--two">
 
-          <article class="card">
-            <span class="tag tag--third">Patients</span>
+          <article class="card contact-card contact-card--patient reveal" id="card-patient" style="--reveal-delay: 0ms;">
+            <div class="contact-card__head">
+              <span class="contact-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </span>
+              <span class="tag tag--default">Patients &amp; caregivers</span>
+            </div>
             <h3 class="card__title">I'm a patient or caregiver</h3>
             <p class="card__text">For questions about a specific medicine, dosing, side effects, or savings.</p>
-            <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
-              <li><strong>Cortrophin® Gel:</strong> <a href="tel:18003086755">1-800-308-6755</a></li>
-              <li><strong>ILUVIEN® / YUTIQ®:</strong> <a href="tel:18444458843">1-844-445-8843</a></li>
-              <li><strong>Other ANI products:</strong> <a href="tel:18552041431">1-855-204-1431</a></li>
+            <ul class="contact-card__list">
+              <li><strong>Cortrophin® Gel</strong><a href="tel:18003086755">1-800-308-6755</a></li>
+              <li><strong>ILUVIEN® / YUTIQ®</strong><a href="tel:18444458843">1-844-445-8843</a></li>
+              <li><strong>Other ANI products</strong><a href="tel:18552041431">1-855-204-1431</a></li>
             </ul>
-            <p class="card__text" style="font-size: var(--font-body-sm); color: var(--text-muted);">To report a side effect, see the <em>Adverse Events</em> card.</p>
+            <p class="contact-card__note">To report a side effect, see the <em>Adverse Events</em> card.</p>
           </article>
 
-          <article class="card">
-            <span class="tag tag--third">HCPs</span>
+          <article class="card contact-card contact-card--hcp reveal" id="card-hcp" style="--reveal-delay: 80ms;">
+            <div class="contact-card__head">
+              <span class="contact-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11h6M12 8v6"/>
+                  <rect x="3" y="4" width="18" height="16" rx="2"/>
+                </svg>
+              </span>
+              <span class="tag tag--default">Healthcare professionals</span>
+            </div>
             <h3 class="card__title">I'm a healthcare professional</h3>
             <p class="card__text">Medical information, prescribing questions, samples, and clinical resources.</p>
-            <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
-              <li><a href="https://medinfo.anipharmaceuticals.com">Medical Information Portal</a></li>
-              <li><strong>Cortrophin MedInfo:</strong> <a href="tel:18003086755">1-800-308-6755</a></li>
-              <li><strong>ILUVIEN MedInfo:</strong> <a href="tel:18444458843">1-844-445-8843</a></li>
-              <li><strong>Other product MedInfo:</strong> <a href="tel:18552041431">1-855-204-1431</a></li>
+            <ul class="contact-card__list">
+              <li><strong>Portal</strong><a href="https://medinfo.anipharmaceuticals.com">Medical Information Portal</a></li>
+              <li><strong>Cortrophin MedInfo</strong><a href="tel:18003086755">1-800-308-6755</a></li>
+              <li><strong>ILUVIEN MedInfo</strong><a href="tel:18444458843">1-844-445-8843</a></li>
+              <li><strong>Other product MedInfo</strong><a href="tel:18552041431">1-855-204-1431</a></li>
             </ul>
           </article>
 
-          <article class="card">
-            <span class="tag tag--accent">Safety</span>
+          <article class="card contact-card contact-card--safety reveal" id="card-safety" style="--reveal-delay: 160ms;">
+            <div class="contact-card__head">
+              <span class="contact-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 9v4M12 17h.01"/>
+                  <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                </svg>
+              </span>
+              <span class="tag" style="background: rgba(184,58,42,0.10); color: var(--red-error);">Safety — priority</span>
+            </div>
             <h3 class="card__title">Adverse event or quality issue</h3>
             <p class="card__text">We take both seriously and respond fast.</p>
-            <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
-              <li><strong>ANI products - adverse events:</strong> <a href="mailto:drugsafety@anipharmaceuticals.com">drugsafety@anipharmaceuticals.com</a></li>
-              <li><strong>ANI products - quality complaints:</strong> <a href="mailto:complaints@anipharmaceuticals.com">complaints@anipharmaceuticals.com</a></li>
-              <li><strong>ILUVIEN / YUTIQ:</strong> <a href="mailto:pvalimerasciences@alimerasciences.com">pvalimerasciences@alimerasciences.com</a></li>
+            <ul class="contact-card__list">
+              <li><strong>ANI — adverse events</strong><a href="mailto:drugsafety@anipharmaceuticals.com">drugsafety@anipharmaceuticals.com</a></li>
+              <li><strong>ANI — quality complaints</strong><a href="mailto:complaints@anipharmaceuticals.com">complaints@anipharmaceuticals.com</a></li>
+              <li><strong>ILUVIEN / YUTIQ</strong><a href="mailto:pvalimerasciences@alimerasciences.com">pvalimerasciences@alimerasciences.com</a></li>
             </ul>
-            <p class="card__text" style="font-size: var(--font-body-sm); color: var(--text-muted);">You can also report directly to FDA MedWatch at <a href="https://www.fda.gov/medwatch">fda.gov/medwatch</a> or <a href="tel:18003321088">1-800-FDA-1088</a>.</p>
+            <p class="contact-card__note">You can also report directly to FDA MedWatch at <a href="https://www.fda.gov/medwatch">fda.gov/medwatch</a> or <a href="tel:18003321088">1-800-FDA-1088</a>.</p>
           </article>
 
-          <article class="card">
-            <span class="tag tag--third">Trade</span>
+          <article class="card contact-card contact-card--trade reveal" id="card-trade" style="--reveal-delay: 240ms;">
+            <div class="contact-card__head">
+              <span class="contact-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4"/>
+                  <circle cx="9" cy="20" r="1.5"/>
+                  <circle cx="18" cy="20" r="1.5"/>
+                </svg>
+              </span>
+              <span class="tag tag--default">Trade &amp; supply</span>
+            </div>
             <h3 class="card__title">Wholesaler, pharmacy, or hospital</h3>
             <p class="card__text">Orders, account questions, and supply.</p>
-            <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
-              <li><strong>Customer Service:</strong> <a href="tel:18004341121">1-800-434-1121</a></li>
-              <li><strong>Sales:</strong> <a href="mailto:Sales@anipharmaceuticals.com">Sales@anipharmaceuticals.com</a></li>
-              <li><strong>General inquiries:</strong> <a href="mailto:info@anipharmaceuticals.com">info@anipharmaceuticals.com</a></li>
+            <ul class="contact-card__list">
+              <li><strong>Customer Service</strong><a href="tel:18004341121">1-800-434-1121</a></li>
+              <li><strong>Sales</strong><a href="mailto:Sales@anipharmaceuticals.com">Sales@anipharmaceuticals.com</a></li>
+              <li><strong>General inquiries</strong><a href="mailto:info@anipharmaceuticals.com">info@anipharmaceuticals.com</a></li>
             </ul>
           </article>
 
-          <article class="card">
-            <span class="tag tag--third">Partnership</span>
+          <article class="card contact-card contact-card--partner reveal" id="card-partner" style="--reveal-delay: 320ms;">
+            <div class="contact-card__head">
+              <span class="contact-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </span>
+              <span class="tag tag--default">Partnership &amp; BD</span>
+            </div>
             <h3 class="card__title">Exploring a partnership</h3>
             <p class="card__text">Contract manufacturing, packaging, in-licensing, M&amp;A.</p>
-            <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
-              <li><strong>Business Development:</strong> Chad Gassert</li>
-              <li><strong>Phone:</strong> <a href="tel:18004341121">1-800-434-1121</a></li>
-              <li><strong>Email:</strong> <a href="mailto:chad.gassert@anipharmaceuticals.com">chad.gassert@anipharmaceuticals.com</a></li>
+            <ul class="contact-card__list">
+              <li><strong>Business Development</strong><span style="color: var(--text-primary); font-weight: 600;">Chad Gassert</span></li>
+              <li><strong>Phone</strong><a href="tel:18004341121">1-800-434-1121</a></li>
+              <li><strong>Email</strong><a href="mailto:chad.gassert@anipharmaceuticals.com">chad.gassert@anipharmaceuticals.com</a></li>
             </ul>
             <a class="card__link" href="/capabilities">See manufacturing capabilities →</a>
           </article>
 
-          <article class="card">
-            <span class="tag tag--third">Investors</span>
+          <article class="card contact-card contact-card--investor reveal" id="card-investor" style="--reveal-delay: 400ms;">
+            <div class="contact-card__head">
+              <span class="contact-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 17 9 11 13 15 21 7"/>
+                  <polyline points="14 7 21 7 21 14"/>
+                </svg>
+              </span>
+              <span class="tag tag--default">Investors &amp; media</span>
+            </div>
             <h3 class="card__title">Investor or journalist</h3>
             <p class="card__text">Quarterly results, filings, press inquiries.</p>
-            <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
-              <li><strong>Investor Relations:</strong> Courtney Mogerley, Argot Partners</li>
-              <li><strong>Phone:</strong> <a href="tel:6463688014">646-368-8014</a></li>
-              <li><strong>Email:</strong> <a href="mailto:IR@anipharmaceuticals.com">IR@anipharmaceuticals.com</a></li>
+            <ul class="contact-card__list">
+              <li><strong>IR contact</strong><span style="color: var(--text-primary); font-weight: 600;">Courtney Mogerley · Argot Partners</span></li>
+              <li><strong>Phone</strong><a href="tel:6463688014">646-368-8014</a></li>
+              <li><strong>Email</strong><a href="mailto:IR@anipharmaceuticals.com">IR@anipharmaceuticals.com</a></li>
             </ul>
             <a class="card__link" href="https://investor.anipharmaceuticals.com">Investor site →</a>
           </article>
@@ -564,21 +877,39 @@
         </header>
 
         <div class="card-grid card-grid--two">
-          <article class="card">
-            <h3 class="card__title">Corporate HQ - Baudette, MN</h3>
-            <p class="card__text">
-              <strong>210 Main Street West</strong><br/>
-              Baudette, MN 56623<br/>
-              <strong>T:</strong> <a href="tel:2186343500">218-634-3500</a> · <strong>F:</strong> 218-634-3540
-            </p>
+          <article class="card hq-card hq-card--corporate reveal" style="--reveal-delay: 0ms;">
+            <span class="hq-card__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <div>
+              <p class="hq-card__eyebrow">Corporate HQ</p>
+              <h3 class="card__title">Baudette, MN</h3>
+              <p class="card__text">
+                <strong>210 Main Street West</strong><br/>
+                Baudette, MN 56623<br/>
+                <strong>T:</strong> <a href="tel:2186343500">218-634-3500</a> · <strong>F:</strong> 218-634-3540
+              </p>
+            </div>
           </article>
-          <article class="card">
-            <h3 class="card__title">Commercial HQ - Princeton, NJ</h3>
-            <p class="card__text">
-              <strong>104 Carnegie Center Drive, Suite 300</strong><br/>
-              Princeton, NJ 08540<br/>
-              <strong>T:</strong> <a href="tel:6097591810">609-759-1810</a>
-            </p>
+          <article class="card hq-card hq-card--commercial reveal" style="--reveal-delay: 120ms;">
+            <span class="hq-card__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <div>
+              <p class="hq-card__eyebrow">Commercial HQ</p>
+              <h3 class="card__title">Princeton, NJ</h3>
+              <p class="card__text">
+                <strong>104 Carnegie Center Drive, Suite 300</strong><br/>
+                Princeton, NJ 08540<br/>
+                <strong>T:</strong> <a href="tel:6097591810">609-759-1810</a>
+              </p>
+            </div>
           </article>
         </div>
 
@@ -653,5 +984,29 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var nodes = document.querySelectorAll('.reveal');
+      if (!nodes.length) return;
+
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced || !('IntersectionObserver' in window)) {
+        nodes.forEach(function (n) { n.classList.add('is-in'); });
+        return;
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      nodes.forEach(function (n) { io.observe(n); });
+    })();
+  </script>
 </body>
 </html>

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png" />
   <meta name="description" content="The work is rare. The impact is real. ANI Pharmaceuticals careers across manufacturing, commercial, and R&D." />
   <title>Careers - ANI Pharmaceuticals</title>
 
@@ -14,98 +16,1384 @@
   <link rel="stylesheet" href="styles/globals.css" />
   <link rel="stylesheet" href="styles/components.css" />
   <style>
-    .careers-intro {
-      background: var(--bone-100);
+    .tnum { font-variant-numeric: tabular-nums; }
+    html { scroll-behavior: smooth; }
+
+    /* =========================================================
+       1. HERO - editorial split with word-cycle and photo cluster
+       ========================================================= */
+    .cr-hero {
+      position: relative;
+      background: var(--bone-200);
+      padding: var(--space-9) 0 var(--space-8);
+      overflow: hidden;
     }
-    .careers-roles {
+    .cr-hero__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: var(--space-8);
+      align-items: center;
+    }
+    @media (max-width: 980px) {
+      .cr-hero__grid { grid-template-columns: 1fr; gap: var(--space-7); }
+    }
+
+    .cr-hero__live {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-pill);
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.32);
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--saffron-700);
+    }
+    .cr-hero__live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--saffron-500);
+      box-shadow: 0 0 0 0 rgba(245,158,11,0.6);
+      animation: crLivePulse 2s var(--ease-standard) infinite;
+    }
+    @keyframes crLivePulse {
+      0%   { box-shadow: 0 0 0 0 rgba(245,158,11,0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(245,158,11,0); }
+      100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+    }
+
+    .cr-hero__heading {
+      margin-top: var(--space-5);
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 6vw, 5.25rem);
+      font-weight: 600;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+      max-width: 14ch;
+    }
+    .cr-hero__heading em {
+      position: relative;
+      font-style: italic;
+      color: var(--text-accent);
+      white-space: nowrap;
+    }
+
+    .cr-hero__cycler {
+      display: inline-block;
+      position: relative;
+      min-width: 8ch;
+      vertical-align: baseline;
+      color: var(--indigo-500);
+    }
+    .cr-hero__cycler-word {
+      display: inline-block;
+      transition: opacity 320ms var(--ease-standard), transform 320ms var(--ease-standard);
+    }
+    .cr-hero__cycler-dot {
+      color: var(--text-primary);
+    }
+    .cr-hero__cycler-word.is-out {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    .cr-hero__cycler-word.is-in {
+      animation: crWordIn 380ms var(--ease-decelerate);
+    }
+    @keyframes crWordIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .cr-hero__lead {
+      margin-top: var(--space-5);
+      max-width: 48ch;
+      font-size: var(--font-body-lg);
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .cr-hero__cta {
+      margin-top: var(--space-6);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+    .cr-hero__meta {
+      margin-top: var(--space-7);
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: var(--space-5) var(--space-7);
+      max-width: 32rem;
+    }
+    @media (max-width: 560px) {
+      .cr-hero__meta { grid-template-columns: 1fr 1fr; }
+    }
+    .cr-hero__meta-item span:first-child {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--indigo-700);
+    }
+    .cr-hero__meta-item span:last-child {
+      display: block;
+      margin-top: var(--space-1);
+      font-size: var(--font-body-sm);
+      color: var(--text-muted);
+      max-width: 18ch;
+    }
+
+    /* Photo cluster */
+    .cr-hero__cluster {
+      position: relative;
+      min-height: clamp(440px, 52vw, 620px);
+    }
+    .cr-hero__photo {
+      position: absolute;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      background: var(--indigo-900);
+    }
+    .cr-hero__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cr-hero__photo--a {
+      width: 58%;
+      height: 70%;
+      top: 0;
+      left: 0;
+      transform: rotate(-2deg);
+    }
+    .cr-hero__photo--b {
+      width: 50%;
+      height: 56%;
+      bottom: 0;
+      right: 0;
+      transform: rotate(3deg);
+      z-index: 2;
+    }
+    .cr-hero__photo--c {
+      width: 38%;
+      height: 38%;
+      bottom: 8%;
+      left: 12%;
+      transform: rotate(-5deg);
+      z-index: 3;
+      border: 6px solid var(--bone-100);
+    }
+    .cr-hero__photo--c img {
+      animation: crPhotoDrift 14s var(--ease-standard) infinite alternate;
+    }
+    .cr-hero__photo-tag {
+      position: absolute;
+      left: 16px; bottom: 12px;
+      padding: 6px 12px;
+      background: rgba(8,6,42,0.78);
+      color: var(--bone-100);
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      backdrop-filter: blur(4px);
+    }
+    @keyframes crPhotoDrift {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.18); }
+    }
+    .cr-hero__sticker {
+      position: absolute;
+      top: 8%;
+      right: -6%;
+      z-index: 4;
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background: var(--saffron-500);
+      color: var(--charcoal-800);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      box-shadow: var(--shadow-accent);
+      animation: crStickerSpin 22s linear infinite;
+    }
+    .cr-hero__sticker span {
+      animation: crStickerCounter 22s linear infinite;
+      display: inline-block;
+    }
+    @keyframes crStickerSpin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes crStickerCounter {
+      to { transform: rotate(-360deg); }
+    }
+    @media (max-width: 980px) {
+      .cr-hero__cluster { min-height: 520px; max-width: 560px; margin: 0 auto; }
+      .cr-hero__sticker { right: 2%; }
+    }
+
+    /* =========================================================
+       2. MARQUEE - role-title ticker
+       ========================================================= */
+    .cr-marquee {
+      background: var(--indigo-900);
+      color: var(--bone-100);
+      overflow: hidden;
+      border-block: 1px solid rgba(247,245,241,0.06);
+    }
+    .cr-marquee__track {
+      display: flex;
+      gap: var(--space-7);
+      padding: var(--space-4) 0;
+      width: max-content;
+      animation: crMarquee 40s linear infinite;
+    }
+    .cr-marquee__item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: rgba(247,245,241,0.78);
+      white-space: nowrap;
+    }
+    .cr-marquee__item::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--saffron-500);
+    }
+    .cr-marquee__item--accent { color: var(--bone-100); }
+    @keyframes crMarquee {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-50%, 0, 0); }
+    }
+    .cr-marquee:hover .cr-marquee__track { animation-play-state: paused; }
+
+    /* =========================================================
+       3. STATS BAND - dot-grid backed indigo strip
+       ========================================================= */
+    .cr-stats {
+      position: relative;
+      background: var(--indigo-900);
+      color: var(--bone-100);
+      padding: var(--space-7) 0;
+      overflow: hidden;
+    }
+    .cr-stats__bg {
+      position: absolute;
+      inset: -10% -5%;
+      background-image: radial-gradient(rgba(245,158,11,0.16) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.55;
+      animation: crGridDrift 28s linear infinite;
+      pointer-events: none;
+    }
+    .cr-stats__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(8,6,42,0.85) 90%);
+    }
+    @keyframes crGridDrift {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-28px, -28px, 0); }
+    }
+    .cr-stats > .container { position: relative; z-index: 1; }
+    .cr-stats__grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-4);
-      margin-top: var(--space-7);
+      gap: var(--space-5);
     }
-    .careers-role {
-      padding: var(--space-5);
-      background: var(--bone-100);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-xs);
+    @media (max-width: 880px) {
+      .cr-stats__grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .careers-role__eyebrow {
-      display: block;
-      margin-bottom: var(--space-3);
-      color: var(--text-third);
-      font-size: var(--font-eyebrow);
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-    .careers-role h3 {
-      margin-bottom: var(--space-3);
-      color: var(--indigo-700);
-      font-size: var(--font-heading-md);
-    }
-    .careers-role p {
-      color: var(--steel-700);
-      font-size: var(--font-body-sm);
-      line-height: 1.55;
-    }
-    .careers-feature-list {
+    .cr-stat {
       display: grid;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-5);
+      border-left: 1.5px solid rgba(247,245,241,0.18);
+    }
+    .cr-stat__num {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--bone-100);
+    }
+    .cr-stat__num em {
+      font-style: italic;
+      color: var(--saffron-300);
+    }
+    .cr-stat__label {
+      font-size: var(--font-body-sm);
+      line-height: 1.45;
+      color: rgba(247,245,241,0.7);
+      max-width: 22ch;
+    }
+
+    /* =========================================================
+       4. ENGINES - four large numbered editorial cards
+       ========================================================= */
+    .cr-engines {
+      background: var(--bone-100);
+      padding: var(--space-9) 0;
+    }
+    .cr-engines__head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-5);
+      align-items: end;
+      margin-bottom: var(--space-7);
+    }
+    @media (max-width: 720px) {
+      .cr-engines__head { grid-template-columns: 1fr; }
+    }
+    .cr-engines__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-shrink: 0;
+    }
+    .cr-engines__btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-default);
+      background: var(--bone-100);
+      color: var(--indigo-500);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background var(--duration-default) var(--ease-standard),
+                  color var(--duration-default) var(--ease-standard),
+                  border-color var(--duration-default) var(--ease-standard),
+                  transform var(--duration-fast) var(--ease-standard);
+    }
+    .cr-engines__btn:hover:not(:disabled) {
+      border-color: var(--indigo-500);
+      background: var(--indigo-500);
+      color: var(--bone-100);
+      transform: scale(1.05);
+    }
+    .cr-engines__btn:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+    }
+    .cr-engines__btn:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+    .cr-engines__btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+    }
+    .cr-engines__hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: var(--space-4);
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .cr-engines__hint::before {
+      content: '';
+      width: 24px;
+      height: 1.5px;
+      background: var(--saffron-500);
+    }
+    @media (max-width: 540px) {
+      .cr-engines__hint { display: none; }
+    }
+    .cr-engines__viewport {
+      position: relative;
+      margin: 0 calc(var(--space-5) * -1);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--space-5), #000 calc(100% - var(--space-5)), transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 var(--space-5), #000 calc(100% - var(--space-5)), transparent 100%);
+    }
+    .cr-engines__rail {
+      display: flex;
+      gap: var(--space-5);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: var(--space-3) var(--space-5) var(--space-6);
+      scrollbar-width: none;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+    .cr-engines__rail::-webkit-scrollbar { display: none; }
+    .cr-engines__rail.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+      user-select: none;
+    }
+    .cr-engines__rail.is-dragging .cr-engine {
+      pointer-events: none;
+    }
+    .cr-engines__rail:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+      border-radius: var(--radius-lg);
+    }
+
+    .cr-engine {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
       gap: var(--space-4);
+      flex: 0 0 clamp(260px, 32%, 360px);
+      min-height: 320px;
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bone-200);
+      border: 1px solid var(--border-subtle);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      transition: transform var(--duration-default) var(--ease-standard),
+                  box-shadow var(--duration-default) var(--ease-standard),
+                  border-color var(--duration-default) var(--ease-standard),
+                  background var(--duration-default) var(--ease-standard);
+    }
+    @media (max-width: 720px) {
+      .cr-engine { flex-basis: 78%; min-height: 300px; }
+    }
+    .cr-engine::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--engine-accent, var(--saffron-500));
+      transform: scaleX(0.16);
+      transform-origin: left;
+      transition: transform var(--duration-slow) var(--ease-standard);
+    }
+    .cr-engine.is-active::before,
+    .cr-engine:hover::before {
+      transform: scaleX(1);
+    }
+    .cr-engine.is-active {
+      border-color: var(--border-emphasis);
+      box-shadow: var(--shadow-md);
+      background: var(--bone-100);
+    }
+    .cr-engine--indigo   { --engine-accent: var(--indigo-500); }
+    .cr-engine--teal     { --engine-accent: var(--teal-500); }
+    .cr-engine--saffron  { --engine-accent: var(--saffron-500); }
+    .cr-engine--charcoal { --engine-accent: var(--charcoal-800); }
+
+    .cr-engine__num {
+      display: none;
+    }
+    .cr-engine__num::before {
+      content: 'ENGINE';
+      position: absolute;
+      top: -0.95rem;
+      right: 0.15rem;
+      font-family: var(--font-body);
+      font-size: var(--font-eyebrow);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      color: var(--engine-accent, var(--indigo-500));
+      -webkit-text-stroke: 0;
+      opacity: 0.7;
+    }
+    .cr-engine__num::after {
+      content: '';
+      position: absolute;
+      right: 0.15rem;
+      bottom: -0.55rem;
+      width: 28px;
+      height: 1.5px;
+      background: var(--engine-accent, var(--indigo-500));
+      opacity: 0.55;
+      transform-origin: right;
+      transform: scaleX(0.45);
+      transition: transform var(--duration-slow) var(--ease-standard),
+                  opacity var(--duration-default) var(--ease-standard);
+    }
+    .cr-engine.is-active .cr-engine__num,
+    .cr-engine:hover .cr-engine__num {
+      color: var(--engine-accent);
+      opacity: 1;
+    }
+    .cr-engine.is-active .cr-engine__num::after,
+    .cr-engine:hover .cr-engine__num::after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    .cr-engine__rule {
+      width: 28px;
+      height: 1.5px;
+      background: var(--engine-accent, var(--saffron-500));
+      align-self: start;
+    }
+    .cr-engine__body {
+      position: relative;
+      display: grid;
+      gap: var(--space-3);
+    }
+    .cr-engine h3 {
+      font-family: var(--font-display);
+      font-size: var(--font-heading-lg);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--indigo-700);
+      margin: 0;
+    }
+    .cr-engine__text {
+      color: var(--text-secondary);
+      line-height: 1.55;
+      max-width: 38ch;
+    }
+    .cr-engine__roles {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cr-engine__roles li {
+      padding: 4px 10px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-pill);
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.06em;
+      color: var(--steel-700);
+      background: var(--bone-100);
+    }
+    .cr-engine.is-active .cr-engine__roles li {
+      background: var(--bone-200);
+    }
+
+    .cr-engines__progress {
+      display: flex;
+      gap: 6px;
+      margin-top: var(--space-5);
+      max-width: 32rem;
+    }
+    .cr-engines__progress-tick {
+      flex: 1;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--bone-300);
+      cursor: pointer;
+      border: 0;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--duration-default) var(--ease-standard);
+    }
+    .cr-engines__progress-tick::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--indigo-500);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--duration-slow) var(--ease-standard);
+    }
+    .cr-engines__progress-tick.is-active::after {
+      transform: scaleX(1);
+    }
+    .cr-engines__progress-tick:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cr-engines__rail { scroll-behavior: auto; }
+    }
+
+    /* =========================================================
+       5. PULL QUOTE - oversized editorial moment
+       ========================================================= */
+    .cr-quote {
+      background: var(--bone-200);
+      padding: var(--space-9) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-quote::before {
+      content: "\201C";
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(16rem, 30vw, 28rem);
+      font-weight: 600;
+      line-height: 1;
+      color: rgba(49,46,129,0.06);
+      pointer-events: none;
+    }
+    .cr-quote__inner {
+      position: relative;
+      max-width: 60rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cr-quote__text {
+      font-family: var(--font-display);
+      font-size: clamp(1.625rem, 3vw, 2.5rem);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .cr-quote__text em {
+      font-style: italic;
+      color: var(--text-accent);
+    }
+    .cr-quote__cite {
+      margin-top: var(--space-5);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--font-body-sm);
+      color: var(--text-muted);
+    }
+    .cr-quote__cite-line {
+      width: 28px;
+      height: 1.5px;
+      background: var(--saffron-500);
+    }
+
+    /* =========================================================
+       6. BAUDETTE - editorial postcard with floating stats
+       ========================================================= */
+    .cr-place {
+      background: var(--bone-100);
+      padding: var(--space-9) 0;
+    }
+    .cr-place__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: var(--space-7);
+      align-items: center;
+    }
+    @media (max-width: 880px) {
+      .cr-place__grid { grid-template-columns: 1fr; }
+    }
+    .cr-place__media {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      background: var(--bone-100);
+    }
+    .cr-place__media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .cr-place__play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      color: var(--indigo-500);
+      padding: 0;
+      transition: background var(--duration-default) var(--ease-standard);
+    }
+    .cr-place__play::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,6,42,0) 30%, rgba(8,6,42,0.18) 100%);
+      transition: background var(--duration-default) var(--ease-standard);
+    }
+    .cr-place__play-disc {
+      position: relative;
+      width: clamp(72px, 10vw, 104px);
+      height: clamp(72px, 10vw, 104px);
+      border-radius: 50%;
+      background: var(--bone-100);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--duration-default) var(--ease-standard),
+                  box-shadow var(--duration-default) var(--ease-standard);
+    }
+    .cr-place__play-disc::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(245,158,11,0.55);
+      animation: crPlayPulse 2.4s var(--ease-standard) infinite;
+    }
+    .cr-place__play-disc svg {
+      width: 38%;
+      height: 38%;
+      margin-left: 6%;
+      fill: var(--indigo-500);
+    }
+    .cr-place__play:hover .cr-place__play-disc,
+    .cr-place__play:focus-visible .cr-place__play-disc {
+      transform: scale(1.06);
+      box-shadow: var(--shadow-accent);
+    }
+    .cr-place__play:focus-visible {
+      outline: none;
+    }
+    .cr-place__play:focus-visible .cr-place__play-disc {
+      box-shadow: var(--shadow-accent), var(--shadow-focus);
+    }
+    .cr-place__play-label {
+      position: absolute;
+      left: var(--space-4);
+      bottom: var(--space-4);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 8px 14px;
+      background: rgba(8,6,42,0.78);
+      color: var(--bone-100);
+      border-radius: var(--radius-pill);
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+    .cr-place__play-label::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--saffron-500);
+    }
+    @keyframes crPlayPulse {
+      0%   { transform: scale(1);    opacity: 0.8; }
+      70%  { transform: scale(1.18); opacity: 0;   }
+      100% { transform: scale(1.18); opacity: 0;   }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cr-place__play-disc::after { animation: none; }
+    }
+    .cr-place__chip {
+      position: absolute;
+      bottom: var(--space-4);
+      left: var(--space-4);
+      padding: 8px 14px;
+      background: rgba(255,254,251,0.92);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius-pill);
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--indigo-700);
+      font-weight: 600;
+    }
+    .cr-place__floater {
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      padding: var(--space-4);
+      max-width: 200px;
+      background: var(--saffron-500);
+      color: var(--charcoal-800);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-accent);
+      transform: rotate(2deg);
+    }
+    .cr-place__floater strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .cr-place__floater span {
+      display: block;
+      margin-top: 4px;
+      font-size: var(--font-body-sm);
+      line-height: 1.35;
+    }
+    .cr-place__details {
+      display: grid;
+      gap: var(--space-3);
       margin-top: var(--space-5);
       padding: 0;
       list-style: none;
     }
-    .careers-feature-list li {
-      padding-left: var(--space-5);
-      border-left: 2px solid var(--saffron-500);
-      color: var(--steel-700);
-    }
-    .careers-alert {
+    .cr-place__details li {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
+      grid-template-columns: 28px 1fr;
+      gap: var(--space-3);
+      align-items: baseline;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .cr-place__details li::before {
+      content: "";
+      width: 16px;
+      height: 1.5px;
+      background: var(--saffron-500);
+      transform: translateY(-4px);
+    }
+
+    /* =========================================================
+       7. WHY - dark indigo theme, card grid with accent rules
+       ========================================================= */
+    .cr-why {
+      position: relative;
+      background: var(--indigo-900);
+      padding: var(--space-9) 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .cr-why::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(60% 50% at 12% 0%, rgba(245,158,11,0.12), transparent 60%),
+        radial-gradient(50% 50% at 100% 100%, rgba(13,148,136,0.14), transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .cr-why .kicker {
+      color: var(--saffron-300);
+    }
+    .cr-why .display-heading {
+      color: var(--bone-100);
+    }
+    .cr-why .display-heading em {
+      color: var(--saffron-300);
+    }
+    .cr-why .display-lead {
+      color: rgba(244,239,230,0.72);
+    }
+    .cr-why__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
       margin-top: var(--space-7);
-      border: 1px solid var(--border-default);
-      background: var(--border-default);
     }
-    .careers-alert__item {
-      padding: var(--space-5);
+    @media (max-width: 820px) {
+      .cr-why__grid { grid-template-columns: 1fr; }
+    }
+    .cr-why__card {
+      position: relative;
+      padding: var(--space-6);
+      background: rgba(255,254,251,0.04);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(244,239,230,0.10);
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+      transition: transform var(--duration-default) var(--ease-standard),
+                  background var(--duration-default) var(--ease-standard),
+                  border-color var(--duration-default) var(--ease-standard);
+    }
+    .cr-why__card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--why-accent, var(--saffron-500));
+      transform: scaleX(0.18);
+      transform-origin: left;
+      transition: transform var(--duration-slow) var(--ease-standard);
+    }
+    .cr-why__card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,254,251,0.07);
+      border-color: rgba(244,239,230,0.18);
+    }
+    .cr-why__card:hover::before {
+      transform: scaleX(1);
+    }
+    .cr-why__card--impact { --why-accent: var(--teal-300); }
+    .cr-why__card--scale  { --why-accent: var(--indigo-200); }
+    .cr-why__card--bench  { --why-accent: var(--saffron-300); }
+    .cr-why__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: transparent;
+      border: 1px solid rgba(244,239,230,0.18);
+      color: var(--why-accent, var(--bone-100));
+    }
+    .cr-why__tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--why-accent, var(--bone-100));
+    }
+    .cr-why__title {
+      position: relative;
+      margin-top: var(--space-5);
+      font-family: var(--font-display);
+      font-size: var(--font-heading-lg);
+      font-weight: 600;
+      color: var(--bone-100);
+      letter-spacing: -0.02em;
+    }
+    .cr-why__text {
+      position: relative;
+      margin-top: var(--space-3);
+      color: rgba(244,239,230,0.72);
+      line-height: 1.6;
+    }
+    .cr-why__link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: var(--space-5);
+      padding-bottom: 2px;
+      font-weight: 600;
+      color: var(--saffron-300);
+      border-bottom: 1px solid rgba(245,158,11,0.5);
+      transition: color var(--duration-default) var(--ease-standard),
+                  border-color var(--duration-default) var(--ease-standard);
+    }
+    .cr-why__link:hover {
+      color: var(--bone-100);
+      border-color: var(--bone-100);
+    }
+
+    /* =========================================================
+       8. PROCESS - editorial three-step
+       ========================================================= */
+    .cr-process {
       background: var(--bone-100);
+      padding: var(--space-9) 0;
+      position: relative;
+      overflow: hidden;
     }
-    .careers-alert__item strong {
-      display: block;
-      margin-bottom: var(--space-2);
-      color: var(--indigo-700);
+    .cr-process::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 20%, rgba(49,46,129,0.04), transparent 60%),
+        radial-gradient(ellipse 50% 35% at 85% 80%, rgba(245,158,11,0.05), transparent 60%);
+      pointer-events: none;
     }
-    .careers-alert__item span {
-      display: block;
-      color: var(--steel-700);
+    .cr-process > .container { position: relative; z-index: 1; }
+
+    .cr-process__steps {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-7);
+      list-style: none;
+      padding: 0;
+      counter-reset: cr-step;
+    }
+    .cr-process__steps::before {
+      content: "";
+      position: absolute;
+      top: 64px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        var(--indigo-500) 0%,
+        var(--saffron-500) 50%,
+        var(--teal-500) 100%
+      );
+      opacity: 0.18;
+      z-index: 0;
+      border-radius: 2px;
+    }
+    @media (max-width: 820px) {
+      .cr-process__steps { grid-template-columns: 1fr; gap: var(--space-5); }
+      .cr-process__steps::before { display: none; }
+    }
+
+    .cr-process__step {
+      position: relative;
+      z-index: 1;
+      background: var(--bone-100);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6) var(--space-6) var(--space-6);
+      display: grid;
+      gap: var(--space-4);
+      transition:
+        transform var(--duration-default) var(--ease-standard),
+        border-color var(--duration-default) var(--ease-standard),
+        box-shadow var(--duration-default) var(--ease-standard);
+      --step-color: var(--indigo-500);
+      --step-color-soft: var(--indigo-50);
+    }
+    .cr-process__step::before {
+      content: "";
+      position: absolute;
+      top: 0; left: var(--space-6); right: var(--space-6);
+      height: 3px;
+      background: var(--step-color);
+      border-radius: 0 0 3px 3px;
+    }
+    .cr-process__step:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-default);
+      box-shadow: var(--shadow-md);
+    }
+    .cr-process__step--01 { --step-color: var(--indigo-500); --step-color-soft: var(--indigo-50); }
+    .cr-process__step--02 { --step-color: var(--saffron-600); --step-color-soft: var(--saffron-50); }
+    .cr-process__step--03 { --step-color: var(--teal-600);    --step-color-soft: var(--teal-50); }
+
+    .cr-process__step-marker {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+    .cr-process__step-num {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--step-color);
+      font-feature-settings: "tnum";
+    }
+    .cr-process__step-meta {
+      font-family: var(--font-body);
+      font-size: var(--font-eyebrow);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: right;
+      max-width: 14ch;
+    }
+
+    .cr-process__step-body { display: grid; gap: var(--space-3); }
+    .cr-process__step-body h3 {
+      font-family: var(--font-display);
+      font-size: var(--font-heading-lg);
+      font-weight: 600;
+      color: var(--charcoal-900);
+      letter-spacing: -0.02em;
+    }
+    .cr-process__step-body p {
+      color: var(--text-secondary);
+      line-height: 1.55;
+      font-size: var(--font-body-md);
+    }
+    .cr-process__step-body p strong { color: var(--text-primary); font-weight: 600; }
+
+    .cr-process__step-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-body);
       font-size: var(--font-body-sm);
+      font-weight: 600;
+      color: var(--step-color);
+      text-decoration: none;
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid transparent;
+      width: fit-content;
+      transition: border-color var(--duration-fast) var(--ease-standard);
+    }
+    .cr-process__step-link:hover { border-color: var(--step-color); }
+
+    .cr-process__step-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      align-self: start;
+      padding: var(--space-2) var(--space-3);
+      background: var(--step-color-soft);
+      color: var(--step-color);
+      border-radius: var(--radius-pill);
+      font-size: var(--font-eyebrow);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .cr-process__step-tag::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--step-color);
+    }
+
+    .cr-process__cta {
+      margin-top: var(--space-7);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-5);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .cr-process__cta-aside {
+      color: var(--text-secondary);
+      font-size: var(--font-body-sm);
+    }
+    .cr-process__cta-aside a {
+      color: var(--text-link);
+      font-weight: 600;
+      border-bottom: 1px solid currentColor;
+    }
+    .cr-process__cta-aside a:hover { color: var(--text-link-hover); }
+
+    /* =========================================================
+       9. ALERT - "spot the scam" check/cross grid
+       ========================================================= */
+    .cr-alert {
+      background: var(--bone-200);
+      padding: var(--space-9) 0;
+    }
+    .cr-alert__board {
+      margin-top: var(--space-6);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
+    @media (max-width: 820px) {
+      .cr-alert__board { grid-template-columns: 1fr; }
+    }
+    .cr-alert__panel {
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      background: var(--bone-100);
+      border: 1px solid var(--border-subtle);
+      min-width: 0;
+    }
+    .cr-alert__panel-head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      font-family: var(--font-display);
+      font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+    .cr-alert__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .cr-alert__icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .cr-alert__panel--ok .cr-alert__icon {
+      background: rgba(61,139,92,0.16);
+      color: var(--green-success);
+    }
+    .cr-alert__panel--bad .cr-alert__icon {
+      background: rgba(184,58,42,0.14);
+      color: var(--red-error);
+    }
+    .cr-alert__panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--space-5);
+    }
+    .cr-alert__panel li {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      column-gap: var(--space-4);
+      row-gap: var(--space-1);
+      align-items: start;
+      color: var(--text-primary);
       line-height: 1.5;
     }
-    .careers-cta {
-      background: var(--indigo-700);
-      color: white;
+    .cr-alert__panel li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 0.5em;
     }
-    .careers-cta .display-heading,
-    .careers-cta .display-lead {
-      color: white;
+    .cr-alert__panel--ok li::before  { background: var(--green-success); }
+    .cr-alert__panel--bad li::before { background: var(--red-error); }
+    .cr-alert__panel li > span:first-of-type {
+      font-weight: 500;
+      color: var(--text-primary);
+      grid-column: 2;
     }
-    .careers-cta .display-lead {
-      color: rgba(255,255,255,0.78);
+    .cr-alert__panel li > code {
+      grid-column: 2;
+      display: inline-block;
+      padding: 3px 8px;
+      margin-top: 4px;
+      font-family: var(--font-body);
+      font-size: var(--font-body-sm);
+      font-weight: 500;
+      color: var(--indigo-700);
+      background: var(--indigo-50);
+      border-radius: var(--radius-sm);
+      letter-spacing: 0;
+      word-break: break-word;
     }
-    @media (max-width: 1024px) {
-      .careers-roles,
-      .careers-alert {
-        grid-template-columns: repeat(2, 1fr);
+    .cr-alert__report {
+      margin-top: var(--space-6);
+      text-align: center;
+    }
+
+    /* =========================================================
+       10. CLOSER - video-backed CTA
+       ========================================================= */
+    .cr-closer {
+      position: relative;
+      background: var(--indigo-900);
+      color: var(--bone-100);
+      padding: var(--space-9) 0;
+      overflow: hidden;
+    }
+    .cr-closer__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.22;
+      filter: saturate(0.6) contrast(1.05);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cr-closer__mask {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(8,6,42,0.5) 0%, rgba(8,6,42,0.92) 70%),
+        linear-gradient(180deg, rgba(8,6,42,0.55) 0%, rgba(14,14,18,0.85) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cr-closer > .container { position: relative; z-index: 1; }
+    .cr-closer__inner { max-width: 760px; }
+    .cr-closer__eyebrow {
+      font-size: var(--font-eyebrow);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--saffron-300);
+    }
+    .cr-closer h2 {
+      margin-top: var(--space-3);
+      color: var(--bone-100);
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      max-width: 22ch;
+    }
+    .cr-closer h2 em {
+      font-style: italic;
+      color: var(--saffron-300);
+    }
+    .cr-closer p {
+      margin-top: var(--space-5);
+      max-width: 60ch;
+      color: rgba(247,245,241,0.78);
+      font-size: var(--font-body-lg);
+      line-height: 1.6;
+    }
+    .cr-closer__cta {
+      margin-top: var(--space-6);
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .cr-closer__ghost {
+      color: var(--bone-100);
+      border-color: rgba(247,245,241,0.4);
+    }
+    .cr-closer__ghost:hover {
+      color: var(--saffron-300);
+      background: rgba(247,245,241,0.06);
+    }
+
+    /* =========================================================
+       Reveal + reduced-motion
+       ========================================================= */
+    .cr-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 700ms var(--ease-standard),
+                  transform 700ms var(--ease-standard);
+    }
+    .cr-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .cr-hero__live-dot,
+      .cr-hero__photo--c img,
+      .cr-hero__sticker,
+      .cr-hero__sticker span,
+      .cr-marquee__track,
+      .cr-stats__bg,
+      .cr-place__media img {
+        animation: none;
       }
-    }
-    @media (max-width: 680px) {
-      .careers-roles,
-      .careers-alert {
-        grid-template-columns: 1fr;
+      .cr-reveal, .cr-reveal.is-visible {
+        opacity: 1; transform: none; transition: none;
       }
+      .cr-engine, .cr-why__card { transition: none; }
+      .cr-engine:hover, .cr-why__card:hover { transform: none; box-shadow: var(--shadow-xs); }
+      .cr-engine:hover .cr-engine__media img { transform: scale(1.04); }
+      .cr-closer__video { display: none; }
     }
   </style>
 </head>
@@ -139,193 +1427,423 @@
 
   <main id="main">
 
-    <section class="page-header" aria-labelledby="careers-title">
+    <!-- ===== 1. HERO ===== -->
+    <section class="cr-hero cr-reveal" aria-labelledby="cr-hero-h">
       <div class="container">
-        <div class="page-header__inner">
-          <p class="page-header__breadcrumb">
-            <a href="/">ANI</a>
-            <span class="page-header__breadcrumb-sep">/</span>
-            <span class="page-header__breadcrumb-current">Careers</span>
-          </p>
-          <h1 id="careers-title" class="page-header__heading">The work is rare. <em>The impact is real.</em></h1>
-          <hr class="page-header__rule" />
-          <p class="page-header__sub">
-            Build medicines, launch therapies, and run the systems that get treatment to people who cannot wait for ordinary.
-          </p>
-          <div class="page-header__cta">
-            <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles</a>
-            <a class="btn btn--outline" href="/benefits">Career benefits</a>
+        <div class="cr-hero__grid">
+          <div>
+            <h1 class="cr-hero__heading" id="cr-hero-h">
+              The work is <em>rare</em>.<br />
+              The impact is
+              <span class="cr-hero__cycler" aria-live="polite" aria-atomic="true"></span>
+            </h1>
+            <p class="cr-hero__lead">
+              Build medicines, launch therapies, and run the systems that get treatment to people who cannot wait for ordinary.
+            </p>
+            <div class="cr-hero__cta">
+              <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles &rarr;</a>
+              <a class="btn btn--outline" href="/benefits">Career benefits</a>
+            </div>
+            <dl class="cr-hero__meta">
+              <div class="cr-hero__meta-item">
+                <span class="tnum">4</span>
+                <span>U.S. operating hubs</span>
+              </div>
+              <div class="cr-hero__meta-item">
+                <span class="tnum">200+</span>
+                <span>Medicines on shelves</span>
+              </div>
+              <div class="cr-hero__meta-item">
+                <span class="tnum">1989</span>
+                <span>In Baudette since</span>
+              </div>
+            </dl>
+          </div>
+
+          <div class="cr-hero__cluster" aria-hidden="true">
+            <figure class="cr-hero__photo cr-hero__photo--a">
+              <img src="/assets/photo/ir-hero-cleanroom.jpg" alt="" loading="lazy" />
+              <figcaption class="cr-hero__photo-tag">Manufacturing</figcaption>
+            </figure>
+            <figure class="cr-hero__photo cr-hero__photo--b">
+              <img src="/assets/photo/about-team.jpg" alt="" loading="lazy" />
+              <figcaption class="cr-hero__photo-tag">Commercial</figcaption>
+            </figure>
+            <figure class="cr-hero__photo cr-hero__photo--c">
+              <img src="/assets/photo/hero-family-1.jpg" alt="" loading="lazy" />
+            </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="stats-band">
+    <!-- ===== 2. ROLE-TITLE MARQUEE ===== -->
+    <div class="cr-marquee" aria-hidden="true">
+      <div class="cr-marquee__track">
+        <span class="cr-marquee__item cr-marquee__item--accent">Manufacturing Operator</span>
+        <span class="cr-marquee__item">QA Specialist</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Sales Rep, Rare Disease</span>
+        <span class="cr-marquee__item">Validation Engineer</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Regulatory Affairs Manager</span>
+        <span class="cr-marquee__item">Medical Science Liaison</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Supply Chain Planner</span>
+        <span class="cr-marquee__item">Process Engineer</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Pharmacovigilance Lead</span>
+        <span class="cr-marquee__item">Senior Accountant</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Manufacturing Operator</span>
+        <span class="cr-marquee__item">QA Specialist</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Sales Rep, Rare Disease</span>
+        <span class="cr-marquee__item">Validation Engineer</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Regulatory Affairs Manager</span>
+        <span class="cr-marquee__item">Medical Science Liaison</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Supply Chain Planner</span>
+        <span class="cr-marquee__item">Process Engineer</span>
+        <span class="cr-marquee__item cr-marquee__item--accent">Pharmacovigilance Lead</span>
+        <span class="cr-marquee__item">Senior Accountant</span>
+      </div>
+    </div>
+
+    <!-- ===== 3. STATS BAND ===== -->
+    <section class="cr-stats cr-reveal" aria-label="ANI by the numbers">
+      <div class="cr-stats__bg" aria-hidden="true"></div>
       <div class="container">
-        <div class="stats-band__grid">
-          <div class="stat-card">
-            <div class="stat-card__num">200+</div>
-            <div class="stat-card__label">Generics plus rare-disease medicines</div>
+        <div class="cr-stats__grid">
+          <div class="cr-stat">
+            <div class="cr-stat__num tnum">200<em>+</em></div>
+            <p class="cr-stat__label">Generics plus rare-disease medicines on the market</p>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__num">4</div>
-            <div class="stat-card__label">Major U.S. operating hubs</div>
+          <div class="cr-stat">
+            <div class="cr-stat__num tnum"><em>4</em></div>
+            <p class="cr-stat__label">Major U.S. operating hubs &mdash; Baudette, East Windsor, Oakville, Princeton</p>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__num">1989</div>
-            <div class="stat-card__label">Baudette roots and manufacturing pride</div>
+          <div class="cr-stat">
+            <div class="cr-stat__num tnum">1989</div>
+            <p class="cr-stat__label">Baudette roots and manufacturing pride</p>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__num">1</div>
-            <div class="stat-card__label">Company connecting manufacturing, science, and commercial work</div>
+          <div class="cr-stat">
+            <div class="cr-stat__num tnum">~<em>60</em>%</div>
+            <p class="cr-stat__label">Net revenue from rare-disease therapeutics</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section careers-intro">
+    <!-- ===== 4. ENGINES ===== -->
+    <section class="cr-engines cr-reveal" id="engines">
       <div class="container">
-        <header class="section__title-row">
-          <span class="kicker kicker--brand">What you'd be joining</span>
-          <h2 class="display-heading">Three engines. <em>One operating company.</em></h2>
-          <p class="display-lead">
-            ANI is not one lane. It is manufacturing discipline, commercial urgency, R&amp;D problem-solving, and the corporate systems that keep an FDA-regulated public company moving.
+        <div class="cr-engines__head">
+          <header class="section__title-row" style="margin: 0;">
+            <span class="kicker kicker--brand">What you'd be joining</span>
+            <h2 class="display-heading">Three engines. <em>One operating company.</em></h2>
+            <p class="display-lead">
+              ANI is not one lane. It is manufacturing discipline, commercial urgency, R&amp;D problem-solving, and the corporate systems that keep an FDA-regulated public company moving.
+            </p>
+          </header>
+          <div class="cr-engines__nav" role="group" aria-label="Carousel controls">
+            <span class="cr-engines__hint" aria-hidden="true">Drag &middot; Swipe</span>
+            <button type="button" class="cr-engines__btn cr-engines__btn--prev" aria-label="Previous engine" aria-controls="engines-rail">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <button type="button" class="cr-engines__btn cr-engines__btn--next" aria-label="Next engine" aria-controls="engines-rail">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="cr-engines__viewport">
+          <div class="cr-engines__rail" id="engines-rail" role="region" aria-roledescription="carousel" aria-label="Operating engines at ANI">
+            <article class="cr-engine cr-engine--indigo" aria-roledescription="slide" aria-label="1 of 4: Manufacturing">
+              <span class="cr-engine__num tnum" aria-hidden="true">01</span>
+              <span class="cr-engine__rule" aria-hidden="true"></span>
+              <div class="cr-engine__body">
+                <h3>Manufacturing</h3>
+                <p class="cr-engine__text">
+                  Baudette runs the lines where medicine becomes real &mdash; from sterile fill to packaging, on a 24/7 cadence.
+                </p>
+              </div>
+              <ul class="cr-engine__roles">
+                <li>Operator</li>
+                <li>Validation</li>
+                <li>Maintenance</li>
+                <li>Process Eng.</li>
+              </ul>
+            </article>
+
+            <article class="cr-engine cr-engine--teal" aria-roledescription="slide" aria-label="2 of 4: Quality and regulatory">
+              <span class="cr-engine__num tnum" aria-hidden="true">02</span>
+              <span class="cr-engine__rule" aria-hidden="true"></span>
+              <div class="cr-engine__body">
+                <h3>Quality &amp; regulatory</h3>
+                <p class="cr-engine__text">
+                  Quality, engineering, and regulatory teams protect standards and improve the work every day &mdash; the FDA-facing layer of the company.
+                </p>
+              </div>
+              <ul class="cr-engine__roles">
+                <li>QA / QC</li>
+                <li>Regulatory Affairs</li>
+                <li>Pharmacovigilance</li>
+                <li>Compliance</li>
+              </ul>
+            </article>
+
+            <article class="cr-engine cr-engine--saffron" aria-roledescription="slide" aria-label="3 of 4: Commercial">
+              <span class="cr-engine__num tnum" aria-hidden="true">03</span>
+              <span class="cr-engine__rule" aria-hidden="true"></span>
+              <div class="cr-engine__body">
+                <h3>Commercial</h3>
+                <p class="cr-engine__text">
+                  Rare Disease and Generics teams connect therapies with patients, providers, and markets &mdash; field, marketing, and access in one motion.
+                </p>
+              </div>
+              <ul class="cr-engine__roles">
+                <li>Field Sales</li>
+                <li>Marketing</li>
+                <li>Market Access</li>
+                <li>MSL</li>
+              </ul>
+            </article>
+
+            <article class="cr-engine cr-engine--charcoal" aria-roledescription="slide" aria-label="4 of 4: Corporate">
+              <span class="cr-engine__num tnum" aria-hidden="true">04</span>
+              <span class="cr-engine__rule" aria-hidden="true"></span>
+              <div class="cr-engine__body">
+                <h3>Corporate</h3>
+                <p class="cr-engine__text">
+                  Finance, legal, HR, IT, supply chain, and BD keep a complex public company moving &mdash; and quietly compound everyone else's work.
+                </p>
+              </div>
+              <ul class="cr-engine__roles">
+                <li>Finance</li>
+                <li>Legal</li>
+                <li>HR</li>
+                <li>IT &amp; Data</li>
+                <li>Supply Chain</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="cr-engines__progress" role="tablist" aria-label="Engine quick-jump">
+          <button type="button" class="cr-engines__progress-tick is-active" data-idx="0" aria-label="Go to Manufacturing"></button>
+          <button type="button" class="cr-engines__progress-tick" data-idx="1" aria-label="Go to Quality and regulatory"></button>
+          <button type="button" class="cr-engines__progress-tick" data-idx="2" aria-label="Go to Commercial"></button>
+          <button type="button" class="cr-engines__progress-tick" data-idx="3" aria-label="Go to Corporate"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. PULL QUOTE ===== -->
+    <section class="cr-quote cr-reveal" aria-label="Employee voice">
+      <div class="container">
+        <div class="cr-quote__inner">
+          <p class="cr-quote__text">
+            We don't ship features. <em>We ship medicine.</em> When a Cortrophin shipment leaves Baudette, somebody on dialysis or with a rare autoimmune disease is on the other end of that box.
           </p>
-        </header>
-
-        <div class="careers-roles" aria-label="Career areas">
-          <article class="careers-role">
-            <span class="careers-role__eyebrow">01</span>
-            <h3>Manufacturing</h3>
-            <p>Baudette teams run the lines where medicine becomes real, from production through packaging.</p>
-          </article>
-          <article class="careers-role">
-            <span class="careers-role__eyebrow">02</span>
-            <h3>Quality &amp; regulatory</h3>
-            <p>Quality, engineering, and regulatory teams protect standards and improve the work every day.</p>
-          </article>
-          <article class="careers-role">
-            <span class="careers-role__eyebrow">03</span>
-            <h3>Commercial</h3>
-            <p>Rare Disease and Generics teams connect therapies with patients, providers, and markets.</p>
-          </article>
-          <article class="careers-role">
-            <span class="careers-role__eyebrow">04</span>
-            <h3>Corporate</h3>
-            <p>Finance, legal, HR, IT, supply chain, and BD keep a complex public company moving.</p>
-          </article>
+          <p class="cr-quote__cite">
+            <span class="cr-quote__cite-line"></span>
+            Production lead, Baudette &middot; 12 years at ANI
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="section section--elevated">
+    <!-- ===== 6. BAUDETTE / PLACE ===== -->
+    <section class="cr-place cr-reveal" aria-labelledby="cr-place-h">
       <div class="container">
-        <div class="feature-row">
-          <figure class="feature-row__media">
-            <img class="feature-row__media-img" src="/assets/photo/manufacturing-baudette.png" alt="ANI manufacturing facility in Baudette, Minnesota" />
+        <div class="cr-place__grid">
+          <figure class="cr-place__media">
+            <img src="/assets/photo/now-hiring-poster.png" alt="ANI is now hiring" loading="lazy" />
+            <button type="button" class="cr-place__play" aria-label="Play: Inside ANI Baudette">
+              <span class="cr-place__play-disc" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false"><path d="M6 4l14 8-14 8V4z"/></svg>
+              </span>
+              <span class="cr-place__play-label">Watch · Inside Baudette</span>
+            </button>
           </figure>
           <div>
-            <span class="kicker kicker--brand">Living and working in Baudette</span>
-            <h2 class="display-heading">Manufacturing roots. <em>Community scale.</em></h2>
+            <span class="kicker kicker--brand">Living &amp; working in Baudette</span>
+            <h2 class="display-heading" id="cr-place-h">Manufacturing roots. <em>Community scale.</em></h2>
             <p class="display-lead">
               Lake of the Woods is at the front door. Hockey rinks, tournaments, fishing seasons that organize the calendar. ANI has been a fixture in the town since 1989, and relocation support is part of the conversation.
             </p>
-            <a class="link-arrow" href="https://jobs.anipharmaceuticals.com">Search current openings →</a>
+            <ul class="cr-place__details">
+              <li>Walleye-capital ice fishing tournament every January</li>
+              <li>Two community hockey rinks &mdash; pee-wee through adult leagues</li>
+              <li>Relocation assistance and on-site interview travel for finalists</li>
+              <li>Direct flights to MSP through Bemidji and International Falls</li>
+            </ul>
+            <div class="cr-hero__cta" style="margin-top: var(--space-6);">
+              <a class="btn btn--primary" href="https://jobs.anipharmaceuticals.com?location=baudette">Baudette openings &rarr;</a>
+              <a class="btn btn--outline" href="/locations">All locations</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ===== 7. WHY JOIN ===== -->
+    <section class="cr-why cr-reveal" aria-label="Reasons people join and stay">
       <div class="container">
         <header class="section__title-row section__title-row--center">
           <span class="kicker kicker--brand">Why people join. Why they stay.</span>
           <h2 class="display-heading display-heading--center">Real medicine. <em>Real lives.</em></h2>
-          <p class="display-lead display-lead--center">The work reaches patients, facilities, and communities, and each role has a direct line to that mission.</p>
+          <p class="display-lead display-lead--center">The work reaches patients, facilities, and communities &mdash; and each role has a direct line to that mission.</p>
         </header>
 
-        <div class="card-grid">
-          <article class="card">
-            <span class="tag tag--third">Impact</span>
-            <h3 class="card__title">Patients are not an abstraction.</h3>
-            <p class="card__text">Cortrophin, ILUVIEN, YUTIQ, and 200+ generics connect daily execution to outcomes that matter.</p>
+        <div class="cr-why__grid">
+          <article class="cr-why__card cr-why__card--impact">
+            <span class="cr-why__tag">Impact</span>
+            <h3 class="cr-why__title">Patients are not an abstraction.</h3>
+            <p class="cr-why__text">Cortrophin, ILUVIEN, YUTIQ, and 200+ generics connect daily execution to outcomes that matter.</p>
           </article>
-          <article class="card">
-            <span class="tag tag--brand">Scale</span>
-            <h3 class="card__title">Small enough to see it ship.</h3>
-            <p class="card__text">Teams work close enough to the product, facility, and customer to understand how decisions carry through.</p>
+          <article class="cr-why__card cr-why__card--scale">
+            <span class="cr-why__tag">Scale</span>
+            <h3 class="cr-why__title">Small enough to see it ship.</h3>
+            <p class="cr-why__text">Teams work close enough to the product, facility, and customer to understand how decisions carry through.</p>
           </article>
-          <article class="card">
-            <span class="tag tag--accent">Benefits</span>
-            <h3 class="card__title">Support beyond the role.</h3>
-            <p class="card__text">Health, finances, time off, and life outside work are covered in the benefits overview.</p>
-            <a class="card__link" href="/benefits">See career benefits →</a>
+          <article class="cr-why__card cr-why__card--bench">
+            <span class="cr-why__tag">Benefits</span>
+            <h3 class="cr-why__title">Support beyond the role.</h3>
+            <p class="cr-why__text">Health, finances, time off, and life outside work are covered in the benefits overview.</p>
+            <a class="cr-why__link" href="/benefits">See career benefits &rarr;</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section--elevated">
-      <div class="container">
-        <div class="feature-row">
-          <div>
-            <span class="kicker kicker--brand">How to apply</span>
-            <h2 class="display-heading">Find the right opening. <em>Talk to a real recruiter.</em></h2>
-            <p class="display-lead">
-              All official ANI roles are posted through the jobs site. Recruiting communication should come from ANI channels, and role details should be confirmed in writing.
-            </p>
-            <ul class="careers-feature-list">
-              <li>Review the current opening and location before applying.</li>
-              <li>Ask your recruiter about team structure, schedule expectations, and benefits eligibility.</li>
-              <li>Use the benefits page for a quick overview before offer conversations.</li>
-            </ul>
-          </div>
-          <figure class="feature-row__media">
-            <img class="feature-row__media-img" src="/assets/photo/about-team.jpg" alt="ANI team members at a company gathering" />
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <header class="section__title-row section__title-row--center">
-          <span class="kicker kicker--brand">Heads up</span>
-          <h2 class="display-heading display-heading--center">Two minutes on hiring fraud.</h2>
-          <p class="display-lead display-lead--center">We've seen scams that impersonate ANI. Protect yourself before you reply.</p>
-        </header>
-        <div class="careers-alert">
-          <div class="careers-alert__item">
-            <strong>Email domain</strong>
-            <span>Real ANI recruiters write from @anipharmaceuticals.com only.</span>
-          </div>
-          <div class="careers-alert__item">
-            <strong>Verified profile</strong>
-            <span>Real ANI recruiters have verified LinkedIn profiles.</span>
-          </div>
-          <div class="careers-alert__item">
-            <strong>No payment requests</strong>
-            <span>We never ask for payment, banking info, or sensitive financial data during hiring.</span>
-          </div>
-          <div class="careers-alert__item">
-            <strong>Official openings</strong>
-            <span>All real openings live at jobs.anipharmaceuticals.com.</span>
-          </div>
-        </div>
-        <div class="cortrophin-actions" style="justify-content: center; margin-top: var(--space-6);">
-          <a class="link-arrow" href="mailto:careers@anipharmaceuticals.com">Report a suspicious job offer →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section careers-cta">
+    <!-- ===== 8. PROCESS ===== -->
+    <section class="cr-process cr-reveal" aria-label="How to apply">
       <div class="container">
         <header class="section__title-row">
-          <span class="kicker kicker--accent">Ready to apply</span>
-          <h2 class="display-heading">Make the work real.</h2>
-          <p class="display-lead">Bring your expertise to a company where manufacturing, science, commercial work, and patient access all meet.</p>
-          <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles</a>
+          <span class="kicker kicker--brand">How to apply</span>
+          <h2 class="display-heading">Find the right opening. <em>Talk to a real recruiter.</em></h2>
+          <p class="display-lead">All official ANI roles are posted through the jobs site. Recruiting communication should come from ANI channels, and role details should be confirmed in writing.</p>
         </header>
+        <ol class="cr-process__steps">
+          <li class="cr-process__step cr-process__step--01">
+            <div class="cr-process__step-marker">
+              <span class="cr-process__step-num">01</span>
+              <span class="cr-process__step-meta">Self-serve</span>
+            </div>
+            <div class="cr-process__step-body">
+              <h3>Browse openings</h3>
+              <p>Filter by location, function, and seniority on the official jobs site. Bookmark roles before applying.</p>
+              <a class="cr-process__step-link" href="https://jobs.anipharmaceuticals.com" target="_blank" rel="noopener">
+                jobs.anipharmaceuticals.com <span aria-hidden="true">&nearr;</span>
+              </a>
+            </div>
+          </li>
+          <li class="cr-process__step cr-process__step--02">
+            <div class="cr-process__step-marker">
+              <span class="cr-process__step-num">02</span>
+              <span class="cr-process__step-meta">7&ndash;10 business days</span>
+            </div>
+            <div class="cr-process__step-body">
+              <h3>Apply &amp; meet recruiting</h3>
+              <p>Submit through the portal. An ANI recruiter will reach out from <strong>@anipharmaceuticals.com</strong> for shortlisted roles.</p>
+              <span class="cr-process__step-tag">Verified channel</span>
+            </div>
+          </li>
+          <li class="cr-process__step cr-process__step--03">
+            <div class="cr-process__step-marker">
+              <span class="cr-process__step-num">03</span>
+              <span class="cr-process__step-meta">Manager + 2&ndash;3 colleagues</span>
+            </div>
+            <div class="cr-process__step-body">
+              <h3>Talk to the team</h3>
+              <p>Hiring panels include the manager and 2&ndash;3 future colleagues. We share the rubric ahead of time so you can prepare.</p>
+              <span class="cr-process__step-tag">Rubric shared in advance</span>
+            </div>
+          </li>
+        </ol>
+
+        <div class="cr-process__cta">
+          <a class="btn btn--primary" href="https://jobs.anipharmaceuticals.com" target="_blank" rel="noopener">Browse open roles</a>
+          <span class="cr-process__cta-aside">Suspect a fake offer? Write to <a href="mailto:careers@anipharmaceuticals.com">careers@anipharmaceuticals.com</a>.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. HIRING-FRAUD ALERT ===== -->
+    <section class="cr-alert cr-reveal" aria-labelledby="cr-alert-h">
+      <div class="container">
+        <header class="section__title-row section__title-row--center">
+          <span class="kicker kicker--accent">Heads up</span>
+          <h2 class="display-heading display-heading--center" id="cr-alert-h">Two minutes on hiring fraud.</h2>
+          <p class="display-lead display-lead--center">We've seen scams that impersonate ANI. Here's what real outreach looks like vs. the warning signs.</p>
+        </header>
+
+        <div class="cr-alert__board">
+          <div class="cr-alert__panel cr-alert__panel--ok">
+            <div class="cr-alert__panel-head">
+              <span class="cr-alert__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 8"></polyline></svg>
+              </span>
+              <span>Real ANI recruiting</span>
+            </div>
+            <ul>
+              <li>
+                <span>Email arrives from the official ANI domain.</span>
+                <code>anipharmaceuticals.com</code>
+              </li>
+              <li>
+                <span>Recruiter has a verified LinkedIn profile linked to ANI.</span>
+              </li>
+              <li>
+                <span>Interviews are scheduled through ANI's official tools.</span>
+              </li>
+              <li>
+                <span>Roles always live on the official jobs site.</span>
+                <code>jobs.anipharmaceuticals.com</code>
+              </li>
+            </ul>
+          </div>
+          <div class="cr-alert__panel cr-alert__panel--bad">
+            <div class="cr-alert__panel-head">
+              <span class="cr-alert__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+              </span>
+              <span>Warning signs</span>
+            </div>
+            <ul>
+              <li>
+                <span>Email from a free domain claiming ANI affiliation.</span>
+                <code>gmail.com, outlook.com, etc.</code>
+              </li>
+              <li>
+                <span>Any request for payment, banking, or sensitive financial info.</span>
+              </li>
+              <li>
+                <span>Pressure to interview only by SMS, WhatsApp, or Telegram.</span>
+              </li>
+              <li>
+                <span>An offer that skips a recruiter call or written role description.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="cr-alert__report">
+          <a class="link-arrow" href="mailto:careers@anipharmaceuticals.com">Report a suspicious job offer &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. CLOSER ===== -->
+    <section class="cr-closer cr-reveal" aria-labelledby="cr-closer-h">
+      <video class="cr-closer__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="/assets/video/3d-clip/3d-clip-clean.mp4" type="video/mp4" />
+      </video>
+      <div class="cr-closer__mask" aria-hidden="true"></div>
+      <div class="container">
+        <div class="cr-closer__inner">
+          <span class="cr-closer__eyebrow">Ready to apply</span>
+          <h2 id="cr-closer-h">Make the work <em>real</em>.</h2>
+          <p>Bring your expertise to a company where manufacturing, science, commercial work, and patient access all meet &mdash; and where every shipment ends up with a real person on the other end.</p>
+          <div class="cr-closer__cta">
+            <a class="btn btn--accent" href="https://jobs.anipharmaceuticals.com">See open roles &rarr;</a>
+            <a class="btn btn--ghost cr-closer__ghost" href="/benefits">Career benefits</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -375,14 +1893,239 @@
         </div>
       </div>
       <div class="footer__legal">
-        <p>© 2026 ANI Pharmaceuticals All rights reserved.</p>
+        <p>&copy; 2026 ANI Pharmaceuticals. All rights reserved.</p>
         <p class="footer__legal-links">
-          <a href="/privacy">Privacy</a> ·
-          <a href="/terms">Terms</a> ·
+          <a href="/privacy">Privacy</a> &middot;
+          <a href="/terms">Terms</a> &middot;
           <a href="/accessibility">Accessibility</a>
         </p>
       </div>
     </div>
   </footer>
+
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const items = document.querySelectorAll('.cr-reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        items.forEach((el) => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.16 });
+      items.forEach((el) => io.observe(el));
+    })();
+
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const target = document.querySelector('.cr-hero__cycler');
+      if (!target) return;
+
+      const words = ['real', 'lasting', 'measurable', 'shared', 'rare too'];
+      let idx = 0;
+
+      const setWord = (text, animate) => {
+        const span = document.createElement('span');
+        span.className = 'cr-hero__cycler-word' + (animate ? ' is-in' : '');
+        span.textContent = text;
+        const dot = document.createElement('span');
+        dot.className = 'cr-hero__cycler-dot';
+        dot.textContent = '.';
+        span.appendChild(dot);
+        target.replaceChildren(span);
+      };
+
+      setWord(words[0], false);
+      if (reduceMotion) return;
+
+      setInterval(() => {
+        const current = target.querySelector('.cr-hero__cycler-word');
+        if (!current) return;
+        current.classList.add('is-out');
+        setTimeout(() => {
+          idx = (idx + 1) % words.length;
+          setWord(words[idx], true);
+        }, 320);
+      }, 2600);
+    })();
+
+    /* === Engines carousel: drag, snap, buttons, progress, keyboard === */
+    (() => {
+      const rail = document.getElementById('engines-rail');
+      if (!rail) return;
+      const cards = Array.from(rail.querySelectorAll('.cr-engine'));
+      const prev = document.querySelector('.cr-engines__btn--prev');
+      const next = document.querySelector('.cr-engines__btn--next');
+      const ticks = Array.from(document.querySelectorAll('.cr-engines__progress-tick'));
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const setActive = (i) => {
+        cards.forEach((c, idx) => c.classList.toggle('is-active', idx === i));
+        ticks.forEach((t, idx) => {
+          t.classList.toggle('is-active', idx === i);
+          t.setAttribute('aria-selected', idx === i ? 'true' : 'false');
+        });
+        if (prev) prev.disabled = i <= 0;
+        if (next) next.disabled = i >= cards.length - 1;
+      };
+
+      const indexFromScroll = () => {
+        const railLeft = rail.getBoundingClientRect().left;
+        let bestIdx = 0;
+        let bestDist = Infinity;
+        cards.forEach((c, idx) => {
+          const d = Math.abs(c.getBoundingClientRect().left - railLeft);
+          if (d < bestDist) { bestDist = d; bestIdx = idx; }
+        });
+        return bestIdx;
+      };
+
+      const scrollToIndex = (i, smooth = true) => {
+        const target = cards[i];
+        if (!target) return;
+        const left = target.offsetLeft - rail.offsetLeft;
+        rail.scrollTo({ left, behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
+      };
+
+      let isDown = false;
+      let startX = 0;
+      let startScroll = 0;
+      let moved = false;
+      const DRAG_THRESHOLD = 6;
+
+      rail.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        isDown = true;
+        moved = false;
+        startX = e.clientX;
+        startScroll = rail.scrollLeft;
+        rail.classList.add('is-dragging');
+        try { rail.setPointerCapture(e.pointerId); } catch (_) {}
+      });
+
+      rail.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > DRAG_THRESHOLD) moved = true;
+        if (moved) rail.scrollLeft = startScroll - dx;
+      });
+
+      const endDrag = () => {
+        if (!isDown) return;
+        isDown = false;
+        rail.classList.remove('is-dragging');
+        if (moved) {
+          const i = indexFromScroll();
+          scrollToIndex(i);
+          setActive(i);
+        }
+      };
+      rail.addEventListener('pointerup', endDrag);
+      rail.addEventListener('pointercancel', endDrag);
+
+      if (prev) prev.addEventListener('click', () => {
+        const i = Math.max(0, indexFromScroll() - 1);
+        scrollToIndex(i); setActive(i);
+      });
+      if (next) next.addEventListener('click', () => {
+        const i = Math.min(cards.length - 1, indexFromScroll() + 1);
+        scrollToIndex(i); setActive(i);
+      });
+
+      ticks.forEach((t) => t.addEventListener('click', () => {
+        const i = parseInt(t.dataset.idx, 10) || 0;
+        scrollToIndex(i); setActive(i);
+      }));
+
+      rail.tabIndex = 0;
+      rail.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          const i = Math.min(cards.length - 1, indexFromScroll() + 1);
+          scrollToIndex(i); setActive(i);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const i = Math.max(0, indexFromScroll() - 1);
+          scrollToIndex(i); setActive(i);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          scrollToIndex(0); setActive(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          const i = cards.length - 1;
+          scrollToIndex(i); setActive(i);
+        }
+      });
+
+      let raf = null;
+      rail.addEventListener('scroll', () => {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => setActive(indexFromScroll()));
+      }, { passive: true });
+
+      setActive(0);
+    })();
+
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+      const animateNumber = (el, finalText) => {
+        const match = finalText.match(/([\d.,]+)/);
+        if (!match) return;
+        const targetStr = match[1];
+        const target = parseFloat(targetStr.replace(/,/g, ''));
+        if (!isFinite(target)) return;
+        const decimals = (targetStr.split('.')[1] || '').length;
+        const duration = 1200;
+        const start = performance.now();
+        const original = finalText;
+        const fmt = (n) => n.toLocaleString('en-US', {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals,
+        });
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / duration);
+          el.textContent = original.replace(targetStr, fmt(target * easeOut(t)));
+          if (t < 1) requestAnimationFrame(tick);
+          else el.textContent = original;
+        };
+        requestAnimationFrame(tick);
+      };
+
+      const targets = document.querySelectorAll(
+        '.cr-stat__num, .cr-hero__meta-item span:first-child, #cr-open-count'
+      );
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          const walker = document.createTreeWalker(entry.target, NodeFilter.SHOW_TEXT, {
+            acceptNode: (n) => /\d/.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+          });
+          const nodes = [];
+          let n;
+          while ((n = walker.nextNode())) nodes.push(n);
+          nodes.forEach((node) => {
+            const final = node.nodeValue;
+            const span = document.createElement('span');
+            span.textContent = final;
+            node.parentNode.replaceChild(span, node);
+            animateNumber(span, final);
+          });
+        });
+      }, { threshold: 0.4 });
+
+      targets.forEach((el) => io.observe(el));
+    })();
+  </script>
 </body>
 </html>
